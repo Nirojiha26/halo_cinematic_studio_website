@@ -13,7 +13,7 @@ import { useBodyScrollLock, useFocusTrap } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 import { PhotoCard } from "@/components/shared/PhotoCard";
 import { QueryParamSync } from "@/components/shared/QueryParamSync";
-import { Button } from "@/components/ui/Button";
+import { whatsappUrl } from "@/config/site";
 
 export function PhotosGallery() {
   const [activeCollection, setActiveCollection] =
@@ -80,7 +80,7 @@ export function PhotosGallery() {
       <div
         role="tablist"
         aria-label="Filter photo archive by collection"
-        className="mb-10 flex flex-wrap items-center gap-2.5 border-b border-line pb-6"
+        className="mb-10 flex flex-wrap items-center gap-3 border-b border-[rgba(20,20,20,0.06)] pb-6"
       >
         {photoCollections.map((collection) => {
           const isActive = collection === activeCollection;
@@ -100,17 +100,19 @@ export function PhotosGallery() {
                 setSelectedId(null);
               }}
               className={cn(
-                "inline-flex cursor-pointer items-center gap-2 rounded-pill px-4 py-2 text-xs font-bold tracking-[0.14em] uppercase transition-all",
+                "inline-flex cursor-pointer items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all duration-200",
                 isActive
-                  ? "bg-ink text-on-ink shadow-sm"
-                  : "border border-line-strong bg-canvas text-ink hover:border-ink",
+                  ? "btn-grad text-white shadow-md shadow-[rgba(220,53,48,0.25)]"
+                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#DC3530] hover:text-[#DC3530]",
               )}
             >
               <span>{collection}</span>
               <span
                 className={cn(
-                  "inline-flex size-5 items-center justify-center rounded-full text-[10px] font-black",
-                  isActive ? "bg-brand text-on-ink" : "bg-paper text-muted",
+                  "inline-flex size-5 items-center justify-center rounded-full text-[10px] font-bold",
+                  isActive
+                    ? "bg-white/20 text-white"
+                    : "bg-[#FFF5F4] text-[#DC3530]",
                 )}
               >
                 {count}
@@ -120,108 +122,104 @@ export function PhotosGallery() {
         })}
       </div>
 
-      {/* Gallery grid */}
+      {/* Photos Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((photo) => (
           <PhotoCard
             key={photo.id}
             photo={photo}
             onSelect={(p) => setSelectedId(p.id)}
+            sizes="(min-width: 1280px) 22vw, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 94vw"
           />
         ))}
       </div>
 
-      {/* Lightbox modal */}
+      {/* Accessible Fullscreen Modal Lightbox */}
       {selectedPhoto ? (
         <div
-          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label={selectedPhoto.title}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4 backdrop-blur-xs sm:p-8"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) handleClose();
-          }}
+          ref={dialogRef}
+          className="fixed inset-0 z-[1200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
+          onClick={handleClose}
         >
-          <div className="relative flex max-h-[92svh] w-full max-w-4xl flex-col overflow-hidden rounded-card border border-white/15 bg-canvas shadow-2xl">
-            {/* Top bar */}
-            <div className="flex items-center justify-between border-b border-line bg-paper px-5 py-3.5">
-              <div className="flex items-center gap-3">
-                <span className="size-2 rounded-full bg-brand" aria-hidden />
-                <span className="text-[11px] font-bold tracking-[0.2em] text-ink uppercase">
+          <div
+            className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-[24px] bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Top Bar */}
+            <div className="flex items-center justify-between border-b border-[rgba(20,20,20,0.08)] px-6 py-4">
+              <div>
+                <p className="text-xs font-semibold text-[#DC3530]">
                   {selectedPhoto.category}
-                </span>
-                <span className="text-xs text-muted">
-                  ({selectedIndex + 1} / {filtered.length})
-                </span>
+                </p>
+                <h3
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="text-lg font-semibold text-[#141414]"
+                >
+                  {selectedPhoto.title}
+                </h3>
               </div>
-
               <button
                 ref={closeRef}
                 type="button"
                 onClick={handleClose}
-                aria-label="Close photo lightbox"
-                className="grid size-9 cursor-pointer place-items-center rounded-pill border border-line-strong bg-canvas text-ink transition-colors hover:border-ink hover:bg-ink hover:text-on-ink"
+                aria-label="Close dialog"
+                className="grid size-10 place-items-center rounded-full border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#DC3530] hover:text-[#DC3530]"
               >
-                <X className="size-4" />
+                <X className="size-5" />
               </button>
             </div>
 
-            {/* Matte darkroom image stage */}
-            <div className="relative min-h-[340px] flex-1 bg-ink sm:min-h-[480px]">
+            {/* Image viewer */}
+            <div className="relative min-h-[380px] max-h-[65vh] flex-1 bg-[#141414]">
               <Image
                 src={selectedPhoto.src}
                 alt={selectedPhoto.alt}
                 fill
-                sizes="(min-width: 1024px) 896px, 95vw"
-                className="object-contain p-3 sm:p-6"
+                priority
+                className="object-contain p-2"
+                sizes="(min-width: 1024px) 896px, 94vw"
               />
 
+              {/* Prev / Next buttons */}
               {filtered.length > 1 ? (
                 <>
                   <button
                     type="button"
                     onClick={() => stepPhoto(-1)}
-                    aria-label="Previous image"
-                    className="absolute top-1/2 left-3 grid size-10 -translate-y-1/2 cursor-pointer place-items-center rounded-pill border border-white/20 bg-ink/80 text-white transition-colors hover:border-brand hover:bg-brand"
+                    aria-label="Previous photo"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#DC3530]"
                   >
-                    <ChevronLeft className="size-5" />
+                    <ChevronLeft className="size-6" />
                   </button>
                   <button
                     type="button"
                     onClick={() => stepPhoto(1)}
-                    aria-label="Next image"
-                    className="absolute top-1/2 right-3 grid size-10 -translate-y-1/2 cursor-pointer place-items-center rounded-pill border border-white/20 bg-ink/80 text-white transition-colors hover:border-brand hover:bg-brand"
+                    aria-label="Next photo"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#DC3530]"
                   >
-                    <ChevronRight className="size-5" />
+                    <ChevronRight className="size-6" />
                   </button>
                 </>
               ) : null}
             </div>
 
-            {/* Bottom info & WhatsApp enquiry link */}
-            <div className="flex flex-col gap-4 border-t border-line bg-canvas p-5 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h2 className="font-display text-xl font-black uppercase text-ink">
-                  {selectedPhoto.title}
-                </h2>
-                <p className="mt-0.5 text-xs font-medium text-muted">
-                  {selectedPhoto.subtitle}
-                </p>
-              </div>
-
-              <Button
-                href={
-                  selectedPhoto.packageSlug
-                    ? `/contact?category=${selectedPhoto.packageCategory}&package=${selectedPhoto.packageSlug}`
-                    : `/contact?category=${selectedPhoto.packageCategory}`
-                }
-                variant="primary"
-                size="md"
-                icon={<ArrowRight className="size-4" />}
+            {/* Bottom info & WhatsApp enquiry bar */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[rgba(20,20,20,0.08)] bg-[#FFF5F4] px-6 py-4">
+              <p className="text-sm text-[#5F5A5A]">{selectedPhoto.subtitle}</p>
+              <a
+                href={whatsappUrl(
+                  `Hello HALO CINEMATIC STUDIO! I am enquiring about the ${selectedPhoto.title} (${selectedPhoto.category}) shown in your gallery.`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-grad inline-flex h-10 items-center gap-2 rounded-xl px-5 text-xs font-semibold text-white"
               >
-                Enquire This Package
-              </Button>
+                <span>Enquire About This Frame</span>
+                <ArrowRight className="size-3.5" />
+              </a>
             </div>
           </div>
         </div>
@@ -229,4 +227,3 @@ export function PhotosGallery() {
     </div>
   );
 }
-

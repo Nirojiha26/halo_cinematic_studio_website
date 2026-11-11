@@ -1,136 +1,234 @@
+"use client";
+
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Mail, Phone } from "lucide-react";
-import { siteConfig } from "@/config/site";
-import { weddingPortraits } from "@/data/photos";
-import { LogoPanel } from "@/components/shared/LogoPanel";
-import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
+import { ArrowRight } from "lucide-react";
 
-/**
- * White-background Red / White / Black Editorial Hero:
- *  - Bright gallery backdrop with subtle concentric red aperture ring
- *  - Asymmetric 12-col split: crisp condensed black & red display copy on left,
- *    framed studio logo plate + real wedding portrait filmstrip on right
- */
+const BLUR_DATA_URL =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAUABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUEB//EACMQAAICAgICAwEAAAAAAAAAAAECAxEEITESQVFhcf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCbqfI3L96ywqSoqpJKSoiCKP3Gw+mW9VW3JJ9ckm2T2pxCFRUeJAQA/9k=";
+
+const photos = [
+  { src: "/images/photos/wedding-couple-01.jpg", alt: "Wedding couple portrait 1" },
+  { src: "/images/photos/wedding-couple-02.jpg", alt: "Wedding couple portrait 2" },
+  { src: "/images/photos/wedding-couple-03.jpg", alt: "Wedding couple portrait 3" },
+];
+
+const serviceChips = [
+  { label: "Weddings", href: "/packages?category=weddings" },
+  { label: "Puberty Ceremony", href: "/packages?category=puberty" },
+  { label: "Engagement", href: "/packages?category=engagement" },
+  { label: "Events & Cinema", href: "/packages?category=events" },
+];
+
 export function Hero() {
-  const previewFrames = weddingPortraits.slice(0, 3);
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   return (
     <section
       aria-labelledby="hero-heading"
-      className="gallery-backdrop relative flex min-h-[calc(100svh-1rem)] items-center overflow-hidden border-b border-line pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-34 lg:pb-22"
+      className="hero-bg relative pt-28 md:pt-36 pb-8 overflow-hidden"
+      style={{ minHeight: "calc(100vh - 72px)" }}
     >
-      {/* Subtle architectural concentric aperture ring on bright ground */}
-      <div
-        aria-hidden
-        className="lens-ring top-[14%] -right-32 size-[380px] sm:size-[500px] lg:-right-24 lg:size-[580px]"
-      />
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-5 text-center">
+        {/* 1. Halo-ring SVG emblem */}
+        <div className="relative mb-2 flex items-center justify-center">
+          <svg
+            width={84}
+            height={84}
+            viewBox="0 0 96 96"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            className="blob-anim"
+          >
+            <defs>
+              <linearGradient id="haloGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#B91C24" />
+                <stop offset="50%" stopColor="#DC3530" />
+                <stop offset="100%" stopColor="#F2574B" />
+              </linearGradient>
+            </defs>
+            <circle cx={48} cy={48} r={42} fill="rgba(220,53,48,0.06)" />
+            <circle
+              cx={48}
+              cy={48}
+              r={36}
+              fill="none"
+              stroke="url(#haloGrad)"
+              strokeWidth={3}
+              strokeDasharray="4 2"
+            />
+            <circle
+              cx={48}
+              cy={48}
+              r={24}
+              fill="none"
+              stroke="url(#haloGrad)"
+              strokeWidth={2}
+            />
+            <circle cx={48} cy={48} r={6} fill="#DC3530" />
+          </svg>
+        </div>
 
-      <Container size="wide" className="relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-          {/* Editorial copy */}
-          <div className="lg:col-span-6 xl:col-span-7">
-            <p className="eyebrow animate-(--animate-rise) flex items-center gap-3">
-              <span aria-hidden className="h-[2px] w-8 bg-brand" />
-              Photography • Cinematography • Creative Studio
-            </p>
+        {/* 2. Eyebrow chip */}
+        <span className="chip-eyebrow mt-4">
+          Photography · Cinematography · Creative Studio
+        </span>
 
-            <h1
-              id="hero-heading"
-              style={{ animationDelay: "80ms" }}
-              className="animate-(--animate-rise) mt-5 text-[clamp(2.85rem,6.5vw,5.4rem)] font-black uppercase leading-[0.95] tracking-[-0.03em] text-ink"
+        {/* 3. Headline */}
+        <h1
+          id="hero-heading"
+          className="mt-3 text-center font-semibold"
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(38px, 6vw, 72px)",
+            color: "var(--ink)",
+            lineHeight: 1.1,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Your Story.
+          <br />
+          <span className="grad-text">Our Vision.</span>
+        </h1>
+
+        {/* 4. Subtext */}
+        <p
+          className="mt-4 max-w-xl text-center text-base sm:text-lg"
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 400,
+            color: "var(--muted)",
+          }}
+        >
+          We capture the moments that matter and turn them into timeless
+          memories. From weddings and engagements to puberty ceremonies, every
+          frame is crafted with passion.
+        </p>
+
+        {/* 5. CTAs */}
+        <div className="mt-8 flex flex-row items-center justify-center gap-3.5">
+          <Link
+            href="/packages"
+            className="btn-grad inline-flex items-center gap-2 rounded-xl px-7 text-sm font-medium text-white shadow-md shadow-[rgba(220,53,48,0.25)]"
+            style={{ height: 48 }}
+          >
+            <span>View Packages</span>
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
+          <Link
+            href="/photos"
+            className="btn-outline inline-flex items-center justify-center rounded-xl px-7 text-sm font-medium"
+            style={{ height: 48 }}
+          >
+            <span>View Photos</span>
+          </Link>
+        </div>
+
+        {/* 6. Service chips row */}
+        <div className="mt-7 flex flex-wrap justify-center gap-2.5 sm:gap-3">
+          {serviceChips.map((chip) => (
+            <Link
+              key={chip.label}
+              href={chip.href}
+              className="rounded-full border border-[rgba(20,20,20,0.08)] bg-white px-4 py-2 text-xs sm:text-sm font-medium text-[#141414] shadow-xs transition-all hover:border-[#DC3530] hover:text-[#DC3530]"
             >
-              Your story.
-              <span className="block text-brand">Our vision.</span>
-            </h1>
+              {chip.label}
+            </Link>
+          ))}
+        </div>
 
-            <p
-              style={{ animationDelay: "160ms" }}
-              className="animate-(--animate-rise) mt-6 max-w-[35rem] text-base leading-relaxed text-body sm:text-lg"
-            >
-              We capture the moments that matter and turn them into timeless memories. From weddings and engagements to
-              puberty ceremonies and curated events, every frame is crafted with passion.
-            </p>
-
-            <div
-              style={{ animationDelay: "240ms" }}
-              className="animate-(--animate-rise) mt-8 flex flex-wrap gap-3.5"
-            >
-              <Button href="/packages" size="lg" icon={<ArrowRight className="size-4" />}>
-                View Packages
-              </Button>
-              <Button href="/photos" variant="outline" size="lg">
-                View Photos
-              </Button>
-            </div>
-
-            {/* Architectural studio spec bar inside document flow */}
-            <div
-              style={{ animationDelay: "310ms" }}
-              className="animate-(--animate-rise) mt-10 flex flex-wrap items-center gap-x-6 gap-y-2.5 border-t border-line pt-5 text-[11px] font-bold tracking-[0.22em] text-muted uppercase"
-            >
-              <span className="text-ink">{siteConfig.tagline.replaceAll(" • ", "  |  ")}</span>
-              <span aria-hidden className="hidden text-line-strong sm:inline">
-                /
-              </span>
-              <a
-                href={`tel:${siteConfig.contact.phoneIntl}`}
-                className="inline-flex items-center gap-2 text-ink transition-colors hover:text-brand"
-              >
-                <Phone className="size-3.5 text-brand" aria-hidden />
-                {siteConfig.contact.phoneDisplay}
-              </a>
-              {siteConfig.contact.email ? (
-                <>
-                  <span aria-hidden className="hidden text-line-strong sm:inline">
-                    /
-                  </span>
-                  <a
-                    href={`mailto:${siteConfig.contact.email}`}
-                    className="inline-flex items-center gap-2 text-ink lowercase transition-colors hover:text-brand"
-                  >
-                    <Mail className="size-3.5 text-brand" aria-hidden />
-                    {siteConfig.contact.email}
-                  </a>
-                </>
-              ) : null}
-            </div>
+        {/* 7. Staggered Photo cards preview */}
+        <div className="reveal mt-14 flex items-end justify-center gap-3 sm:gap-6 pb-4">
+          {/* Card 1 — left */}
+          <div
+            className="-translate-y-3 overflow-hidden rounded-[16px] sm:rounded-[20px] transition-transform hover:-translate-y-5"
+            style={{
+              width: "clamp(96px, 22vw, 224px)",
+              aspectRatio: "4/5",
+              border: "5px solid white",
+              boxShadow: "0 12px 32px rgba(220,53,48,0.12)",
+              position: "relative",
+              flexShrink: 0,
+            }}
+          >
+            <Image
+              src={photos[0].src}
+              alt={photos[0].alt}
+              fill
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              style={{ objectFit: "cover" }}
+              sizes="(min-width: 640px) 224px, 120px"
+            />
           </div>
 
-          {/* Right studio showcase plate + real wedding filmstrip */}
-          <div style={{ animationDelay: "140ms" }} className="animate-(--animate-rise) space-y-4 lg:col-span-6 xl:col-span-5">
-            <LogoPanel
-              preload
-              sizes="(min-width: 1024px) 38vw, 92vw"
-              className="mx-auto max-w-lg lg:max-w-none"
+          {/* Card 2 — centre, larger */}
+          <div
+            className="overflow-hidden rounded-[18px] sm:rounded-[22px] transition-transform hover:-translate-y-2"
+            style={{
+              width: "clamp(130px, 28vw, 280px)",
+              aspectRatio: "4/5",
+              border: "6px solid white",
+              boxShadow: "0 20px 48px rgba(220,53,48,0.18)",
+              position: "relative",
+              flexShrink: 0,
+            }}
+          >
+            <Image
+              src={photos[1].src}
+              alt={photos[1].alt}
+              fill
+              priority
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              style={{ objectFit: "cover" }}
+              sizes="(min-width: 640px) 280px, 150px"
             />
+          </div>
 
-            <div className="mx-auto grid max-w-lg grid-cols-3 gap-3 lg:max-w-none">
-              {previewFrames.map((frame, index) => (
-                <Link
-                  key={frame.id}
-                  href="/photos"
-                  aria-label={`View ${frame.title} in Photos`}
-                  className="group relative aspect-[4/5] overflow-hidden rounded-card border border-line-strong bg-paper shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand"
-                >
-                  <Image
-                    src={frame.src}
-                    alt={frame.alt}
-                    fill
-                    sizes="(min-width: 1024px) 13vw, 30vw"
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-ink/82 px-2.5 py-1.5 text-[10px] font-bold tracking-[0.18em] text-on-ink uppercase opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                    <span>0{index + 1}</span>
-                    <span className="text-brand">View</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+          {/* Card 3 — right */}
+          <div
+            className="-translate-y-6 overflow-hidden rounded-[16px] sm:rounded-[20px] transition-transform hover:-translate-y-8"
+            style={{
+              width: "clamp(96px, 22vw, 224px)",
+              aspectRatio: "4/5",
+              border: "5px solid white",
+              boxShadow: "0 12px 32px rgba(220,53,48,0.12)",
+              position: "relative",
+              flexShrink: 0,
+            }}
+          >
+            <Image
+              src={photos[2].src}
+              alt={photos[2].alt}
+              fill
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              style={{ objectFit: "cover" }}
+              sizes="(min-width: 640px) 224px, 120px"
+            />
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

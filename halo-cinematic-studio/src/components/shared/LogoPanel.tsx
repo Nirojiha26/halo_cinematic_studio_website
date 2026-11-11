@@ -3,21 +3,8 @@ import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 import { Logo } from "./Logo";
 
-/** Camera-viewfinder corner brackets in black & HALO red. */
-export function ViewfinderCorners({ className }: { className?: string }) {
-  return (
-    <div aria-hidden className={cn("pointer-events-none absolute inset-4 sm:inset-6", className)}>
-      <span className="absolute top-0 left-0 size-5 border-t-2 border-l-2 border-brand" />
-      <span className="absolute top-0 right-0 size-5 border-t-2 border-r-2 border-ink/80" />
-      <span className="absolute bottom-0 left-0 size-5 border-b-2 border-l-2 border-ink/80" />
-      <span className="absolute right-0 bottom-0 size-5 border-r-2 border-b-2 border-brand" />
-    </div>
-  );
-}
-
 /**
- * Architectural studio plate showcasing the original HALO logo cleanly on a
- * crisp white gallery mat framed by subtle black viewfinder details.
+ * Elegant studio logo presentation on a soft white card with subtle red glow.
  */
 export function LogoPanel({
   className,
@@ -35,30 +22,20 @@ export function LogoPanel({
   return (
     <div
       className={cn(
-        "relative flex flex-col overflow-hidden rounded-card border border-line-strong bg-canvas shadow-[0_24px_54px_-32px_rgba(10,10,11,0.22)]",
+        "relative flex flex-col overflow-hidden rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-8 shadow-[0_12px_32px_rgba(220,53,48,0.08)] sm:p-12",
         className,
       )}
     >
-      {/* Top viewfinder bar */}
-      <div className="flex items-center justify-between border-b border-line bg-paper px-5 py-3 text-[10px] font-bold tracking-[0.22em] text-muted uppercase">
-        <span className="flex items-center gap-2 text-ink">
-          <span className="inline-block size-2 rounded-full bg-brand" aria-hidden />
-          Studio Mark
-        </span>
-        <span>24FPS • RAW</span>
-      </div>
+      {/* Soft corner red glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-20 -right-20 size-60 rounded-full bg-[radial-gradient(circle,rgba(220,53,48,0.12)_0%,transparent_70%)]"
+      />
 
-      {/* Crisp white stage — shows every detail and outline of logo.png cleanly */}
-      <div className="relative grid min-h-[260px] flex-1 place-items-center bg-[radial-gradient(circle_at_center,#fff_55%,#f6f5f3_100%)] p-8 sm:min-h-[330px] sm:p-12">
-        <ViewfinderCorners />
-        <Logo sizes={sizes} preload={preload} className="relative w-[84%] max-w-[440px]" />
+      <div className="relative z-10 flex min-h-[240px] flex-col items-center justify-center text-center">
+        <Logo sizes={sizes} preload={preload} className="relative w-[84%] max-w-[380px] drop-shadow-sm" />
         {children}
-      </div>
-
-      {/* Bottom architectural strip */}
-      <div className="flex items-center justify-between border-t border-line bg-canvas px-5 py-3 text-[10px] font-bold tracking-[0.24em] text-subtle uppercase">
-        <span>{caption}</span>
-        <span className="text-ink">{siteConfig.contact.phoneDisplay}</span>
+        <p className="mt-6 text-xs font-medium text-[#5F5A5A]">{caption}</p>
       </div>
     </div>
   );

@@ -1,30 +1,29 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { weddingPortraits } from "@/data/photos";
 import { Reveal } from "@/components/motion/Reveal";
 import { PhotoCard } from "@/components/shared/PhotoCard";
-import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function PhotosPreview() {
   return (
-    <Section tone="paper" labelledBy="home-photos-heading">
+    <Section tone="white" labelledBy="home-photos-heading">
       <Container>
         <SectionHeading
           id="home-photos-heading"
           eyebrow="Selected Frames"
           title="Studio"
           highlight="Photos"
-          description="Real wedding stories, candid ceremony portraits, and official HALO package collections."
+          description="Real wedding moments, candid ceremony portraits, and official HALO cinematic package collections."
           action={
-            <Button
+            <Link
               href="/photos"
-              variant="outline"
-              size="md"
-              icon={<ArrowRight className="size-4" />}
+              className="btn-outline inline-flex h-11 items-center justify-center gap-2 rounded-xl px-5 text-sm font-medium"
             >
-              Open Full Gallery
-            </Button>
+              <span>Open Full Gallery</span>
+              <ArrowRight className="size-4" />
+            </Link>
           }
         />
 
@@ -43,4 +42,3 @@ export function PhotosPreview() {
     </Section>
   );
 }
-

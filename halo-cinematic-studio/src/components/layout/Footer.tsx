@@ -9,26 +9,37 @@ export function Footer() {
   const { contact, socials } = siteConfig;
 
   return (
-    <footer className="relative border-t-2 border-ink bg-paper text-ink">
-      <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 pt-16 pb-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.45fr_1fr_1fr_1fr] lg:gap-10 lg:px-12">
+    <footer className="relative border-t border-[rgba(20,20,20,0.08)] bg-[#FFF5F4] text-[#141414]">
+      {/* Soft top gradient accent wash */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(ellipse_at_50%_0%,rgba(220,53,48,0.08)_0%,transparent_70%)]"
+      />
+
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-5 pt-16 pb-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr] lg:gap-10 lg:px-12">
+        {/* Brand identity column */}
         <div className="max-w-sm">
-          <Link href="/" aria-label={`${siteConfig.name} — Home`} className="inline-block rounded-card">
-            <Logo sizes="190px" alt="" className="h-auto w-[176px]" />
+          <Link href="/" aria-label={`${siteConfig.name} — Home`} className="inline-block transition-opacity hover:opacity-90">
+            <Logo sizes="180px" alt="" className="h-auto w-[160px]" />
           </Link>
-          <p className="mt-5 font-display text-lg font-black uppercase leading-snug text-ink">
-            Your Moments. <span className="text-brand">Our Vision.</span> Your Story.
+          <p
+            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="mt-5 text-xl font-semibold leading-snug text-[#141414]"
+          >
+            Your Moments. <span className="grad-text">Our Vision.</span> Your Story.
           </p>
-          <p className="mt-3 text-sm text-body">
+          <p className="mt-3 text-sm leading-relaxed text-[#5F5A5A]">
             Wedding photography, puberty milestones, engagement coverage, cinematography, and handcrafted fine-art albums.
           </p>
         </div>
 
-        <nav aria-label="Footer">
-          <h2 className="eyebrow mb-5">Explore</h2>
-          <ul className="space-y-2.5 text-sm font-medium">
+        {/* Explore Links */}
+        <nav aria-label="Footer navigation">
+          <h2 className="chip-eyebrow mb-4">Explore</h2>
+          <ul className="space-y-3 text-sm font-medium">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-body transition-colors hover:text-brand">
+                <Link href={item.href} className="text-[#5F5A5A] transition-colors hover:text-[#DC3530]">
                   {item.label}
                 </Link>
               </li>
@@ -36,12 +47,16 @@ export function Footer() {
           </ul>
         </nav>
 
+        {/* Packages Links */}
         <div>
-          <h2 className="eyebrow mb-5">Packages</h2>
-          <ul className="space-y-2.5 text-sm font-medium">
+          <h2 className="chip-eyebrow mb-4">Packages</h2>
+          <ul className="space-y-3 text-sm font-medium">
             {packageCategories.map((c) => (
               <li key={c.slug}>
-                <Link href={`/packages?category=${c.slug}`} className="text-body transition-colors hover:text-brand">
+                <Link
+                  href={`/packages?category=${c.slug}`}
+                  className="text-[#5F5A5A] transition-colors hover:text-[#DC3530]"
+                >
                   {c.label}
                 </Link>
               </li>
@@ -49,16 +64,17 @@ export function Footer() {
           </ul>
         </div>
 
+        {/* Contact Links */}
         <div>
-          <h2 className="eyebrow mb-5">Contact</h2>
+          <h2 className="chip-eyebrow mb-4">Contact Studio</h2>
           <ul className="space-y-3.5 text-sm font-medium">
             <li>
               <a
                 href={`tel:${contact.phoneIntl}`}
-                className="flex items-center gap-3 text-ink transition-colors hover:text-brand"
+                className="flex items-center gap-2.5 text-[#141414] transition-colors hover:text-[#DC3530]"
               >
-                <Phone className="size-4 text-brand" aria-hidden />
-                {contact.phoneDisplay}
+                <Phone className="size-4 text-[#DC3530]" aria-hidden />
+                <span>{contact.phoneDisplay}</span>
               </a>
             </li>
             <li>
@@ -66,34 +82,33 @@ export function Footer() {
                 href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-ink transition-colors hover:text-brand"
+                className="flex items-center gap-2.5 text-[#141414] transition-colors hover:text-[#DC3530]"
               >
-                <MessageCircle className="size-4 text-brand" aria-hidden />
-                WhatsApp Us
+                <MessageCircle className="size-4 text-[#DC3530]" aria-hidden />
+                <span>WhatsApp Us</span>
               </a>
             </li>
             {contact.email ? (
               <li>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="flex items-center gap-3 text-body transition-colors hover:text-brand"
+                  className="flex items-center gap-2.5 text-[#5F5A5A] transition-colors hover:text-[#DC3530]"
                 >
-                  <Mail className="size-4 text-brand" aria-hidden />
-                  {contact.email}
+                  <Mail className="size-4 text-[#DC3530]" aria-hidden />
+                  <span>{contact.email}</span>
                 </a>
               </li>
             ) : null}
-            {contact.location ? <li className="text-body">{contact.location}</li> : null}
-            <li className="text-muted">{contact.bookingStatus}</li>
+            <li className="text-xs font-semibold text-[#DC3530]">{contact.bookingStatus}</li>
             {socials.length > 0 ? (
-              <li className="flex flex-wrap gap-x-4 gap-y-2 pt-1">
+              <li className="flex flex-wrap gap-3 pt-1">
                 {socials.map((s) => (
                   <a
                     key={s.href}
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-ink underline-offset-4 hover:text-brand hover:underline"
+                    className="text-xs text-[#5F5A5A] transition-colors hover:text-[#DC3530]"
                   >
                     {s.label}
                   </a>
@@ -104,12 +119,17 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-line bg-canvas">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-5 pt-6 pb-20 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:pb-6 lg:px-12">
-          <p>
-            <b className="text-ink">{siteConfig.name}</b> <span className="text-brand">©</span> <CurrentYear />
+      {/* Sub-footer copyright */}
+      <div className="border-t border-[rgba(20,20,20,0.06)] py-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-xs text-[#5F5A5A] sm:flex-row sm:px-8 lg:px-12">
+          <p>© <CurrentYear /> {siteConfig.name}. All rights reserved.</p>
+          <p className="flex items-center gap-2">
+            <span>Capture</span>
+            <span>•</span>
+            <span className="text-[#DC3530]">Create</span>
+            <span>•</span>
+            <span>Inspire</span>
           </p>
-          <p className="font-semibold tracking-[0.28em] text-subtle uppercase">{siteConfig.tagline}</p>
         </div>
       </div>
     </footer>

@@ -20,11 +20,11 @@ export function ContactDetails({ className }: { className?: string }) {
     <div className={className}>
       <dl>
         {lines.map((line) => (
-          <div key={line.label} className="border-b border-line py-4 first:pt-0">
-            <dt className="text-[10px] font-extrabold tracking-[0.22em] text-brand-deep uppercase">{line.label}</dt>
-            <dd className="mt-1 text-[15px] font-semibold text-ink">
+          <div key={line.label} className="border-b border-[rgba(20,20,20,0.06)] py-3.5 first:pt-0">
+            <dt className="text-xs font-semibold text-[#DC3530]">{line.label}</dt>
+            <dd className="mt-1 text-sm font-medium text-[#141414]">
               {line.href ? (
-                <a href={line.href} className="transition-colors hover:text-brand">
+                <a href={line.href} className="transition-colors hover:text-[#DC3530]">
                   {line.value}
                 </a>
               ) : (
@@ -34,16 +34,16 @@ export function ContactDetails({ className }: { className?: string }) {
           </div>
         ))}
         {socials.length > 0 ? (
-          <div className="border-b border-line py-4">
-            <dt className="text-[10px] font-extrabold tracking-[0.22em] text-brand-deep uppercase">Follow</dt>
-            <dd className="mt-1 flex flex-wrap gap-x-5 gap-y-1 text-[15px] font-semibold">
+          <div className="border-b border-[rgba(20,20,20,0.06)] py-3.5">
+            <dt className="text-xs font-semibold text-[#DC3530]">Social Media</dt>
+            <dd className="mt-1 flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">
               {socials.map((s) => (
                 <a
                   key={s.href}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink transition-colors hover:text-brand"
+                  className="text-[#141414] transition-colors hover:text-[#DC3530]"
                 >
                   {s.label}
                 </a>
@@ -58,17 +58,23 @@ export function ContactDetails({ className }: { className?: string }) {
 
 /** Two crisp quick actions: call and WhatsApp. */
 export function QuickContactActions({ className }: { className?: string }) {
-  const btn =
-    "flex min-h-12 items-center justify-center gap-2.5 rounded-card border border-line-strong bg-canvas px-4 py-3 text-sm font-bold text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white";
   return (
     <div className={cn("grid gap-3 sm:grid-cols-2", className)}>
-      <a href={`tel:${siteConfig.contact.phoneIntl}`} className={btn}>
-        <Phone className="size-4 text-brand" aria-hidden />
-        Call {siteConfig.contact.phoneDisplay}
+      <a
+        href={`tel:${siteConfig.contact.phoneIntl}`}
+        className="btn-outline flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium"
+      >
+        <Phone className="size-4 text-[#DC3530]" aria-hidden />
+        <span>Call {siteConfig.contact.phoneDisplay}</span>
       </a>
-      <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className={btn}>
-        <MessageCircle className="size-4 text-brand" aria-hidden />
-        Chat on WhatsApp
+      <a
+        href={whatsappUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-grad flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium text-white shadow-xs"
+      >
+        <MessageCircle className="size-4" aria-hidden />
+        <span>Chat on WhatsApp</span>
       </a>
     </div>
   );

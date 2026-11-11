@@ -19,12 +19,14 @@ export function Container({ as: Tag = "div", className, children, size = "defaul
 }
 
 const sectionTones = {
-  canvas: "bg-canvas text-ink",
-  paper: "bg-paper text-ink border-y border-line",
-  ink: "bg-ink text-white",
+  canvas: "section-white",
+  paper: "section-blush",
+  ink: "section-blush",
+  white: "section-white",
+  blush: "section-blush",
 };
 
-/** Consistent section spacing and white/paper/ink editorial rhythm. */
+/** Consistent section spacing and white/blush editorial rhythm. */
 export function Section({
   id,
   className,

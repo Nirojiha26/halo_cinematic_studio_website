@@ -9,42 +9,35 @@ type PageHeaderProps = {
   action?: ReactNode;
 };
 
-/** Bright white editorial opening header for inner routes. */
+/** Soft red & white editorial opening header for inner routes. */
 export function PageHeader({ eyebrow, title, highlight, description, action }: PageHeaderProps) {
   return (
     <section
       aria-labelledby="page-title"
-      className="gallery-backdrop relative overflow-hidden border-b border-line pt-36 pb-16 sm:pt-40 sm:pb-20"
+      className="hero-bg relative border-b border-[rgba(20,20,20,0.06)] pt-32 pb-16 sm:pt-36 sm:pb-20"
     >
-      <div
-        aria-hidden
-        className="lens-ring -top-12 -right-40 size-[380px] opacity-80 sm:size-[480px] lg:-right-28"
-      />
       <Container className="relative z-10">
         <div className="max-w-3xl">
-          <p className="eyebrow animate-(--animate-rise) mb-4 flex items-center gap-3">
-            <span aria-hidden className="h-[2px] w-8 bg-brand" />
-            {eyebrow}
-          </p>
+          {eyebrow ? <p className="chip-eyebrow mb-4">{eyebrow}</p> : null}
           <h1
             id="page-title"
-            style={{ animationDelay: "80ms" }}
-            className="animate-(--animate-rise) text-4xl font-black uppercase leading-[0.98] tracking-[-0.025em] text-ink sm:text-5xl lg:text-6xl"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+            }}
+            className="text-4xl font-semibold text-[#141414] sm:text-5xl lg:text-6xl"
           >
             {title}
-            {highlight ? <span className="text-accent"> {highlight}</span> : null}
+            {highlight ? <span className="grad-text"> {highlight}</span> : null}
           </h1>
           <p
-            style={{ animationDelay: "160ms" }}
-            className="animate-(--animate-rise) mt-5 max-w-2xl text-base text-body sm:text-lg"
+            style={{ fontFamily: "'Poppins', sans-serif" }}
+            className="mt-5 max-w-2xl text-base font-normal text-[#5F5A5A] sm:text-lg"
           >
             {description}
           </p>
-          {action ? (
-            <div style={{ animationDelay: "230ms" }} className="animate-(--animate-rise) mt-8 flex flex-wrap gap-3.5">
-              {action}
-            </div>
-          ) : null}
+          {action ? <div className="mt-8 flex flex-wrap gap-3.5">{action}</div> : null}
         </div>
       </Container>
     </section>

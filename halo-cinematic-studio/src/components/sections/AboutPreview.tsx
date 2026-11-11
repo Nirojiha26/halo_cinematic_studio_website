@@ -1,75 +1,169 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { siteConfig } from "@/config/site";
-import { Reveal } from "@/components/motion/Reveal";
-import { Button } from "@/components/ui/Button";
-import { Container, Section } from "@/components/ui/Container";
+import { whatsappUrl } from "@/config/site";
+import { Container } from "@/components/ui/Container";
 
 const pillars = [
-  { no: "01", title: "Capture", detail: "Genuine emotions and unscripted wedding or event details." },
-  { no: "02", title: "Create", detail: "Cinematic framing, music video concepts and visual storytelling." },
-  { no: "03", title: "Inspire", detail: "Polished film colour and custom photo frames built to last." },
+  {
+    no: "01",
+    title: "Capture",
+    detail: "Unscripted emotions, quiet details and genuine moments preserved with intention.",
+  },
+  {
+    no: "02",
+    title: "Create",
+    detail: "Cinematic framing, thoughtful storytelling across photography, film and music videos.",
+  },
+  {
+    no: "03",
+    title: "Inspire",
+    detail: "Polished films and custom photo frames built to stand the test of time.",
+  },
 ];
 
 export function AboutPreview() {
   return (
-    <Section tone="paper" labelledBy="about-preview-heading">
+    <section className="section-white py-20 md:py-28">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-          {/* High-contrast black manifesto card anchoring the Black pillar on light paper */}
-          <Reveal className="lg:col-span-5">
-            <div className="relative overflow-hidden rounded-card bg-ink p-8 text-white sm:p-10">
-              <span aria-hidden className="absolute top-0 left-0 h-[3px] w-20 bg-brand" />
-              <p className="text-[11px] font-extrabold tracking-[0.26em] text-brand-soft uppercase">
-                {siteConfig.tagline}
-              </p>
-              <p className="mt-4 font-display text-2xl font-black uppercase leading-tight text-white sm:text-3xl">
-                Your Moments. <span className="text-brand">Our Vision.</span> Your Story.
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* LEFT — manifesto card */}
+          <div className="order-2 lg:order-1">
+            <div
+              className="relative overflow-hidden rounded-[24px] border border-[rgba(20,20,20,0.08)] p-8 shadow-sm"
+            >
+              {/* soft red top-glow */}
+              <div
+                aria-hidden
+                className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 50% 0%, rgba(220,53,48,0.12) 0%, transparent 70%)",
+                }}
+              />
+
+              <p
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 500,
+                  fontSize: 13,
+                  color: "#DC3530",
+                  marginBottom: 24,
+                }}
+              >
+                Capture · Create · Inspire
               </p>
 
-              <ul className="mt-8 divide-y divide-white/12 border-t border-white/12">
-                {pillars.map((item) => (
-                  <li key={item.no} className="flex gap-4 py-4 first:pt-5 last:pb-0">
-                    <span className="text-xs font-extrabold tracking-[0.18em] text-brand">{item.no}</span>
+              <ul>
+                {pillars.map((item, i) => (
+                  <li
+                    key={item.no}
+                    className={`flex gap-4 py-5 ${
+                      i < pillars.length - 1
+                        ? "border-b border-[rgba(20,20,20,0.08)]"
+                        : ""
+                    }`}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "Poppins, sans-serif",
+                        fontWeight: 700,
+                        fontSize: 12,
+                        color: "#DC3530",
+                        flexShrink: 0,
+                        paddingTop: 1,
+                      }}
+                    >
+                      {item.no}
+                    </span>
                     <div>
-                      <h3 className="text-sm font-black tracking-[0.12em] text-white uppercase">{item.title}</h3>
-                      <p className="mt-1 text-xs leading-relaxed text-white/70">{item.detail}</p>
+                      <p
+                        style={{
+                          fontFamily: "Poppins, sans-serif",
+                          fontWeight: 600,
+                          fontSize: 15,
+                          color: "#141414",
+                        }}
+                      >
+                        {item.title}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "Poppins, sans-serif",
+                          fontWeight: 400,
+                          fontSize: 13,
+                          color: "#5F5A5A",
+                          marginTop: 4,
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {item.detail}
+                      </p>
                     </div>
                   </li>
                 ))}
               </ul>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.08} className="lg:col-span-7">
-            <p className="eyebrow mb-4 flex items-center gap-3">
-              <span aria-hidden className="h-[2px] w-8 bg-brand" />
-              Who We Are
-            </p>
+          {/* RIGHT — text */}
+          <div className="order-1 lg:order-2">
+            <p className="chip-eyebrow">Who We Are</p>
             <h2
-              id="about-preview-heading"
-              className="text-[2rem] font-black uppercase leading-[1.03] tracking-[-0.025em] text-ink sm:text-4xl lg:text-5xl"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 600,
+                fontSize: "clamp(36px, 4vw, 48px)",
+                color: "var(--ink)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+              }}
             >
-              We make moments <span className="text-accent">timeless.</span>
+              We make moments{" "}
+              <span className="grad-text">timeless.</span>
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-body sm:text-lg">
-              HALO CINEMATIC STUDIO is a creative photography and film production studio focused on telling meaningful
-              stories through powerful visuals.
+            <p
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 400,
+                fontSize: 17,
+                color: "var(--muted)",
+                marginTop: 16,
+                lineHeight: 1.65,
+              }}
+            >
+              HALO CINEMATIC STUDIO is a creative photography and film production studio focused on
+              telling meaningful stories through powerful visuals.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-body sm:text-lg">
-              From the emotion of a wedding day to the energy of a music video, we bring creativity, care and cinematic
-              detail to every project.
+            <p
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 400,
+                fontSize: 17,
+                color: "var(--muted)",
+                marginTop: 16,
+                lineHeight: 1.65,
+              }}
+            >
+              From the emotion of a wedding day to the energy of a music video, we bring creativity,
+              care and cinematic detail to every project.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3.5">
-              <Button href="/about" icon={<ArrowRight className="size-4" />}>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/about" className="btn-grad inline-flex items-center gap-2">
                 Our Story
-              </Button>
-              <Button href="/contact" variant="outline">
-                Talk to Our Team
-              </Button>
+                <ArrowRight size={16} aria-hidden />
+              </Link>
+              <a
+                href={whatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline inline-flex items-center"
+              >
+                Talk to our team
+              </a>
             </div>
-          </Reveal>
+          </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

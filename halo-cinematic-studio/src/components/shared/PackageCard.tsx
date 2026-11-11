@@ -2,7 +2,7 @@ import { ArrowRight, Check } from "lucide-react";
 import type { StudioPackage } from "@/data/packages";
 import { getCategoryMeta } from "@/data/packages";
 import { cn, pad2 } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
+import { whatsappUrl } from "@/config/site";
 
 export function PackageCard({
   pkg,
@@ -14,87 +14,112 @@ export function PackageCard({
   showCategoryBadge?: boolean;
 }) {
   const categoryMeta = getCategoryMeta(pkg.category);
-  const enquireHref = `/contact?category=${pkg.category}&package=${pkg.slug}`;
+  const isFeatured = Boolean(pkg.featured);
+  const whatsappEnquiryUrl = whatsappUrl(
+    `Hello HALO CINEMATIC STUDIO! I am interested in the ${pkg.name} package (${pkg.priceDisplay}). Could you please share booking availability?`
+  );
 
   return (
     <article
       className={cn(
-        "relative flex h-full flex-col overflow-hidden rounded-card bg-canvas p-6 transition-all duration-300 sm:p-7",
-        pkg.featured
-          ? "border-2 border-brand shadow-[0_24px_48px_-24px_rgba(237,23,31,0.22)]"
-          : "border border-line-strong hover:-translate-y-0.5 hover:border-ink",
+        "relative flex h-full flex-col overflow-hidden rounded-[20px] p-6 transition-all duration-300 sm:p-8",
+        isFeatured
+          ? "card-popular shadow-[0_16px_40px_rgba(220,53,48,0.28)]"
+          : "card bg-white border border-[rgba(20,20,20,0.08)] shadow-[0_12px_32px_rgba(220,53,48,0.06)] hover:border-[rgba(220,53,48,0.3)] hover:shadow-[0_16px_36px_rgba(220,53,48,0.14)]",
       )}
     >
-      {/* Top editorial accent bar */}
-      <span
-        aria-hidden
-        className={cn(
-          "absolute inset-x-0 top-0 h-[3px]",
-          pkg.featured ? "bg-brand" : "bg-ink",
-        )}
-      />
-
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2.5 text-[11px] font-bold tracking-[0.22em] text-muted uppercase">
-          <span className="text-brand">{pad2(index + 1)}</span>
-          <span aria-hidden className="text-line-strong">
+        <div className="flex items-center gap-2 text-xs font-medium">
+          <span className={isFeatured ? "text-white/80" : "text-[#DC3530]"}>
+            {pad2(index + 1)}
+          </span>
+          <span aria-hidden className={isFeatured ? "text-white/40" : "text-[rgba(20,20,20,0.15)]"}>
             /
           </span>
-          <span>{showCategoryBadge ? categoryMeta.shortLabel : pkg.tierLabel}</span>
+          <span className={isFeatured ? "text-white/90" : "text-[#5F5A5A]"}>
+            {showCategoryBadge ? categoryMeta.shortLabel : pkg.tierLabel}
+          </span>
         </div>
 
         <span
           className={cn(
-            "shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-[0.16em] uppercase",
-            pkg.featured
-              ? "bg-brand text-on-ink"
-              : "border border-line bg-paper text-ink",
+            "rounded-full px-3 py-1 text-xs font-semibold",
+            isFeatured
+              ? "bg-white text-[#DC3530]"
+              : "bg-[#FFF5F4] text-[#DC3530]",
           )}
         >
           {pkg.tierLabel}
         </span>
       </div>
 
-      <h3 className="mt-4 font-display text-2xl font-black uppercase leading-tight text-ink">
+      <h3
+        style={{ fontFamily: "'Playfair Display', serif" }}
+        className={cn(
+          "mt-4 text-2xl font-semibold leading-tight",
+          isFeatured ? "text-white" : "text-[#141414]",
+        )}
+      >
         {pkg.name}
       </h3>
 
       {pkg.subline ? (
-        <p className="mt-1.5 text-xs font-medium text-muted">{pkg.subline}</p>
+        <p className={cn("mt-1.5 text-xs font-normal", isFeatured ? "text-white/80" : "text-[#5F5A5A]")}>
+          {pkg.subline}
+        </p>
       ) : null}
 
-      <div className="mt-5 border-y border-line py-4">
+      <div
+        className={cn(
+          "my-5 border-y py-4",
+          isFeatured ? "border-white/20" : "border-[rgba(20,20,20,0.08)]",
+        )}
+      >
         <p
+          style={{ fontFamily: "'Playfair Display', serif" }}
           className={cn(
-            "font-display text-3xl font-black tracking-tight",
-            pkg.featured ? "text-brand" : "text-ink",
+            "text-3xl font-semibold tracking-tight",
+            isFeatured ? "text-white" : "text-[#DC3530]",
           )}
         >
           {pkg.priceDisplay}
         </p>
       </div>
 
-      <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-body">
+      <ul className="mb-6 flex-1 space-y-3 text-sm leading-relaxed">
         {pkg.highlights.map((item) => (
-          <li key={item} className="flex items-start gap-2.5">
-            <Check className="mt-0.5 size-4 shrink-0 text-brand" aria-hidden />
+          <li
+            key={item}
+            className={cn(
+              "flex items-start gap-2.5",
+              isFeatured ? "text-white/95" : "text-[#5F5A5A]",
+            )}
+          >
+            <Check
+              className={cn("mt-0.5 size-4 shrink-0", isFeatured ? "text-white" : "text-[#DC3530]")}
+              aria-hidden
+            />
             <span>{item}</span>
           </li>
         ))}
       </ul>
 
-      <div className="mt-7 pt-2">
-        <Button
-          href={enquireHref}
-          variant={pkg.featured ? "primary" : "dark"}
-          size="md"
-          icon={<ArrowRight className="size-4" />}
-          className="w-full"
+      <div className="mt-auto pt-2">
+        <a
+          href={whatsappEnquiryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl text-sm font-medium transition-all",
+            isFeatured
+              ? "bg-white text-[#DC3530] hover:bg-[#FFF5F4]"
+              : "btn-grad text-white shadow-xs",
+          )}
         >
-          Select &amp; Enquire
-        </Button>
+          <span>Enquire on WhatsApp</span>
+          <ArrowRight className="size-4" />
+        </a>
       </div>
     </article>
   );
 }
-

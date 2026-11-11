@@ -3,41 +3,39 @@ import { ArrowRight } from "lucide-react";
 import { featuredPackages, packageCategories } from "@/data/packages";
 import { Reveal } from "@/components/motion/Reveal";
 import { PackageCard } from "@/components/shared/PackageCard";
-import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function PackagesPreview() {
   return (
-    <Section tone="canvas" labelledBy="home-packages-heading">
+    <Section tone="blush" labelledBy="home-packages-heading">
       <Container>
         <SectionHeading
           id="home-packages-heading"
           eyebrow="Transparent Pricing"
           title="Studio"
           highlight="Packages"
-          description="Signature photography, 4K cinematography, handcrafted albums, and framed prints designed for every milestone."
+          description="Signature wedding photography, 4K cinematography, puberty ceremonies, and handcrafted photo albums designed for every milestone."
           action={
-            <Button
+            <Link
               href="/packages"
-              variant="outline"
-              size="md"
-              icon={<ArrowRight className="size-4" />}
+              className="btn-outline inline-flex h-11 items-center justify-center gap-2 rounded-xl px-5 text-sm font-medium"
             >
-              View All Packages
-            </Button>
+              <span>View All Packages</span>
+              <ArrowRight className="size-4" />
+            </Link>
           }
         />
 
-        {/* Quick category links */}
-        <div className="mb-8 flex flex-wrap gap-2.5">
+        {/* Quick category filter pills */}
+        <div className="mb-10 flex flex-wrap gap-2.5">
           {packageCategories.map((cat) => (
             <Link
               key={cat.slug}
               href={`/packages?category=${cat.slug}`}
-              className="inline-flex items-center gap-2 rounded-pill border border-line-strong bg-canvas px-4 py-2 text-xs font-bold tracking-[0.14em] text-ink uppercase transition-colors hover:border-brand hover:text-brand"
+              className="inline-flex items-center gap-2 rounded-full border border-[rgba(20,20,20,0.08)] bg-white px-4 py-2 text-xs font-medium text-[#141414] shadow-xs transition-all hover:border-[#DC3530] hover:text-[#DC3530]"
             >
-              <span className="size-1.5 rounded-full bg-brand" aria-hidden />
+              <span className="size-1.5 rounded-full bg-[#DC3530]" aria-hidden />
               {cat.label}
             </Link>
           ))}

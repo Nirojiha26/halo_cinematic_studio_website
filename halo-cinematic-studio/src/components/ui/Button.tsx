@@ -2,30 +2,20 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "dark" | "outline" | "outline-dark" | "ghost";
-type Size = "md" | "lg";
+type Variant = "primary" | "outline" | "ghost" | "dark";
+type Size = "sm" | "md" | "lg";
 
-const base =
-  "group/btn inline-flex items-center justify-center gap-2.5 rounded-card border font-extrabold uppercase tracking-[0.14em] whitespace-nowrap select-none " +
-  "transition-[background-color,border-color,color,transform,box-shadow] duration-300 ease-(--ease-cinema) " +
-  "hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-3 disabled:pointer-events-none disabled:opacity-50";
-
-const variants: Record<Variant, string> = {
-  // Primary CTA: HALO red → crisp ink black on hover
-  primary:
-    "border-brand bg-brand text-white hover:border-ink hover:bg-ink hover:shadow-[0_12px_28px_-12px_rgba(10,10,11,0.38)]",
-  // High-contrast ink button → HALO red on hover
-  dark: "border-ink bg-ink text-white hover:border-brand hover:bg-brand hover:shadow-[0_12px_28px_-12px_rgba(237,23,31,0.35)]",
-  // Editorial outline on light surfaces
-  outline: "border-ink bg-transparent text-ink hover:bg-ink hover:text-white",
-  // Editorial outline on dark contrast sections
-  "outline-dark": "border-white/35 bg-transparent text-white hover:border-brand hover:bg-brand hover:text-white",
-  ghost: "border-transparent bg-transparent text-ink hover:text-brand px-0!",
+const variantClasses: Record<Variant, string> = {
+  primary: "btn-grad",
+  outline: "btn-outline",
+  dark: "btn-grad",
+  ghost: "bg-transparent border-transparent text-[#DC3530] hover:opacity-80",
 };
 
-const sizes: Record<Size, string> = {
-  md: "h-11 px-6 text-[11px]",
-  lg: "h-13 px-7 text-xs",
+const sizeClasses: Record<Size, string> = {
+  sm: "h-10 px-5 text-sm",
+  md: "h-12 px-6 text-sm",
+  lg: "h-13 px-7 text-base",
 };
 
 type CommonProps = {
@@ -33,7 +23,6 @@ type CommonProps = {
   size?: Size;
   className?: string;
   children: ReactNode;
-  /** Optional trailing icon; nudges right on hover. */
   icon?: ReactNode;
 };
 
@@ -54,39 +43,39 @@ export function buttonClasses({
   size = "md",
   className,
 }: { variant?: Variant; size?: Size; className?: string } = {}) {
-  return cn(base, variants[variant], sizes[size], className);
-}
-
-function Inner({ children, icon }: { children: ReactNode; icon?: ReactNode }) {
-  return (
-    <>
-      <span>{children}</span>
-      {icon ? (
-        <span aria-hidden className="transition-transform duration-300 group-hover/btn:translate-x-1">
-          {icon}
-        </span>
-      ) : null}
-    </>
+  return cn(
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap select-none",
+    "font-medium transition-[transform,filter,background] duration-200",
+    "focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50",
+    variantClasses[variant],
+    sizeClasses[size],
+    className,
   );
 }
 
 export function Button({ variant, size, className, children, icon, ...props }: ButtonProps) {
   const classes = buttonClasses({ variant, size, className });
-  const content = <Inner icon={icon}>{children}</Inner>;
 
-  if (typeof props.href === "string") {
+  const content = (
+    <>
+      <span style={{ fontFamily: "Poppins, sans-serif", fontWeight: 500 }}>{children}</span>
+      {icon ? <span aria-hidden className="ml-2">{icon}</span> : null}
+    </>
+  );
+
+  if (typeof (props as LinkButtonProps).href === "string") {
     const { href, external, ...rest } = props as Omit<LinkButtonProps, keyof CommonProps>;
     const isExternal = external ?? /^(https?:|mailto:|tel:)/.test(href);
     if (isExternal) {
       const newTab = href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {};
       return (
-        <a href={href} className={classes} {...newTab} {...rest}>
+        <a href={href} className={classes} {...newTab} {...(rest as ComponentProps<"a">)}>
           {content}
         </a>
       );
     }
     return (
-      <Link href={href} className={classes} {...rest}>
+      <Link href={href} className={classes} {...(rest as Omit<ComponentProps<typeof Link>, "href">)}>
         {content}
       </Link>
     );

@@ -21,7 +21,6 @@ import {
 } from "@/data/packages";
 import { cn } from "@/lib/utils";
 import { QueryParamSync } from "@/components/shared/QueryParamSync";
-import { Button } from "@/components/ui/Button";
 
 type Values = {
   name: string;
@@ -51,13 +50,9 @@ function validate(values: Values): Errors {
 }
 
 const inputBase =
-  "w-full rounded-card border border-line-strong bg-canvas px-3.5 py-3 text-sm font-medium text-ink placeholder:font-normal placeholder:text-subtle " +
-  "outline-none transition-[border-color,box-shadow] focus:border-ink focus:ring-1 focus:ring-ink aria-[invalid=true]:border-brand aria-[invalid=true]:ring-1 aria-[invalid=true]:ring-brand/30";
+  "w-full rounded-xl border border-[rgba(20,20,20,0.12)] bg-white px-4 py-3 text-sm font-normal text-[#141414] placeholder:text-[#5F5A5A]/60 " +
+  "outline-none transition-all duration-200 focus:border-[#DC3530] focus:ring-2 focus:ring-[#DC3530]/15 aria-[invalid=true]:border-[#DC3530] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#DC3530]/20";
 
-/**
- * Interactive WhatsApp enquiry form with live Event Category & Package selection
- * and automatic query-param prefill (?category=...&package=...).
- */
 export function EnquiryForm() {
   const [values, setValues] = useState<Values>({
     name: "",
@@ -100,72 +95,67 @@ export function EnquiryForm() {
   }, [values.category]);
 
   const selectedPackage = useMemo(
-    () => (values.packageSlug ? getPackageBySlug(values.packageSlug) : undefined),
+    () => (values.packageSlug ? getPackageBySlug(values.packageSlug) : null),
     [values.packageSlug],
   );
 
   const idPrefix = useId();
-  const fid = (k: keyof Values) => `${idPrefix}-${k}`;
+  const fid = (field: string) => `${idPrefix}-${field}`;
 
-  function clearFeedback(keys: (keyof Values)[]) {
-    setErrors((prev) => {
-      let changed = false;
-      const next = { ...prev };
-      for (const k of keys) {
-        if (next[k]) {
-          delete next[k];
-          changed = true;
-        }
-      }
-      return changed ? next : prev;
-    });
-    if (submittedUrl) setSubmittedUrl(null);
-  }
+  const update = <K extends keyof Values>(field: K, val: Values[K]) => {
+    setValues((prev) => ({ ...prev, [field]: val }));
+    if (errors[field]) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[field];
+        return next;
+      });
+    }
+  };
 
-  function update<K extends keyof Values>(key: K, value: Values[K]) {
-    setValues((v) => ({ ...v, [key]: value }));
-    clearFeedback([key]);
-  }
-
-  function handleCategoryChange(nextCategory: Values["category"]) {
-    setValues((v) => {
-      const keepPkg =
-        nextCategory &&
-        nextCategory !== "custom" &&
-        v.packageSlug &&
-        getPackageBySlug(v.packageSlug)?.category === nextCategory;
-      return {
-        ...v,
-        category: nextCategory,
-        packageSlug: keepPkg ? v.packageSlug : "",
-      };
-    });
-    clearFeedback(["category", "packageSlug"]);
-  }
-
-  function handlePackageChange(nextSlug: string) {
-    const pkg = getPackageBySlug(nextSlug);
-    setValues((v) => ({
-      ...v,
-      packageSlug: nextSlug,
-      category: pkg ? pkg.category : v.category,
+  const handleCategoryChange = (cat: Values["category"]) => {
+    setValues((prev) => ({
+      ...prev,
+      category: cat,
+      packageSlug: "",
     }));
-    clearFeedback(["packageSlug", "category", "message"]);
-  }
+    if (errors.category) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next.category;
+        return next;
+      });
+    }
+  };
 
-  function handleSubmit(e: FormEvent) {
+  const handlePackageChange = (slug: string) => {
+    const pkg = getPackageBySlug(slug);
+    setValues((prev) => ({
+      ...prev,
+      packageSlug: slug,
+      category: pkg ? pkg.category : prev.category,
+    }));
+    if (errors.packageSlug || errors.category) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next.packageSlug;
+        delete next.category;
+        return next;
+      });
+    }
+  };
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const nextErrors = validate(values);
-    if (Object.keys(nextErrors).length > 0) {
-      setErrors(nextErrors);
-      const firstKey = Object.keys(nextErrors)[0] as keyof Values;
-      document.getElementById(fid(firstKey))?.focus();
+    const validationErrors = validate(values);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
 
     const categoryLabel =
       values.category === "custom"
-        ? "Custom / Other Studio Enquiry"
+        ? "Custom Request"
         : values.category
           ? getCategoryMeta(values.category).label
           : "Not specified";
@@ -201,15 +191,14 @@ export function EnquiryForm() {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="grid gap-5 rounded-card border border-line-strong border-t-[3px] border-t-brand bg-canvas p-6 shadow-[0_24px_60px_-38px_rgba(10,10,11,0.18)] sm:p-9"
+      className="grid gap-5 rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-6 shadow-[0_16px_40px_rgba(220,53,48,0.08)] sm:p-9"
     >
-      <div className="border-b border-line pb-4">
+      <div className="border-b border-[rgba(20,20,20,0.06)] pb-4">
         <QueryParamSync name="category" onValue={syncCategory} />
         <QueryParamSync name="package" onValue={syncPackage} />
-        <p className="eyebrow">WhatsApp Package Enquiry</p>
-        <p className="mt-2 text-sm text-body">
-          Choose your event category and package tier below to send a formatted WhatsApp enquiry directly to our studio
-          team.
+        <p className="chip-eyebrow">WhatsApp Package Enquiry</p>
+        <p className="mt-2 text-sm text-[#5F5A5A]">
+          Choose your event category and package tier below to send a formatted WhatsApp enquiry directly to our studio team.
         </p>
       </div>
 
@@ -275,23 +264,21 @@ export function EnquiryForm() {
               className={cn(
                 inputBase,
                 "appearance-none pr-10",
-                values.category
-                  ? "font-medium text-ink"
-                  : "font-normal text-subtle",
+                values.category ? "text-[#141414]" : "text-[#5F5A5A]/70",
               )}
             >
               <option value="">Select event type</option>
               {packageCategories.map((cat) => (
-                <option key={cat.slug} value={cat.slug} className="text-ink">
+                <option key={cat.slug} value={cat.slug}>
                   {cat.label}
                 </option>
               ))}
-              <option value="custom" className="text-ink">
+              <option value="custom">
                 Custom Shoot / Music Video / Edit
               </option>
             </select>
             <ChevronDown
-              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-ink"
+              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#5F5A5A]"
               aria-hidden
             />
           </div>
@@ -312,10 +299,8 @@ export function EnquiryForm() {
               aria-invalid={Boolean(errors.packageSlug)}
               className={cn(
                 inputBase,
-                "appearance-none pr-10 disabled:cursor-not-allowed disabled:bg-paper disabled:text-muted",
-                values.packageSlug
-                  ? "font-medium text-ink"
-                  : "font-normal text-subtle",
+                "appearance-none pr-10 disabled:cursor-not-allowed disabled:bg-[#FFF5F4] disabled:text-[#5F5A5A]",
+                values.packageSlug ? "text-[#141414]" : "text-[#5F5A5A]/70",
               )}
             >
               <option value="">
@@ -324,13 +309,13 @@ export function EnquiryForm() {
                   : "Choose a package (or custom quote)"}
               </option>
               {availablePackages.map((pkg) => (
-                <option key={pkg.slug} value={pkg.slug} className="text-ink">
+                <option key={pkg.slug} value={pkg.slug}>
                   {pkg.name} — {pkg.priceDisplay}
                 </option>
               ))}
             </select>
             <ChevronDown
-              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-ink"
+              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#5F5A5A]"
               aria-hidden
             />
           </div>
@@ -339,20 +324,23 @@ export function EnquiryForm() {
 
       {/* Live selected package preview card */}
       {selectedPackage ? (
-        <div className="rounded-card border border-brand/35 bg-paper p-4 sm:p-5">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-3">
-            <div className="flex items-center gap-2 text-xs font-bold tracking-[0.16em] text-ink uppercase">
-              <PackageCheck className="size-4 text-brand" aria-hidden />
+        <div className="rounded-2xl border border-[rgba(220,53,48,0.2)] bg-[#FFF5F4] p-4 sm:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[rgba(220,53,48,0.15)] pb-3">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#141414]">
+              <PackageCheck className="size-4 text-[#DC3530]" aria-hidden />
               <span>{selectedPackage.name}</span>
             </div>
-            <span className="font-display text-lg font-black text-brand">
+            <span
+              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-lg font-semibold text-[#DC3530]"
+            >
               {selectedPackage.priceDisplay}
             </span>
           </div>
-          <ul className="mt-3 grid gap-1.5 text-xs text-body sm:grid-cols-2">
+          <ul className="mt-3 grid gap-1.5 text-xs text-[#5F5A5A] sm:grid-cols-2">
             {selectedPackage.highlights.slice(0, 4).map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <Check className="mt-0.5 size-3.5 shrink-0 text-brand" aria-hidden />
+                <Check className="mt-0.5 size-3.5 shrink-0 text-[#DC3530]" aria-hidden />
                 <span>{item}</span>
               </li>
             ))}
@@ -368,10 +356,7 @@ export function EnquiryForm() {
             type="date"
             value={values.date}
             onChange={(e) => update("date", e.target.value)}
-            className={cn(
-              inputBase,
-              values.date ? "font-medium text-ink" : "font-normal text-subtle",
-            )}
+            className={inputBase}
           />
         </Field>
 
@@ -408,23 +393,22 @@ export function EnquiryForm() {
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? `${fid("message")}-err` : undefined}
           placeholder="Tell us about your event schedule, preferred shoot days, extra frames, or custom requests..."
-          className={cn(inputBase, "min-h-[116px] resize-y")}
+          className={cn(inputBase, "min-h-[110px] resize-y")}
         />
       </Field>
 
-      <Button
+      <button
         type="submit"
-        size="lg"
-        className="mt-1 w-full sm:w-auto"
-        icon={<ArrowRight className="size-4" />}
+        className="btn-grad inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl text-sm font-medium text-white shadow-sm"
       >
-        Send Enquiry via WhatsApp
-      </Button>
+        <span>Send Enquiry via WhatsApp</span>
+        <ArrowRight className="size-4" />
+      </button>
 
       {submittedUrl ? (
         <div
           role="status"
-          className="flex flex-col gap-2 rounded-card border border-[#15803d]/30 bg-[#f0fdf4] p-4 text-sm text-[#14532d]"
+          className="flex flex-col gap-2 rounded-xl border border-[#15803d]/30 bg-[#f0fdf4] p-4 text-sm text-[#14532d]"
         >
           <div className="flex items-start gap-2.5 font-semibold">
             <CheckCircle2
@@ -441,7 +425,7 @@ export function EnquiryForm() {
             href={submittedUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 pl-6 text-xs font-bold text-ink underline underline-offset-4 hover:text-brand"
+            className="inline-flex items-center gap-1.5 pl-6 text-xs font-semibold text-[#141414] underline underline-offset-4 hover:text-[#DC3530]"
           >
             Didn&apos;t open automatically? Open WhatsApp now
             <ExternalLink className="size-3.5" aria-hidden />
@@ -469,17 +453,17 @@ function Field({
     <div className="grid gap-1.5">
       <label
         htmlFor={id}
-        className="text-[11px] font-bold tracking-[0.12em] text-ink uppercase"
+        className="text-xs font-semibold text-[#141414]"
       >
         {label}
-        {required ? <span className="text-brand"> *</span> : null}
+        {required ? <span className="text-[#DC3530]"> *</span> : null}
       </label>
       {children}
       {error ? (
         <p
           id={`${id}-err`}
           role="alert"
-          className="text-xs font-semibold text-brand-deep"
+          className="text-xs font-medium text-[#DC3530]"
         >
           {error}
         </p>

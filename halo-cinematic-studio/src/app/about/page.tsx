@@ -48,7 +48,7 @@ export default function AboutPage() {
       />
 
       {/* Brand story */}
-      <Section tone="paper" labelledBy="story-heading">
+      <Section tone="white" labelledBy="story-heading">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
@@ -56,21 +56,19 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <p className="eyebrow mb-4 flex items-center gap-3">
-                <span aria-hidden className="h-[2px] w-8 bg-brand" />
-                Our Story
-              </p>
+              <p className="chip-eyebrow mb-4">Our Story</p>
               <h2
                 id="story-heading"
-                className="text-[2rem] font-black uppercase leading-[1.03] tracking-[-0.025em] text-ink sm:text-4xl lg:text-5xl"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-3xl font-semibold leading-tight text-[#141414] sm:text-4xl lg:text-5xl"
               >
-                Your Moments. <span className="text-accent">Our Vision.</span> Your Story.
+                Your Moments. <span className="grad-text">Our Vision.</span> Your Story.
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-body sm:text-lg">
+              <p className="mt-6 text-base leading-relaxed text-[#5F5A5A] sm:text-lg">
                 We capture the moments that matter and turn them into timeless memories. From weddings to music videos,
                 every frame is created with passion.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-body sm:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-[#5F5A5A] sm:text-lg">
                 From the emotion of a wedding day to the energy of a music video, we bring creativity, care and
                 cinematic detail to every project — working closely with every client from the first idea to the final
                 delivery.
@@ -89,7 +87,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Mission, Vision & Philosophy */}
-      <Section tone="canvas" labelledBy="philosophy-heading">
+      <Section tone="blush" labelledBy="philosophy-heading">
         <Container>
           <SectionHeading
             id="philosophy-heading"
@@ -99,14 +97,18 @@ export default function AboutPage() {
             description="Three words guide how we shoot, edit and finish every commission."
           />
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {pillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.05} as="article">
-                <div className="relative h-full rounded-card border border-line bg-paper p-7 sm:p-8">
-                  <span aria-hidden className="absolute top-0 left-0 h-[3px] w-11 bg-brand" />
-                  <p className="text-xs font-extrabold tracking-[0.2em] text-brand-deep uppercase">{p.step}</p>
-                  <h3 className="mt-6 text-2xl font-black uppercase text-ink">{p.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-body">{p.body}</p>
+                <div className="card relative h-full rounded-[20px] bg-white p-7 shadow-[0_12px_32px_rgba(220,53,48,0.06)] sm:p-8">
+                  <p className="text-xs font-semibold text-[#DC3530]">{p.step}</p>
+                  <h3
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    className="mt-4 text-2xl font-semibold text-[#141414]"
+                  >
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#5F5A5A]">{p.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -115,7 +117,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Core Craft Disciplines */}
-      <Section tone="paper" labelledBy="craft-heading">
+      <Section tone="white" labelledBy="craft-heading">
         <Container>
           <SectionHeading
             id="craft-heading"

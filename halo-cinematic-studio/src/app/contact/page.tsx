@@ -24,18 +24,22 @@ export default function ContactPage() {
         description="Select your preferred package category and send us your event date directly on WhatsApp."
       />
 
-      <Section tone="paper" labelledBy="contact-heading">
+      <Section tone="blush" labelledBy="contact-heading">
         <Container>
-          <div className="grid items-start gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-14">
-            <Reveal className="rounded-card border border-line bg-canvas p-7 sm:p-8">
-              <p className="eyebrow mb-3">Direct Channels</p>
-              <h2 id="contact-heading" className="text-2xl font-black uppercase text-ink sm:text-3xl">
+          <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+            <Reveal className="rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-7 shadow-[0_12px_32px_rgba(220,53,48,0.06)] sm:p-9">
+              <p className="chip-eyebrow mb-4">Direct Studio Channels</p>
+              <h2
+                id="contact-heading"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-2xl font-semibold text-[#141414] sm:text-3xl"
+              >
                 {siteConfig.name}
               </h2>
-              <p className="mt-2 text-base text-body">{siteConfig.motto}</p>
+              <p className="mt-2 text-sm leading-relaxed text-[#5F5A5A]">{siteConfig.motto}</p>
 
-              <ContactDetails className="mt-7" />
-              <QuickContactActions className="mt-7" />
+              <ContactDetails className="mt-8" />
+              <QuickContactActions className="mt-8" />
             </Reveal>
 
             <Reveal delay={0.08}>
