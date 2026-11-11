@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Logo } from "@/components/shared/Logo";
 
 const BLUR_DATA_URL =
   "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAUABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUEB//EACMQAAICAgICAwEAAAAAAAAAAAECAxEEITESQVFhcf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCbqfI3L96ywqSoqpJKSoiCKP3Gw+mW9VW3JJ9ckm2T2pxCFRUeJAQA/9k=";
@@ -42,48 +43,20 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="hero-bg relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28"
+      className="hero-bg relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28"
       style={{ minHeight: "calc(100vh - 72px)" }}
     >
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 text-center">
-        {/* 1. Layered Halo Ring Emblem (Lime-inspired concentric ruby badge) */}
-        <div className="mx-auto mb-5 flex items-center justify-center">
-          <svg
-            width={88}
-            height={88}
-            viewBox="0 0 96 96"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            className="blob-anim drop-shadow-[0_12px_24px_rgba(220,53,48,0.22)]"
-          >
-            <defs>
-              <linearGradient id="haloRingOuter" x1="12" y1="10" x2="84" y2="86" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#F2574B" />
-                <stop offset="50%" stopColor="#DC3530" />
-                <stop offset="100%" stopColor="#99141B" />
-              </linearGradient>
-              <linearGradient id="haloRingInner" x1="80" y1="16" x2="18" y2="80" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#FF8A80" />
-                <stop offset="100%" stopColor="#B91C24" />
-              </linearGradient>
-            </defs>
-            <circle cx={48} cy={48} r={42} fill="rgba(220,53,48,0.06)" />
-            <circle cx={48} cy={48} r={34} stroke="url(#haloRingOuter)" strokeWidth={11} />
-            <circle cx={48} cy={48} r={24} stroke="url(#haloRingInner)" strokeWidth={4} opacity={0.85} />
-            <circle cx={48} cy={48} r={18} fill="#FFFFFF" />
-            <circle cx={48} cy={48} r={5} fill="#DC3530" />
-          </svg>
+        {/* 1. Authentic HALO Studio Logo centered cleanly above headline */}
+        <div className="mx-auto mb-6 flex items-center justify-center">
+          <Logo
+            sizes="(min-width: 640px) 230px, 180px"
+            preload
+            className="mx-auto w-[180px] sm:w-[230px] drop-shadow-[0_10px_28px_rgba(220,38,38,0.16)]"
+          />
         </div>
 
-        {/* 2. Eyebrow chip */}
-        <div className="mx-auto mb-5">
-          <span className="chip-eyebrow">
-            Photography · Cinematography · Creative Studio
-          </span>
-        </div>
-
-        {/* 3. Headline */}
+        {/* 2. Headline */}
         <h1
           id="hero-heading"
           className="mx-auto text-center font-semibold tracking-tight"
@@ -100,7 +73,7 @@ export function Hero() {
           <span className="grad-text">Our Vision.</span>
         </h1>
 
-        {/* 4. Subtext */}
+        {/* 3. Subtext */}
         <p
           className="mx-auto mt-6 max-w-xl text-balance text-center text-base leading-relaxed sm:text-[17px]"
           style={{
@@ -114,11 +87,11 @@ export function Hero() {
           frame is crafted with passion.
         </p>
 
-        {/* 5. CTAs */}
+        {/* 4. CTAs */}
         <div className="mt-8 flex flex-row flex-wrap items-center justify-center gap-4">
           <Link
             href="/packages"
-            className="btn-grad inline-flex items-center gap-2 rounded-xl px-7 text-sm font-medium text-white shadow-lg shadow-[rgba(220,53,48,0.28)] transition-all hover:scale-[1.02]"
+            className="btn-grad inline-flex items-center gap-2 rounded-xl px-7 text-sm font-medium text-white shadow-lg shadow-[rgba(220,38,38,0.32)] transition-all hover:scale-[1.02]"
             style={{ height: 48 }}
           >
             <span>View Packages</span>
@@ -126,28 +99,28 @@ export function Hero() {
           </Link>
           <Link
             href="/photos"
-            className="btn-outline inline-flex items-center justify-center rounded-xl px-7 text-sm font-medium transition-all hover:bg-[#FFF5F4]"
+            className="btn-outline inline-flex items-center justify-center rounded-xl px-7 text-sm font-medium transition-all hover:bg-[#FFEEEE]"
             style={{ height: 48 }}
           >
             <span>View Photos</span>
           </Link>
         </div>
 
-        {/* 6. Service category pills */}
+        {/* 5. Service category pills */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {serviceChips.map((chip) => (
             <Link
               key={chip.label}
               href={chip.href}
-              className="group inline-flex items-center gap-2 rounded-full border border-[rgba(220,53,48,0.22)] bg-white px-5 py-2.5 text-xs font-medium text-[#141414] shadow-[0_2px_10px_rgba(220,53,48,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#DC3530] hover:bg-[#FFF5F4] hover:text-[#DC3530] hover:shadow-[0_6px_16px_rgba(220,53,48,0.16)] sm:text-sm"
+              className="group inline-flex items-center gap-2 rounded-full border border-[rgba(220,38,38,0.28)] bg-white px-5 py-2.5 text-xs font-medium text-[#141414] shadow-[0_4px_14px_rgba(220,38,38,0.10)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#E02424] hover:bg-[#FFEEEE] hover:text-[#B91C1C] hover:shadow-[0_6px_18px_rgba(220,38,38,0.22)] sm:text-sm"
             >
-              <span className="size-1.5 rounded-full bg-[#DC3530] transition-transform group-hover:scale-125" />
+              <span className="size-1.5 rounded-full bg-[#E02424] transition-transform group-hover:scale-125" />
               <span>{chip.label}</span>
             </Link>
           ))}
         </div>
 
-        {/* 7. Staggered Photo cards preview */}
+        {/* 6. Staggered Photo cards preview */}
         <div className="reveal mt-16 flex w-full items-end justify-center gap-3 pb-6 sm:gap-7">
           {/* Card 1 — Left */}
           <div
@@ -156,7 +129,7 @@ export function Hero() {
               width: "clamp(100px, 22vw, 220px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
-              boxShadow: "0 20px 40px -12px rgba(220, 53, 48, 0.22), 0 0 0 1px rgba(220, 53, 48, 0.12)",
+              boxShadow: "0 20px 42px -12px rgba(220, 38, 38, 0.28), 0 0 0 1px rgba(220, 38, 38, 0.16)",
               transform: "translateY(14px)",
               position: "relative",
               flexShrink: 0,
@@ -181,7 +154,7 @@ export function Hero() {
               width: "clamp(140px, 30vw, 290px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
-              boxShadow: "0 28px 56px -14px rgba(220, 53, 48, 0.3), 0 0 0 1px rgba(220, 53, 48, 0.15)",
+              boxShadow: "0 28px 58px -14px rgba(220, 38, 38, 0.36), 0 0 0 1px rgba(220, 38, 38, 0.2)",
               transform: "translateY(-10px)",
               position: "relative",
               flexShrink: 0,
@@ -206,7 +179,7 @@ export function Hero() {
               width: "clamp(100px, 22vw, 220px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
-              boxShadow: "0 20px 40px -12px rgba(220, 53, 48, 0.22), 0 0 0 1px rgba(220, 53, 48, 0.12)",
+              boxShadow: "0 20px 42px -12px rgba(220, 38, 38, 0.28), 0 0 0 1px rgba(220, 38, 38, 0.16)",
               transform: "translateY(8px)",
               position: "relative",
               flexShrink: 0,

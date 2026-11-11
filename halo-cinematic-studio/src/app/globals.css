@@ -3,19 +3,19 @@
 @source "..";
 
 @theme {
-  --color-brand: #DC3530;
-  --color-brand-deep: #B91C24;
-  --color-brand-soft: #F2574B;
+  --color-brand: #E02424;
+  --color-brand-deep: #B91C1C;
+  --color-brand-soft: #F43F3F;
   --color-ink: #141414;
   --color-muted: #5F5A5A;
   --color-body: #5F5A5A;
   --color-white: #FFFFFF;
-  --color-blush: #FFF5F4;
+  --color-blush: #FFEEEE;
   --color-canvas: #FFFFFF;
-  --color-paper: #FFF5F4;
+  --color-paper: #FFEEEE;
   --color-line: rgba(20, 20, 20, 0.08);
   --color-line-strong: rgba(20, 20, 20, 0.15);
-  --color-brand-tint: #FFF5F4;
+  --color-brand-tint: #FFEEEE;
   --color-ink-soft: #242020;
   --radius-card: 20px;
   --radius-btn: 12px;
@@ -27,17 +27,17 @@
 
 /* ─── Design Tokens ──────────────────────────────────────────────────────── */
 :root {
-  --red: #DC3530;
-  --red-deep: #B91C24;
-  --red-soft: #F2574B;
+  --red: #E02424;
+  --red-deep: #B91C1C;
+  --red-soft: #F43F3F;
   --ink: #141414;
   --muted: #5F5A5A;
   --white: #FFFFFF;
-  --blush: #FFF5F4;
+  --blush: #FFEEEE;
   --line: rgba(20, 20, 20, 0.08);
-  --grad-btn: linear-gradient(135deg, #B91C24 0%, #DC3530 50%, #F2574B 100%);
-  --grad-text: linear-gradient(135deg, #B91C24 0%, #E02828 45%, #FF5A52 100%);
-  --shadow-red: 0 12px 32px rgba(220, 53, 48, 0.12);
+  --grad-btn: linear-gradient(135deg, #991119 0%, #DC2626 50%, #F43F3F 100%);
+  --grad-text: linear-gradient(135deg, #991119 0%, #DC2626 48%, #F04438 100%);
+  --shadow-red: 0 14px 36px rgba(220, 38, 38, 0.16);
   --radius-card: 20px;
   --radius-btn: 12px;
 
@@ -91,9 +91,10 @@
   /* Hero & Page Opening Background */
   .hero-bg {
     background:
-      radial-gradient(65% 55% at 0% 0%, rgba(220, 53, 48, 0.24) 0%, rgba(255, 245, 244, 0.5) 40%, transparent 68%),
-      radial-gradient(55% 50% at 100% 5%, rgba(244, 120, 126, 0.22) 0%, rgba(255, 245, 244, 0.4) 40%, transparent 68%),
-      linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 60%, #FFF5F4 100%);
+      radial-gradient(68% 58% at 0% 0%, rgba(220, 38, 38, 0.42) 0%, rgba(244, 63, 63, 0.22) 42%, transparent 72%),
+      radial-gradient(60% 52% at 100% 4%, rgba(225, 45, 45, 0.36) 0%, rgba(255, 110, 110, 0.18) 42%, transparent 72%),
+      radial-gradient(50% 40% at 50% 100%, rgba(220, 38, 38, 0.16) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(255, 240, 239, 0.55) 0%, #FFFFFF 44%, #FFEBEB 100%);
     position: relative;
     overflow: hidden;
   }
@@ -102,9 +103,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Ccircle cx='240' cy='240' r='60' fill='none' stroke='rgba(220%2C53%2C48%2C0.05)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='110' fill='none' stroke='rgba(220%2C53%2C48%2C0.05)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='160' fill='none' stroke='rgba(220%2C53%2C48%2C0.05)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='210' fill='none' stroke='rgba(220%2C53%2C48%2C0.05)' stroke-width='1'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Ccircle cx='240' cy='240' r='60' fill='none' stroke='rgba(220%2C38%2C38%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='110' fill='none' stroke='rgba(220%2C38%2C38%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='160' fill='none' stroke='rgba(220%2C38%2C38%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='210' fill='none' stroke='rgba(220%2C38%2C38%2C0.07)' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 480px 480px;
-    opacity: 0.6;
+    opacity: 0.7;
     pointer-events: none;
     z-index: 0;
   }
@@ -199,9 +200,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle at 0% 0%, rgba(220, 53, 48, 0.16) 0%, transparent 70%);
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle at 0% 0%, rgba(220, 38, 38, 0.28) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -211,9 +212,9 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle at 100% 100%, rgba(244, 120, 126, 0.16) 0%, transparent 70%);
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle at 100% 100%, rgba(244, 63, 63, 0.28) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
