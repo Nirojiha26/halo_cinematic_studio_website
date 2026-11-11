@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+/*
+ * HALO CINEMATIC STUDIO — Red, White & Black Editorial Design System
+ * Primary ground: Gallery White (#FFFFFF) & Soft Paper (#F6F5F3)
+ * Primary ink: Deep Ink Black (#0A0A0B) & Charcoal (#4A4A50)
+ * Brand accent: HALO Cinematic Red (#ED171F / #C40E15)
+ */
+@theme {
+  --color-brand: #ed171f;
+  --color-brand-deep: #c40e15;
+  --color-brand-soft: #ff3b43;
+  --color-brand-tint: #fff1f2;
+
+  --color-canvas: #ffffff;
+  --color-paper: #f6f5f3;
+  --color-surface: #ffffff;
+  --color-surface-alt: #eeece8;
+  --color-line: #e4e2dd;
+  --color-line-strong: #c9c6c0;
+
+  --color-ink: #0a0a0b;
+  --color-ink-soft: #18181b;
+  --color-body: #4a4a50;
+  --color-muted: #6c6c75;
+  --color-subtle: #8b8b94;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, Arial, sans-serif;
+  --font-display: var(--font-archivo), var(--font-inter), Arial, sans-serif;
+
+  --radius-card: 0.25rem;
+
+  --ease-cinema: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-rise: rise 0.75s var(--ease-cinema) both;
+  --animate-fade: fade 0.9s ease-out both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Small red uppercase eyebrow label */
+  .eyebrow {
+    @apply text-brand-deep text-[11px] font-extrabold tracking-[0.26em] uppercase sm:text-xs;
+  }
+
+  /* Red headline accent */
+  .text-accent {
+    @apply text-brand;
+  }
+
+  /* Bright architectural gallery backdrop with subtle red aperture wash */
+  .gallery-backdrop {
+    background:
+      radial-gradient(circle at 82% 44%, rgba(237, 23, 31, 0.065) 0%, transparent 45%),
+      linear-gradient(135deg, #ffffff 55%, #f7f4f2 100%);
+  }
+
+  /* Concentric red lens aperture ring on light paper */
+  .lens-ring {
+    @apply pointer-events-none absolute rounded-full;
+    border: 1px solid rgba(237, 23, 31, 0.18);
+    box-shadow:
+      0 0 0 44px rgba(237, 23, 31, 0.03),
+      0 0 0 92px rgba(10, 10, 11, 0.025);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Intro loader — white studio slate, fades out cleanly without JS      */
+/* ------------------------------------------------------------------ */
+.intro-loader {
+  animation: intro-out 0.45s ease 0.45s forwards;
+}
+.intro-loader-bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 45%;
+  background: var(--color-brand);
+  animation: intro-bar 0.85s ease-in-out infinite;
+}
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes intro-bar {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(240%);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Page transitions (React <ViewTransition>)                            */
+/* ------------------------------------------------------------------ */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(.page-exit) {
+  animation: 160ms ease-in both vt-fade-out;
+}
+::view-transition-new(.page-enter) {
+  animation: 340ms var(--ease-cinema) 80ms both vt-rise-in;
+}
+::view-transition-group(site-header),
+::view-transition-group(floating-ui) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header),
+::view-transition-old(floating-ui) {
+  display: none;
+}
+::view-transition-new(site-header),
+::view-transition-new(floating-ui) {
+  animation: none;
+}
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-rise-in {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion                                                       */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .intro-loader {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

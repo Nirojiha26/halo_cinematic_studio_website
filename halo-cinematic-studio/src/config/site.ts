@@ -1,0 +1,64 @@
+/**
+ * Central site configuration.
+ * All values are taken from the original index.html. Empty values are
+ * intentionally left blank (not invented) — fill them in when available and
+ * the UI will render them automatically.
+ */
+
+export type NavItem = { label: string; href: string };
+
+export type SocialLink = { label: string; href: string };
+
+export const siteConfig = {
+  name: "HALO CINEMATIC STUDIO",
+  shortName: "HALO",
+  tagline: "Capture • Create • Inspire",
+  motto: "Your Moments. Our Vision. Your Story.",
+  description:
+    "HALO CINEMATIC STUDIO — Wedding photography, cinematography, documentaries, music videos, editing and custom photo frames.",
+  /** Set this to the production domain once deployed (used for metadata). */
+  url: "https://halocinematicstudio.com",
+  themeColor: "#ffffff",
+
+  logo: {
+    src: "/logos/logo-1.png",
+    width: 1536,
+    height: 1024,
+    alt: "HALO Cinematic Studio logo",
+  },
+
+  contact: {
+    /** Display format, as shown on the original site. */
+    phoneDisplay: "077 532 1978",
+    /** International format for tel: links. */
+    phoneIntl: "+94775321978",
+    /** WhatsApp number without "+" (used by wa.me). */
+    whatsapp: "94775321978",
+    /** Studio contact email shown on official package brochures. */
+    email: "halostudio18@gmail.com",
+    location: "",
+    bookingStatus: "Now open for enquiries",
+    servicesSummary: "Wedding • Puberty • Engagement • Events",
+  },
+
+  socials: [] as SocialLink[],
+
+  /** Place a licensed MP3 at public/audio/background.mp3 to enable music. */
+  backgroundMusic: "/audio/background.mp3",
+
+  nav: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Packages", href: "/packages" },
+    { label: "Photos", href: "/photos" },
+    { label: "Contact", href: "/contact" },
+  ] satisfies NavItem[],
+
+  cta: { label: "Book Now", href: "/contact" } satisfies NavItem,
+} as const;
+
+export function whatsappUrl(message?: string) {
+  const base = `https://wa.me/${siteConfig.contact.whatsapp}`;
+  return message ? `${base}?text=${encodeURIComponent(message)}` : base;
+}
+
