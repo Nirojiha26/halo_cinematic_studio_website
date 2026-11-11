@@ -37,7 +37,7 @@ export function AboutPreview() {
                 className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse at 50% 0%, rgba(220,53,48,0.12) 0%, transparent 70%)",
+                    "radial-gradient(ellipse at 50% 0%, rgba(217,11,23,0.14) 0%, transparent 70%)",
                 }}
               />
 
@@ -46,7 +46,7 @@ export function AboutPreview() {
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
-                  color: "#DC3530",
+                  color: "#B50812",
                   marginBottom: 24,
                 }}
               >
@@ -68,7 +68,7 @@ export function AboutPreview() {
                         fontFamily: "Poppins, sans-serif",
                         fontWeight: 700,
                         fontSize: 12,
-                        color: "#DC3530",
+                        color: "#B50812",
                         flexShrink: 0,
                         paddingTop: 1,
                       }}

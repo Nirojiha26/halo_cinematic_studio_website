@@ -14,7 +14,7 @@ export function FloatingActions() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with us on WhatsApp"
-          className="group relative flex size-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#B91C24_0%,#DC3530_50%,#F2574B_100%)] text-white shadow-[0_12px_28px_rgba(220,53,48,0.36)] transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_36px_rgba(220,53,48,0.45)]"
+          className="group relative flex size-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#8E050D_0%,#D90B17_50%,#F51420_100%)] text-white shadow-[0_12px_28px_rgba(217,11,23,0.38)] transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_36px_rgba(217,11,23,0.48)]"
         >
           <MessageCircle className="size-6 transition-transform duration-300 group-hover:scale-110" />
           <span className="sr-only">WhatsApp Enquiry</span>

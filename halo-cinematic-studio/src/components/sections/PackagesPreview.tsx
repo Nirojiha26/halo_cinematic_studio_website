@@ -33,9 +33,9 @@ export function PackagesPreview() {
             <Link
               key={cat.slug}
               href={`/packages?category=${cat.slug}`}
-              className="inline-flex items-center gap-2 rounded-full border border-[rgba(20,20,20,0.08)] bg-white px-4 py-2 text-xs font-medium text-[#141414] shadow-xs transition-all hover:border-[#DC3530] hover:text-[#DC3530]"
+              className="inline-flex items-center gap-2 rounded-full border border-[rgba(20,20,20,0.08)] bg-white px-4 py-2 text-xs font-medium text-[#141414] shadow-xs transition-all hover:border-[#D90B17] hover:text-[#B50812]"
             >
-              <span className="size-1.5 rounded-full bg-[#DC3530]" aria-hidden />
+              <span className="size-1.5 rounded-full bg-[#D90B17]" aria-hidden />
               {cat.label}
             </Link>
           ))}

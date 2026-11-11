@@ -37,6 +37,8 @@ export const metadata: Metadata = {
     "music videos",
     "video editing",
     "custom photo frames",
+    "Nelliady",
+    "Nelliady, Sri Lanka",
     "Sri Lanka",
   ],
   openGraph: {
@@ -54,9 +56,30 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    image: `${siteConfig.url}${siteConfig.logo.src}`,
+    telephone: siteConfig.contact.phoneIntl,
+    email: siteConfig.contact.email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Nelliady",
+      addressCountry: "LK",
+    },
+    areaServed: "Sri Lanka",
+  };
+
   return (
     <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
       <body className="flex min-h-dvh flex-col bg-white text-[#141414]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
         <a
           href="#main"
           className="skip-link"

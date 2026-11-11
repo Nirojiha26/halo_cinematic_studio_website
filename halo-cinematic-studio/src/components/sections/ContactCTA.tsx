@@ -37,7 +37,7 @@ export function ContactCTA() {
             href={whatsappUrl("Hello! I would like to enquire about your photography and film services.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center rounded-xl bg-white px-7 text-sm font-medium text-[#DC3530] shadow-sm transition-all hover:bg-[#FFF5F4] hover:shadow-md"
+            className="inline-flex h-12 items-center justify-center rounded-xl bg-white px-7 text-sm font-medium text-[#B50812] shadow-sm transition-all hover:bg-[#FFF1F2] hover:shadow-md"
           >
             Send WhatsApp Enquiry
           </a>

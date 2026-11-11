@@ -102,8 +102,8 @@ export function PhotosGallery() {
               className={cn(
                 "inline-flex cursor-pointer items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all duration-200",
                 isActive
-                  ? "btn-grad text-white shadow-md shadow-[rgba(220,53,48,0.25)]"
-                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#DC3530] hover:text-[#DC3530]",
+                  ? "btn-grad text-white shadow-md shadow-[rgba(217,11,23,0.28)]"
+                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#D90B17] hover:text-[#B50812]",
               )}
             >
               <span>{collection}</span>
@@ -112,7 +112,7 @@ export function PhotosGallery() {
                   "inline-flex size-5 items-center justify-center rounded-full text-[10px] font-bold",
                   isActive
                     ? "bg-white/20 text-white"
-                    : "bg-[#FFF5F4] text-[#DC3530]",
+                    : "bg-[#FFF1F2] text-[#B50812]",
                 )}
               >
                 {count}
@@ -151,7 +151,7 @@ export function PhotosGallery() {
             {/* Top Bar */}
             <div className="flex items-center justify-between border-b border-[rgba(20,20,20,0.08)] px-6 py-4">
               <div>
-                <p className="text-xs font-semibold text-[#DC3530]">
+                <p className="text-xs font-semibold text-[#B50812]">
                   {selectedPhoto.category}
                 </p>
                 <h3
@@ -166,7 +166,7 @@ export function PhotosGallery() {
                 type="button"
                 onClick={handleClose}
                 aria-label="Close dialog"
-                className="grid size-10 place-items-center rounded-full border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#DC3530] hover:text-[#DC3530]"
+                className="grid size-10 place-items-center rounded-full border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#D90B17] hover:text-[#D90B17]"
               >
                 <X className="size-5" />
               </button>
@@ -190,7 +190,7 @@ export function PhotosGallery() {
                     type="button"
                     onClick={() => stepPhoto(-1)}
                     aria-label="Previous photo"
-                    className="absolute left-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#DC3530]"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#D90B17]"
                   >
                     <ChevronLeft className="size-6" />
                   </button>
@@ -198,7 +198,7 @@ export function PhotosGallery() {
                     type="button"
                     onClick={() => stepPhoto(1)}
                     aria-label="Next photo"
-                    className="absolute right-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#DC3530]"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#D90B17]"
                   >
                     <ChevronRight className="size-6" />
                   </button>
@@ -207,7 +207,7 @@ export function PhotosGallery() {
             </div>
 
             {/* Bottom info & WhatsApp enquiry bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[rgba(20,20,20,0.08)] bg-[#FFF5F4] px-6 py-4">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[rgba(20,20,20,0.08)] bg-[#FFF1F2] px-6 py-4">
               <p className="text-sm text-[#5F5A5A]">{selectedPhoto.subtitle}</p>
               <a
                 href={whatsappUrl(

@@ -57,7 +57,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
         aria-controls={panelId}
         aria-haspopup="dialog"
         aria-label="Open menu"
-        className="grid size-10 place-items-center rounded-xl border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] shadow-xs transition-colors hover:border-[#DC3530] hover:text-[#DC3530]"
+        className="grid size-10 place-items-center rounded-xl border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] shadow-xs transition-colors hover:border-[#D90B17] hover:text-[#D90B17]"
       >
         <Menu className="size-5" aria-hidden />
       </button>
@@ -88,7 +88,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                       type="button"
                       onClick={close}
                       aria-label="Close menu"
-                      className="grid size-10 place-items-center rounded-xl border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#DC3530] hover:text-[#DC3530]"
+                      className="grid size-10 place-items-center rounded-xl border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#D90B17] hover:text-[#D90B17]"
                     >
                       <X className="size-5" aria-hidden />
                     </button>
@@ -110,13 +110,13 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                                 className={cn(
                                   "flex items-center justify-between rounded-xl p-3 text-lg font-medium transition-colors",
                                   active
-                                    ? "bg-[#FFF5F4] text-[#DC3530] font-semibold"
-                                    : "text-[#141414] hover:bg-[#FFF5F4] hover:text-[#DC3530]",
+                                    ? "bg-[#FFF1F2] text-[#D90B17] font-semibold"
+                                    : "text-[#141414] hover:bg-[#FFF1F2] hover:text-[#D90B17]",
                                 )}
                               >
                                 <span>{item.label}</span>
                                 {active ? (
-                                  <span className="size-2 rounded-full bg-[#DC3530]" />
+                                  <span className="size-2 rounded-full bg-[#D90B17]" />
                                 ) : null}
                               </Link>
                             </li>

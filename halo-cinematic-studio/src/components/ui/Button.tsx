@@ -9,7 +9,7 @@ const variantClasses: Record<Variant, string> = {
   primary: "btn-grad",
   outline: "btn-outline",
   dark: "btn-grad",
-  ghost: "bg-transparent border-transparent text-[#DC3530] hover:opacity-80",
+  ghost: "bg-transparent border-transparent text-[#D90B17] hover:opacity-80",
 };
 
 const sizeClasses: Record<Size, string> = {

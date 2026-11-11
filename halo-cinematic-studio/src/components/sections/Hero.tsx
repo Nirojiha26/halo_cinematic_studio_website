@@ -52,7 +52,7 @@ export function Hero() {
           <Logo
             sizes="(min-width: 640px) 230px, 180px"
             preload
-            className="mx-auto w-[180px] sm:w-[230px] drop-shadow-[0_10px_28px_rgba(220,38,38,0.16)]"
+            className="mx-auto w-[180px] sm:w-[230px] drop-shadow-[0_10px_28px_rgba(217,11,23,0.18)]"
           />
         </div>
 
@@ -91,7 +91,7 @@ export function Hero() {
         <div className="mt-8 flex flex-row flex-wrap items-center justify-center gap-4">
           <Link
             href="/packages"
-            className="btn-grad inline-flex items-center gap-2 rounded-xl px-7 text-sm font-medium text-white shadow-lg shadow-[rgba(220,38,38,0.32)] transition-all hover:scale-[1.02]"
+            className="btn-grad inline-flex items-center gap-2 rounded-xl px-7 text-sm font-medium text-white shadow-lg shadow-[rgba(217,11,23,0.34)] transition-all hover:scale-[1.02]"
             style={{ height: 48 }}
           >
             <span>View Packages</span>
@@ -99,7 +99,7 @@ export function Hero() {
           </Link>
           <Link
             href="/photos"
-            className="btn-outline inline-flex items-center justify-center rounded-xl px-7 text-sm font-medium transition-all hover:bg-[#FFEEEE]"
+            className="btn-outline inline-flex items-center justify-center rounded-xl px-7 text-sm font-medium transition-all hover:bg-[#FFF1F2]"
             style={{ height: 48 }}
           >
             <span>View Photos</span>
@@ -112,9 +112,9 @@ export function Hero() {
             <Link
               key={chip.label}
               href={chip.href}
-              className="group inline-flex items-center gap-2 rounded-full border border-[rgba(220,38,38,0.28)] bg-white px-5 py-2.5 text-xs font-medium text-[#141414] shadow-[0_4px_14px_rgba(220,38,38,0.10)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#E02424] hover:bg-[#FFEEEE] hover:text-[#B91C1C] hover:shadow-[0_6px_18px_rgba(220,38,38,0.22)] sm:text-sm"
+              className="group inline-flex items-center gap-2 rounded-full border border-[rgba(217,11,23,0.28)] bg-white px-5 py-2.5 text-xs font-medium text-[#141414] shadow-[0_4px_14px_rgba(217,11,23,0.10)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#D90B17] hover:bg-[#FFF1F2] hover:text-[#B50812] hover:shadow-[0_6px_18px_rgba(217,11,23,0.22)] sm:text-sm"
             >
-              <span className="size-1.5 rounded-full bg-[#E02424] transition-transform group-hover:scale-125" />
+              <span className="size-1.5 rounded-full bg-[#D90B17] transition-transform group-hover:scale-125" />
               <span>{chip.label}</span>
             </Link>
           ))}
@@ -129,7 +129,7 @@ export function Hero() {
               width: "clamp(100px, 22vw, 220px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
-              boxShadow: "0 20px 42px -12px rgba(220, 38, 38, 0.28), 0 0 0 1px rgba(220, 38, 38, 0.16)",
+              boxShadow: "0 20px 42px -12px rgba(217, 11, 23, 0.28), 0 0 0 1px rgba(217, 11, 23, 0.16)",
               transform: "translateY(14px)",
               position: "relative",
               flexShrink: 0,
@@ -154,7 +154,7 @@ export function Hero() {
               width: "clamp(140px, 30vw, 290px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
-              boxShadow: "0 28px 58px -14px rgba(220, 38, 38, 0.36), 0 0 0 1px rgba(220, 38, 38, 0.2)",
+              boxShadow: "0 28px 58px -14px rgba(217, 11, 23, 0.36), 0 0 0 1px rgba(217, 11, 23, 0.20)",
               transform: "translateY(-10px)",
               position: "relative",
               flexShrink: 0,
@@ -179,7 +179,7 @@ export function Hero() {
               width: "clamp(100px, 22vw, 220px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
-              boxShadow: "0 20px 42px -12px rgba(220, 38, 38, 0.28), 0 0 0 1px rgba(220, 38, 38, 0.16)",
+              boxShadow: "0 20px 42px -12px rgba(217, 11, 23, 0.28), 0 0 0 1px rgba(217, 11, 23, 0.16)",
               transform: "translateY(8px)",
               position: "relative",
               flexShrink: 0,

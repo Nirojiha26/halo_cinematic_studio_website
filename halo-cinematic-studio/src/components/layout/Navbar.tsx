@@ -53,15 +53,15 @@ export function Navbar() {
                         className={cn(
                           "relative inline-flex items-center py-1.5 text-[15px] font-medium leading-none transition-colors duration-200",
                           active
-                            ? "font-semibold text-[#DC3530]"
-                            : "text-[#141414]/85 hover:text-[#DC3530]",
+                            ? "font-semibold text-[#D90B17]"
+                            : "text-[#141414]/85 hover:text-[#D90B17]",
                         )}
                       >
                         <span>{item.label}</span>
                         {active ? (
                           <span
                             aria-hidden
-                            className="absolute inset-x-0 -bottom-1 h-[2px] rounded-full bg-[#DC3530]"
+                            className="absolute inset-x-0 -bottom-1 h-[2px] rounded-full bg-[#D90B17]"
                           />
                         ) : null}
                       </Link>
@@ -76,7 +76,7 @@ export function Navbar() {
           <div className="hidden items-center lg:flex">
             <Link
               href={siteConfig.cta.href}
-              className="btn-grad inline-flex h-11 items-center justify-center rounded-xl px-6 text-sm font-medium text-white shadow-[0_8px_20px_rgba(220,53,48,0.24)] transition-all hover:shadow-[0_10px_24px_rgba(220,53,48,0.34)]"
+              className="btn-grad inline-flex h-11 items-center justify-center rounded-xl px-6 text-sm font-medium text-white shadow-[0_8px_20px_rgba(217,11,23,0.28)] transition-all hover:shadow-[0_10px_24px_rgba(217,11,23,0.38)]"
             >
               {siteConfig.cta.label}
             </Link>

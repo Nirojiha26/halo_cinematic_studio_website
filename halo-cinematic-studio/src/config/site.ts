@@ -36,7 +36,7 @@ export const siteConfig = {
     whatsapp: "94775321978",
     /** Studio contact email shown on official package brochures. */
     email: "halostudio18@gmail.com",
-    location: "",
+    location: "Nelliady, Sri Lanka",
     bookingStatus: "Now open for enquiries",
     servicesSummary: "Wedding • Puberty • Engagement • Events",
   },

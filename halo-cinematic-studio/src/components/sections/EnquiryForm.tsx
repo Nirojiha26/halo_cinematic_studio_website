@@ -51,7 +51,7 @@ function validate(values: Values): Errors {
 
 const inputBase =
   "w-full rounded-xl border border-[rgba(20,20,20,0.12)] bg-white px-4 py-3 text-sm font-normal text-[#141414] placeholder:text-[#5F5A5A]/60 " +
-  "outline-none transition-all duration-200 focus:border-[#DC3530] focus:ring-2 focus:ring-[#DC3530]/15 aria-[invalid=true]:border-[#DC3530] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#DC3530]/20";
+  "outline-none transition-all duration-200 focus:border-[#D90B17] focus:ring-2 focus:ring-[#D90B17]/15 aria-[invalid=true]:border-[#D90B17] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#D90B17]/20";
 
 export function EnquiryForm() {
   const [values, setValues] = useState<Values>({
@@ -191,7 +191,7 @@ export function EnquiryForm() {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="grid gap-5 rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-6 shadow-[0_16px_40px_rgba(220,53,48,0.08)] sm:p-9"
+      className="grid gap-5 rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-6 shadow-[0_16px_40px_rgba(217,11,23,0.09)] sm:p-9"
     >
       <div className="border-b border-[rgba(20,20,20,0.06)] pb-4">
         <QueryParamSync name="category" onValue={syncCategory} />
@@ -299,7 +299,7 @@ export function EnquiryForm() {
               aria-invalid={Boolean(errors.packageSlug)}
               className={cn(
                 inputBase,
-                "appearance-none pr-10 disabled:cursor-not-allowed disabled:bg-[#FFF5F4] disabled:text-[#5F5A5A]",
+                "appearance-none pr-10 disabled:cursor-not-allowed disabled:bg-[#FFF1F2] disabled:text-[#5F5A5A]",
                 values.packageSlug ? "text-[#141414]" : "text-[#5F5A5A]/70",
               )}
             >
@@ -324,15 +324,15 @@ export function EnquiryForm() {
 
       {/* Live selected package preview card */}
       {selectedPackage ? (
-        <div className="rounded-2xl border border-[rgba(220,53,48,0.2)] bg-[#FFF5F4] p-4 sm:p-5">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[rgba(220,53,48,0.15)] pb-3">
+        <div className="rounded-2xl border border-[rgba(217,11,23,0.22)] bg-[#FFF1F2] p-4 sm:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[rgba(217,11,23,0.16)] pb-3">
             <div className="flex items-center gap-2 text-xs font-semibold text-[#141414]">
-              <PackageCheck className="size-4 text-[#DC3530]" aria-hidden />
+              <PackageCheck className="size-4 text-[#D90B17]" aria-hidden />
               <span>{selectedPackage.name}</span>
             </div>
             <span
               style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-lg font-semibold text-[#DC3530]"
+              className="text-lg font-semibold text-[#D90B17]"
             >
               {selectedPackage.priceDisplay}
             </span>
@@ -340,7 +340,7 @@ export function EnquiryForm() {
           <ul className="mt-3 grid gap-1.5 text-xs text-[#5F5A5A] sm:grid-cols-2">
             {selectedPackage.highlights.slice(0, 4).map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <Check className="mt-0.5 size-3.5 shrink-0 text-[#DC3530]" aria-hidden />
+                <Check className="mt-0.5 size-3.5 shrink-0 text-[#D90B17]" aria-hidden />
                 <span>{item}</span>
               </li>
             ))}
@@ -408,11 +408,11 @@ export function EnquiryForm() {
       {submittedUrl ? (
         <div
           role="status"
-          className="flex flex-col gap-2 rounded-xl border border-[#15803d]/30 bg-[#f0fdf4] p-4 text-sm text-[#14532d]"
+          className="flex flex-col gap-2 rounded-xl border border-[#D90B17]/30 bg-[#FFF1F2] p-4 text-sm text-[#141414]"
         >
           <div className="flex items-start gap-2.5 font-semibold">
             <CheckCircle2
-              className="mt-0.5 size-4 shrink-0 text-[#16a34a]"
+              className="mt-0.5 size-4 shrink-0 text-[#D90B17]"
               aria-hidden
             />
             <span>
@@ -425,7 +425,7 @@ export function EnquiryForm() {
             href={submittedUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 pl-6 text-xs font-semibold text-[#141414] underline underline-offset-4 hover:text-[#DC3530]"
+            className="inline-flex items-center gap-1.5 pl-6 text-xs font-semibold text-[#141414] underline underline-offset-4 hover:text-[#D90B17]"
           >
             Didn&apos;t open automatically? Open WhatsApp now
             <ExternalLink className="size-3.5" aria-hidden />
@@ -456,14 +456,14 @@ function Field({
         className="text-xs font-semibold text-[#141414]"
       >
         {label}
-        {required ? <span className="text-[#DC3530]"> *</span> : null}
+        {required ? <span className="text-[#D90B17]"> *</span> : null}
       </label>
       {children}
       {error ? (
         <p
           id={`${id}-err`}
           role="alert"
-          className="text-xs font-medium text-[#DC3530]"
+          className="text-xs font-medium text-[#B50812]"
         >
           {error}
         </p>

@@ -3,19 +3,19 @@
 @source "..";
 
 @theme {
-  --color-brand: #E02424;
-  --color-brand-deep: #B91C1C;
-  --color-brand-soft: #F43F3F;
+  --color-brand: #D90B17;
+  --color-brand-deep: #B50812;
+  --color-brand-soft: #F51420;
   --color-ink: #141414;
   --color-muted: #5F5A5A;
   --color-body: #5F5A5A;
   --color-white: #FFFFFF;
-  --color-blush: #FFEEEE;
+  --color-blush: #FFF1F2;
   --color-canvas: #FFFFFF;
-  --color-paper: #FFEEEE;
+  --color-paper: #FFF1F2;
   --color-line: rgba(20, 20, 20, 0.08);
   --color-line-strong: rgba(20, 20, 20, 0.15);
-  --color-brand-tint: #FFEEEE;
+  --color-brand-tint: #FFF1F2;
   --color-ink-soft: #242020;
   --radius-card: 20px;
   --radius-btn: 12px;
@@ -27,17 +27,17 @@
 
 /* ─── Design Tokens ──────────────────────────────────────────────────────── */
 :root {
-  --red: #E02424;
-  --red-deep: #B91C1C;
-  --red-soft: #F43F3F;
+  --red: #D90B17;
+  --red-deep: #B50812;
+  --red-soft: #F51420;
   --ink: #141414;
   --muted: #5F5A5A;
   --white: #FFFFFF;
-  --blush: #FFEEEE;
+  --blush: #FFF1F2;
   --line: rgba(20, 20, 20, 0.08);
-  --grad-btn: linear-gradient(135deg, #991119 0%, #DC2626 50%, #F43F3F 100%);
-  --grad-text: linear-gradient(135deg, #991119 0%, #DC2626 48%, #F04438 100%);
-  --shadow-red: 0 14px 36px rgba(220, 38, 38, 0.16);
+  --grad-btn: linear-gradient(135deg, #8E050D 0%, #D90B17 50%, #F51420 100%);
+  --grad-text: linear-gradient(90deg, #9E0610 0%, #D90B17 52%, #F51420 100%);
+  --shadow-red: 0 14px 36px rgba(217, 11, 23, 0.16);
   --radius-card: 20px;
   --radius-btn: 12px;
 
@@ -91,10 +91,10 @@
   /* Hero & Page Opening Background */
   .hero-bg {
     background:
-      radial-gradient(68% 58% at 0% 0%, rgba(220, 38, 38, 0.42) 0%, rgba(244, 63, 63, 0.22) 42%, transparent 72%),
-      radial-gradient(60% 52% at 100% 4%, rgba(225, 45, 45, 0.36) 0%, rgba(255, 110, 110, 0.18) 42%, transparent 72%),
-      radial-gradient(50% 40% at 50% 100%, rgba(220, 38, 38, 0.16) 0%, transparent 70%),
-      linear-gradient(180deg, rgba(255, 240, 239, 0.55) 0%, #FFFFFF 44%, #FFEBEB 100%);
+      radial-gradient(68% 58% at 0% 0%, rgba(217, 11, 23, 0.44) 0%, rgba(245, 20, 32, 0.22) 42%, transparent 72%),
+      radial-gradient(60% 52% at 100% 4%, rgba(217, 11, 23, 0.38) 0%, rgba(255, 56, 68, 0.18) 42%, transparent 72%),
+      radial-gradient(50% 40% at 50% 100%, rgba(217, 11, 23, 0.16) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(255, 238, 240, 0.58) 0%, #FFFFFF 44%, #FFE8EA 100%);
     position: relative;
     overflow: hidden;
   }
@@ -103,7 +103,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Ccircle cx='240' cy='240' r='60' fill='none' stroke='rgba(220%2C38%2C38%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='110' fill='none' stroke='rgba(220%2C38%2C38%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='160' fill='none' stroke='rgba(220%2C38%2C38%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='210' fill='none' stroke='rgba(220%2C38%2C38%2C0.07)' stroke-width='1'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Ccircle cx='240' cy='240' r='60' fill='none' stroke='rgba(217%2C11%2C23%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='110' fill='none' stroke='rgba(217%2C11%2C23%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='160' fill='none' stroke='rgba(217%2C11%2C23%2C0.07)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='210' fill='none' stroke='rgba(217%2C11%2C23%2C0.07)' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 480px 480px;
     opacity: 0.7;
     pointer-events: none;
@@ -167,15 +167,15 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(220, 53, 48, 0.08);
-    border: 1px solid rgba(220, 53, 48, 0.2);
+    background: rgba(217, 11, 23, 0.08);
+    border: 1px solid rgba(217, 11, 23, 0.22);
     color: var(--red-deep);
     border-radius: 999px;
     font-size: 13px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     padding: 5px 16px;
-    box-shadow: 0 2px 8px rgba(220, 53, 48, 0.06);
+    box-shadow: 0 2px 8px rgba(217, 11, 23, 0.06);
   }
 
   .chip-eyebrow::before {
@@ -202,7 +202,7 @@
     left: 0;
     width: 440px;
     height: 440px;
-    background: radial-gradient(circle at 0% 0%, rgba(220, 38, 38, 0.28) 0%, transparent 70%);
+    background: radial-gradient(circle at 0% 0%, rgba(217, 11, 23, 0.28) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -214,7 +214,7 @@
     right: 0;
     width: 440px;
     height: 440px;
-    background: radial-gradient(circle at 100% 100%, rgba(244, 63, 63, 0.28) 0%, transparent 70%);
+    background: radial-gradient(circle at 100% 100%, rgba(245, 20, 32, 0.26) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }

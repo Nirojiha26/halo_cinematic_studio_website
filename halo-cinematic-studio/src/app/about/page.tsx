@@ -100,8 +100,8 @@ export default function AboutPage() {
           <div className="grid gap-6 md:grid-cols-3">
             {pillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.05} as="article">
-                <div className="card relative h-full rounded-[20px] bg-white p-7 shadow-[0_12px_32px_rgba(220,53,48,0.06)] sm:p-8">
-                  <p className="text-xs font-semibold text-[#DC3530]">{p.step}</p>
+                <div className="card relative h-full rounded-[20px] bg-white p-7 shadow-[0_12px_32px_rgba(217,11,23,0.08)] sm:p-8">
+                  <p className="text-xs font-semibold text-[#B50812]">{p.step}</p>
                   <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="mt-4 text-2xl font-semibold text-[#141414]"

@@ -10,7 +10,7 @@ import { Container, Section } from "@/components/ui/Container";
 export const metadata = createMetadata({
   title: "Contact",
   description:
-    "Contact HALO CINEMATIC STUDIO on 077 532 1978, halostudio18@gmail.com, or select a package to send a direct WhatsApp enquiry.",
+    "Contact HALO CINEMATIC STUDIO in Nelliady, Sri Lanka on 077 532 1978, halostudio18@gmail.com, or select a package to send a direct WhatsApp enquiry.",
   path: "/contact",
 });
 
@@ -27,7 +27,7 @@ export default function ContactPage() {
       <Section tone="blush" labelledBy="contact-heading">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
-            <Reveal className="rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-7 shadow-[0_12px_32px_rgba(220,53,48,0.06)] sm:p-9">
+            <Reveal className="rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-7 shadow-[0_12px_32px_rgba(217,11,23,0.08)] sm:p-9">
               <p className="chip-eyebrow mb-4">Direct Studio Channels</p>
               <h2
                 id="contact-heading"

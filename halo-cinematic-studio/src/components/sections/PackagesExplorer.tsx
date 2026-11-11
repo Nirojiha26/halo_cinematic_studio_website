@@ -58,8 +58,8 @@ export function PackagesExplorer() {
               className={cn(
                 "inline-flex cursor-pointer items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all duration-200",
                 isActive
-                  ? "btn-grad text-white shadow-md shadow-[rgba(220,53,48,0.25)]"
-                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#DC3530] hover:text-[#DC3530]",
+                  ? "btn-grad text-white shadow-md shadow-[rgba(217,11,23,0.28)]"
+                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#D90B17] hover:text-[#B50812]",
               )}
             >
               <span>{category.label}</span>
@@ -68,7 +68,7 @@ export function PackagesExplorer() {
                   "inline-flex size-5 items-center justify-center rounded-full text-[10px] font-bold",
                   isActive
                     ? "bg-white/20 text-white"
-                    : "bg-[#FFF5F4] text-[#DC3530]",
+                    : "bg-[#FFF1F2] text-[#B50812]",
                 )}
               >
                 {count}
@@ -79,7 +79,7 @@ export function PackagesExplorer() {
       </div>
 
       {/* Category context summary */}
-      <div className="flex flex-col gap-5 rounded-[20px] border border-[rgba(20,20,20,0.08)] bg-[#FFF5F4] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div className="flex flex-col gap-5 rounded-[20px] border border-[rgba(217,11,23,0.14)] bg-[#FFF1F2] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
         <div className="max-w-2xl">
           <p className="chip-eyebrow mb-2">{currentMeta.eyebrow}</p>
           <h2

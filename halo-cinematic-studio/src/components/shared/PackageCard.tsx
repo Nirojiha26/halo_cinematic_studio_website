@@ -26,13 +26,13 @@ export function PackageCard({
       className={cn(
         "relative flex h-full min-h-[32rem] flex-col overflow-hidden rounded-[20px] p-6 transition-all duration-300 sm:p-8",
         isFeatured
-          ? "card-popular shadow-[0_16px_40px_rgba(220,53,48,0.28)]"
-          : "card bg-white border border-[rgba(20,20,20,0.08)] shadow-[0_12px_32px_rgba(220,53,48,0.06)] hover:border-[rgba(220,53,48,0.3)] hover:shadow-[0_16px_36px_rgba(220,53,48,0.14)]",
+          ? "card-popular shadow-[0_16px_40px_rgba(217,11,23,0.32)]"
+          : "card bg-white border border-[rgba(20,20,20,0.08)] shadow-[0_12px_32px_rgba(217,11,23,0.07)] hover:border-[rgba(217,11,23,0.32)] hover:shadow-[0_16px_36px_rgba(217,11,23,0.16)]",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2 text-xs font-medium">
-          <span className={isFeatured ? "text-white/80" : "text-[#DC3530]"}>
+          <span className={isFeatured ? "text-white/80" : "text-[#B50812]"}>
             {pad2(index + 1)}
           </span>
           <span aria-hidden className={isFeatured ? "text-white/40" : "text-[rgba(20,20,20,0.15)]"}>
@@ -47,8 +47,8 @@ export function PackageCard({
           className={cn(
             "rounded-full px-3 py-1 text-xs font-semibold",
             isFeatured
-              ? "bg-white text-[#DC3530]"
-              : "bg-[#FFF5F4] text-[#DC3530]",
+              ? "bg-white text-[#B50812]"
+              : "bg-[#FFF1F2] text-[#B50812]",
           )}
         >
           {pkg.tierLabel}
@@ -81,7 +81,7 @@ export function PackageCard({
           style={{ fontFamily: "'Playfair Display', serif" }}
           className={cn(
             "text-3xl font-semibold tracking-tight",
-            isFeatured ? "text-white" : "text-[#DC3530]",
+            isFeatured ? "text-white" : "text-[#D90B17]",
           )}
         >
           {pkg.priceDisplay}
@@ -98,7 +98,7 @@ export function PackageCard({
             )}
           >
             <Check
-              className={cn("mt-0.5 size-4 shrink-0", isFeatured ? "text-white" : "text-[#DC3530]")}
+              className={cn("mt-0.5 size-4 shrink-0", isFeatured ? "text-white" : "text-[#D90B17]")}
               aria-hidden
             />
             <span>{item}</span>
@@ -120,7 +120,7 @@ export function PackageCard({
           className={cn(
             "inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl text-sm font-medium transition-all",
             isFeatured
-              ? "bg-white text-[#DC3530] hover:bg-[#FFF5F4]"
+              ? "bg-white text-[#B50812] hover:bg-[#FFF1F2]"
               : "btn-grad text-white shadow-xs",
           )}
         >
