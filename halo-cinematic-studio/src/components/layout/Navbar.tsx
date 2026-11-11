@@ -1,81 +1,102 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { cn, isActivePath } from "@/lib/utils";
 import { Logo } from "@/components/shared/Logo";
-import { MusicToggle } from "@/components/shared/MusicToggle";
 import { MobileMenu } from "./MobileMenu";
 import { Container } from "@/components/ui/Container";
 
 export function Navbar() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[1000] h-[72px] bg-white/85 backdrop-blur-md transition-all lg:h-[80px]">
-      <Container className="flex h-full items-center justify-between">
-        {/* Left: Logo & Links together */}
-        <div className="flex items-center gap-6 lg:gap-8">
-          <Link
-            href="/"
-            className="flex shrink-0 items-center gap-3 transition-opacity hover:opacity-90"
-            aria-label={`${siteConfig.name} — Home`}
-          >
-            <Logo sizes="112px" eager alt="" className="h-auto w-[92px] sm:w-[112px]" />
-          </Link>
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-[1000] transition-all duration-300",
+        scrolled
+          ? "bg-white/88 backdrop-blur-md shadow-[0_4px_24px_rgba(20,20,20,0.04)]"
+          : "bg-transparent",
+      )}
+    >
+      <Container>
+        <div className="flex h-[80px] items-center justify-between lg:h-[88px]">
+          {/* Left: Logo + Nav Links aligned cleanly side-by-side */}
+          <div className="flex items-center gap-10 xl:gap-12">
+            <Link
+              href="/"
+              className="flex shrink-0 items-center transition-opacity hover:opacity-90"
+              aria-label={`${siteConfig.name} — Home`}
+            >
+              <Logo sizes="128px" eager alt="" className="h-auto w-[104px] sm:w-[120px]" />
+            </Link>
 
-          {/* Desktop Links directly beside logo */}
-          <nav aria-label="Main navigation" className="hidden lg:flex">
-            <ul className="flex items-center gap-7">
-              {siteConfig.nav.map((item) => {
-                const active = isActivePath(pathname, item.href);
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      aria-current={active ? "page" : undefined}
-                      className={cn(
-                        "relative py-1 text-sm font-medium transition-colors duration-200",
-                        active
-                          ? "text-[#DC3530] font-semibold"
-                          : "text-[#5F5A5A] hover:text-[#DC3530]",
-                      )}
-                    >
-                      {item.label}
-                      {active ? (
-                        <span
-                          aria-hidden
-                          className="absolute inset-x-0 -bottom-2 h-[2px] rounded-full bg-[#DC3530]"
-                        />
-                      ) : null}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+            <nav aria-label="Main navigation" className="hidden lg:flex">
+              <ul className="flex items-center gap-8">
+                {siteConfig.nav.map((item) => {
+                  const active = isActivePath(pathname, item.href);
+                  return (
+                    <li key={item.href} className="flex items-center">
+                      <Link
+                        href={item.href}
+                        aria-current={active ? "page" : undefined}
+                        className={cn(
+                          "relative inline-flex items-center py-1.5 text-[15px] font-medium leading-none transition-colors duration-200",
+                          active
+                            ? "font-semibold text-[#DC3530]"
+                            : "text-[#141414]/85 hover:text-[#DC3530]",
+                        )}
+                      >
+                        <span>{item.label}</span>
+                        {active ? (
+                          <span
+                            aria-hidden
+                            className="absolute inset-x-0 -bottom-1 h-[2px] rounded-full bg-[#DC3530]"
+                          />
+                        ) : null}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Right: Gradient Book Now CTA only */}
+          <div className="hidden items-center lg:flex">
+            <Link
+              href={siteConfig.cta.href}
+              className="btn-grad inline-flex h-11 items-center justify-center rounded-xl px-6 text-sm font-medium text-white shadow-[0_8px_20px_rgba(220,53,48,0.24)] transition-all hover:shadow-[0_10px_24px_rgba(220,53,48,0.34)]"
+            >
+              {siteConfig.cta.label}
+            </Link>
+          </div>
+
+          {/* Mobile Menu Trigger (No sound icon) */}
+          <div className="flex items-center lg:hidden">
+            <MobileMenu pathname={pathname} />
+          </div>
         </div>
 
-        {/* Right: Music toggle + Book Now CTA */}
-        <div className="hidden items-center gap-4 lg:flex">
-          <MusicToggle />
-          <Link
-            href={siteConfig.cta.href}
-            className="btn-grad inline-flex h-10 items-center justify-center rounded-xl px-5 text-sm font-medium text-white shadow-sm transition-all"
-          >
-            {siteConfig.cta.label}
-          </Link>
-        </div>
-
-        {/* Mobile controls */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <MusicToggle />
-          <MobileMenu pathname={pathname} />
-        </div>
+        {/* Inset container-width divider line matching Lime reference */}
+        <div
+          aria-hidden
+          className={cn(
+            "h-px w-full transition-colors duration-300",
+            scrolled ? "bg-transparent" : "bg-[rgba(20,20,20,0.08)]",
+          )}
+        />
       </Container>
-
-      <div className="h-px bg-[rgba(20,20,20,0.08)]" />
     </header>
   );
 }

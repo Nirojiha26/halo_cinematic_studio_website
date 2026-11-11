@@ -25,7 +25,7 @@ export function AboutPreview() {
   return (
     <section className="section-white py-[var(--space-section)]">
       <Container>
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* LEFT — manifesto card */}
           <div className="order-2 lg:order-1">
             <div
@@ -107,7 +107,7 @@ export function AboutPreview() {
 
           {/* RIGHT — text */}
           <div className="order-1 lg:order-2 max-w-xl">
-            <p className="chip-eyebrow">Who We Are</p>
+            <p className="chip-eyebrow mb-4">Who We Are</p>
             <h2
               style={{
                 fontFamily: "'Playfair Display', serif",
