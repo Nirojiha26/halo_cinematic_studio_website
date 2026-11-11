@@ -7,13 +7,14 @@ import { cn, isActivePath } from "@/lib/utils";
 import { Logo } from "@/components/shared/Logo";
 import { MusicToggle } from "@/components/shared/MusicToggle";
 import { MobileMenu } from "./MobileMenu";
+import { Container } from "@/components/ui/Container";
 
 export function Navbar() {
   const pathname = usePathname();
 
   return (
     <header className="fixed inset-x-0 top-0 z-[1000] h-[72px] bg-white/85 backdrop-blur-md transition-all lg:h-[80px]">
-      <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
+      <Container className="flex h-full items-center justify-between">
         {/* Left: Logo & Links together */}
         <div className="flex items-center gap-6 lg:gap-8">
           <Link
@@ -21,10 +22,8 @@ export function Navbar() {
             className="flex shrink-0 items-center gap-3 transition-opacity hover:opacity-90"
             aria-label={`${siteConfig.name} — Home`}
           >
-            <Logo sizes="120px" eager alt="" className="h-[38px] w-auto sm:h-[42px]" />
+            <Logo sizes="112px" eager alt="" className="h-auto w-[92px] sm:w-[112px]" />
           </Link>
-
-          <span className="hidden h-5 w-px bg-[rgba(20,20,20,0.08)] lg:block" aria-hidden />
 
           {/* Desktop Links directly beside logo */}
           <nav aria-label="Main navigation" className="hidden lg:flex">
@@ -71,15 +70,12 @@ export function Navbar() {
 
         {/* Mobile controls */}
         <div className="flex items-center gap-2 lg:hidden">
-          <MusicToggle compact />
+          <MusicToggle />
           <MobileMenu pathname={pathname} />
         </div>
-      </div>
+      </Container>
 
-      {/* Inset thin divider line under nav */}
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <div className="h-px w-full bg-[rgba(20,20,20,0.08)]" />
-      </div>
+      <div className="h-px bg-[rgba(20,20,20,0.08)]" />
     </header>
   );
 }

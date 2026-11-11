@@ -15,7 +15,7 @@ const sizes = {
 };
 
 export function Container({ as: Tag = "div", className, children, size = "default" }: ContainerProps) {
-  return <Tag className={cn("mx-auto w-full px-5 sm:px-8 lg:px-12", sizes[size], className)}>{children}</Tag>;
+  return <Tag className={cn("site-container", sizes[size], className)}>{children}</Tag>;
 }
 
 const sectionTones = {
@@ -44,7 +44,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={cn("relative py-20 sm:py-24 lg:py-28", sectionTones[tone], className)}
+      className={cn("relative py-[var(--space-section)]", sectionTones[tone], className)}
     >
       {children}
     </section>

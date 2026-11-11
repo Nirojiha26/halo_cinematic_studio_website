@@ -28,7 +28,7 @@ export function PackagesPreview() {
         />
 
         {/* Quick category filter pills */}
-        <div className="mb-10 flex flex-wrap gap-2.5">
+        <div className="mb-12 flex flex-wrap gap-3">
           {packageCategories.map((cat) => (
             <Link
               key={cat.slug}
@@ -41,7 +41,7 @@ export function PackagesPreview() {
           ))}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
           {featuredPackages.map((pkg, i) => (
             <Reveal key={pkg.slug} delay={Math.min(i * 0.06, 0.24)}>
               <PackageCard pkg={pkg} index={i} showCategoryBadge />

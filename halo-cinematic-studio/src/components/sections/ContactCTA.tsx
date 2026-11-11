@@ -1,4 +1,5 @@
 import { siteConfig, whatsappUrl } from "@/config/site";
+import { Container } from "@/components/ui/Container";
 
 export function ContactCTA() {
   return (
@@ -13,7 +14,7 @@ export function ContactCTA() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(255,255,255,0.25)_0%,transparent_70%)]"
       />
 
-      <div className="relative z-10 mx-auto max-w-3xl">
+      <Container className="relative z-10 max-w-3xl text-center">
         <h2
           style={{
             fontFamily: "'Playfair Display', serif",
@@ -47,7 +48,7 @@ export function ContactCTA() {
             Call {siteConfig.contact.phoneDisplay}
           </a>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

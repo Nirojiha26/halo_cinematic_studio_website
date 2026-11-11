@@ -27,13 +27,13 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "mb-12 flex flex-col gap-6 lg:mb-14",
-        action != null && !centered && "md:flex-row md:items-end md:justify-between",
+        "mb-12 flex flex-col gap-8 lg:mb-14",
+        action != null && !centered && "md:flex-row md:items-start md:justify-between",
         centered && "items-center text-center",
         className,
       )}
     >
-      <div className={cn("max-w-2xl", centered && "mx-auto")}>
+      <div className={cn("flex max-w-2xl flex-col gap-4", centered && "mx-auto items-center")}>
         {eyebrow ? (
           <p className="chip-eyebrow">{eyebrow}</p>
         ) : null}
@@ -59,7 +59,7 @@ export function SectionHeading({
               fontSize: 17,
               color: "var(--muted)",
               maxWidth: "42rem",
-              marginTop: 16,
+              marginTop: 0,
             }}
           >
             {description}

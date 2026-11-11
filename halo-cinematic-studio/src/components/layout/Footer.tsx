@@ -4,6 +4,7 @@ import { siteConfig, whatsappUrl } from "@/config/site";
 import { packageCategories } from "@/data/packages";
 import { Logo } from "@/components/shared/Logo";
 import { CurrentYear } from "@/components/shared/CurrentYear";
+import { Container } from "@/components/ui/Container";
 
 export function Footer() {
   const { contact, socials } = siteConfig;
@@ -16,7 +17,7 @@ export function Footer() {
         className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(ellipse_at_50%_0%,rgba(220,53,48,0.08)_0%,transparent_70%)]"
       />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-5 pt-16 pb-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr] lg:gap-10 lg:px-12">
+      <Container className="relative z-10 grid gap-12 pt-16 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr] lg:gap-10">
         {/* Brand identity column */}
         <div className="max-w-sm">
           <Link href="/" aria-label={`${siteConfig.name} — Home`} className="inline-block transition-opacity hover:opacity-90">
@@ -117,11 +118,11 @@ export function Footer() {
             ) : null}
           </ul>
         </div>
-      </div>
+      </Container>
 
       {/* Sub-footer copyright */}
       <div className="border-t border-[rgba(20,20,20,0.06)] py-6">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-xs text-[#5F5A5A] sm:flex-row sm:px-8 lg:px-12">
+        <Container className="flex flex-col items-center justify-between gap-4 text-xs text-[#5F5A5A] sm:flex-row">
           <p>© <CurrentYear /> {siteConfig.name}. All rights reserved.</p>
           <p className="flex items-center gap-2">
             <span>Capture</span>
@@ -130,7 +131,7 @@ export function Footer() {
             <span>•</span>
             <span>Inspire</span>
           </p>
-        </div>
+        </Container>
       </div>
     </footer>
   );

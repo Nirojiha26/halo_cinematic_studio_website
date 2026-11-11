@@ -23,13 +23,13 @@ const pillars = [
 
 export function AboutPreview() {
   return (
-    <section className="section-white py-20 md:py-28">
+    <section className="section-white py-[var(--space-section)]">
       <Container>
-        <div className="grid items-center gap-16 lg:grid-cols-2">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           {/* LEFT — manifesto card */}
           <div className="order-2 lg:order-1">
             <div
-              className="relative overflow-hidden rounded-[24px] border border-[rgba(20,20,20,0.08)] p-8 shadow-sm"
+              className="relative h-full overflow-hidden rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-6 shadow-sm sm:p-8"
             >
               {/* soft red top-glow */}
               <div
@@ -57,7 +57,7 @@ export function AboutPreview() {
                 {pillars.map((item, i) => (
                   <li
                     key={item.no}
-                    className={`flex gap-4 py-5 ${
+                    className={`grid grid-cols-[3.25rem_1fr] gap-4 py-5 ${
                       i < pillars.length - 1
                         ? "border-b border-[rgba(20,20,20,0.08)]"
                         : ""
@@ -106,7 +106,7 @@ export function AboutPreview() {
           </div>
 
           {/* RIGHT — text */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 max-w-xl">
             <p className="chip-eyebrow">Who We Are</p>
             <h2
               style={{
@@ -127,7 +127,7 @@ export function AboutPreview() {
                 fontWeight: 400,
                 fontSize: 17,
                 color: "var(--muted)",
-                marginTop: 16,
+                marginTop: 20,
                 lineHeight: 1.65,
               }}
             >
@@ -140,14 +140,14 @@ export function AboutPreview() {
                 fontWeight: 400,
                 fontSize: 17,
                 color: "var(--muted)",
-                marginTop: 16,
+                marginTop: 20,
                 lineHeight: 1.65,
               }}
             >
               From the emotion of a wedding day to the energy of a music video, we bring creativity,
               care and cinematic detail to every project.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap gap-4">
               <Link href="/about" className="btn-grad inline-flex items-center gap-2">
                 Our Story
                 <ArrowRight size={16} aria-hidden />

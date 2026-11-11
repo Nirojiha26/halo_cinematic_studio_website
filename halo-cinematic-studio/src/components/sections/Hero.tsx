@@ -42,65 +42,68 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="hero-bg relative pt-28 md:pt-36 pb-8 overflow-hidden"
+      className="hero-bg relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28"
       style={{ minHeight: "calc(100vh - 72px)" }}
     >
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-5 text-center">
-        {/* 1. Halo-ring SVG emblem */}
-        <div className="relative mb-2 flex items-center justify-center">
-          <svg
-            width={84}
-            height={84}
-            viewBox="0 0 96 96"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            className="blob-anim"
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 text-center">
+        {/* 1. Concentric Halo Lens SVG Emblem (Centered horizontally with mx-auto) */}
+        <div className="mx-auto mb-4 flex items-center justify-center">
+          <div
+            className="blob-anim relative grid place-items-center rounded-full"
+            style={{
+              width: "76px",
+              height: "76px",
+              background: "rgba(220, 53, 48, 0.08)",
+              border: "2px solid rgba(220, 53, 48, 0.65)",
+              boxShadow: "0 10px 28px rgba(220, 53, 48, 0.16)",
+            }}
           >
-            <defs>
-              <linearGradient id="haloGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#B91C24" />
-                <stop offset="50%" stopColor="#DC3530" />
-                <stop offset="100%" stopColor="#F2574B" />
-              </linearGradient>
-            </defs>
-            <circle cx={48} cy={48} r={42} fill="rgba(220,53,48,0.06)" />
-            <circle
-              cx={48}
-              cy={48}
-              r={36}
-              fill="none"
-              stroke="url(#haloGrad)"
-              strokeWidth={3}
-              strokeDasharray="4 2"
+            {/* Middle dashed lens ring */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                inset: "8px",
+                border: "1.5px dashed rgba(220, 53, 48, 0.5)",
+              }}
             />
-            <circle
-              cx={48}
-              cy={48}
-              r={24}
-              fill="none"
-              stroke="url(#haloGrad)"
-              strokeWidth={2}
+            {/* Inner ring */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                inset: "16px",
+                border: "1px solid rgba(220, 53, 48, 0.4)",
+              }}
             />
-            <circle cx={48} cy={48} r={6} fill="#DC3530" />
-          </svg>
+            {/* Core ruby lens dot */}
+            <div
+              className="relative rounded-full"
+              style={{
+                width: "12px",
+                height: "12px",
+                background: "linear-gradient(135deg, #B91C24 0%, #DC3530 50%, #FF5A52 100%)",
+                boxShadow: "0 0 10px rgba(220, 53, 48, 0.4)",
+              }}
+            />
+          </div>
         </div>
 
         {/* 2. Eyebrow chip */}
-        <span className="chip-eyebrow mt-4">
-          Photography · Cinematography · Creative Studio
-        </span>
+        <div className="mx-auto mt-2 mb-4">
+          <span className="chip-eyebrow">
+            Photography · Cinematography · Creative Studio
+          </span>
+        </div>
 
         {/* 3. Headline */}
         <h1
           id="hero-heading"
-          className="mt-3 text-center font-semibold"
+          className="mx-auto text-center font-semibold"
           style={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(38px, 6vw, 72px)",
-            color: "var(--ink)",
+            fontSize: "clamp(42px, 6.5vw, 76px)",
+            color: "#141414",
             lineHeight: 1.1,
-            letterSpacing: "-0.02em",
+            letterSpacing: "-0.025em",
           }}
         >
           Your Story.
@@ -110,11 +113,12 @@ export function Hero() {
 
         {/* 4. Subtext */}
         <p
-          className="mt-4 max-w-xl text-center text-base sm:text-lg"
+          className="mx-auto mt-5 max-w-2xl text-center text-base sm:text-lg"
           style={{
             fontFamily: "'Poppins', sans-serif",
             fontWeight: 400,
-            color: "var(--muted)",
+            color: "#5F5A5A",
+            lineHeight: 1.65,
           }}
         >
           We capture the moments that matter and turn them into timeless
@@ -123,10 +127,10 @@ export function Hero() {
         </p>
 
         {/* 5. CTAs */}
-        <div className="mt-8 flex flex-row items-center justify-center gap-3.5">
+        <div className="mt-8 flex flex-row flex-wrap items-center justify-center gap-4">
           <Link
             href="/packages"
-            className="btn-grad inline-flex items-center gap-2 rounded-xl px-7 text-sm font-medium text-white shadow-md shadow-[rgba(220,53,48,0.25)]"
+            className="btn-grad inline-flex items-center gap-2 rounded-xl px-7 text-sm font-medium text-white shadow-lg shadow-[rgba(220,53,48,0.28)] transition-all hover:scale-[1.02]"
             style={{ height: 48 }}
           >
             <span>View Packages</span>
@@ -134,36 +138,38 @@ export function Hero() {
           </Link>
           <Link
             href="/photos"
-            className="btn-outline inline-flex items-center justify-center rounded-xl px-7 text-sm font-medium"
+            className="btn-outline inline-flex items-center justify-center rounded-xl px-7 text-sm font-medium transition-all hover:bg-[#FFF5F4]"
             style={{ height: 48 }}
           >
             <span>View Photos</span>
           </Link>
         </div>
 
-        {/* 6. Service chips row */}
-        <div className="mt-7 flex flex-wrap justify-center gap-2.5 sm:gap-3">
+        {/* 6. Service category pills (Explicit pill cards with red accent dot) */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {serviceChips.map((chip) => (
             <Link
               key={chip.label}
               href={chip.href}
-              className="rounded-full border border-[rgba(20,20,20,0.08)] bg-white px-4 py-2 text-xs sm:text-sm font-medium text-[#141414] shadow-xs transition-all hover:border-[#DC3530] hover:text-[#DC3530]"
+              className="group inline-flex items-center gap-2 rounded-full border border-[rgba(220,53,48,0.22)] bg-white px-5 py-2.5 text-xs sm:text-sm font-medium text-[#141414] shadow-[0_2px_10px_rgba(220,53,48,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#DC3530] hover:bg-[#FFF5F4] hover:text-[#DC3530] hover:shadow-[0_6px_16px_rgba(220,53,48,0.16)]"
             >
-              {chip.label}
+              <span className="size-1.5 rounded-full bg-[#DC3530] transition-transform group-hover:scale-125" />
+              <span>{chip.label}</span>
             </Link>
           ))}
         </div>
 
-        {/* 7. Staggered Photo cards preview */}
-        <div className="reveal mt-14 flex items-end justify-center gap-3 sm:gap-6 pb-4">
-          {/* Card 1 — left */}
+        {/* 7. Staggered Photo cards preview with rich white frame and deep floating shadow */}
+        <div className="reveal mt-16 flex w-full items-end justify-center gap-3 sm:gap-7 pb-6">
+          {/* Card 1 — Left (Elevated) */}
           <div
-            className="-translate-y-3 overflow-hidden rounded-[16px] sm:rounded-[20px] transition-transform hover:-translate-y-5"
+            className="overflow-hidden rounded-[20px] transition-all duration-300 hover:scale-[1.03]"
             style={{
-              width: "clamp(96px, 22vw, 224px)",
+              width: "clamp(100px, 22vw, 220px)",
               aspectRatio: "4/5",
-              border: "5px solid white",
-              boxShadow: "0 12px 32px rgba(220,53,48,0.12)",
+              border: "6px solid #ffffff",
+              boxShadow: "0 20px 40px -12px rgba(220, 53, 48, 0.22), 0 0 0 1px rgba(220, 53, 48, 0.12)",
+              transform: "translateY(16px)",
               position: "relative",
               flexShrink: 0,
             }}
@@ -176,18 +182,19 @@ export function Hero() {
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
               style={{ objectFit: "cover" }}
-              sizes="(min-width: 640px) 224px, 120px"
+              sizes="(min-width: 640px) 220px, 110px"
             />
           </div>
 
-          {/* Card 2 — centre, larger */}
+          {/* Card 2 — Center (Dominant, taller, elevated) */}
           <div
-            className="overflow-hidden rounded-[18px] sm:rounded-[22px] transition-transform hover:-translate-y-2"
+            className="overflow-hidden rounded-[24px] transition-all duration-300 hover:scale-[1.03]"
             style={{
-              width: "clamp(130px, 28vw, 280px)",
+              width: "clamp(140px, 30vw, 300px)",
               aspectRatio: "4/5",
-              border: "6px solid white",
-              boxShadow: "0 20px 48px rgba(220,53,48,0.18)",
+              border: "6px solid #ffffff",
+              boxShadow: "0 28px 56px -14px rgba(220, 53, 48, 0.3), 0 0 0 1px rgba(220, 53, 48, 0.15)",
+              transform: "translateY(-16px)",
               position: "relative",
               flexShrink: 0,
             }}
@@ -200,18 +207,19 @@ export function Hero() {
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
               style={{ objectFit: "cover" }}
-              sizes="(min-width: 640px) 280px, 150px"
+              sizes="(min-width: 640px) 300px, 160px"
             />
           </div>
 
-          {/* Card 3 — right */}
+          {/* Card 3 — Right (Elevated) */}
           <div
-            className="-translate-y-6 overflow-hidden rounded-[16px] sm:rounded-[20px] transition-transform hover:-translate-y-8"
+            className="overflow-hidden rounded-[20px] transition-all duration-300 hover:scale-[1.03]"
             style={{
-              width: "clamp(96px, 22vw, 224px)",
+              width: "clamp(100px, 22vw, 220px)",
               aspectRatio: "4/5",
-              border: "5px solid white",
-              boxShadow: "0 12px 32px rgba(220,53,48,0.12)",
+              border: "6px solid #ffffff",
+              boxShadow: "0 20px 40px -12px rgba(220, 53, 48, 0.22), 0 0 0 1px rgba(220, 53, 48, 0.12)",
+              transform: "translateY(8px)",
               position: "relative",
               flexShrink: 0,
             }}
@@ -224,7 +232,7 @@ export function Hero() {
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
               style={{ objectFit: "cover" }}
-              sizes="(min-width: 640px) 224px, 120px"
+              sizes="(min-width: 640px) 220px, 110px"
             />
           </div>
         </div>

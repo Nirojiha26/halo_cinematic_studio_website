@@ -14,7 +14,9 @@ export function PackageCard({
   showCategoryBadge?: boolean;
 }) {
   const categoryMeta = getCategoryMeta(pkg.category);
-  const isFeatured = Boolean(pkg.featured);
+  // Preview membership and visual emphasis are separate concerns: only the
+  // package explicitly labelled "Most Popular" receives the red treatment.
+  const isFeatured = pkg.tierLabel === "Most Popular";
   const whatsappEnquiryUrl = whatsappUrl(
     `Hello HALO CINEMATIC STUDIO! I am interested in the ${pkg.name} package (${pkg.priceDisplay}). Could you please share booking availability?`
   );
@@ -22,7 +24,7 @@ export function PackageCard({
   return (
     <article
       className={cn(
-        "relative flex h-full flex-col overflow-hidden rounded-[20px] p-6 transition-all duration-300 sm:p-8",
+        "relative flex h-full min-h-[32rem] flex-col overflow-hidden rounded-[20px] p-6 transition-all duration-300 sm:p-8",
         isFeatured
           ? "card-popular shadow-[0_16px_40px_rgba(220,53,48,0.28)]"
           : "card bg-white border border-[rgba(20,20,20,0.08)] shadow-[0_12px_32px_rgba(220,53,48,0.06)] hover:border-[rgba(220,53,48,0.3)] hover:shadow-[0_16px_36px_rgba(220,53,48,0.14)]",
@@ -86,7 +88,7 @@ export function PackageCard({
         </p>
       </div>
 
-      <ul className="mb-6 flex-1 space-y-3 text-sm leading-relaxed">
+      <ul className="mb-5 flex-1 space-y-3 text-sm leading-relaxed">
         {pkg.highlights.map((item) => (
           <li
             key={item}
@@ -103,6 +105,12 @@ export function PackageCard({
           </li>
         ))}
       </ul>
+
+      {pkg.notes ? (
+        <p className={cn("mb-5 text-xs leading-relaxed", isFeatured ? "text-white/80" : "text-[#5F5A5A]")}>
+          {pkg.notes}
+        </p>
+      ) : null}
 
       <div className="mt-auto pt-2">
         <a

@@ -12,7 +12,7 @@ type Status = "off" | "loading" | "on";
  * Header-integrated studio music toggle (avoids overlapping page or footer copy).
  * Audio is created lazily on click; add a licensed MP3 at public/audio/background.mp3.
  */
-export function MusicToggle({ compact = false }: { compact?: boolean }) {
+export function MusicToggle() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [status, setStatus] = useState<Status>("off");
   const [notice, setNotice] = useState<string | null>(null);
@@ -60,11 +60,10 @@ export function MusicToggle({ compact = false }: { compact?: boolean }) {
         title="Studio audio"
         disabled={status === "loading"}
         className={cn(
-          "inline-flex h-10 items-center justify-center gap-2 rounded-card border transition-colors duration-200 disabled:opacity-60",
+          "inline-flex size-10 items-center justify-center rounded-full border transition-colors duration-200 disabled:opacity-60",
           on
-            ? "border-brand bg-brand-tint text-brand-deep"
-            : "border-line bg-canvas text-body hover:border-ink hover:text-ink",
-          compact ? "w-10 px-0" : "px-3.5 text-[11px] font-bold tracking-[0.12em] uppercase",
+            ? "border-[#DC3530] bg-[#FFF5F4] text-[#B91C24]"
+            : "border-[rgba(20,20,20,0.12)] bg-white text-[#5F5A5A] hover:border-[#141414] hover:text-[#141414]",
         )}
       >
         {on ? (
@@ -83,7 +82,7 @@ export function MusicToggle({ compact = false }: { compact?: boolean }) {
         ) : (
           <VolumeX className="size-3.5" aria-hidden />
         )}
-        {!compact ? <span>Music: {on ? "On" : "Off"}</span> : null}
+        <span className="sr-only">Music: {on ? "On" : "Off"}</span>
       </button>
 
       <AnimatePresence>
@@ -93,7 +92,7 @@ export function MusicToggle({ compact = false }: { compact?: boolean }) {
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="absolute top-full right-0 z-50 mt-2 w-56 rounded-card border border-line-strong bg-canvas px-3 py-2 text-xs font-medium text-ink shadow-[0_12px_30px_-10px_rgba(10,10,11,0.2)]"
+            className="absolute top-full right-0 z-50 mt-2 w-56 rounded-xl border border-[rgba(20,20,20,0.15)] bg-white px-3 py-2 text-xs font-medium text-[#141414] shadow-[0_12px_30px_-10px_rgba(10,10,11,0.2)]"
           >
             {notice}
           </motion.p>
