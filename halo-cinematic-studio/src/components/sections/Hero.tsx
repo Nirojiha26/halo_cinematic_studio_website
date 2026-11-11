@@ -42,50 +42,53 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="hero-bg relative overflow-hidden pt-36 pb-28 sm:pt-44 sm:pb-36 lg:pt-48 lg:pb-40"
+      className="hero-bg relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28"
+      style={{ minHeight: "calc(100vh - 72px)" }}
     >
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 text-center">
-        {/* 1. Concentric Halo Camera-Lens SVG Emblem */}
-        <div className="mx-auto mb-5 flex items-center justify-center">
+        {/* 1. Concentric Halo Lens SVG Emblem (Centered horizontally with mx-auto) */}
+        <div className="mx-auto mb-4 flex items-center justify-center">
           <div
-            className="blob-anim relative grid size-18 place-items-center rounded-full sm:size-20"
+            className="blob-anim relative grid place-items-center rounded-full"
             style={{
+              width: "76px",
+              height: "76px",
               background: "rgba(220, 53, 48, 0.08)",
               border: "2px solid rgba(220, 53, 48, 0.65)",
               boxShadow: "0 10px 28px rgba(220, 53, 48, 0.16)",
             }}
           >
-            {/* Middle dashed aperture ring */}
+            {/* Middle dashed lens ring */}
             <div
               className="absolute rounded-full"
               style={{
-                inset: "9px",
-                border: "1.5px dashed rgba(220, 53, 48, 0.55)",
+                inset: "8px",
+                border: "1.5px dashed rgba(220, 53, 48, 0.5)",
               }}
             />
             {/* Inner ring */}
             <div
               className="absolute rounded-full"
               style={{
-                inset: "17px",
+                inset: "16px",
                 border: "1px solid rgba(220, 53, 48, 0.4)",
               }}
             />
-            {/* Core ruby lens glass */}
+            {/* Core ruby lens dot */}
             <div
               className="relative rounded-full"
               style={{
-                width: "14px",
-                height: "14px",
+                width: "12px",
+                height: "12px",
                 background: "linear-gradient(135deg, #B91C24 0%, #DC3530 50%, #FF5A52 100%)",
-                boxShadow: "0 0 12px rgba(220, 53, 48, 0.5)",
+                boxShadow: "0 0 10px rgba(220, 53, 48, 0.4)",
               }}
             />
           </div>
         </div>
 
         {/* 2. Eyebrow chip */}
-        <div className="mx-auto mb-5">
+        <div className="mx-auto mt-2 mb-4">
           <span className="chip-eyebrow">
             Photography · Cinematography · Creative Studio
           </span>
@@ -110,12 +113,12 @@ export function Hero() {
 
         {/* 4. Subtext */}
         <p
-          className="mx-auto mt-6 max-w-2xl text-center text-base sm:text-lg"
+          className="mx-auto mt-5 max-w-2xl text-center text-base sm:text-lg"
           style={{
             fontFamily: "'Poppins', sans-serif",
             fontWeight: 400,
             color: "#5F5A5A",
-            lineHeight: 1.7,
+            lineHeight: 1.65,
           }}
         >
           We capture the moments that matter and turn them into timeless
@@ -143,12 +146,12 @@ export function Hero() {
         </div>
 
         {/* 6. Service category pills (Explicit pill cards with red accent dot) */}
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:gap-3.5">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {serviceChips.map((chip) => (
             <Link
               key={chip.label}
               href={chip.href}
-              className="group inline-flex items-center gap-2 rounded-full border border-[rgba(220,53,48,0.25)] bg-white px-5 py-2.5 text-xs sm:text-sm font-medium text-[#141414] shadow-[0_3px_12px_rgba(220,53,48,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#DC3530] hover:bg-[#FFF5F4] hover:text-[#DC3530] hover:shadow-[0_6px_18px_rgba(220,53,48,0.18)]"
+              className="group inline-flex items-center gap-2 rounded-full border border-[rgba(220,53,48,0.22)] bg-white px-5 py-2.5 text-xs sm:text-sm font-medium text-[#141414] shadow-[0_2px_10px_rgba(220,53,48,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#DC3530] hover:bg-[#FFF5F4] hover:text-[#DC3530] hover:shadow-[0_6px_16px_rgba(220,53,48,0.16)]"
             >
               <span className="size-1.5 rounded-full bg-[#DC3530] transition-transform group-hover:scale-125" />
               <span>{chip.label}</span>
@@ -156,17 +159,17 @@ export function Hero() {
           ))}
         </div>
 
-        {/* 7. Staggered Photo cards preview with generous margin-top to prevent any overlap */}
-        <div className="reveal mt-28 flex w-full items-center justify-center gap-4 sm:mt-32 sm:gap-7 md:mt-36">
-          {/* Card 1 — Left (Offset downward) */}
+        {/* 7. Staggered Photo cards preview with rich white frame and deep floating shadow */}
+        <div className="reveal mt-16 flex w-full items-end justify-center gap-3 sm:gap-7 pb-6">
+          {/* Card 1 — Left (Elevated) */}
           <div
             className="overflow-hidden rounded-[20px] transition-all duration-300 hover:scale-[1.03]"
             style={{
-              width: "clamp(96px, 22vw, 220px)",
+              width: "clamp(100px, 22vw, 220px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
               boxShadow: "0 20px 40px -12px rgba(220, 53, 48, 0.22), 0 0 0 1px rgba(220, 53, 48, 0.12)",
-              transform: "translateY(24px)",
+              transform: "translateY(16px)",
               position: "relative",
               flexShrink: 0,
             }}
@@ -183,15 +186,15 @@ export function Hero() {
             />
           </div>
 
-          {/* Card 2 — Center (Hero focus, taller, standing proud) */}
+          {/* Card 2 — Center (Dominant, taller, elevated) */}
           <div
             className="overflow-hidden rounded-[24px] transition-all duration-300 hover:scale-[1.03]"
             style={{
-              width: "clamp(136px, 28vw, 290px)",
+              width: "clamp(140px, 30vw, 300px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
-              boxShadow: "0 28px 56px -14px rgba(220, 53, 48, 0.32), 0 0 0 1px rgba(220, 53, 48, 0.16)",
-              transform: "translateY(-8px)",
+              boxShadow: "0 28px 56px -14px rgba(220, 53, 48, 0.3), 0 0 0 1px rgba(220, 53, 48, 0.15)",
+              transform: "translateY(-16px)",
               position: "relative",
               flexShrink: 0,
             }}
@@ -204,19 +207,19 @@ export function Hero() {
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
               style={{ objectFit: "cover" }}
-              sizes="(min-width: 640px) 290px, 150px"
+              sizes="(min-width: 640px) 300px, 160px"
             />
           </div>
 
-          {/* Card 3 — Right (Offset downward) */}
+          {/* Card 3 — Right (Elevated) */}
           <div
             className="overflow-hidden rounded-[20px] transition-all duration-300 hover:scale-[1.03]"
             style={{
-              width: "clamp(96px, 22vw, 220px)",
+              width: "clamp(100px, 22vw, 220px)",
               aspectRatio: "4/5",
               border: "6px solid #ffffff",
               boxShadow: "0 20px 40px -12px rgba(220, 53, 48, 0.22), 0 0 0 1px rgba(220, 53, 48, 0.12)",
-              transform: "translateY(24px)",
+              transform: "translateY(8px)",
               position: "relative",
               flexShrink: 0,
             }}

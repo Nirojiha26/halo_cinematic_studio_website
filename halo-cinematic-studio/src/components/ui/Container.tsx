@@ -15,7 +15,7 @@ const sizes = {
 };
 
 export function Container({ as: Tag = "div", className, children, size = "default" }: ContainerProps) {
-  return <Tag className={cn("site-container", sizes[size], className)}>{children}</Tag>;
+  return <Tag className={cn("site-container relative z-10", sizes[size], className)}>{children}</Tag>;
 }
 
 const sectionTones = {
