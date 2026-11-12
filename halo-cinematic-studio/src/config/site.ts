@@ -12,16 +12,16 @@ export type SocialLink = { label: string; href: string };
 export const siteConfig = {
   name: "HALO CINEMATIC STUDIO",
   shortName: "HALO",
-  tagline: "Capture • Create • Inspire",
-  motto: "Your Moments. Our Vision. Your Story.",
+  tagline: "Capture every precious moment",
+  motto: "Every moment deserves to be remembered.",
   description:
-    "HALO CINEMATIC STUDIO — Wedding photography, cinematography, documentaries, music videos, editing and custom photo frames.",
+    "HALO CINEMATIC STUDIO — Wedding photography and cinematic films crafted with feeling in Nelliady, Sri Lanka.",
   /** Set this to the production domain once deployed (used for metadata). */
   url: "https://halocinematicstudio.com",
   themeColor: "#ffffff",
 
   logo: {
-    src: "/logos/logo-1.png",
+    src: "/logos/logo.png",
     width: 1536,
     height: 1024,
     alt: "HALO Cinematic Studio logo",

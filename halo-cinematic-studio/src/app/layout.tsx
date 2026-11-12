@@ -24,7 +24,7 @@ const archivo = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Capture • Create • Inspire`,
+    default: `${siteConfig.name} | Capture every precious moment`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Capture • Create • Inspire`,
+    title: `${siteConfig.name} | Capture every precious moment`,
     description: siteConfig.description,
     images: [{ url: siteConfig.logo.src, width: siteConfig.logo.width, height: siteConfig.logo.height }],
   },

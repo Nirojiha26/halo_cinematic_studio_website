@@ -57,7 +57,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
         aria-controls={panelId}
         aria-haspopup="dialog"
         aria-label="Open menu"
-        className="grid size-10 place-items-center rounded-xl border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] shadow-xs transition-colors hover:border-[#D90B17] hover:text-[#D90B17]"
+        className="grid size-10 place-items-center rounded-full border border-white/20 bg-transparent text-white transition-colors hover:border-[#D90B17] hover:text-[#F51420]"
       >
         <Menu className="size-5" aria-hidden />
       </button>
@@ -77,28 +77,28 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8, transition: { duration: 0.2 } }}
                   transition={{ duration: 0.25 }}
-                  className="fixed inset-0 z-[1100] flex flex-col bg-white/98 backdrop-blur-xl lg:hidden"
+                  className="fixed inset-0 z-[1100] flex flex-col bg-[#090909] text-white lg:hidden"
                 >
                   {/* Header bar */}
-                  <div className="flex h-[72px] shrink-0 items-center justify-between border-b border-[rgba(20,20,20,0.08)] px-5 sm:px-8">
-                    <Link href="/" onClick={close} className="flex items-center gap-3" aria-label="Home">
-                      <Logo sizes="100px" alt="" className="h-[38px] w-auto" />
+                  <div className="flex h-[92px] shrink-0 items-center justify-between border-b border-white/10 px-5 sm:px-8">
+                    <Link href="/" onClick={close} className="flex items-center" aria-label="Home">
+                      <Logo sizes="140px" alt="" className="h-auto w-[128px] object-contain" />
                     </Link>
                     <button
                       type="button"
                       onClick={close}
                       aria-label="Close menu"
-                      className="grid size-10 place-items-center rounded-xl border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#D90B17] hover:text-[#D90B17]"
+                      className="grid size-10 place-items-center rounded-full border border-white/20 text-white transition-colors hover:border-[#D90B17] hover:text-[#F51420]"
                     >
                       <X className="size-5" aria-hidden />
                     </button>
                   </div>
 
                   {/* Navigation Links */}
-                  <div className="flex-1 overflow-y-auto px-6 py-8">
-                    <p className="chip-eyebrow mb-6">Navigation</p>
+                  <div className="flex flex-1 flex-col overflow-y-auto px-6 py-8">
+                    <p className="mb-7 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#F51420]">Navigation</p>
                     <nav aria-label="Mobile menu links">
-                      <ul className="space-y-4">
+                      <ul className="space-y-1">
                         {siteConfig.nav.map((item, i) => {
                           const active = isActivePath(pathname, item.href);
                           return (
@@ -108,10 +108,10 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                                 href={item.href}
                                 onClick={close}
                                 className={cn(
-                                  "flex items-center justify-between rounded-xl p-3 text-lg font-medium transition-colors",
+                                  "flex items-center justify-between border-b border-white/10 px-0 py-4 text-[clamp(1.7rem,7vw,2.7rem)] font-serif transition-colors",
                                   active
-                                    ? "bg-[#FFF1F2] text-[#D90B17] font-semibold"
-                                    : "text-[#141414] hover:bg-[#FFF1F2] hover:text-[#D90B17]",
+                                    ? "text-[#F51420]"
+                                    : "text-white hover:text-[#F51420]",
                                 )}
                               >
                                 <span>{item.label}</span>
@@ -126,11 +126,11 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                     </nav>
 
                     {/* CTAs */}
-                    <div className="mt-8 space-y-3 pt-6 border-t border-[rgba(20,20,20,0.08)]">
+                    <div className="mt-auto space-y-3 border-t border-white/10 pt-6">
                       <Link
                         href={siteConfig.cta.href}
                         onClick={close}
-                        className="btn-grad flex h-12 w-full items-center justify-center rounded-xl text-sm font-medium text-white shadow-sm"
+                        className="hero-nav-cta flex h-12 w-full items-center justify-center rounded-full text-sm font-semibold uppercase tracking-[0.14em] text-white"
                       >
                         {siteConfig.cta.label}
                       </Link>
@@ -138,7 +138,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                       <div className="grid grid-cols-2 gap-3 pt-2">
                         <a
                           href={`tel:${siteConfig.contact.phoneIntl}`}
-                          className="btn-outline flex h-11 items-center justify-center gap-2 rounded-xl text-xs font-medium"
+                          className="flex h-11 items-center justify-center gap-2 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#F51420]"
                         >
                           <Phone className="size-3.5" />
                           <span>Call Studio</span>
@@ -147,7 +147,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                           href={whatsappUrl()}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-outline flex h-11 items-center justify-center gap-2 rounded-xl text-xs font-medium"
+                          className="flex h-11 items-center justify-center gap-2 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#F51420]"
                         >
                           <MessageCircle className="size-3.5" />
                           <span>WhatsApp</span>

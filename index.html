@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#090909">
 <meta name="description" content="HALO CINEMATIC STUDIO — Wedding photography, cinematography, documentaries, music videos, editing and custom photo frames.">
-<title>HALO CINEMATIC STUDIO | Capture • Create • Inspire</title>
-<link rel="icon" type="image/png" href="assets/logo.png">
+<title>HALO CINEMATIC STUDIO | Capture every precious moment</title>
+<link rel="icon" type="image/png" href="halo-cinematic-studio/assets/logo.png">
 <style>
 :root{--red:#ed171f;--red2:#a90009;--bg:#080808;--panel:#111;--muted:#aaa;--white:#f7f7f7}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -60,21 +60,65 @@ footer{padding:28px 7%;border-top:1px solid #292929;display:flex;justify-content
 @media(max-width:900px){.brand img{width:125px}nav{gap:13px}nav a{font-size:10px}.hero-logo{right:2%;opacity:.28;width:55vw}.service-grid{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
 @media(max-width:650px){header{height:68px;padding:0 5%}.brand{min-width:0}.brand img{width:112px;height:58px}.menu{display:block}nav{display:none;position:absolute;top:68px;left:0;right:0;background:#090909;padding:20px 6%;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start}nav.open{display:flex}nav a{font-size:12px}.hero{padding:115px 6% 80px;min-height:90vh}.hero-logo{width:80vw;right:-15%;top:28%;opacity:.18}.hero h1{letter-spacing:-1px}.hero p{font-size:15px}section{padding:75px 6%}.service-grid,.portfolio-grid{grid-template-columns:1fr}.portfolio-item{height:220px}.team-box{padding:28px;display:block}.team-box .btn{margin-top:20px}form{padding:20px}footer{padding:25px 6%}.float-wa{right:12px;bottom:14px}.music-toggle{left:12px;bottom:14px}}
 </style>
+<style>
+/* Root preview page: keep the standalone entrypoint aligned with the Next app. */
+:root{--red:#d90b17;--red2:#b50812;--bg:#fff;--panel:#fff;--muted:#5f5a5a;--white:#141414}
+html{scroll-padding-top:96px}
+body{background:#fff;color:#141414;font-family:Arial,Helvetica,sans-serif}
+header{height:84px;background:#fffffff5;border-bottom:1px solid #14141418;padding:0 6%;display:grid;grid-template-columns:1fr auto 1fr;justify-content:initial;box-shadow:0 8px 28px #14141412}
+.brand{display:inline-flex;align-items:center;justify-content:center;justify-self:start;width:126px;height:64px;min-width:0;background:#090909;border-radius:14px;padding:3px 6px;overflow:hidden;box-shadow:0 10px 22px #14141424}
+.brand img{width:112px;height:56px;filter:none}
+nav{justify-self:center;gap:36px}
+nav a{font-size:17px;text-transform:none;letter-spacing:-.2px;color:#141414;font-weight:700}
+nav a:hover{color:var(--red)}
+nav a:not(.btn){position:relative}
+nav a:not(.btn):after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:3px;border-radius:999px;background:var(--red);transform:scaleX(0);transition:.2s}
+nav a:not(.btn):hover:after{transform:scaleX(1)}
+nav .btn{position:absolute;right:6%;top:18px;background:linear-gradient(135deg,#8e050d,#d90b17 52%,#f51420);border-radius:12px;padding:14px 28px;color:#fff;font-size:15px;text-transform:none;letter-spacing:0;font-weight:700;box-shadow:0 10px 24px #d90b172e}
+.btn{background:linear-gradient(135deg,#8e050d,#d90b17 52%,#f51420);border-radius:12px;padding:14px 26px;color:#fff;border:0;text-transform:none;letter-spacing:0;font-size:15px}
+.btn.outline{background:#fff;color:var(--red);border:1.5px solid var(--red)}
+.btn.outline:hover{background:#fff1f2;color:var(--red2)}
+.hero{min-height:calc(100vh - 84px);padding:130px 7% 80px;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.82fr);gap:70px;align-items:center;background:radial-gradient(42% 62% at 100% 26%,#d90b172e 0,transparent 74%),radial-gradient(34% 46% at 0% 4%,#14141414 0,transparent 72%),linear-gradient(180deg,#fff 0,#fff 68%,#fff4f4 100%)}
+.hero:after{right:-120px;top:18%;border-color:#d90b1738;box-shadow:0 0 0 45px #d90b170a,0 0 0 95px #d90b1706}
+.hero-content{max-width:720px;position:relative;z-index:2}
+.eyebrow{color:var(--red2);font-size:13px;font-weight:700;letter-spacing:.3px;text-transform:none}
+.hero h1{font-family:Arial,Helvetica,sans-serif;font-size:clamp(52px,6.3vw,108px);font-weight:800;line-height:.91;margin:0 0 28px;letter-spacing:-6px;text-transform:uppercase;color:#101010}
+.hero h1 span{color:var(--red);display:block}
+.hero p{color:#5f5a5a;max-width:560px;font-size:18px;line-height:1.75;margin-bottom:34px}
+.hero-logo{position:relative;right:auto;top:auto;width:100%;max-width:560px;height:auto;aspect-ratio:.82;object-fit:cover;object-position:center;opacity:1;filter:none;z-index:1;border:7px solid #fff;border-radius:28px;box-shadow:0 28px 70px #14141438}
+.hero-actions{display:flex;gap:13px;flex-wrap:wrap}.hero-bottom{position:static;margin-top:46px;font-size:12px;letter-spacing:2px;color:#141414;font-weight:700;border-top:1px solid #1414141f;padding-top:18px}
+section{padding:100px 7%;background:#fff;color:#141414}
+.about,.services,.portfolio,.team,.contact{background:#fff;color:#141414}
+.about{grid-template-columns:1fr 1fr;gap:65px}
+.about-mark{min-height:360px;border:1px solid #14141414;background:radial-gradient(circle,#fff1f2 0,#fff 72%)}
+.about-copy p,.section-head p,.team-box p,.contact-info p{color:#5f5a5a}
+.service-card{background:#fff;border:1px solid #14141414;box-shadow:0 12px 30px #1414140b}
+.service-card h3,.team-box h3,.contact-info h3,.section-head h2,.about-copy h2{color:#141414}
+.portfolio-item{background:linear-gradient(140deg,#141414,#3d080d 70%);border-color:#14141414}
+.portfolio-item:nth-child(2n){background:linear-gradient(140deg,#141414,#720c14)}
+.team-box{border:1px solid #14141414;background:linear-gradient(110deg,#fff1f2,#fff)}
+.contact-line{border-bottom-color:#14141414;color:#141414}
+form{background:#fff;border-color:#14141414;box-shadow:0 12px 30px #1414140b}
+.field input,.field textarea,.field select{background:#fff;border-color:#14141424;color:#141414}
+footer{border-top-color:#14141414;color:#5f5a5a;background:#fff}
+.music-toggle{background:#141414;color:#fff;border-color:#141414}
+@media(max-width:900px){header{display:flex;justify-content:space-between}.hero{grid-template-columns:1fr;gap:40px}.hero-logo{grid-row:2;max-width:520px;justify-self:center}nav{gap:16px}nav a{font-size:14px}}
+@media(max-width:650px){header{height:76px;padding:0 5%}.brand{width:104px;height:56px}.brand img{width:96px;height:48px}.menu{display:block;background:#fff;color:#141414;border-color:#14141433;border-radius:10px}nav{top:76px;background:#fff;padding:22px 6%;border-bottom:1px solid #14141414;box-shadow:0 12px 28px #14141412}nav a{font-size:17px}.hero{padding:110px 6% 70px;min-height:auto}.hero h1{font-size:clamp(48px,14vw,82px);letter-spacing:-3px}.hero p{font-size:16px}.hero-logo{width:100%;border-radius:22px}.hero-bottom{margin-top:30px;font-size:10px}}
+</style>
 </head>
 <body>
-<div class="loader" id="loader"><div class="loader-inner"><img src="assets/logo.png" alt="HALO Cinematic Studio"><div class="loader-line"></div><small style="letter-spacing:4px;color:#aaa">CAPTURE • CREATE • INSPIRE</small></div></div>
+<div class="loader" id="loader"><div class="loader-inner"><img src="halo-cinematic-studio/assets/logo.png" alt="HALO Cinematic Studio"><div class="loader-line"></div><small style="letter-spacing:4px;color:#aaa">CAPTURE • CREATE • INSPIRE</small></div></div>
 <header>
-<a class="brand" href="#home"><img src="assets/logo.png" alt="HALO logo"><span>HALO <b>CINEMATIC</b></span></a>
+<a class="brand" href="#home"><img src="halo-cinematic-studio/assets/logo.png" alt="HALO logo"><span>HALO <b>CINEMATIC</b></span></a>
 <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
 <nav id="nav"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#contact">Contact</a><a class="btn" href="#booking">Book Now</a></nav>
 </header>
 <main>
 <section class="hero" id="home">
-<img class="hero-logo" src="assets/logo.png" alt="HALO Cinematic Studio logo">
-<div class="hero-content reveal"><div class="eyebrow">Photography • Cinematography • Creative Studio</div><h1>Your story.<span>Our vision.</span></h1><p>We capture the moments that matter and turn them into timeless memories. From weddings to music videos, every frame is created with passion.</p><div class="hero-actions"><a class="btn" href="#portfolio">Explore Our Work</a><a class="btn outline" href="#booking">Book Your Date</a></div></div>
-<div class="hero-bottom">CAPTURE &nbsp;|&nbsp; CREATE &nbsp;|&nbsp; INSPIRE</div>
+<div class="hero-content reveal"><h1>Capture every<span>precious moment.</span></h1><p>Honest photographs and cinematic films for the days you never want to forget — from wedding celebrations to the quiet details in between.</p><div class="hero-actions"><a class="btn" href="#booking">Start your story →</a><a class="btn outline" href="#portfolio">Explore our work</a></div><div class="hero-bottom">REAL MOMENTS &nbsp;|&nbsp; CAREFULLY MADE</div></div>
+<img class="hero-logo" src="halo-cinematic-studio/public/images/photos/wedding-couple-03.jpg" alt="Bride and groom sharing a traditional wedding portrait">
 </section>
-<section class="about" id="about"><div class="about-mark reveal"><img src="assets/logo.png" alt="HALO logo"></div><div class="about-copy reveal"><div class="eyebrow">Who We Are</div><h2>We make moments <span>timeless.</span></h2><p>HALO CINEMATIC STUDIO is a creative photography and film production studio focused on telling meaningful stories through powerful visuals.</p><p>From the emotion of a wedding day to the energy of a music video, we bring creativity, care and cinematic detail to every project.</p><a class="btn" href="#contact">Talk to Our Team</a></div></section>
+<section class="about" id="about"><div class="about-mark reveal"><img src="halo-cinematic-studio/assets/logo.png" alt="HALO logo"></div><div class="about-copy reveal"><div class="eyebrow">Who We Are</div><h2>We make moments <span>timeless.</span></h2><p>HALO CINEMATIC STUDIO is a creative photography and film production studio focused on telling meaningful stories through powerful visuals.</p><p>From the emotion of a wedding day to the energy of a music video, we bring creativity, care and cinematic detail to every project.</p><a class="btn" href="#contact">Talk to Our Team</a></div></section>
 <section class="services" id="services"><div class="section-head reveal"><div class="eyebrow">What We Do</div><h2>Our <span>Services</span></h2><p>Creative production and visual storytelling, shaped around your moments and ideas.</p></div>
 <div class="service-grid">
 <article class="service-card reveal"><div class="service-no">01 / WEDDINGS</div><h3>Wedding Photography</h3><p>Beautifully captured moments, details and emotions to keep for a lifetime.</p></article>
@@ -97,7 +141,7 @@ footer{padding:28px 7%;border-top:1px solid #292929;display:flex;justify-content
 <section class="contact" id="contact"><div class="section-head reveal"><div class="eyebrow">Let's Create Something</div><h2>Get In <span>Touch</span></h2><p>Tell us about your event or creative project. We would love to hear from you.</p></div><div class="contact-grid"><div class="contact-info reveal"><h3>HALO CINEMATIC STUDIO</h3><p>Your Moments. Our Vision. Your Story.</p><div class="contact-line"><b>Call / WhatsApp</b>077 532 1978</div><div class="contact-line"><b>Services</b>Wedding • Documentary • Music Video • Editing</div><div class="contact-line"><b>Bookings</b>Now open for enquiries</div><p style="margin-top:22px;font-size:12px">Instagram and Facebook profile links can be connected here once you share the official page URLs.</p></div>
 <form id="booking"><div class="eyebrow">Booking Enquiry</div><div class="field"><label for="name">Your Name</label><input id="name" name="name" required placeholder="Enter your name"></div><div class="field"><label for="phone">Your Phone Number</label><input id="phone" name="phone" required placeholder="Enter your contact number"></div><div class="field"><label for="service">Service Required</label><select id="service" name="service" required><option value="">Select a service</option><option>Wedding Photography</option><option>Wedding Cinematography</option><option>Documentary Filming</option><option>Album Songs & Music Videos</option><option>Professional Video Editing</option><option>Custom Photo Frames</option></select></div><div class="field"><label for="date">Event / Project Date</label><input id="date" name="date" type="date"></div><div class="field"><label for="message">Tell Us More</label><textarea id="message" name="message" placeholder="Your event location, requirements or other details..."></textarea></div><button class="btn" type="submit">Send Enquiry via WhatsApp →</button></form></div></section>
 </main>
-<footer><img class="footer-logo" src="assets/logo.png" alt="HALO CINEMATIC STUDIO logo"><div><b>HALO CINEMATIC STUDIO</b> <span>©</span> <span id="year"></span></div><div>CAPTURE • CREATE • INSPIRE</div><div>Your Moments. Our Vision. Your Story.</div></footer>
+<footer><img class="footer-logo" src="halo-cinematic-studio/assets/logo.png" alt="HALO CINEMATIC STUDIO logo"><div><b>HALO CINEMATIC STUDIO</b> <span>©</span> <span id="year"></span></div><div>CAPTURE • CREATE • INSPIRE</div><div>Your Moments. Our Vision. Your Story.</div></footer>
 <a class="float-wa" href="https://wa.me/94775321978" target="_blank" rel="noopener">WhatsApp Us ↗</a>
 <button class="music-toggle" id="musicBtn" title="Background music">♫ Music: Off</button>
 <script>
