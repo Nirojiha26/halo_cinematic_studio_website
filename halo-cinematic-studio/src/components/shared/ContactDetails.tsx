@@ -20,11 +20,11 @@ export function ContactDetails({ className }: { className?: string }) {
     <div className={className}>
       <dl>
         {lines.map((line) => (
-          <div key={line.label} className="border-b border-[rgba(20,20,20,0.06)] py-3.5 first:pt-0">
-            <dt className="text-xs font-semibold text-[#B50812]">{line.label}</dt>
-            <dd className="mt-1 text-sm font-medium text-[#141414]">
+          <div key={line.label} className="border-b border-[#D8CFC1] py-3.5 first:pt-0">
+            <dt className="text-xs font-semibold text-[#D71920]">{line.label}</dt>
+            <dd className="mt-1 text-sm font-medium text-[#171716]">
               {line.href ? (
-                <a href={line.href} className="transition-colors hover:text-[#E50919]">
+                <a href={line.href} className="transition-colors hover:text-[#D71920]">
                   {line.value}
                 </a>
               ) : (
@@ -34,8 +34,8 @@ export function ContactDetails({ className }: { className?: string }) {
           </div>
         ))}
         {socials.length > 0 ? (
-          <div className="border-b border-[rgba(20,20,20,0.06)] py-3.5">
-            <dt className="text-xs font-semibold text-[#B50812]">Social Media</dt>
+          <div className="border-b border-[#D8CFC1] py-3.5">
+            <dt className="text-xs font-semibold text-[#D71920]">Social Media</dt>
             <dd className="mt-1 flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">
               {socials.map((s) => (
                 <a
@@ -43,7 +43,7 @@ export function ContactDetails({ className }: { className?: string }) {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#141414] transition-colors hover:text-[#E50919]"
+                  className="text-[#171716] transition-colors hover:text-[#D71920]"
                 >
                   {s.label}
                 </a>
@@ -64,7 +64,7 @@ export function QuickContactActions({ className }: { className?: string }) {
         href={`tel:${siteConfig.contact.phoneIntl}`}
         className="btn-outline flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium"
       >
-        <Phone className="size-4 text-[#E50919]" aria-hidden />
+        <Phone className="size-4 text-[#D71920]" aria-hidden />
         <span>Call {siteConfig.contact.phoneDisplay}</span>
       </a>
       <a

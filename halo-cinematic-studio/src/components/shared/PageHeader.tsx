@@ -14,7 +14,7 @@ export function PageHeader({ eyebrow, title, highlight, description, action }: P
   return (
     <section
       aria-labelledby="page-title"
-      className="hero-bg relative border-b border-[rgba(20,20,20,0.06)] pt-32 pb-16 sm:pt-36 sm:pb-20"
+      className="bg-[#EEE9DF] relative border-b border-[#D8CFC1] pt-32 pb-16 sm:pt-36 sm:pb-20"
     >
       <Container className="relative z-10">
         <div className="max-w-3xl">
@@ -22,18 +22,17 @@ export function PageHeader({ eyebrow, title, highlight, description, action }: P
           <h1
             id="page-title"
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "'Playfair Display', Georgia, serif",
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
             }}
-            className="text-4xl font-semibold text-[#141414] sm:text-5xl lg:text-6xl"
+            className="text-4xl font-normal text-[#171716] sm:text-5xl lg:text-6xl"
           >
             {title}
-            {highlight ? <span className="grad-text"> {highlight}</span> : null}
+            {highlight ? <span className="text-[#D71920] italic font-serif"> {highlight}</span> : null}
           </h1>
           <p
-            style={{ fontFamily: "var(--font-manrope), sans-serif" }}
-            className="mt-5 max-w-2xl text-base font-normal text-[#625C5D] sm:text-lg"
+            className="mt-5 max-w-2xl text-base font-normal text-[#716B64] sm:text-lg leading-relaxed"
           >
             {description}
           </p>

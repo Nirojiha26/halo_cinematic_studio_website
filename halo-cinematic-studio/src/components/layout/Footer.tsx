@@ -10,11 +10,11 @@ export function Footer() {
   const { contact, socials } = siteConfig;
 
   return (
-    <footer className="relative border-t border-[rgba(20,20,20,0.08)] bg-[#FFF1F2] text-[#141414]">
+    <footer className="relative border-t border-[#2A2926] bg-[#171716] text-[#FAF7F1]">
       {/* Soft top gradient accent wash */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(ellipse_at_50%_0%,rgba(217,11,23,0.10)_0%,transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(ellipse_at_50%_0%,rgba(215,25,32,0.12)_0%,transparent_70%)]"
       />
 
       <Container className="relative z-10 grid gap-12 pt-16 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr] lg:gap-10">
@@ -24,23 +24,23 @@ export function Footer() {
             <Logo sizes="180px" alt="" className="h-auto w-[160px]" />
           </Link>
           <p
-            style={{ fontFamily: "var(--font-playfair), serif" }}
-            className="mt-5 text-xl font-semibold leading-snug text-[#141414]"
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="mt-5 text-xl font-normal leading-snug text-[#FAF7F1]"
           >
-            Your Moments. <span className="grad-text">Our Vision.</span> Your Story.
+            Your Moments. <span className="text-[#D71920] italic font-serif">Our Vision.</span> Your Story.
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-[#625C5D]">
-            Wedding photography, puberty milestones, engagement coverage, cinematography, and handcrafted fine-art albums.
+          <p className="mt-3 text-sm leading-relaxed text-[#A39E96]">
+            Wedding photography, puberty milestones, engagement coverage, cinematography, and bespoke 3D keepsakes in Nelliady, Sri Lanka.
           </p>
         </div>
 
         {/* Explore Links */}
         <nav aria-label="Footer navigation">
-          <h2 className="chip-eyebrow mb-4">Explore</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D71920] mb-4">Explore</h2>
           <ul className="space-y-3 text-sm font-medium">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-[#625C5D] transition-colors hover:text-[#E50919]">
+                <Link href={item.href} className="text-[#A39E96] transition-colors hover:text-[#D71920]">
                   {item.label}
                 </Link>
               </li>
@@ -50,13 +50,13 @@ export function Footer() {
 
         {/* Packages Links */}
         <div>
-          <h2 className="chip-eyebrow mb-4">Packages</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D71920] mb-4">Packages</h2>
           <ul className="space-y-3 text-sm font-medium">
             {packageCategories.map((c) => (
               <li key={c.slug}>
                 <Link
                   href={`/packages?category=${c.slug}`}
-                  className="text-[#625C5D] transition-colors hover:text-[#E50919]"
+                  className="text-[#A39E96] transition-colors hover:text-[#D71920]"
                 >
                   {c.label}
                 </Link>
@@ -67,14 +67,14 @@ export function Footer() {
 
         {/* Contact Links */}
         <div>
-          <h2 className="chip-eyebrow mb-4">Contact Studio</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D71920] mb-4">Contact Studio</h2>
           <ul className="space-y-3.5 text-sm font-medium">
             <li>
               <a
                 href={`tel:${contact.phoneIntl}`}
-                className="flex items-center gap-2.5 text-[#141414] transition-colors hover:text-[#E50919]"
+                className="flex items-center gap-2.5 text-[#FAF7F1] transition-colors hover:text-[#D71920]"
               >
-                <Phone className="size-4 text-[#E50919]" aria-hidden />
+                <Phone className="size-4 text-[#D71920]" aria-hidden />
                 <span>{contact.phoneDisplay}</span>
               </a>
             </li>
@@ -83,9 +83,9 @@ export function Footer() {
                 href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-[#141414] transition-colors hover:text-[#E50919]"
+                className="flex items-center gap-2.5 text-[#FAF7F1] transition-colors hover:text-[#D71920]"
               >
-                <MessageCircle className="size-4 text-[#E50919]" aria-hidden />
+                <MessageCircle className="size-4 text-[#D71920]" aria-hidden />
                 <span>WhatsApp Us</span>
               </a>
             </li>
@@ -93,20 +93,20 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="flex items-center gap-2.5 text-[#625C5D] transition-colors hover:text-[#E50919]"
+                  className="flex items-center gap-2.5 text-[#A39E96] transition-colors hover:text-[#D71920]"
                 >
-                  <Mail className="size-4 text-[#E50919]" aria-hidden />
+                  <Mail className="size-4 text-[#D71920]" aria-hidden />
                   <span>{contact.email}</span>
                 </a>
               </li>
             ) : null}
             {contact.location ? (
-              <li className="flex items-center gap-2.5 text-[#625C5D]">
-                <MapPin className="size-4 shrink-0 text-[#E50919]" aria-hidden />
+              <li className="flex items-center gap-2.5 text-[#A39E96]">
+                <MapPin className="size-4 shrink-0 text-[#D71920]" aria-hidden />
                 <span>{contact.location}</span>
               </li>
             ) : null}
-            <li className="text-xs font-semibold text-[#B50812]">{contact.bookingStatus}</li>
+            <li className="text-xs font-semibold text-[#D71920]">{contact.bookingStatus}</li>
             {socials.length > 0 ? (
               <li className="flex flex-wrap gap-3 pt-1">
                 {socials.map((s) => (
@@ -115,7 +115,7 @@ export function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-[#625C5D] transition-colors hover:text-[#E50919]"
+                    className="text-xs text-[#A39E96] transition-colors hover:text-[#D71920]"
                   >
                     {s.label}
                   </a>
@@ -127,14 +127,14 @@ export function Footer() {
       </Container>
 
       {/* Sub-footer copyright */}
-      <div className="border-t border-[rgba(20,20,20,0.06)] py-6">
-        <Container className="flex flex-col items-center justify-between gap-4 text-xs text-[#625C5D] sm:flex-row">
+      <div className="border-t border-[#2A2926] py-6">
+        <Container className="flex flex-col items-center justify-between gap-4 text-xs text-[#A39E96] sm:flex-row">
           <p>© <CurrentYear /> {siteConfig.name}. All rights reserved.</p>
           <p className="flex items-center gap-2">
             <span>Capture</span>
-            <span>•</span>
-            <span className="font-semibold text-[#B50812]">Create</span>
-            <span>•</span>
+            <span className="text-[#D8CFC1]/40">•</span>
+            <span className="font-semibold text-[#D71920]">Create</span>
+            <span className="text-[#D8CFC1]/40">•</span>
             <span>Inspire</span>
           </p>
         </Container>

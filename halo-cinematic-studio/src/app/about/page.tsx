@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { createMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
@@ -8,7 +8,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ServiceCard } from "@/components/shared/ServiceCard";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Button } from "@/components/ui/Button";
-import { Container, Section } from "@/components/ui/Container";
+import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata = createMetadata({
@@ -39,16 +39,61 @@ const pillars = [
 export default function AboutPage() {
   return (
     <PageTransition>
-      {/* ── Top Section: Editorial Photo Collage + Story (Matching Reference Design) ── */}
-      <section className="bg-white pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-24">
+      {/* ── 1. Opening Header: "WHO WE ARE" (Warm Ivory #EEE9DF) ────── */}
+      <section className="bg-[#EEE9DF] pt-32 sm:pt-36 lg:pt-40 pb-12 sm:pb-16 border-b border-[#D8CFC1]/60">
         <Container size="wide">
-          
-          {/* ── Dynamic Photo Collage (100% Genuine HALO Studio Photos) ── */}
+          <div className="max-w-4xl">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-8 h-[2px] bg-[#D71920] shrink-0" aria-hidden />
+              <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#716B64]">
+                Who We Are
+              </p>
+            </div>
+
+            {/* Main Headline */}
+            <h1
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-[-0.03em] leading-[1.08] text-[#171716]"
+            >
+              We make moments{" "}
+              <span className="italic font-serif text-[#D71920]">timeless.</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="mt-5 text-xl sm:text-2xl font-medium tracking-tight text-[#171716]">
+              Stories captured with emotion. Memories preserved forever.
+            </p>
+
+            {/* Description */}
+            <p className="mt-4 max-w-2xl text-base sm:text-[17px] leading-relaxed text-[#716B64]">
+              HALO CINEMATIC STUDIO is a creative photography and film production studio focused on
+              telling meaningful stories through powerful visuals in Nelliady, Sri Lanka.
+            </p>
+
+            {/* Quick Proof Pills */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-[#716B64]">
+              <span className="flex items-center gap-1.5 text-[#171716]">
+                <Sparkles className="size-3.5 text-[#D71920]" />
+                <span>Nelliady &amp; Jaffna</span>
+              </span>
+              <span className="text-[#D8CFC1]">•</span>
+              <span>Wedding &amp; Milestone Cinematography</span>
+              <span className="text-[#D8CFC1]">•</span>
+              <span>Bespoke 3D Keepsakes</span>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── 2. Bento Photo Collage (100% Genuine Studio Photos) ──────── */}
+      <section className="bg-[#EEE9DF] py-14 sm:py-20">
+        <Container size="wide">
           <div className="w-full">
             {/* Row 1: Staggered Bento Grid */}
             <div className="grid grid-cols-12 gap-3 sm:gap-5 items-end">
               {/* Card 1: Wide Landscape (Left) */}
-              <div className="col-span-12 sm:col-span-5 md:col-span-4 relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+              <div className="col-span-12 sm:col-span-5 md:col-span-4 relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-[#D8CFC1]/70 bg-[#FAF7F1] group">
                 <Image
                   src="/images/home-selected/traditional-wedding.webp"
                   alt="Bride and groom in traditional wedding dress before temple doors"
@@ -60,7 +105,7 @@ export default function AboutPage() {
               </div>
 
               {/* Card 2: Vertical Portrait */}
-              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-[#D8CFC1]/70 bg-[#FAF7F1] group">
                 <Image
                   src="/images/home-selected/jewellery-portrait.webp"
                   alt="Traditional bridal gold jewellery and green bangles"
@@ -71,7 +116,7 @@ export default function AboutPage() {
               </div>
 
               {/* Card 3: Medium Horizontal */}
-              <div className="col-span-6 sm:col-span-4 md:col-span-3 relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+              <div className="col-span-6 sm:col-span-4 md:col-span-3 relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-[#D8CFC1]/70 bg-[#FAF7F1] group">
                 <Image
                   src="/images/home-selected/temple-connection.webp"
                   alt="Newlywed couple candid smile in temple courtyard"
@@ -82,7 +127,7 @@ export default function AboutPage() {
               </div>
 
               {/* Card 4: Vertical Portrait (Right) */}
-              <div className="col-span-12 sm:col-span-4 md:col-span-3 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+              <div className="col-span-12 sm:col-span-4 md:col-span-3 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-[#D8CFC1]/70 bg-[#FAF7F1] group">
                 <Image
                   src="/images/home-selected/garden-couple.webp"
                   alt="Couple holding hands in natural garden light"
@@ -96,7 +141,7 @@ export default function AboutPage() {
             {/* Row 2: Staggered Bento Grid */}
             <div className="grid grid-cols-12 gap-3 sm:gap-5 items-start mt-3 sm:mt-5">
               {/* Card 5: Square */}
-              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-[#D8CFC1]/70 bg-[#FAF7F1] group">
                 <Image
                   src="/images/home-selected/wedding-embrace.webp"
                   alt="Bride and groom leaning close together in wedding attire"
@@ -107,7 +152,7 @@ export default function AboutPage() {
               </div>
 
               {/* Card 6: Square */}
-              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-[#D8CFC1]/70 bg-[#FAF7F1] group">
                 <Image
                   src="/images/home-selected/couple-at-temple.webp"
                   alt="Couple smiling seated in front of carved temple doors"
@@ -117,8 +162,8 @@ export default function AboutPage() {
                 />
               </div>
 
-              {/* Card 7: Vertical Booth Card */}
-              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+              {/* Card 7: Vertical Ritual Card */}
+              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-[#D8CFC1]/70 bg-[#FAF7F1] group">
                 <Image
                   src="/images/hero/slide-03.jpg"
                   alt="Auspicious ceremony floral garlands and rituals"
@@ -129,7 +174,7 @@ export default function AboutPage() {
               </div>
 
               {/* Card 8: Large Wide Landscape (Right) */}
-              <div className="col-span-12 sm:col-span-6 md:col-span-6 relative aspect-[16/9.5] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+              <div className="col-span-12 sm:col-span-6 md:col-span-6 relative aspect-[16/9.5] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-[#D8CFC1]/70 bg-[#FAF7F1] group">
                 <Image
                   src="/images/home-selected/garland-exchange.webp"
                   alt="Bride and groom exchanging flower garlands during ceremony"
@@ -140,19 +185,29 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+        </Container>
+      </section>
 
-          {/* ── Editorial Story Text Block (Matching Reference Typography) ── */}
-          <div className="mt-16 sm:mt-24 max-w-3xl">
+      {/* ── 3. Narrative Story & Vision Section (Soft Cream #FAF7F1) ── */}
+      <section className="bg-[#FAF7F1] py-16 sm:py-24 border-y border-[#D8CFC1]/70">
+        <Container size="wide">
+          <div className="max-w-3xl">
             <Reveal>
-              <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#B50812] mb-4">
-                Our Vision
-              </p>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-8 h-[2px] bg-[#D71920] shrink-0" aria-hidden />
+                <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#D71920]">
+                  Our Vision &amp; Passion
+                </p>
+              </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#141414] leading-[1.15]">
-                We&apos;re making every moment timeless
-              </h1>
+              <h2
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-[-0.025em] text-[#171716] leading-[1.15]"
+              >
+                Behind every frame is a story worth remembering
+              </h2>
 
-              <div className="mt-8 space-y-6 text-base sm:text-[17px] leading-relaxed text-[#5F5A5A]">
+              <div className="mt-8 space-y-6 text-base sm:text-[17px] leading-relaxed text-[#716B64]">
                 <p>
                   At HALO CINEMATIC STUDIO, our mission is to capture life&apos;s most meaningful occasions with
                   authenticity, emotion, and cinematic artistry. We want every family, couple, and client to relive their
@@ -183,13 +238,12 @@ export default function AboutPage() {
               </div>
             </Reveal>
           </div>
-
         </Container>
       </section>
 
-      {/* ── Mission, Vision & Philosophy ── */}
-      <Section tone="blush" labelledBy="philosophy-heading">
-        <Container>
+      {/* ── 4. Mission, Vision & Philosophy (Warm Ivory #EEE9DF) ──────── */}
+      <section className="bg-[#EEE9DF] py-16 sm:py-24">
+        <Container size="wide">
           <SectionHeading
             id="philosophy-heading"
             eyebrow={siteConfig.tagline}
@@ -198,28 +252,28 @@ export default function AboutPage() {
             description="Three guiding principles behind every frame, film edit, and keepsake we produce."
           />
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3 mt-10">
             {pillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.05} as="article">
-                <div className="card relative h-full rounded-[20px] bg-white p-7 shadow-[0_12px_32px_rgba(217,11,23,0.08)] sm:p-8">
-                  <p className="text-xs font-semibold text-[#B50812]">{p.step}</p>
+                <div className="relative h-full rounded-[20px] bg-[#FAF7F1] border border-[#D8CFC1] p-7 sm:p-8 shadow-xs transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-[#D71920]">{p.step}</p>
                   <h3
                     style={{ fontFamily: "var(--font-playfair), serif" }}
-                    className="mt-4 text-2xl font-semibold text-[#141414]"
+                    className="mt-4 text-2xl font-semibold text-[#171716]"
                   >
                     {p.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#5F5A5A]">{p.body}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#716B64]">{p.body}</p>
                 </div>
               </Reveal>
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* ── What We Craft — 4 Core Studio Disciplines ── */}
-      <Section tone="white" labelledBy="craft-heading">
-        <Container>
+      {/* ── 5. What We Craft — 4 Core Studio Disciplines (Soft Cream #FAF7F1) ── */}
+      <section className="bg-[#FAF7F1] py-16 sm:py-24 border-t border-[#D8CFC1]">
+        <Container size="wide">
           <SectionHeading
             id="craft-heading"
             eyebrow="Studio Disciplines"
@@ -233,7 +287,7 @@ export default function AboutPage() {
             }
           />
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 mt-10">
             {services.map((service, i) => (
               <Reveal key={service.slug} delay={Math.min(i * 0.05, 0.2)}>
                 <ServiceCard service={service} index={i} href="/contact" />
@@ -241,8 +295,9 @@ export default function AboutPage() {
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
 
+      {/* ── 6. Contact CTA ── */}
       <ContactCTA />
     </PageTransition>
   );

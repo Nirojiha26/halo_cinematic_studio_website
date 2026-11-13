@@ -27,16 +27,16 @@ export default function ContactPage() {
       <Section tone="blush" labelledBy="contact-heading">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
-            <Reveal className="rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-7 shadow-[0_12px_32px_rgba(217,11,23,0.08)] sm:p-9">
+            <Reveal className="rounded-[24px] border border-[#D8CFC1] bg-[#FAF7F1] p-7 shadow-xs sm:p-9">
               <p className="chip-eyebrow mb-4">Direct Studio Channels</p>
               <h2
                 id="contact-heading"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
-                className="text-2xl font-semibold text-[#141414] sm:text-3xl"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-2xl font-normal text-[#171716] sm:text-3xl"
               >
                 {siteConfig.name}
               </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#625C5D]">{siteConfig.motto}</p>
+              <p className="mt-2 text-sm leading-relaxed text-[#716B64]">{siteConfig.motto}</p>
 
               <ContactDetails className="mt-8" />
               <QuickContactActions className="mt-8" />

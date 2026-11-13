@@ -50,8 +50,8 @@ function validate(values: Values): Errors {
 }
 
 const inputBase =
-  "w-full rounded-xl border border-[rgba(20,20,20,0.12)] bg-white px-4 py-3 text-sm font-normal text-[#141414] placeholder:text-[#625C5D]/60 " +
-  "outline-none transition-all duration-200 focus:border-[#E50919] focus:ring-2 focus:ring-[#E50919]/15 aria-[invalid=true]:border-[#E50919] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#E50919]/20";
+  "w-full rounded-xl border border-[#D8CFC1] bg-[#EEE9DF]/40 px-4 py-3 text-sm font-normal text-[#171716] placeholder:text-[#716B64]/70 " +
+  "outline-none transition-all duration-200 focus:border-[#D71920] focus:ring-2 focus:ring-[#D71920]/15 aria-[invalid=true]:border-[#D71920] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#D71920]/20";
 
 export function EnquiryForm() {
   const [values, setValues] = useState<Values>({
@@ -191,13 +191,13 @@ export function EnquiryForm() {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="grid gap-5 rounded-[24px] border border-[rgba(20,20,20,0.08)] bg-white p-6 shadow-[0_16px_40px_rgba(217,11,23,0.09)] sm:p-9"
+      className="grid gap-5 rounded-[24px] border border-[#D8CFC1] bg-[#FAF7F1] p-6 shadow-xs sm:p-9"
     >
-      <div className="border-b border-[rgba(20,20,20,0.06)] pb-4">
+      <div className="border-b border-[#D8CFC1] pb-4">
         <QueryParamSync name="category" onValue={syncCategory} />
         <QueryParamSync name="package" onValue={syncPackage} />
         <p className="chip-eyebrow">WhatsApp Package Enquiry</p>
-        <p className="mt-2 text-sm text-[#625C5D]">
+        <p className="mt-2 text-sm text-[#716B64]">
           Choose your event category and package tier below to send a formatted WhatsApp enquiry directly to our studio team.
         </p>
       </div>

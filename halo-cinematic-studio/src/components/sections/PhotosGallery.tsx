@@ -80,7 +80,7 @@ export function PhotosGallery() {
       <div
         role="tablist"
         aria-label="Filter photo archive by collection"
-        className="mb-10 flex flex-wrap items-center gap-3 border-b border-[rgba(20,20,20,0.06)] pb-6"
+        className="mb-10 flex flex-wrap items-center gap-3 border-b border-[#D8CFC1] pb-6"
       >
         {photoCollections.map((collection) => {
           const isActive = collection === activeCollection;
@@ -102,8 +102,8 @@ export function PhotosGallery() {
               className={cn(
                 "inline-flex cursor-pointer items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all duration-200",
                 isActive
-                  ? "btn-grad text-white shadow-md shadow-[rgba(217,11,23,0.28)]"
-                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#E50919] hover:text-[#B50812]",
+                  ? "bg-[#D71920] text-white shadow-sm"
+                  : "border border-[#D8CFC1] bg-[#FAF7F1] text-[#171716] hover:border-[#D71920] hover:text-[#D71920]",
               )}
             >
               <span>{collection}</span>
@@ -112,7 +112,7 @@ export function PhotosGallery() {
                   "inline-flex size-5 items-center justify-center rounded-full text-[10px] font-bold",
                   isActive
                     ? "bg-white/20 text-white"
-                    : "bg-[#FFF1F2] text-[#B50812]",
+                    : "bg-[#EEE9DF] text-[#D71920]",
                 )}
               >
                 {count}
@@ -145,18 +145,18 @@ export function PhotosGallery() {
           onClick={handleClose}
         >
           <div
-            className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-[24px] bg-white shadow-2xl"
+            className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-[24px] bg-[#FAF7F1] border border-[#D8CFC1] shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top Bar */}
-            <div className="flex items-center justify-between border-b border-[rgba(20,20,20,0.08)] px-6 py-4">
+            <div className="flex items-center justify-between border-b border-[#D8CFC1] px-6 py-4">
               <div>
-                <p className="text-xs font-semibold text-[#B50812]">
+                <p className="text-xs font-semibold text-[#D71920]">
                   {selectedPhoto.category}
                 </p>
                 <h3
-                  style={{ fontFamily: "var(--font-playfair), serif" }}
-                  className="text-lg font-semibold text-[#141414]"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  className="text-lg font-semibold text-[#171716]"
                 >
                   {selectedPhoto.title}
                 </h3>
@@ -166,14 +166,14 @@ export function PhotosGallery() {
                 type="button"
                 onClick={handleClose}
                 aria-label="Close dialog"
-                className="grid size-10 place-items-center rounded-full border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#E50919] hover:text-[#E50919]"
+                className="grid size-10 place-items-center rounded-full border border-[#D8CFC1] bg-[#EEE9DF] text-[#171716] transition-colors hover:border-[#D71920] hover:text-[#D71920]"
               >
                 <X className="size-5" />
               </button>
             </div>
 
             {/* Image viewer */}
-            <div className="relative min-h-[380px] max-h-[65vh] flex-1 bg-[#141414]">
+            <div className="relative min-h-[380px] max-h-[65vh] flex-1 bg-[#171716]">
               <Image
                 src={selectedPhoto.src}
                 alt={selectedPhoto.alt}
@@ -190,7 +190,7 @@ export function PhotosGallery() {
                     type="button"
                     onClick={() => stepPhoto(-1)}
                     aria-label="Previous photo"
-                    className="absolute left-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#E50919]"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#171716] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#D71920]"
                   >
                     <ChevronLeft className="size-6" />
                   </button>
@@ -198,7 +198,7 @@ export function PhotosGallery() {
                     type="button"
                     onClick={() => stepPhoto(1)}
                     aria-label="Next photo"
-                    className="absolute right-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#E50919]"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#171716] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#D71920]"
                   >
                     <ChevronRight className="size-6" />
                   </button>
@@ -207,8 +207,8 @@ export function PhotosGallery() {
             </div>
 
             {/* Bottom info & WhatsApp enquiry bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[rgba(20,20,20,0.08)] bg-[#FFF1F2] px-6 py-4">
-              <p className="text-sm text-[#625C5D]">{selectedPhoto.subtitle}</p>
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#D8CFC1] bg-[#EEE9DF] px-6 py-4">
+              <p className="text-sm text-[#716B64]">{selectedPhoto.subtitle}</p>
               <a
                 href={whatsappUrl(
                   `Hello HALO CINEMATIC STUDIO! I am enquiring about the ${selectedPhoto.title} (${selectedPhoto.category}) shown in your gallery.`

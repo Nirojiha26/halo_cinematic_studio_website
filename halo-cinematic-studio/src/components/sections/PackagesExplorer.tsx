@@ -42,7 +42,7 @@ export function PackagesExplorer() {
       <div
         role="tablist"
         aria-label="Package categories"
-        className="flex flex-wrap items-center gap-3 border-b border-[rgba(20,20,20,0.06)] pb-6"
+        className="flex flex-wrap items-center gap-3 border-b border-[#D8CFC1] pb-6"
       >
         {packageCategories.map((category) => {
           const isActive = category.slug === activeCategory;
@@ -58,8 +58,8 @@ export function PackagesExplorer() {
               className={cn(
                 "inline-flex cursor-pointer items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all duration-200",
                 isActive
-                  ? "btn-grad text-white shadow-md shadow-[rgba(217,11,23,0.28)]"
-                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#E50919] hover:text-[#B50812]",
+                  ? "bg-[#D71920] text-white shadow-sm"
+                  : "border border-[#D8CFC1] bg-[#FAF7F1] text-[#171716] hover:border-[#D71920] hover:text-[#D71920]",
               )}
             >
               <span>{category.label}</span>
@@ -68,7 +68,7 @@ export function PackagesExplorer() {
                   "inline-flex size-5 items-center justify-center rounded-full text-[10px] font-bold",
                   isActive
                     ? "bg-white/20 text-white"
-                    : "bg-[#FFF1F2] text-[#B50812]",
+                    : "bg-[#EEE9DF] text-[#D71920]",
                 )}
               >
                 {count}
@@ -79,16 +79,16 @@ export function PackagesExplorer() {
       </div>
 
       {/* Category context summary */}
-      <div className="flex flex-col gap-5 rounded-[20px] border border-[rgba(217,11,23,0.14)] bg-[#FFF1F2] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div className="flex flex-col gap-5 rounded-[20px] border border-[#D8CFC1] bg-[#EEE9DF] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
         <div className="max-w-2xl">
           <p className="chip-eyebrow mb-2">{currentMeta.eyebrow}</p>
           <h2
-            style={{ fontFamily: "var(--font-playfair), serif" }}
-            className="text-2xl font-semibold text-[#141414] sm:text-3xl"
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="text-2xl font-normal text-[#171716] sm:text-3xl"
           >
             {currentMeta.label}
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-[#625C5D]">
+          <p className="mt-2 text-sm leading-relaxed text-[#716B64]">
             {currentMeta.description}
           </p>
         </div>

@@ -51,10 +51,10 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative overflow-hidden bg-[#ECE5DA] pt-[104px] lg:pt-[118px]"
+      className="relative overflow-hidden bg-[#EEE9DF] pt-[104px] lg:pt-[118px]"
       style={{
         backgroundImage:
-          "radial-gradient(ellipse at 90% 15%, rgba(217, 11, 23, 0.05) 0%, transparent 60%), radial-gradient(ellipse at 10% 85%, rgba(20, 20, 20, 0.03) 0%, transparent 55%)",
+          "radial-gradient(ellipse at 90% 15%, rgba(215, 25, 32, 0.05) 0%, transparent 60%), radial-gradient(ellipse at 10% 85%, rgba(23, 23, 22, 0.03) 0%, transparent 55%)",
       }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -284,7 +284,7 @@ export function Hero() {
       </div>
 
       {/* ── Bottom Controls & WhatsApp Bar ────────────────────────── */}
-      <div className="relative z-20 border-t border-[#141414]/10 bg-[#E0D8CB]/95 backdrop-blur-sm">
+      <div className="relative z-20 border-t border-[#D8CFC1] bg-[#FAF7F1]/95 backdrop-blur-sm">
         <Container size="wide">
           <div className="flex min-h-[58px] sm:min-h-[64px] items-center justify-between gap-4 py-3">
             {/* Left: CAPTURE | CREATE | INSPIRE */}

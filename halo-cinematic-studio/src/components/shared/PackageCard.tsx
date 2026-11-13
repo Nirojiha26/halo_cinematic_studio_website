@@ -26,19 +26,19 @@ export function PackageCard({
       className={cn(
         "relative flex h-full min-h-[32rem] flex-col overflow-hidden rounded-[20px] p-6 transition-all duration-300 sm:p-8",
         isFeatured
-          ? "card-popular shadow-[0_16px_40px_rgba(217,11,23,0.32)]"
-          : "card bg-white border border-[rgba(20,20,20,0.08)] shadow-[0_12px_32px_rgba(217,11,23,0.07)] hover:border-[rgba(217,11,23,0.32)] hover:shadow-[0_16px_36px_rgba(217,11,23,0.16)]",
+          ? "bg-[#171716] text-[#FAF7F1] border border-[#D71920]/40 shadow-lg"
+          : "bg-[#FAF7F1] border border-[#D8CFC1] shadow-xs hover:border-[#D71920]/50 hover:shadow-md",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2 text-xs font-medium">
-          <span className={isFeatured ? "text-white/80" : "text-[#B50812]"}>
+          <span className={isFeatured ? "text-white/80" : "text-[#D71920]"}>
             {pad2(index + 1)}
           </span>
-          <span aria-hidden className={isFeatured ? "text-white/40" : "text-[rgba(20,20,20,0.15)]"}>
+          <span aria-hidden className={isFeatured ? "text-white/40" : "text-[#D8CFC1]"}>
             /
           </span>
-          <span className={isFeatured ? "text-white/90" : "text-[#625C5D]"}>
+          <span className={isFeatured ? "text-white/90" : "text-[#716B64]"}>
             {showCategoryBadge ? categoryMeta.shortLabel : pkg.tierLabel}
           </span>
         </div>
@@ -47,8 +47,8 @@ export function PackageCard({
           className={cn(
             "rounded-full px-3 py-1 text-xs font-semibold",
             isFeatured
-              ? "bg-white text-[#B50812]"
-              : "bg-[#FFF1F2] text-[#B50812]",
+              ? "bg-[#D71920] text-white"
+              : "bg-[#EEE9DF] text-[#D71920] border border-[#D8CFC1]",
           )}
         >
           {pkg.tierLabel}
@@ -56,17 +56,17 @@ export function PackageCard({
       </div>
 
       <h3
-        style={{ fontFamily: "var(--font-playfair), serif" }}
+        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
         className={cn(
           "mt-4 text-2xl font-semibold leading-tight",
-          isFeatured ? "text-white" : "text-[#141414]",
+          isFeatured ? "text-white" : "text-[#171716]",
         )}
       >
         {pkg.name}
       </h3>
 
       {pkg.subline ? (
-        <p className={cn("mt-1.5 text-xs font-normal", isFeatured ? "text-white/80" : "text-[#625C5D]")}>
+        <p className={cn("mt-1.5 text-xs font-normal", isFeatured ? "text-white/80" : "text-[#716B64]")}>
           {pkg.subline}
         </p>
       ) : null}
@@ -74,14 +74,14 @@ export function PackageCard({
       <div
         className={cn(
           "my-5 border-y py-4",
-          isFeatured ? "border-white/20" : "border-[rgba(20,20,20,0.08)]",
+          isFeatured ? "border-white/20" : "border-[#D8CFC1]",
         )}
       >
         <p
-          style={{ fontFamily: "var(--font-playfair), serif" }}
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           className={cn(
             "text-3xl font-semibold tracking-tight",
-            isFeatured ? "text-white" : "text-[#E50919]",
+            isFeatured ? "text-white" : "text-[#D71920]",
           )}
         >
           {pkg.priceDisplay}
@@ -94,11 +94,11 @@ export function PackageCard({
             key={item}
             className={cn(
               "flex items-start gap-2.5",
-              isFeatured ? "text-white/95" : "text-[#625C5D]",
+              isFeatured ? "text-white/95" : "text-[#716B64]",
             )}
           >
             <Check
-              className={cn("mt-0.5 size-4 shrink-0", isFeatured ? "text-white" : "text-[#E50919]")}
+              className={cn("mt-0.5 size-4 shrink-0", isFeatured ? "text-[#D71920]" : "text-[#D71920]")}
               aria-hidden
             />
             <span>{item}</span>
@@ -107,7 +107,7 @@ export function PackageCard({
       </ul>
 
       {pkg.notes ? (
-        <p className={cn("mb-5 text-xs leading-relaxed", isFeatured ? "text-white/80" : "text-[#625C5D]")}>
+        <p className={cn("mb-5 text-xs leading-relaxed", isFeatured ? "text-white/80" : "text-[#716B64]")}>
           {pkg.notes}
         </p>
       ) : null}
@@ -120,7 +120,7 @@ export function PackageCard({
           className={cn(
             "inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl text-sm font-medium transition-all",
             isFeatured
-              ? "bg-white text-[#B50812] hover:bg-[#FFF1F2]"
+              ? "bg-[#D71920] text-white hover:bg-[#B31218]"
               : "btn-grad text-white shadow-xs",
           )}
         >

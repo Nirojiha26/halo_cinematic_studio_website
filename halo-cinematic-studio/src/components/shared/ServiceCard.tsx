@@ -18,24 +18,24 @@ export function ServiceCard({
   const body = (
     <>
       <div className="flex items-center justify-between gap-4">
-        <span className="text-xs font-semibold text-[#B50812]">
+        <span className="text-xs font-semibold text-[#D71920]">
           {pad2(index + 1)} · {service.category}
         </span>
-        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-[#FFF1F2] text-[#E50919] transition-colors duration-300 group-hover:bg-[#E50919] group-hover:text-white">
+        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-[#EEE9DF] text-[#D71920] border border-[#D8CFC1]/70 transition-colors duration-300 group-hover:bg-[#D71920] group-hover:text-white group-hover:border-[#D71920]">
           <Icon className="size-[18px]" strokeWidth={1.8} aria-hidden />
         </span>
       </div>
 
       <h3
-        style={{ fontFamily: "var(--font-playfair), serif" }}
-        className="mt-5 text-xl font-semibold text-[#141414] transition-colors group-hover:text-[#E50919]"
+        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        className="mt-5 text-xl font-semibold text-[#171716] transition-colors group-hover:text-[#D71920]"
       >
         {service.title}
       </h3>
-      <p className="mt-2 text-sm leading-relaxed text-[#625C5D]">{service.description}</p>
+      <p className="mt-2 text-sm leading-relaxed text-[#716B64]">{service.description}</p>
 
       {href ? (
-        <span className="mt-auto flex items-center justify-between border-t border-[rgba(20,20,20,0.06)] pt-4 text-xs font-medium text-[#141414] transition-colors group-hover:text-[#E50919]">
+        <span className="mt-auto flex items-center justify-between border-t border-[#D8CFC1]/70 pt-4 text-xs font-medium text-[#171716] transition-colors group-hover:text-[#D71920]">
           <span>Explore Service</span>
           <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </span>
@@ -44,8 +44,8 @@ export function ServiceCard({
   );
 
   const classes = cn(
-    "group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-[20px] border border-[rgba(20,20,20,0.08)] bg-white p-6 shadow-xs",
-    "transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(217,11,23,0.14)] hover:border-[rgba(217,11,23,0.28)]",
+    "group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-[20px] border border-[#D8CFC1] bg-[#FAF7F1] p-6 shadow-xs",
+    "transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-[#D71920]/60",
     className,
   );
 
