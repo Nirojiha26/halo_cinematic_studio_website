@@ -1,6 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  Camera,
+  CheckCheck,
+  HeartHandshake,
+  Sparkles,
+} from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { EditorialPhoto } from "@/components/shared/EditorialPhoto";
 import { Reveal } from "@/components/motion/Reveal";
@@ -133,13 +140,154 @@ export function EditorialPortfolio() {
   </Container></section>;
 }
 
+const approachSteps = [
+  {
+    phase: "PHASE 01 | DISCOVERY",
+    title: "Understand the Story",
+    description:
+      "We take time to understand your vision, cultural customs, and what matters most to your family before any shutter clicks.",
+    feature: "Personalized Ceremony Consultation",
+    icon: HeartHandshake,
+  },
+  {
+    phase: "PHASE 02 | THE CELEBRATION",
+    title: "Capture the Emotion",
+    description:
+      "Unobtrusive, multi-camera coverage focusing on authentic emotions, sacred vows, spontaneous laughter, and quiet intimate glances.",
+    feature: "Dual 4K Cameras & Candid Storytellers",
+    icon: Camera,
+  },
+  {
+    phase: "PHASE 03 | HEIRLOOMS",
+    title: "Preserve the Memories",
+    description:
+      "Handcrafted fine-art leatherette albums, custom wooden couple frames, and colour-graded 4K cinematic films delivered in high-speed USB boxes.",
+    feature: "Handcrafted Flush-Mount Albums",
+    icon: BookOpen,
+  },
+];
+
 export function StudioApproach() {
-  return <section className="editorial-section approach-section" aria-labelledby="approach-heading"><Container>
-    <div className="approach-top"><div><p className="editorial-label">The HALO experience</p><h2 id="approach-heading" className="editorial-heading">More Than Just<br /><em>Photography.</em></h2></div><EditorialPhoto {...homePhotos.approach} /></div>
-    <div className="approach-steps">{[
-      ["Understand the Story", "We take time to understand your vision and what makes your occasion special."],
-      ["Capture the Emotion", "We focus on genuine expressions, meaningful details and unforgettable moments."],
-      ["Preserve the Memories", "We transform beautiful moments into timeless photographs and cinematic films."],
-    ].map(([title, body], i) => <Reveal as="article" key={title}><span>0{i + 1}</span><h3>{title}</h3><p>{body}</p></Reveal>)}</div>
-  </Container></section>;
+  return (
+    <section
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#FAF7F1] border-b border-[#D8CFC1]"
+      aria-labelledby="approach-heading"
+    >
+      <Container size="wide">
+        {/* ── Top Split: Narrative & Framed Temple Image ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column (7 cols) */}
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2.5 mb-2.5">
+              <span className="w-5 h-[2px] bg-[#D71920]" aria-hidden="true" />
+              <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#D71920]">
+                The HALO Experience
+              </p>
+            </div>
+
+            <h2
+              id="approach-heading"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-[-0.03em] leading-[1.15] text-[#171716]"
+            >
+              More Than Just
+              <br />
+              <span className="italic text-[#D71920] font-normal">
+                Photography.
+              </span>
+            </h2>
+
+            <p className="mt-4 text-xs sm:text-sm text-[#716B64] leading-relaxed max-w-xl">
+              We believe every sacred occasion has a heartbeat. Beyond technical camera mastery, we bring genuine care, calm guidance, and cultural reverence to your celebrations — so you can live fully in the moment while we turn it into timeless art.
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold">
+              <span className="inline-flex items-center gap-1.5 text-[#D71920]">
+                <CheckCheck className="size-4" />
+                <span>Traditional &amp; Candid Coverage</span>
+              </span>
+              <span className="text-[#D8CFC1]" aria-hidden="true">
+                |
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-[#171716]">
+                <Sparkles className="size-3.5 text-[#D71920]" />
+                <span>4K Aerial Cinematography</span>
+              </span>
+              <span className="text-[#D8CFC1]" aria-hidden="true">
+                |
+              </span>
+              <span className="text-[#716B64]">Nelliady, Jaffna</span>
+            </div>
+          </div>
+
+          {/* Right Column (5 cols) — Framed Photograph with Offset Shadow */}
+          <div className="lg:col-span-5 relative pt-3 pr-3">
+            {/* Offset backdrop frame */}
+            <div
+              className="absolute top-0 right-0 left-3 bottom-0 bg-[#EFEAE1] border border-[#D8CFC1] rounded-2xl z-0"
+              aria-hidden="true"
+            />
+
+            {/* Main Photo */}
+            <div className="relative z-10 aspect-[16/10] sm:aspect-[16/9.5] overflow-hidden rounded-2xl bg-[#171716] shadow-md border border-[#D8CFC1]">
+              <Image
+                src="/images/home-selected/temple-connection.webp"
+                alt="Couple holding hands in front of temple in Nelliady"
+                fill
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="object-cover object-center transition-transform duration-700 hover:scale-105"
+              />
+
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20 inline-flex items-center gap-2 rounded-xl bg-black/60 backdrop-blur-md px-3.5 py-1.5 text-[11px] text-white border border-white/15">
+                <span className="size-1.5 rounded-full bg-[#D71920] animate-pulse" />
+                <span className="font-semibold">Authentic Cultural Moments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Bottom 3 Luxury Process Pillar Cards ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
+          {approachSteps.map((step) => {
+            const Icon = step.icon;
+            return (
+              <div
+                key={step.title}
+                className="group relative flex flex-col justify-between rounded-2xl border border-[#D8CFC1] bg-white p-6 sm:p-7 shadow-xs hover:border-[#D71920] hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="grid size-11 place-items-center rounded-xl bg-[#D71920]/10 text-[#D71920] group-hover:bg-[#D71920] group-hover:text-white transition-colors duration-300">
+                      <Icon className="size-5" />
+                    </span>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#D71920]">
+                      {step.phase}
+                    </span>
+                  </div>
+
+                  <h3
+                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    className="mt-5 text-xl sm:text-2xl font-medium text-[#171716] group-hover:text-[#D71920] transition-colors leading-snug"
+                  >
+                    {step.title}
+                  </h3>
+
+                  <p className="mt-2.5 text-xs sm:text-[13px] text-[#716B64] leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-[#D8CFC1]/70 flex items-center gap-2 text-xs font-semibold text-[#171716]">
+                  <CheckCheck className="size-3.5 text-[#D71920] shrink-0" />
+                  <span className="text-[11px] text-[#716B64] group-hover:text-[#171716] transition-colors">
+                    {step.feature}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
 }
