@@ -12,42 +12,45 @@ const polaroidCollections = [
     id: "collection-1",
     top: {
       image: "/images/hero/slide-02.jpg",
-      title: "DILA & KAJAN",
-      date: "JAFFNA, 2026",
       alt: "HALO Cinematic Studio - Newlywed Couple Intimate Portrait",
     },
     middle: {
       image: "/images/hero/slide-01.jpg",
-      title: "TRADITIONAL CEREMONY",
-      date: "SACRED VOWS · NELLIADY",
-      alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Mandapam Couple",
+      alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Couple in Mandapam",
     },
     bottom: {
       image: "/images/moments/moment-03.jpg",
-      title: "SARA & DANIEL",
-      date: "JUL, 2026",
-      alt: "HALO Cinematic Studio - Close-up of Ring Exchange and Handfasting",
+      alt: "HALO Cinematic Studio - Close-up of Ring Exchange and Sacred Handfasting",
     },
   },
   {
     id: "collection-2",
     top: {
       image: "/images/hero/cover-10.jpg",
-      title: "COASTAL INTIMACY",
-      date: "SUNSET PRESHOOT · 2026",
-      alt: "HALO Cinematic Studio - Sunset Beach Preshoot",
+      alt: "HALO Cinematic Studio - Bride and Groom Joyous Smile",
     },
     middle: {
-      image: "/images/hero/slide-03.jpg",
-      title: "TEMPLE BLESSING",
-      date: "AUSPICIOUS RITUALS · JAFFNA",
-      alt: "HALO Cinematic Studio - Auspicious Temple Rituals",
+      image: "/images/moments/moment-04.jpg",
+      alt: "HALO Cinematic Studio - Auspicious Heritage Wedding Ceremony",
     },
     bottom: {
-      image: "/images/hero/slide-04.jpg",
-      title: "JOYOUS CELEBRATION",
-      date: "CANDID MOMENTS · 2026",
-      alt: "HALO Cinematic Studio - Wedding Celebration and Joy",
+      image: "/images/moments/moment-05.jpg",
+      alt: "HALO Cinematic Studio - Bride in Traditional Silk Saree Portrait",
+    },
+  },
+  {
+    id: "collection-3",
+    top: {
+      image: "/images/hero/slide-03.jpg",
+      alt: "HALO Cinematic Studio - Temple Rituals & Blessings",
+    },
+    middle: {
+      image: "/images/moments/moment-02.jpg",
+      alt: "HALO Cinematic Studio - Candid Joy & Laughter",
+    },
+    bottom: {
+      image: "/images/moments/moment-07.jpg",
+      alt: "HALO Cinematic Studio - Bride Candid Golden Hour Portrait",
     },
   },
 ];
@@ -205,108 +208,72 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ── Right Column: Cascading 3-Polaroid Composition (Exact Reference Alignment) ── */}
+          {/* ── Right Column: Cascading 3-Polaroid Composition (Vertical Angled Diagonal Line) ── */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center">
-            <div className="relative w-full max-w-[460px] sm:max-w-[500px] xl:max-w-[540px] h-[490px] sm:h-[530px] xl:h-[570px]">
+            <div className="relative w-full max-w-[390px] sm:max-w-[440px] xl:max-w-[470px] h-[580px] sm:h-[640px] xl:h-[670px]">
               
-              {/* ── POLAROID 1: Top (Couple Intimate Embrace) ── */}
+              {/* ── POLAROID 1: Top (Couple Intimate Portrait) ── */}
               <div
-                className="absolute top-2 sm:top-4 left-6 sm:left-10 w-[215px] sm:w-[250px] xl:w-[270px] -rotate-[4deg] hover:rotate-0 hover:scale-105 z-10 transition-all duration-500 cursor-pointer group"
+                className="absolute top-0 sm:top-2 right-2 sm:right-4 xl:right-6 w-[185px] sm:w-[215px] xl:w-[235px] rotate-[6deg] hover:rotate-0 hover:scale-105 z-10 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
-                <div className="bg-white p-2.5 sm:p-3 pb-7 sm:pb-8 rounded-sm shadow-[0_18px_38px_rgba(23,23,22,0.18)] border border-[#E8E2D7]">
-                  <div className="relative aspect-[1/1.06] w-full overflow-hidden bg-[#EAE4D9]">
+                <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_16px_36px_rgba(23,23,22,0.18)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_24px_48px_rgba(23,23,22,0.25)]">
+                  <div className="relative aspect-[4/4.7] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.top.image}
                       alt={current.top.alt}
                       fill
-                      sizes="270px"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
+                      sizes="(min-width: 1280px) 240px, (min-width: 640px) 220px, 190px"
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
                     />
-                  </div>
-                  {/* Bottom Caption */}
-                  <div className="pt-2 sm:pt-2.5 text-center">
-                    <p
-                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                      className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[#171716] leading-tight"
-                    >
-                      {current.top.title}
-                    </p>
-                    <p className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#716B64] mt-0.5">
-                      {current.top.date}
-                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* ── POLAROID 2: Middle (Traditional Mandapam Stage / Full Body) ── */}
+              {/* ── POLAROID 2: Middle (Traditional Mandapam Ceremony) ── */}
               <div
-                className="absolute top-24 sm:top-28 right-3 sm:right-6 w-[235px] sm:w-[275px] xl:w-[295px] rotate-[5deg] hover:rotate-0 hover:scale-105 z-20 transition-all duration-500 cursor-pointer group"
+                className="absolute top-[190px] sm:top-[215px] xl:top-[225px] right-[65px] sm:right-[85px] xl:right-[100px] w-[190px] sm:w-[220px] xl:w-[240px] -rotate-[3deg] hover:rotate-0 hover:scale-105 z-20 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
-                <div className="bg-white p-3 sm:p-3.5 pb-8 sm:pb-9 rounded-sm shadow-[0_24px_48px_rgba(23,23,22,0.22)] border border-[#E8E2D7]">
-                  <div className="relative aspect-[1/1.08] w-full overflow-hidden bg-[#EAE4D9]">
+                <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_22px_44px_rgba(23,23,22,0.22)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_30px_54px_rgba(23,23,22,0.28)]">
+                  <div className="relative aspect-[4/4.7] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.middle.image}
                       alt={current.middle.alt}
                       fill
                       priority
-                      sizes="295px"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
+                      sizes="(min-width: 1280px) 240px, (min-width: 640px) 220px, 190px"
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
                     />
-                  </div>
-                  {/* Bottom Caption */}
-                  <div className="pt-2 sm:pt-2.5 text-center">
-                    <p
-                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                      className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[#171716] leading-tight"
-                    >
-                      {current.middle.title}
-                    </p>
-                    <p className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#716B64] mt-0.5">
-                      {current.middle.date}
-                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* ── POLAROID 3: Bottom (Close-Up Rings & Hands / Prominent Foreground) ── */}
+              {/* ── POLAROID 3: Bottom (Sacred Ritual / Hands & Saree) ── */}
               <div
-                className="absolute bottom-4 sm:bottom-6 left-12 sm:left-16 w-[205px] sm:w-[245px] xl:w-[265px] rotate-[9deg] hover:rotate-0 hover:scale-108 z-30 transition-all duration-500 cursor-pointer group"
+                className="absolute top-[385px] sm:top-[430px] xl:top-[450px] right-[130px] sm:right-[165px] xl:right-[190px] w-[195px] sm:w-[225px] xl:w-[245px] rotate-[5deg] hover:rotate-0 hover:scale-106 z-30 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
-                <div className="bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 rounded-sm shadow-[0_30px_60px_rgba(23,23,22,0.28)] border border-[#E8E2D7]">
-                  <div className="relative aspect-[1/1] w-full overflow-hidden bg-[#EAE4D9]">
+                <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_28px_56px_rgba(23,23,22,0.26)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_36px_68px_rgba(23,23,22,0.32)]">
+                  <div className="relative aspect-[4/4.7] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.bottom.image}
                       alt={current.bottom.alt}
                       fill
-                      sizes="265px"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
+                      sizes="(min-width: 1280px) 250px, (min-width: 640px) 230px, 200px"
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
                     />
-                  </div>
-                  {/* Bottom Caption matching reference SARA & DANIEL style */}
-                  <div className="pt-2 sm:pt-2.5 text-center">
-                    <p
-                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                      className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#171716] leading-tight"
-                    >
-                      {current.bottom.title}
-                    </p>
-                    <p className="text-[8px] sm:text-[9px] font-medium uppercase tracking-wider text-[#716B64] mt-0.5">
-                      {current.bottom.date}
-                    </p>
                   </div>
                 </div>
               </div>
 
               {/* ── Slide Collection Arrows Controls ── */}
-              <div className="absolute -bottom-8 inset-x-0 flex items-center justify-center gap-3 z-30">
+              <div className="absolute -bottom-8 sm:-bottom-9 inset-x-0 flex items-center justify-center gap-3 z-30">
                 <button
                   type="button"
                   onClick={() => move(-1)}
                   aria-label="Previous photograph collection"
-                  className="size-7 rounded-full border border-[#171716]/25 bg-white/90 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
+                  className="size-7 rounded-full border border-[#171716]/25 bg-white/95 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
                 >
                   <ChevronLeft className="size-3.5" />
                 </button>
@@ -331,7 +298,7 @@ export function Hero() {
                   type="button"
                   onClick={() => move(1)}
                   aria-label="Next photograph collection"
-                  className="size-7 rounded-full border border-[#171716]/25 bg-white/90 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
+                  className="size-7 rounded-full border border-[#171716]/25 bg-white/95 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
                 >
                   <ChevronRight className="size-3.5" />
                 </button>
