@@ -37,48 +37,66 @@ const pillars = [
 export default function AboutPage() {
   return (
     <PageTransition>
-      {/* ── 1. First Part: "WHO WE ARE" (Warm Ivory #EEE9DF) ────────── */}
+      {/* ── 1. First Part: "WHO WE ARE" (Warm Ivory #EEE9DF, Full Width) ────── */}
       <section className="bg-[#EEE9DF] pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 border-b border-[#D8CFC1]">
         <Container size="wide">
-          <div className="max-w-4xl">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-8 h-[2px] bg-[#D71920] shrink-0" aria-hidden />
-              <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#716B64]">
-                Who We Are
+          <div className="w-full">
+            {/* Top Eyebrow Bar across full width */}
+            <div className="flex items-center justify-between border-b border-[#D8CFC1] pb-4 mb-8 sm:mb-12">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-[#D71920] shrink-0" aria-hidden />
+                <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#716B64]">
+                  Who We Are
+                </p>
+              </div>
+              <p className="hidden sm:block text-xs uppercase tracking-[0.2em] text-[#716B64]">
+                HALO CINEMATIC STUDIO · NELLIADY, SRI LANKA
               </p>
             </div>
 
-            {/* Main Headline */}
+            {/* Grand Full-Width Headline */}
             <h1
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-[-0.03em] leading-[1.08] text-[#171716]"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-[96px] xl:text-[110px] font-normal tracking-[-0.035em] leading-[1.02] text-[#171716]"
             >
               We make moments{" "}
               <span className="italic font-serif text-[#D71920]">timeless.</span>
             </h1>
 
-            {/* Subtitle */}
-            <p className="mt-5 text-xl sm:text-2xl font-medium tracking-tight text-[#171716]">
-              Stories captured with emotion. Memories preserved forever.
-            </p>
+            {/* Full-Width Editorial Split Grid */}
+            <div className="mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-[#D8CFC1] grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
+              {/* Left Column: Prominent Subtitle */}
+              <div className="lg:col-span-5">
+                <p
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  className="text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-[#171716] leading-[1.2]"
+                >
+                  Stories captured with emotion.
+                  <br className="hidden sm:inline" /> Memories preserved forever.
+                </p>
+              </div>
 
-            {/* Description */}
-            <p className="mt-4 max-w-2xl text-base sm:text-[17px] leading-relaxed text-[#716B64]">
-              HALO CINEMATIC STUDIO is a creative photography and film production studio focused on
-              telling meaningful stories through powerful visuals in Nelliady, Sri Lanka.
-            </p>
+              {/* Right Column: Narrative Description & Badges */}
+              <div className="lg:col-span-7 flex flex-col justify-between h-full">
+                <p className="text-base sm:text-lg lg:text-xl text-[#716B64] leading-relaxed">
+                  HALO CINEMATIC STUDIO is a creative photography and film production studio focused on
+                  telling meaningful stories through powerful visuals in Nelliady, Sri Lanka.
+                </p>
 
-            {/* Quick Proof Pills */}
-            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-[#716B64]">
-              <span className="flex items-center gap-1.5 text-[#171716]">
-                <Sparkles className="size-3.5 text-[#D71920]" />
-                <span>Nelliady &amp; Jaffna</span>
-              </span>
-              <span className="text-[#D8CFC1]">•</span>
-              <span>Wedding &amp; Milestone Cinematography</span>
-              <span className="text-[#D8CFC1]">•</span>
-              <span>Bespoke 3D Keepsakes</span>
+                {/* Quick Proof Pills */}
+                <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs sm:text-[13px] font-medium text-[#716B64]">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF7F1] border border-[#D8CFC1] px-3.5 py-1.5 text-[#171716]">
+                    <Sparkles className="size-3.5 text-[#D71920]" />
+                    <span>Nelliady &amp; Jaffna</span>
+                  </span>
+                  <span className="inline-flex items-center rounded-full bg-[#FAF7F1] border border-[#D8CFC1] px-3.5 py-1.5 text-[#171716]">
+                    Wedding &amp; Milestone Cinematography
+                  </span>
+                  <span className="inline-flex items-center rounded-full bg-[#FAF7F1] border border-[#D8CFC1] px-3.5 py-1.5 text-[#171716]">
+                    Bespoke 3D Keepsakes
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </Container>
