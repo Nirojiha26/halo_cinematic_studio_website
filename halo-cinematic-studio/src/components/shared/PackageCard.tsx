@@ -31,12 +31,20 @@ export function PackageCard({
       )}
     >
       <div>
-        {/* Tier & Feature Badge */}
+        {/* Tier & Category with '|' separator */}
         <div className="flex items-center justify-between gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#D71920] bg-[#D71920]/10 border border-[#D71920]/25">
-            {isFeatured ? <Sparkles className="size-3 text-[#D71920]" /> : null}
-            <span>{pkg.tierLabel}</span>
-          </span>
+          <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1 text-[#D71920]">
+              {isFeatured ? <Sparkles className="size-3 text-[#D71920]" /> : null}
+              <span>{pkg.tierLabel}</span>
+            </span>
+            <span className="text-[#D8CFC1]" aria-hidden="true">
+              |
+            </span>
+            <span className="text-[#716B64] font-medium">
+              {categoryMeta.shortLabel}
+            </span>
+          </div>
 
           {pkg.flyerImage && onViewFlyer ? (
             <button
@@ -53,20 +61,20 @@ export function PackageCard({
         {/* Package Name */}
         <h3
           style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          className="mt-4 text-2xl sm:text-[28px] font-medium text-[#171716] tracking-tight leading-snug group-hover:text-[#D71920] transition-colors"
+          className="mt-3.5 text-2xl sm:text-[28px] font-medium text-[#171716] tracking-tight leading-snug group-hover:text-[#D71920] transition-colors"
         >
           {pkg.name}
         </h3>
 
         {/* Subline / Coverage */}
         {pkg.subline ? (
-          <p className="mt-1.5 text-xs text-[#716B64] font-medium leading-relaxed">
+          <p className="mt-1 text-xs text-[#716B64] font-medium leading-relaxed">
             {pkg.subline}
           </p>
         ) : null}
 
         {/* Price Section — Red Color Text (No Solid Red Background) */}
-        <div className="my-5 border-y border-[#D8CFC1]/70 py-3.5">
+        <div className="my-4 border-y border-[#D8CFC1]/70 py-3">
           <p
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             className="text-3xl sm:text-[34px] font-bold tracking-tight text-[#D71920]"

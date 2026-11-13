@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   ArrowLeft,
@@ -54,119 +54,116 @@ export function PackagesExplorer() {
   useBodyScrollLock(Boolean(activeFlyer));
 
   return (
-    <div className="space-y-10 sm:space-y-12">
+    <div className="w-full space-y-6 sm:space-y-8">
       <QueryParamSync name="category" onValue={handleCategoryParam} />
 
-      {/* ── Top Controls: Category Segmented Filter & View Switcher ── */}
-      <div className="flex flex-col items-center gap-4">
-        {/* Unified Single-Box Segmented Category Filter (No Numbers) */}
-        <div
-          role="tablist"
-          aria-label="Filter packages by event category"
-          className="inline-flex items-center p-1 sm:p-1.5 bg-[#FAF7F1] border border-[#D8CFC1] rounded-full max-w-full overflow-x-auto no-scrollbar shadow-xs"
-        >
-          {packageCategories.map((category) => {
-            const isActive = category.slug === activeCategory;
-            const count = getPackagesByCategory(category.slug).length;
-
-            return (
-              <button
-                key={category.slug}
-                role="tab"
-                type="button"
-                aria-selected={isActive}
-                onClick={() => setActiveCategory(category.slug)}
-                className={cn(
-                  "shrink-0 whitespace-nowrap cursor-pointer px-4 sm:px-6 py-2 text-xs sm:text-sm tracking-wide transition-all duration-200 rounded-full flex items-center gap-2",
-                  isActive
-                    ? "bg-[#D71920] text-white font-semibold shadow-xs"
-                    : "text-[#716B64] font-medium hover:text-[#171716] hover:bg-[#EEE9DF]/70",
-                )}
-              >
-                <span>{category.label}</span>
-                <span
-                  className={cn(
-                    "inline-grid size-5 place-items-center rounded-full text-[10px] font-bold",
-                    isActive
-                      ? "bg-white/20 text-white"
-                      : "bg-[#EEE9DF] text-[#D71920]",
+      {/* ── Refined Studio Category Header & Filter (Clean Gaps, '|' Separators, No Count Numbers) ── */}
+      <div className="rounded-2xl border border-[#D8CFC1] bg-[#FAF7F1] p-4 sm:p-5 shadow-xs">
+        {/* Row 1: Category Filter Tabs Separated by '|' + View Switcher */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 border-b border-[#D8CFC1]/70 pb-3.5">
+          {/* Category Tabs using '|' to differentiate (No numbers) */}
+          <nav
+            role="tablist"
+            aria-label="Event Categories"
+            className="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-sm font-semibold"
+          >
+            {packageCategories.map((cat, idx) => {
+              const isActive = cat.slug === activeCategory;
+              return (
+                <React.Fragment key={cat.slug}>
+                  {idx > 0 && (
+                    <span
+                      className="mx-2 sm:mx-3 text-[#D8CFC1] select-none font-light"
+                      aria-hidden="true"
+                    >
+                      |
+                    </span>
                   )}
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+                  <button
+                    role="tab"
+                    type="button"
+                    aria-selected={isActive}
+                    onClick={() => setActiveCategory(cat.slug)}
+                    className={cn(
+                      "transition-colors duration-200 cursor-pointer py-1 px-1",
+                      isActive
+                        ? "text-[#D71920] font-bold"
+                        : "text-[#716B64] hover:text-[#171716]",
+                    )}
+                  >
+                    {cat.label}
+                  </button>
+                </React.Fragment>
+              );
+            })}
+          </nav>
 
-        {/* View Mode Toggle: Detailed Cards vs Original Flyers */}
-        <div className="inline-flex items-center gap-1 p-1 bg-[#FAF7F1] border border-[#D8CFC1] rounded-xl text-xs font-semibold text-[#716B64]">
-          <button
-            type="button"
-            onClick={() => setViewMode("cards")}
-            className={cn(
-              "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer",
-              viewMode === "cards"
-                ? "bg-[#171716] text-white shadow-xs"
-                : "hover:text-[#171716]",
-            )}
-          >
-            <LayoutGrid className="size-3.5" />
-            <span>Package Cards</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setViewMode("flyers")}
-            className={cn(
-              "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer",
-              viewMode === "flyers"
-                ? "bg-[#171716] text-white shadow-xs"
-                : "hover:text-[#171716]",
-            )}
-          >
-            <FileImage className="size-3.5 text-[#D71920]" />
-            <span>Official Flyers</span>
-          </button>
-        </div>
-      </div>
-
-      {/* ── Category Context Card (Clean Soft Ivory Surface, Red Accents) ── */}
-      <div className="flex flex-col gap-5 rounded-2xl border border-[#D8CFC1] bg-[#FAF7F1] p-6 sm:p-8 sm:flex-row sm:items-center sm:justify-between shadow-xs">
-        <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 mb-2">
-            <span className="w-5 h-[2px] bg-[#D71920]" aria-hidden />
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D71920]">
-              {currentMeta.eyebrow}
-            </p>
+          {/* View Mode Toggle: Cards | Flyers using '|' */}
+          <div className="inline-flex items-center text-xs font-semibold shrink-0">
+            <button
+              type="button"
+              onClick={() => setViewMode("cards")}
+              className={cn(
+                "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer",
+                viewMode === "cards"
+                  ? "bg-[#171716] text-white"
+                  : "text-[#716B64] hover:text-[#171716]",
+              )}
+            >
+              <LayoutGrid className="size-3.5" />
+              <span>Cards</span>
+            </button>
+            <span className="mx-2 text-[#D8CFC1] select-none" aria-hidden="true">
+              |
+            </span>
+            <button
+              type="button"
+              onClick={() => setViewMode("flyers")}
+              className={cn(
+                "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer",
+                viewMode === "flyers"
+                  ? "bg-[#171716] text-white"
+                  : "text-[#716B64] hover:text-[#171716]",
+              )}
+            >
+              <FileImage className="size-3.5 text-[#D71920]" />
+              <span>Flyers</span>
+            </button>
           </div>
-          <h2
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            className="text-2xl sm:text-3xl font-medium text-[#171716] tracking-tight leading-snug"
-          >
-            {currentMeta.label}
-          </h2>
-          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#716B64]">
-            {currentMeta.description}
-          </p>
         </div>
 
-        <a
-          href={whatsappUrl(
-            `Hello HALO CINEMATIC STUDIO! I would like to enquire about ${currentMeta.label}.`
-          )}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-[#D71920] bg-white px-5 text-xs font-semibold text-[#D71920] hover:bg-[#D71920] hover:text-white transition-all shadow-xs active:scale-95"
-        >
-          <MessageCircle className="size-4" />
-          <span>Ask Custom Quote</span>
-          <ArrowRight className="size-3.5" />
-        </a>
+        {/* Row 2: Category Context Strip (Tight Gaps, Differentiated with '|') */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 text-xs sm:text-sm">
+          <div className="flex items-center flex-wrap gap-x-2.5 gap-y-1">
+            <span className="font-bold text-[#D71920] uppercase tracking-wider text-[11px] sm:text-xs">
+              {currentMeta.eyebrow}
+            </span>
+            <span className="text-[#D8CFC1] select-none" aria-hidden="true">
+              |
+            </span>
+            <span className="text-[#716B64] leading-relaxed">
+              {currentMeta.description}
+            </span>
+          </div>
+
+          <a
+            href={whatsappUrl(
+              `Hello HALO CINEMATIC STUDIO! I would like to enquire about ${currentMeta.label}.`,
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-1.5 font-semibold text-xs text-[#D71920] hover:text-[#b5141a] transition-colors"
+          >
+            <MessageCircle className="size-3.5" />
+            <span>Custom Quote</span>
+            <ArrowRight className="size-3" />
+          </a>
+        </div>
       </div>
 
-      {/* ── View 1: Detailed Package Cards (2 Per Row as Requested) ── */}
+      {/* ── View 1: 2 Cards Per Row (Spanning Full Page Horizontally) ── */}
       {viewMode === "cards" ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 w-full">
           {packages.map((pkg) => (
             <PackageCard
               key={pkg.slug}
@@ -177,7 +174,7 @@ export function PackagesExplorer() {
         </div>
       ) : (
         /* ── View 2: Official Studio Flyers Gallery ── */
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
           {packages
             .filter((p) => Boolean(p.flyerImage))
             .map((pkg) => (
@@ -195,18 +192,22 @@ export function PackagesExplorer() {
                   sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="absolute bottom-0 inset-x-0 p-4 text-white opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-[#D71920]">
-                    {pkg.tierLabel}
-                  </p>
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#D71920]">
+                    <span>{pkg.tierLabel}</span>
+                    <span className="text-white/40" aria-hidden="true">
+                      |
+                    </span>
+                    <span className="text-white/80">{currentMeta.shortLabel}</span>
+                  </div>
                   <h4
                     style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                    className="text-base font-semibold leading-tight text-white"
+                    className="text-base font-semibold leading-tight text-white mt-0.5"
                   >
                     {pkg.name}
                   </h4>
-                  <p className="text-xs text-[#FAF7F1]/90 font-bold mt-1">
+                  <p className="text-xs text-[#FAF7F1] font-bold mt-1">
                     {pkg.priceDisplay}
                   </p>
                   <p className="mt-2 text-[11px] text-[#FAF7F1]/80 inline-flex items-center gap-1 font-medium">
@@ -243,7 +244,11 @@ export function PackagesExplorer() {
                   style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                   className="text-sm sm:text-base font-medium text-white tracking-tight"
                 >
-                  {activeFlyer.title} — Official Studio Flyer
+                  {activeFlyer.title}
+                  <span className="text-white/40 mx-2" aria-hidden="true">
+                    |
+                  </span>
+                  <span className="text-xs text-[#D8CFC1]">Official Studio Flyer</span>
                 </h3>
 
                 <button
@@ -275,7 +280,7 @@ export function PackagesExplorer() {
               <footer className="absolute bottom-4 inset-x-0 z-50 flex justify-center pointer-events-auto">
                 <a
                   href={whatsappUrl(
-                    `Hello HALO CINEMATIC STUDIO! I am looking at the "${activeFlyer.title}" package flyer. Could you please share booking steps?`
+                    `Hello HALO CINEMATIC STUDIO! I am looking at the "${activeFlyer.title}" package flyer. Could you please share booking steps?`,
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
