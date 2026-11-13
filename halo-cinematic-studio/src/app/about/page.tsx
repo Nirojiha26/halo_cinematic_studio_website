@@ -37,53 +37,58 @@ const pillars = [
 export default function AboutPage() {
   return (
     <PageTransition>
-      {/* ── 1. First Part: "WHO WE ARE" (Warm Ivory #EEE9DF, Full Horizontal Layout) ── */}
-      <section className="bg-[#EEE9DF] pt-32 sm:pt-36 lg:pt-40 pb-14 sm:pb-16 border-b border-[#D8CFC1]">
-        <Container size="wide">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-            {/* Left Column: Eyebrow, Main Headline & Subtitle */}
-            <div className="lg:col-span-7">
-              {/* Eyebrow */}
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#D71920] shrink-0" aria-hidden />
-                <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#716B64]">
-                  Who We Are
-                </p>
-              </div>
+      {/* ── 1. First Part: "WHO WE ARE" (Dark Blurred Studio Atmosphere matching Navbar) ── */}
+      <section className="relative overflow-hidden bg-[#090A0D] pt-36 sm:pt-40 lg:pt-44 pb-16 sm:pb-20 border-b border-[#2A2926]">
+        {/* Background authentic studio image with blur and dark overlay matching navbar */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/home-selected/garland-exchange.webp"
+            alt="HALO Cinematic Studio atmosphere"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center filter blur-md scale-105 brightness-[0.28]"
+          />
+          {/* Seamless dark gradient tint matching navbar #090A0D */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#090A0D]/95 via-[#171716]/85 to-[#171716]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(215,25,32,0.14)_0%,transparent_70%)]" />
+        </div>
 
-              {/* Main Headline */}
-              <h1
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] font-normal tracking-[-0.03em] leading-[1.08] text-[#171716]"
-              >
-                We make moments{" "}
-                <span className="italic font-serif text-[#D71920]">timeless.</span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="mt-4 text-xl sm:text-2xl font-light tracking-tight text-[#171716]">
-                Stories captured with emotion. Memories preserved forever.
+        <Container size="wide" className="relative z-10 text-center">
+          <div className="max-w-4xl mx-auto">
+            {/* Eyebrow */}
+            <div className="inline-flex items-center justify-center gap-3 mb-5">
+              <span className="w-8 h-[2px] bg-[#D71920]" aria-hidden />
+              <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#D71920]">
+                Who We Are
               </p>
+              <span className="w-8 h-[2px] bg-[#D71920]" aria-hidden />
             </div>
 
-            {/* Right Column: Studio Description & Horizontal Proof Badges */}
-            <div className="lg:col-span-5 lg:border-l lg:border-[#D8CFC1] lg:pl-10 space-y-5">
-              <p className="text-base sm:text-[17px] leading-relaxed text-[#716B64]">
-                HALO CINEMATIC STUDIO is a creative photography and film production studio focused on
-                telling meaningful stories through powerful visuals in Nelliady, Sri Lanka.
-              </p>
+            {/* Main Headline */}
+            <h1
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-[-0.03em] leading-[1.08] text-[#FAF7F1]"
+            >
+              We make moments{" "}
+              <span className="italic font-serif text-[#D71920]">timeless.</span>
+            </h1>
 
-              {/* Quick Proof Pills */}
-              <div className="pt-4 border-t border-[#D8CFC1]/70 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-[#716B64]">
-                <span className="flex items-center gap-1.5 text-[#171716]">
-                  <Sparkles className="size-3.5 text-[#D71920]" />
-                  <span>Nelliady &amp; Jaffna</span>
-                </span>
-                <span className="text-[#D8CFC1]">•</span>
-                <span>Wedding &amp; Milestone Cinematography</span>
-                <span className="text-[#D8CFC1]">•</span>
-                <span>Bespoke 3D Keepsakes</span>
-              </div>
+            {/* Subtitle */}
+            <p className="mt-5 text-xl sm:text-2xl lg:text-3xl font-light tracking-tight text-[#FAF7F1]/90">
+              Stories captured with emotion. Memories preserved forever.
+            </p>
+
+            {/* Quick Proof Pills */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-[#D8CFC1]/80">
+              <span className="flex items-center gap-1.5 text-[#FAF7F1]">
+                <Sparkles className="size-3.5 text-[#D71920]" />
+                <span>Nelliady &amp; Jaffna</span>
+              </span>
+              <span className="text-[#D8CFC1]/40">•</span>
+              <span>Wedding &amp; Milestone Cinematography</span>
+              <span className="text-[#D8CFC1]/40">•</span>
+              <span>Bespoke 3D Keepsakes</span>
             </div>
           </div>
         </Container>
