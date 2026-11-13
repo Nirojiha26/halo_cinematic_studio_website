@@ -1,11 +1,10 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { createMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { Reveal } from "@/components/motion/Reveal";
-import { PageHeader } from "@/components/shared/PageHeader";
-import { EditorialPhoto } from "@/components/shared/EditorialPhoto";
 import { ServiceCard } from "@/components/shared/ServiceCard";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Button } from "@/components/ui/Button";
@@ -40,60 +39,155 @@ const pillars = [
 export default function AboutPage() {
   return (
     <PageTransition>
-      <PageHeader
-        eyebrow="Who We Are"
-        title="We make moments"
-        highlight="timeless."
-        description="HALO CINEMATIC STUDIO is a creative photography and film production studio focused on telling meaningful stories through powerful visuals in Nelliady, Sri Lanka."
-      />
-
-      {/* Brand story */}
-      <Section tone="white" labelledBy="story-heading">
-        <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <div className="overflow-hidden rounded-[24px] border border-[rgba(20,20,20,0.08)] shadow-[0_20px_40px_-15px_rgba(20,20,20,0.12)]">
-                <EditorialPhoto
-                  className="aspect-[4/5]"
-                  src="/images/editorial/engagement.jpg"
-                  alt="Newlywed Tamil couple captured in natural light by HALO Cinematic Studio"
-                  position="center 35%"
+      {/* ── Top Section: Editorial Photo Collage + Story (Matching Reference Design) ── */}
+      <section className="bg-white pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-24">
+        <Container size="wide">
+          
+          {/* ── Dynamic Photo Collage (100% Genuine HALO Studio Photos) ── */}
+          <div className="w-full">
+            {/* Row 1: Staggered Bento Grid */}
+            <div className="grid grid-cols-12 gap-3 sm:gap-5 items-end">
+              {/* Card 1: Wide Landscape (Left) */}
+              <div className="col-span-12 sm:col-span-5 md:col-span-4 relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+                <Image
+                  src="/images/home-selected/traditional-wedding.webp"
+                  alt="Bride and groom in traditional wedding dress before temple doors"
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 50vw"
                   priority
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
-            </Reveal>
 
-            <Reveal delay={0.08}>
-              <p className="chip-eyebrow mb-4">Our Story</p>
-              <h2
-                id="story-heading"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
-                className="text-3xl font-semibold leading-tight text-[#141414] sm:text-4xl lg:text-5xl"
-              >
-                Your Moments. <span className="grad-text">Our Vision.</span> Your Story.
-              </h2>
-              <p className="mt-6 text-base leading-relaxed text-[#5F5A5A] sm:text-lg">
-                We capture the moments that matter and turn them into timeless memories. From weddings and puberty
-                ceremonies to birthday milestones, every frame is crafted with genuine passion.
+              {/* Card 2: Vertical Portrait */}
+              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+                <Image
+                  src="/images/home-selected/jewellery-portrait.webp"
+                  alt="Traditional bridal gold jewellery and green bangles"
+                  fill
+                  sizes="(min-width: 1024px) 16vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+
+              {/* Card 3: Medium Horizontal */}
+              <div className="col-span-6 sm:col-span-4 md:col-span-3 relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+                <Image
+                  src="/images/home-selected/temple-connection.webp"
+                  alt="Newlywed couple candid smile in temple courtyard"
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+
+              {/* Card 4: Vertical Portrait (Right) */}
+              <div className="col-span-12 sm:col-span-4 md:col-span-3 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+                <Image
+                  src="/images/home-selected/garden-couple.webp"
+                  alt="Couple holding hands in natural garden light"
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+            </div>
+
+            {/* Row 2: Staggered Bento Grid */}
+            <div className="grid grid-cols-12 gap-3 sm:gap-5 items-start mt-3 sm:mt-5">
+              {/* Card 5: Square */}
+              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+                <Image
+                  src="/images/home-selected/wedding-embrace.webp"
+                  alt="Bride and groom leaning close together in wedding attire"
+                  fill
+                  sizes="(min-width: 1024px) 16vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+
+              {/* Card 6: Square */}
+              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+                <Image
+                  src="/images/home-selected/couple-at-temple.webp"
+                  alt="Couple smiling seated in front of carved temple doors"
+                  fill
+                  sizes="(min-width: 1024px) 16vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+
+              {/* Card 7: Vertical Booth Card */}
+              <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+                <Image
+                  src="/images/hero/slide-03.jpg"
+                  alt="Auspicious ceremony floral garlands and rituals"
+                  fill
+                  sizes="(min-width: 1024px) 16vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+
+              {/* Card 8: Large Wide Landscape (Right) */}
+              <div className="col-span-12 sm:col-span-6 md:col-span-6 relative aspect-[16/9.5] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm bg-neutral-100 group">
+                <Image
+                  src="/images/home-selected/garland-exchange.webp"
+                  alt="Bride and groom exchanging flower garlands during ceremony"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* ── Editorial Story Text Block (Matching Reference Typography) ── */}
+          <div className="mt-16 sm:mt-24 max-w-3xl">
+            <Reveal>
+              <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#B50812] mb-4">
+                Our Vision
               </p>
-              <p className="mt-4 text-base leading-relaxed text-[#5F5A5A] sm:text-lg">
-                Based in Nelliady, Sri Lanka, we bring cinematic detail, creative warmth, and dedicated artistry to every
-                commission — working closely with you from the first idea to the final delivery.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3.5">
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#141414] leading-[1.15]">
+                We&apos;re making every moment timeless
+              </h1>
+
+              <div className="mt-8 space-y-6 text-base sm:text-[17px] leading-relaxed text-[#5F5A5A]">
+                <p>
+                  At HALO CINEMATIC STUDIO, our mission is to capture life&apos;s most meaningful occasions with
+                  authenticity, emotion, and cinematic artistry. We want every family, couple, and client to relive their
+                  cherished memories through photographs and films that are timeless, vibrant, and deeply heartfelt.
+                </p>
+
+                <p>
+                  Great stories are built from real, unscripted moments — the quiet smiles, the sacred exchange of
+                  garlands, the joyous laughter among loved ones, and the fine cultural details that make your day unique.
+                  We craft our photography and cinematography with careful framing, natural lighting, and modern colour
+                  grading so that every frame tells a feeling.
+                </p>
+
+                <p>
+                  Based in Nelliady, Jaffna, our dedicated team of photographers, cinematographers, colourists, and album
+                  designers works closely with every client from the first consultation to final delivery. Our long-term
+                  goal is simple: to create heirloom visual stories that your family will treasure for generations.
+                </p>
+              </div>
+
+              <div className="mt-10 flex flex-wrap gap-4">
                 <Button href="/packages" icon={<ArrowRight className="size-4" />}>
-                  View Packages
+                  Explore Packages
                 </Button>
-                <Button href="/photos" variant="outline">
-                  Browse Photos
+                <Button href="/contact" variant="outline">
+                  Contact Studio
                 </Button>
               </div>
             </Reveal>
           </div>
-        </Container>
-      </Section>
 
-      {/* Mission, Vision & Philosophy */}
+        </Container>
+      </section>
+
+      {/* ── Mission, Vision & Philosophy ── */}
       <Section tone="blush" labelledBy="philosophy-heading">
         <Container>
           <SectionHeading
@@ -101,7 +195,7 @@ export default function AboutPage() {
             eyebrow={siteConfig.tagline}
             title="Vision &"
             highlight="Mission"
-            description="Three guiding principles behind every frame, edit, and keepsake we produce."
+            description="Three guiding principles behind every frame, film edit, and keepsake we produce."
           />
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -123,7 +217,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* What We Craft — 4 Core Studio Disciplines */}
+      {/* ── What We Craft — 4 Core Studio Disciplines ── */}
       <Section tone="white" labelledBy="craft-heading">
         <Container>
           <SectionHeading
