@@ -83,7 +83,7 @@ export default function AboutPage() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-[#D8CFC1]/80">
               <span className="flex items-center gap-1.5 text-[#FAF7F1]">
                 <Sparkles className="size-3.5 text-[#D71920]" />
-                <span>Nelliady &amp; Jaffna</span>
+                <span>Nelliady</span>
               </span>
               <span className="text-[#D8CFC1]/40">•</span>
               <span>Wedding &amp; Milestone Cinematography</span>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                 </p>
 
                 <p>
-                  Based in Nelliady, Jaffna, our dedicated team of photographers, cinematographers, colourists, and album
+                  Based in Nelliady, our dedicated team of photographers, cinematographers, colourists, and album
                   designers works closely with every client from the first consultation to final delivery. Our long-term
                   goal is simple: to create heirloom visual stories that your family will treasure for generations.
                 </p>
@@ -166,7 +166,7 @@ export default function AboutPage() {
               Real Moments, Carefully Made
             </h2>
             <p className="mt-2 text-sm text-[#716B64]">
-              Selected highlights from traditional wedding celebrations and intimate ceremonies in Jaffna.
+              Selected highlights from traditional wedding celebrations and intimate ceremonies in Nelliady.
             </p>
           </div>
 

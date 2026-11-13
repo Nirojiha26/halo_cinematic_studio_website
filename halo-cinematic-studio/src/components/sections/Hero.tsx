@@ -146,7 +146,7 @@ export function Hero() {
               <div className="mt-8 pt-6 border-t border-[#141414]/10 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-[#6B6565]">
                 <span className="flex items-center gap-1.5 font-medium">
                   <Sparkles className="size-3.5 text-[#D90B17]" />
-                  <span>Jaffna &amp; Nelliady</span>
+                  <span>Nelliady</span>
                 </span>
                 <span className="text-[#141414]/25">•</span>
                 <span>Signature Weddings</span>
