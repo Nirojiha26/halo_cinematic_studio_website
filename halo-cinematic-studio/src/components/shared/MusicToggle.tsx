@@ -62,7 +62,7 @@ export function MusicToggle() {
         className={cn(
           "inline-flex size-10 items-center justify-center rounded-full border transition-colors duration-200 disabled:opacity-60",
           on
-            ? "border-[#D90B17] bg-[#D90B17]/15 text-[#F51420]"
+            ? "border-[#E50919] bg-[#E50919]/15 text-[#E50919]"
             : "border-white/15 bg-transparent text-white/60 hover:border-white/50 hover:text-white",
         )}
       >

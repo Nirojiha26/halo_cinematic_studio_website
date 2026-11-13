@@ -50,8 +50,8 @@ function validate(values: Values): Errors {
 }
 
 const inputBase =
-  "w-full rounded-xl border border-[rgba(20,20,20,0.12)] bg-white px-4 py-3 text-sm font-normal text-[#141414] placeholder:text-[#5F5A5A]/60 " +
-  "outline-none transition-all duration-200 focus:border-[#D90B17] focus:ring-2 focus:ring-[#D90B17]/15 aria-[invalid=true]:border-[#D90B17] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#D90B17]/20";
+  "w-full rounded-xl border border-[rgba(20,20,20,0.12)] bg-white px-4 py-3 text-sm font-normal text-[#141414] placeholder:text-[#625C5D]/60 " +
+  "outline-none transition-all duration-200 focus:border-[#E50919] focus:ring-2 focus:ring-[#E50919]/15 aria-[invalid=true]:border-[#E50919] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#E50919]/20";
 
 export function EnquiryForm() {
   const [values, setValues] = useState<Values>({
@@ -197,7 +197,7 @@ export function EnquiryForm() {
         <QueryParamSync name="category" onValue={syncCategory} />
         <QueryParamSync name="package" onValue={syncPackage} />
         <p className="chip-eyebrow">WhatsApp Package Enquiry</p>
-        <p className="mt-2 text-sm text-[#5F5A5A]">
+        <p className="mt-2 text-sm text-[#625C5D]">
           Choose your event category and package tier below to send a formatted WhatsApp enquiry directly to our studio team.
         </p>
       </div>
@@ -264,7 +264,7 @@ export function EnquiryForm() {
               className={cn(
                 inputBase,
                 "appearance-none pr-10",
-                values.category ? "text-[#141414]" : "text-[#5F5A5A]/70",
+                values.category ? "text-[#141414]" : "text-[#625C5D]/70",
               )}
             >
               <option value="">Select event type</option>
@@ -278,7 +278,7 @@ export function EnquiryForm() {
               </option>
             </select>
             <ChevronDown
-              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#5F5A5A]"
+              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#625C5D]"
               aria-hidden
             />
           </div>
@@ -299,8 +299,8 @@ export function EnquiryForm() {
               aria-invalid={Boolean(errors.packageSlug)}
               className={cn(
                 inputBase,
-                "appearance-none pr-10 disabled:cursor-not-allowed disabled:bg-[#FFF1F2] disabled:text-[#5F5A5A]",
-                values.packageSlug ? "text-[#141414]" : "text-[#5F5A5A]/70",
+                "appearance-none pr-10 disabled:cursor-not-allowed disabled:bg-[#FFF1F2] disabled:text-[#625C5D]",
+                values.packageSlug ? "text-[#141414]" : "text-[#625C5D]/70",
               )}
             >
               <option value="">
@@ -315,7 +315,7 @@ export function EnquiryForm() {
               ))}
             </select>
             <ChevronDown
-              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#5F5A5A]"
+              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#625C5D]"
               aria-hidden
             />
           </div>
@@ -327,20 +327,20 @@ export function EnquiryForm() {
         <div className="rounded-2xl border border-[rgba(217,11,23,0.22)] bg-[#FFF1F2] p-4 sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[rgba(217,11,23,0.16)] pb-3">
             <div className="flex items-center gap-2 text-xs font-semibold text-[#141414]">
-              <PackageCheck className="size-4 text-[#D90B17]" aria-hidden />
+              <PackageCheck className="size-4 text-[#E50919]" aria-hidden />
               <span>{selectedPackage.name}</span>
             </div>
             <span
-              style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-lg font-semibold text-[#D90B17]"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+              className="text-lg font-semibold text-[#E50919]"
             >
               {selectedPackage.priceDisplay}
             </span>
           </div>
-          <ul className="mt-3 grid gap-1.5 text-xs text-[#5F5A5A] sm:grid-cols-2">
+          <ul className="mt-3 grid gap-1.5 text-xs text-[#625C5D] sm:grid-cols-2">
             {selectedPackage.highlights.slice(0, 4).map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <Check className="mt-0.5 size-3.5 shrink-0 text-[#D90B17]" aria-hidden />
+                <Check className="mt-0.5 size-3.5 shrink-0 text-[#E50919]" aria-hidden />
                 <span>{item}</span>
               </li>
             ))}
@@ -408,11 +408,11 @@ export function EnquiryForm() {
       {submittedUrl ? (
         <div
           role="status"
-          className="flex flex-col gap-2 rounded-xl border border-[#D90B17]/30 bg-[#FFF1F2] p-4 text-sm text-[#141414]"
+          className="flex flex-col gap-2 rounded-xl border border-[#E50919]/30 bg-[#FFF1F2] p-4 text-sm text-[#141414]"
         >
           <div className="flex items-start gap-2.5 font-semibold">
             <CheckCircle2
-              className="mt-0.5 size-4 shrink-0 text-[#D90B17]"
+              className="mt-0.5 size-4 shrink-0 text-[#E50919]"
               aria-hidden
             />
             <span>
@@ -425,7 +425,7 @@ export function EnquiryForm() {
             href={submittedUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 pl-6 text-xs font-semibold text-[#141414] underline underline-offset-4 hover:text-[#D90B17]"
+            className="inline-flex items-center gap-1.5 pl-6 text-xs font-semibold text-[#141414] underline underline-offset-4 hover:text-[#E50919]"
           >
             Didn&apos;t open automatically? Open WhatsApp now
             <ExternalLink className="size-3.5" aria-hidden />
@@ -456,7 +456,7 @@ function Field({
         className="text-xs font-semibold text-[#141414]"
       >
         {label}
-        {required ? <span className="text-[#D90B17]"> *</span> : null}
+        {required ? <span className="text-[#E50919]"> *</span> : null}
       </label>
       {children}
       {error ? (

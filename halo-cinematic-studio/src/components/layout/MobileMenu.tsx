@@ -57,7 +57,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
         aria-controls={panelId}
         aria-haspopup="dialog"
         aria-label="Open menu"
-        className="grid size-10 place-items-center rounded-full border border-white/20 bg-transparent text-white transition-colors hover:border-[#D90B17] hover:text-[#F51420]"
+        className="grid size-10 place-items-center rounded-full border border-white/20 bg-transparent text-white transition-colors hover:border-[#E50919] hover:text-[#E50919]"
       >
         <Menu className="size-5" aria-hidden />
       </button>
@@ -88,7 +88,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                       type="button"
                       onClick={close}
                       aria-label="Close menu"
-                      className="grid size-10 place-items-center rounded-full border border-white/20 text-white transition-colors hover:border-[#D90B17] hover:text-[#F51420]"
+                      className="grid size-10 place-items-center rounded-full border border-white/20 text-white transition-colors hover:border-[#E50919] hover:text-[#E50919]"
                     >
                       <X className="size-5" aria-hidden />
                     </button>
@@ -96,7 +96,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
 
                   {/* Navigation Links */}
                   <div className="flex flex-1 flex-col overflow-y-auto px-6 py-8">
-                    <p className="mb-7 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#F51420]">Navigation</p>
+                    <p className="mb-7 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#E50919]">Navigation</p>
                     <nav aria-label="Mobile menu links">
                       <ul className="space-y-1">
                         {siteConfig.nav.map((item, i) => {
@@ -110,13 +110,13 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                                 className={cn(
                                   "flex items-center justify-between border-b border-white/10 px-0 py-4 text-[clamp(1.7rem,7vw,2.7rem)] font-serif transition-colors",
                                   active
-                                    ? "text-[#F51420]"
-                                    : "text-white hover:text-[#F51420]",
+                                    ? "text-[#E50919]"
+                                    : "text-white hover:text-[#E50919]",
                                 )}
                               >
                                 <span>{item.label}</span>
                                 {active ? (
-                                  <span className="size-2 rounded-full bg-[#D90B17]" />
+                                  <span className="size-2 rounded-full bg-[#E50919]" />
                                 ) : null}
                               </Link>
                             </li>
@@ -135,19 +135,30 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                         {siteConfig.cta.label}
                       </Link>
 
-                      <div className="grid grid-cols-2 gap-3 pt-2">
+                      <div className="grid grid-cols-3 gap-2 pt-2">
                         <a
                           href={`tel:${siteConfig.contact.phoneIntl}`}
-                          className="flex h-11 items-center justify-center gap-2 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#F51420]"
+                          className="flex h-11 items-center justify-center gap-1.5 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#D90B17]"
                         >
                           <Phone className="size-3.5" />
-                          <span>Call Studio</span>
+                          <span>Call</span>
+                        </a>
+                        <a
+                          href="https://www.facebook.com/profile.php?id=61593422810198"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-11 items-center justify-center gap-1.5 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#D90B17]"
+                        >
+                          <svg className="size-3.5 fill-current" viewBox="0 0 24 24" aria-hidden>
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                          </svg>
+                          <span>Facebook</span>
                         </a>
                         <a
                           href={whatsappUrl()}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex h-11 items-center justify-center gap-2 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#F51420]"
+                          className="flex h-11 items-center justify-center gap-1.5 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#D90B17]"
                         >
                           <MessageCircle className="size-3.5" />
                           <span>WhatsApp</span>

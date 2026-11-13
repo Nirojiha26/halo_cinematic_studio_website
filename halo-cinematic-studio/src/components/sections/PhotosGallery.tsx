@@ -103,7 +103,7 @@ export function PhotosGallery() {
                 "inline-flex cursor-pointer items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all duration-200",
                 isActive
                   ? "btn-grad text-white shadow-md shadow-[rgba(217,11,23,0.28)]"
-                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#D90B17] hover:text-[#B50812]",
+                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#E50919] hover:text-[#B50812]",
               )}
             >
               <span>{collection}</span>
@@ -123,7 +123,7 @@ export function PhotosGallery() {
       </div>
 
       {/* Photos Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="photo-masonry">
         {filtered.map((photo) => (
           <PhotoCard
             key={photo.id}
@@ -155,7 +155,7 @@ export function PhotosGallery() {
                   {selectedPhoto.category}
                 </p>
                 <h3
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
                   className="text-lg font-semibold text-[#141414]"
                 >
                   {selectedPhoto.title}
@@ -166,7 +166,7 @@ export function PhotosGallery() {
                 type="button"
                 onClick={handleClose}
                 aria-label="Close dialog"
-                className="grid size-10 place-items-center rounded-full border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#D90B17] hover:text-[#D90B17]"
+                className="grid size-10 place-items-center rounded-full border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] transition-colors hover:border-[#E50919] hover:text-[#E50919]"
               >
                 <X className="size-5" />
               </button>
@@ -190,7 +190,7 @@ export function PhotosGallery() {
                     type="button"
                     onClick={() => stepPhoto(-1)}
                     aria-label="Previous photo"
-                    className="absolute left-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#D90B17]"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#E50919]"
                   >
                     <ChevronLeft className="size-6" />
                   </button>
@@ -198,7 +198,7 @@ export function PhotosGallery() {
                     type="button"
                     onClick={() => stepPhoto(1)}
                     aria-label="Next photo"
-                    className="absolute right-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#D90B17]"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#141414] shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:text-[#E50919]"
                   >
                     <ChevronRight className="size-6" />
                   </button>
@@ -208,7 +208,7 @@ export function PhotosGallery() {
 
             {/* Bottom info & WhatsApp enquiry bar */}
             <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[rgba(20,20,20,0.08)] bg-[#FFF1F2] px-6 py-4">
-              <p className="text-sm text-[#5F5A5A]">{selectedPhoto.subtitle}</p>
+              <p className="text-sm text-[#625C5D]">{selectedPhoto.subtitle}</p>
               <a
                 href={whatsappUrl(
                   `Hello HALO CINEMATIC STUDIO! I am enquiring about the ${selectedPhoto.title} (${selectedPhoto.category}) shown in your gallery.`

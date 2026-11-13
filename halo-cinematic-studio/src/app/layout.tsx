@@ -7,17 +7,21 @@ import { FloatingActions } from "@/components/shared/FloatingActions";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import "./globals.css";
 
-const inter = localFont({
-  src: "./fonts/inter-latin.woff2",
-  variable: "--font-inter",
-  weight: "100 900",
+const manrope = localFont({
+  src: [
+    { path: "./fonts/manrope-regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/manrope-semibold.ttf", weight: "600", style: "normal" },
+  ],
+  variable: "--font-manrope",
   display: "swap",
 });
 
-const archivo = localFont({
-  src: "./fonts/archivo-latin.woff2",
-  variable: "--font-archivo",
-  weight: "400 900",
+const playfair = localFont({
+  src: [
+    { path: "./fonts/playfair-regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/playfair-italic.ttf", weight: "400", style: "italic" },
+  ],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -74,7 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${playfair.variable}`}>
       <body className="flex min-h-dvh flex-col bg-white text-[#141414]">
         <script
           type="application/ld+json"

@@ -38,7 +38,7 @@ export function PackageCard({
           <span aria-hidden className={isFeatured ? "text-white/40" : "text-[rgba(20,20,20,0.15)]"}>
             /
           </span>
-          <span className={isFeatured ? "text-white/90" : "text-[#5F5A5A]"}>
+          <span className={isFeatured ? "text-white/90" : "text-[#625C5D]"}>
             {showCategoryBadge ? categoryMeta.shortLabel : pkg.tierLabel}
           </span>
         </div>
@@ -56,7 +56,7 @@ export function PackageCard({
       </div>
 
       <h3
-        style={{ fontFamily: "'Playfair Display', serif" }}
+        style={{ fontFamily: "var(--font-playfair), serif" }}
         className={cn(
           "mt-4 text-2xl font-semibold leading-tight",
           isFeatured ? "text-white" : "text-[#141414]",
@@ -66,7 +66,7 @@ export function PackageCard({
       </h3>
 
       {pkg.subline ? (
-        <p className={cn("mt-1.5 text-xs font-normal", isFeatured ? "text-white/80" : "text-[#5F5A5A]")}>
+        <p className={cn("mt-1.5 text-xs font-normal", isFeatured ? "text-white/80" : "text-[#625C5D]")}>
           {pkg.subline}
         </p>
       ) : null}
@@ -78,10 +78,10 @@ export function PackageCard({
         )}
       >
         <p
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          style={{ fontFamily: "var(--font-playfair), serif" }}
           className={cn(
             "text-3xl font-semibold tracking-tight",
-            isFeatured ? "text-white" : "text-[#D90B17]",
+            isFeatured ? "text-white" : "text-[#E50919]",
           )}
         >
           {pkg.priceDisplay}
@@ -94,11 +94,11 @@ export function PackageCard({
             key={item}
             className={cn(
               "flex items-start gap-2.5",
-              isFeatured ? "text-white/95" : "text-[#5F5A5A]",
+              isFeatured ? "text-white/95" : "text-[#625C5D]",
             )}
           >
             <Check
-              className={cn("mt-0.5 size-4 shrink-0", isFeatured ? "text-white" : "text-[#D90B17]")}
+              className={cn("mt-0.5 size-4 shrink-0", isFeatured ? "text-white" : "text-[#E50919]")}
               aria-hidden
             />
             <span>{item}</span>
@@ -107,7 +107,7 @@ export function PackageCard({
       </ul>
 
       {pkg.notes ? (
-        <p className={cn("mb-5 text-xs leading-relaxed", isFeatured ? "text-white/80" : "text-[#5F5A5A]")}>
+        <p className={cn("mb-5 text-xs leading-relaxed", isFeatured ? "text-white/80" : "text-[#625C5D]")}>
           {pkg.notes}
         </p>
       ) : null}

@@ -22,7 +22,7 @@ export function PageHeader({ eyebrow, title, highlight, description, action }: P
           <h1
             id="page-title"
             style={{
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "var(--font-playfair), serif",
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
             }}
@@ -32,8 +32,8 @@ export function PageHeader({ eyebrow, title, highlight, description, action }: P
             {highlight ? <span className="grad-text"> {highlight}</span> : null}
           </h1>
           <p
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-            className="mt-5 max-w-2xl text-base font-normal text-[#5F5A5A] sm:text-lg"
+            style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+            className="mt-5 max-w-2xl text-base font-normal text-[#625C5D] sm:text-lg"
           >
             {description}
           </p>

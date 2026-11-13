@@ -41,7 +41,11 @@ export const siteConfig = {
     servicesSummary: "Wedding • Puberty • Engagement • Events",
   },
 
-  socials: [] as SocialLink[],
+  socials: [
+    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61593422810198" },
+    { label: "WhatsApp", href: "https://wa.me/94775321978" },
+    { label: "Instagram", href: "https://www.instagram.com/halocinematicstudio/" },
+  ] as SocialLink[],
 
   /** Place a licensed MP3 at public/audio/background.mp3 to enable music. */
   backgroundMusic: "/audio/background.mp3",

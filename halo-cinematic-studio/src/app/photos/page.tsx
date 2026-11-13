@@ -18,9 +18,9 @@ export default function PhotosPage() {
     <PageTransition>
       <PageHeader
         eyebrow="Gallery & Collections"
-        title="Studio"
-        highlight="Photos"
-        description="Real wedding portraits captured by our team alongside official Wedding, Engagement, and Event brochure sheets."
+        title="Stories in"
+        highlight="Every Frame."
+        description="Explore wedding moments, engagements, portraits and the details in between. Package collections are also available below."
         action={
           <Button href="/packages" variant="outline" size="md">
             View Package Pricing

@@ -3,6 +3,9 @@ import type { PackageCategorySlug } from "./packages";
 export type PhotoCollection =
   | "All"
   | "Wedding Portraits"
+  | "Engagements"
+  | "Portraits"
+  | "Details & Film"
   | "Wedding Packages"
   | "Engagement Packages"
   | "Event Packages";
@@ -10,6 +13,9 @@ export type PhotoCollection =
 export const photoCollections: PhotoCollection[] = [
   "All",
   "Wedding Portraits",
+  "Engagements",
+  "Portraits",
+  "Details & Film",
   "Wedding Packages",
   "Engagement Packages",
   "Event Packages",
@@ -218,6 +224,11 @@ export const packageBrochures: StudioPhoto[] = [
 ];
 
 export const studioPhotos: StudioPhoto[] = [
+  { id: "editorial-ceremony", src: "/images/editorial/ceremony.jpg", title: "A Celebration of Connection", category: "Wedding Portraits", subtitle: "Wedding ceremony", alt: "Bride and groom smiling together during their wedding ceremony", packageCategory: "weddings" },
+  { id: "editorial-bridal", src: "/images/editorial/bridal.jpg", title: "The Bridal Portrait", category: "Portraits", subtitle: "Tradition in every detail", alt: "Bride in a yellow sari wearing traditional gold jewellery", packageCategory: "weddings" },
+  { id: "editorial-engagement", src: "/images/editorial/engagement.jpg", title: "A Quiet Beginning", category: "Engagements", subtitle: "Connection in golden light", alt: "Couple touching foreheads in warm woodland light", packageCategory: "engagement" },
+  { id: "editorial-details", src: "/images/editorial/details.jpg", title: "The Little Things", category: "Details & Film", subtitle: "Wedding details", alt: "Wedding stationery, white shoes and jewellery arranged with flowers", packageCategory: "weddings" },
+  { id: "editorial-filming", src: "/images/editorial/filming.jpg", title: "Behind the Frame", category: "Details & Film", subtitle: "The craft of cinematography", alt: "Cinematographer with a stabilised camera filming a couple", packageCategory: "events" },
   ...weddingPortraits,
   ...packageBrochures,
 ];

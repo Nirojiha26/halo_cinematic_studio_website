@@ -19,9 +19,9 @@ export default function ContactPage() {
     <PageTransition>
       <PageHeader
         eyebrow="Let's Create Something"
-        title="Get In"
-        highlight="Touch"
-        description="Select your preferred package category and send us your event date directly on WhatsApp."
+        title="Tell Us"
+        highlight="Your Story."
+        description="A wedding, a celebration, or an idea you can't wait to bring to life. Share your plans and event date with us."
       />
 
       <Section tone="blush" labelledBy="contact-heading">
@@ -31,12 +31,12 @@ export default function ContactPage() {
               <p className="chip-eyebrow mb-4">Direct Studio Channels</p>
               <h2
                 id="contact-heading"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                style={{ fontFamily: "var(--font-playfair), serif" }}
                 className="text-2xl font-semibold text-[#141414] sm:text-3xl"
               >
                 {siteConfig.name}
               </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#5F5A5A]">{siteConfig.motto}</p>
+              <p className="mt-2 text-sm leading-relaxed text-[#625C5D]">{siteConfig.motto}</p>
 
               <ContactDetails className="mt-8" />
               <QuickContactActions className="mt-8" />

@@ -24,7 +24,7 @@ export function ContactDetails({ className }: { className?: string }) {
             <dt className="text-xs font-semibold text-[#B50812]">{line.label}</dt>
             <dd className="mt-1 text-sm font-medium text-[#141414]">
               {line.href ? (
-                <a href={line.href} className="transition-colors hover:text-[#D90B17]">
+                <a href={line.href} className="transition-colors hover:text-[#E50919]">
                   {line.value}
                 </a>
               ) : (
@@ -43,7 +43,7 @@ export function ContactDetails({ className }: { className?: string }) {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#141414] transition-colors hover:text-[#D90B17]"
+                  className="text-[#141414] transition-colors hover:text-[#E50919]"
                 >
                   {s.label}
                 </a>
@@ -64,7 +64,7 @@ export function QuickContactActions({ className }: { className?: string }) {
         href={`tel:${siteConfig.contact.phoneIntl}`}
         className="btn-outline flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium"
       >
-        <Phone className="size-4 text-[#D90B17]" aria-hidden />
+        <Phone className="size-4 text-[#E50919]" aria-hidden />
         <span>Call {siteConfig.contact.phoneDisplay}</span>
       </a>
       <a

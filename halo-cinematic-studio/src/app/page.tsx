@@ -1,18 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
-import { AboutPreview } from "@/components/sections/AboutPreview";
-import { PackagesPreview } from "@/components/sections/PackagesPreview";
-import { PhotosPreview } from "@/components/sections/PhotosPreview";
+import { StudioStory, EditorialServices, EditorialPortfolio, StudioApproach } from "@/components/sections/EditorialHome";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { PageTransition } from "@/components/motion/PageTransition";
-
 export default function HomePage() {
-  return (
-    <PageTransition>
-      <Hero />
-      <AboutPreview />
-      <PackagesPreview />
-      <PhotosPreview />
-      <ContactCTA />
-    </PageTransition>
-  );
+  return <PageTransition><div className="home-editorial"><Hero /><StudioStory /><EditorialServices /><EditorialPortfolio /><StudioApproach /><ContactCTA /></div></PageTransition>;
 }

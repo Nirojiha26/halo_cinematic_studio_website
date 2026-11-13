@@ -24,12 +24,12 @@ export function Footer() {
             <Logo sizes="180px" alt="" className="h-auto w-[160px]" />
           </Link>
           <p
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), serif" }}
             className="mt-5 text-xl font-semibold leading-snug text-[#141414]"
           >
             Your Moments. <span className="grad-text">Our Vision.</span> Your Story.
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-[#5F5A5A]">
+          <p className="mt-3 text-sm leading-relaxed text-[#625C5D]">
             Wedding photography, puberty milestones, engagement coverage, cinematography, and handcrafted fine-art albums.
           </p>
         </div>
@@ -40,7 +40,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm font-medium">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-[#5F5A5A] transition-colors hover:text-[#D90B17]">
+                <Link href={item.href} className="text-[#625C5D] transition-colors hover:text-[#E50919]">
                   {item.label}
                 </Link>
               </li>
@@ -56,7 +56,7 @@ export function Footer() {
               <li key={c.slug}>
                 <Link
                   href={`/packages?category=${c.slug}`}
-                  className="text-[#5F5A5A] transition-colors hover:text-[#D90B17]"
+                  className="text-[#625C5D] transition-colors hover:text-[#E50919]"
                 >
                   {c.label}
                 </Link>
@@ -72,9 +72,9 @@ export function Footer() {
             <li>
               <a
                 href={`tel:${contact.phoneIntl}`}
-                className="flex items-center gap-2.5 text-[#141414] transition-colors hover:text-[#D90B17]"
+                className="flex items-center gap-2.5 text-[#141414] transition-colors hover:text-[#E50919]"
               >
-                <Phone className="size-4 text-[#D90B17]" aria-hidden />
+                <Phone className="size-4 text-[#E50919]" aria-hidden />
                 <span>{contact.phoneDisplay}</span>
               </a>
             </li>
@@ -83,9 +83,9 @@ export function Footer() {
                 href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-[#141414] transition-colors hover:text-[#D90B17]"
+                className="flex items-center gap-2.5 text-[#141414] transition-colors hover:text-[#E50919]"
               >
-                <MessageCircle className="size-4 text-[#D90B17]" aria-hidden />
+                <MessageCircle className="size-4 text-[#E50919]" aria-hidden />
                 <span>WhatsApp Us</span>
               </a>
             </li>
@@ -93,16 +93,16 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="flex items-center gap-2.5 text-[#5F5A5A] transition-colors hover:text-[#D90B17]"
+                  className="flex items-center gap-2.5 text-[#625C5D] transition-colors hover:text-[#E50919]"
                 >
-                  <Mail className="size-4 text-[#D90B17]" aria-hidden />
+                  <Mail className="size-4 text-[#E50919]" aria-hidden />
                   <span>{contact.email}</span>
                 </a>
               </li>
             ) : null}
             {contact.location ? (
-              <li className="flex items-center gap-2.5 text-[#5F5A5A]">
-                <MapPin className="size-4 shrink-0 text-[#D90B17]" aria-hidden />
+              <li className="flex items-center gap-2.5 text-[#625C5D]">
+                <MapPin className="size-4 shrink-0 text-[#E50919]" aria-hidden />
                 <span>{contact.location}</span>
               </li>
             ) : null}
@@ -115,7 +115,7 @@ export function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-[#5F5A5A] transition-colors hover:text-[#D90B17]"
+                    className="text-xs text-[#625C5D] transition-colors hover:text-[#E50919]"
                   >
                     {s.label}
                   </a>
@@ -128,7 +128,7 @@ export function Footer() {
 
       {/* Sub-footer copyright */}
       <div className="border-t border-[rgba(20,20,20,0.06)] py-6">
-        <Container className="flex flex-col items-center justify-between gap-4 text-xs text-[#5F5A5A] sm:flex-row">
+        <Container className="flex flex-col items-center justify-between gap-4 text-xs text-[#625C5D] sm:flex-row">
           <p>© <CurrentYear /> {siteConfig.name}. All rights reserved.</p>
           <p className="flex items-center gap-2">
             <span>Capture</span>

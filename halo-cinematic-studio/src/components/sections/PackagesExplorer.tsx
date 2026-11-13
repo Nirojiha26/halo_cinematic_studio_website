@@ -59,7 +59,7 @@ export function PackagesExplorer() {
                 "inline-flex cursor-pointer items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all duration-200",
                 isActive
                   ? "btn-grad text-white shadow-md shadow-[rgba(217,11,23,0.28)]"
-                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#D90B17] hover:text-[#B50812]",
+                  : "border border-[rgba(20,20,20,0.08)] bg-white text-[#141414] hover:border-[#E50919] hover:text-[#B50812]",
               )}
             >
               <span>{category.label}</span>
@@ -83,12 +83,12 @@ export function PackagesExplorer() {
         <div className="max-w-2xl">
           <p className="chip-eyebrow mb-2">{currentMeta.eyebrow}</p>
           <h2
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), serif" }}
             className="text-2xl font-semibold text-[#141414] sm:text-3xl"
           >
             {currentMeta.label}
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-[#5F5A5A]">
+          <p className="mt-2 text-sm leading-relaxed text-[#625C5D]">
             {currentMeta.description}
           </p>
         </div>

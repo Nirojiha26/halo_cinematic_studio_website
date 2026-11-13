@@ -5,7 +5,7 @@ import { services } from "@/data/services";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageHeader } from "@/components/shared/PageHeader";
-import { LogoPanel } from "@/components/shared/LogoPanel";
+import { EditorialPhoto } from "@/components/shared/EditorialPhoto";
 import { ServiceCard } from "@/components/shared/ServiceCard";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Button } from "@/components/ui/Button";
@@ -22,17 +22,17 @@ export const metadata = createMetadata({
 const pillars = [
   {
     step: "01",
-    title: "Capture",
-    body: "Unscripted emotions, quiet details and genuine moments preserved with intention from weddings to documentary shoots.",
+    title: "Our Vision",
+    body: "To preserve the feeling of every meaningful occasion in photographs and films that people return to for generations.",
   },
   {
     step: "02",
-    title: "Create",
-    body: "Cinematic framing, thoughtful storytelling and careful post-production across photography, film and music videos.",
+    title: "Our Mission",
+    body: "To understand each client's story and capture it with creativity, care and thoughtful attention to every detail.",
   },
   {
     step: "03",
-    title: "Inspire",
+    title: "Our Philosophy",
     body: "Polished films and custom photo frames built to stand the test of time and bring your memories back to life.",
   },
 ];
@@ -52,23 +52,23 @@ export default function AboutPage() {
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              <LogoPanel />
+              <EditorialPhoto className="aspect-[4/5]" src="/images/editorial/engagement.jpg" alt="Couple sharing a quiet moment in warm woodland light" position="center 68%" />
             </Reveal>
 
             <Reveal delay={0.08}>
               <p className="chip-eyebrow mb-4">Our Story</p>
               <h2
                 id="story-heading"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                style={{ fontFamily: "var(--font-playfair), serif" }}
                 className="text-3xl font-semibold leading-tight text-[#141414] sm:text-4xl lg:text-5xl"
               >
                 Your Moments. <span className="grad-text">Our Vision.</span> Your Story.
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-[#5F5A5A] sm:text-lg">
+              <p className="mt-6 text-base leading-relaxed text-[#625C5D] sm:text-lg">
                 We capture the moments that matter and turn them into timeless memories. From weddings to music videos,
                 every frame is created with passion.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-[#5F5A5A] sm:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-[#625C5D] sm:text-lg">
                 From the emotion of a wedding day to the energy of a music video, we bring creativity, care and
                 cinematic detail to every project — working closely with every client from the first idea to the final
                 delivery.
@@ -92,8 +92,8 @@ export default function AboutPage() {
           <SectionHeading
             id="philosophy-heading"
             eyebrow={siteConfig.tagline}
-            title="Mission &"
-            highlight="Philosophy"
+            title="Vision &"
+            highlight="Mission"
             description="Three words guide how we shoot, edit and finish every commission."
           />
 
@@ -103,12 +103,12 @@ export default function AboutPage() {
                 <div className="card relative h-full rounded-[20px] bg-white p-7 shadow-[0_12px_32px_rgba(217,11,23,0.08)] sm:p-8">
                   <p className="text-xs font-semibold text-[#B50812]">{p.step}</p>
                   <h3
-                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                     className="mt-4 text-2xl font-semibold text-[#141414]"
                   >
                     {p.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#5F5A5A]">{p.body}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#625C5D]">{p.body}</p>
                 </div>
               </Reveal>
             ))}

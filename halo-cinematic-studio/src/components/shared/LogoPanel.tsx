@@ -35,7 +35,7 @@ export function LogoPanel({
       <div className="relative z-10 flex min-h-[240px] flex-col items-center justify-center text-center">
         <Logo sizes={sizes} preload={preload} className="relative w-[84%] max-w-[380px] drop-shadow-sm" />
         {children}
-        <p className="mt-6 text-xs font-medium text-[#5F5A5A]">{caption}</p>
+        <p className="mt-6 text-xs font-medium text-[#625C5D]">{caption}</p>
       </div>
     </div>
   );

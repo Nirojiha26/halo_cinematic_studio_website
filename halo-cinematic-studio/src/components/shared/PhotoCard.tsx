@@ -15,7 +15,7 @@ export function PhotoCard({
   href?: string;
   sizes?: string;
 }) {
-  const isPortrait = photo.category === "Wedding Portraits";
+  const isPortrait = !photo.category.endsWith("Packages");
 
   const frame = (
     <>
@@ -35,7 +35,7 @@ export function PhotoCard({
 
         <span
           aria-hidden
-          className="absolute top-3 right-3 grid size-8 place-items-center rounded-full bg-white/90 text-[#D90B17] opacity-0 shadow-md backdrop-blur-xs transition-opacity duration-200 group-hover:opacity-100"
+          className="absolute top-3 right-3 grid size-8 place-items-center rounded-full bg-white/90 text-[#E50919] opacity-0 shadow-md backdrop-blur-xs transition-opacity duration-200 group-hover:opacity-100"
         >
           <Maximize2 className="size-4" />
         </span>
@@ -46,12 +46,12 @@ export function PhotoCard({
           {photo.category}
         </p>
         <h3
-          style={{ fontFamily: "'Playfair Display', serif" }}
-          className="mt-1 text-base font-semibold text-[#141414] transition-colors group-hover:text-[#D90B17]"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
+          className="mt-1 text-base font-semibold text-[#141414] transition-colors group-hover:text-[#E50919]"
         >
           {photo.title}
         </h3>
-        <p className="mt-0.5 text-xs text-[#5F5A5A]">{photo.subtitle}</p>
+        <p className="mt-0.5 text-xs text-[#625C5D]">{photo.subtitle}</p>
       </div>
     </>
   );

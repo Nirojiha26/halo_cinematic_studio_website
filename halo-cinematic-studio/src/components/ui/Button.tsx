@@ -9,7 +9,7 @@ const variantClasses: Record<Variant, string> = {
   primary: "btn-grad",
   outline: "btn-outline",
   dark: "btn-grad",
-  ghost: "bg-transparent border-transparent text-[#D90B17] hover:opacity-80",
+  ghost: "bg-transparent border-transparent text-[#E50919] hover:opacity-80",
 };
 
 const sizeClasses: Record<Size, string> = {
@@ -58,7 +58,7 @@ export function Button({ variant, size, className, children, icon, ...props }: B
 
   const content = (
     <>
-      <span style={{ fontFamily: "Poppins, sans-serif", fontWeight: 500 }}>{children}</span>
+      <span style={{ fontFamily: "var(--font-manrope), sans-serif", fontWeight: 500 }}>{children}</span>
       {icon ? <span aria-hidden className="ml-2">{icon}</span> : null}
     </>
   );

@@ -21,21 +21,21 @@ export function ServiceCard({
         <span className="text-xs font-semibold text-[#B50812]">
           {pad2(index + 1)} · {service.category}
         </span>
-        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-[#FFF1F2] text-[#D90B17] transition-colors duration-300 group-hover:bg-[#D90B17] group-hover:text-white">
+        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-[#FFF1F2] text-[#E50919] transition-colors duration-300 group-hover:bg-[#E50919] group-hover:text-white">
           <Icon className="size-[18px]" strokeWidth={1.8} aria-hidden />
         </span>
       </div>
 
       <h3
-        style={{ fontFamily: "'Playfair Display', serif" }}
-        className="mt-5 text-xl font-semibold text-[#141414] transition-colors group-hover:text-[#D90B17]"
+        style={{ fontFamily: "var(--font-playfair), serif" }}
+        className="mt-5 text-xl font-semibold text-[#141414] transition-colors group-hover:text-[#E50919]"
       >
         {service.title}
       </h3>
-      <p className="mt-2 text-sm leading-relaxed text-[#5F5A5A]">{service.description}</p>
+      <p className="mt-2 text-sm leading-relaxed text-[#625C5D]">{service.description}</p>
 
       {href ? (
-        <span className="mt-auto flex items-center justify-between border-t border-[rgba(20,20,20,0.06)] pt-4 text-xs font-medium text-[#141414] transition-colors group-hover:text-[#D90B17]">
+        <span className="mt-auto flex items-center justify-between border-t border-[rgba(20,20,20,0.06)] pt-4 text-xs font-medium text-[#141414] transition-colors group-hover:text-[#E50919]">
           <span>Explore Service</span>
           <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </span>

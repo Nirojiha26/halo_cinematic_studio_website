@@ -1,61 +1,101 @@
 export type HeroSlide = {
   id: string;
   image: string;
-  filmImage: string;
   alt: string;
+  title: string;
   category: string;
-  caption: string;
-  timecode: string;
+};
+
+export type HeroThumbnail = {
+  id: string;
+  image: string;
+  alt: string;
+  label: string;
 };
 
 /**
- * One place to swap the opening gallery images later. The film stills reuse
- * the studio's supplied photographs until a licensed reel is available.
+ * 5 primary hero photos requested by client in exact order:
+ * 1. Dila-3 (2).JPG -> Home page 1st photo
+ * 2. 13.jpg -> Home page 2nd photo
+ * 3. DSC05900.jpg -> Home page 3rd photo
+ * 4. 17.jpg -> Home page 4th photo
+ * 5. 11.jpg -> Home page 5th photo
  */
 export const heroSlides: HeroSlide[] = [
   {
-    id: "halo-01",
-    image: "/images/photos/wedding-couple-03.jpg",
-    filmImage: "/images/photos/wedding-couple-01.jpg",
-    alt: "A newlywed couple sharing a quiet smile during their traditional ceremony",
-    category: "Signature wedding story",
-    caption: "The feeling in every frame.",
-    timecode: "00:18:42",
+    id: "slide-1",
+    image: "/images/hero/slide-01.jpg",
+    alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Couple",
+    title: "Signature Wedding Story",
+    category: "Traditional Ceremony",
   },
   {
-    id: "halo-02",
-    image: "/images/photos/wedding-couple-01.jpg",
-    filmImage: "/images/photos/wedding-couple-04.jpg",
-    alt: "Newlyweds standing together in traditional wedding dress",
-    category: "Wedding portraits",
-    caption: "A day held in colour.",
-    timecode: "00:24:16",
+    id: "slide-2",
+    image: "/images/hero/slide-02.jpg",
+    alt: "HALO Cinematic Studio - Beautiful Couple Portrait",
+    title: "Timeless Moments",
+    category: "Wedding Portrait",
   },
   {
-    id: "halo-03",
-    image: "/images/photos/wedding-couple-04.jpg",
-    filmImage: "/images/photos/wedding-couple-02.jpg",
-    alt: "Bride and groom sharing a tender moment in traditional attire",
-    category: "Ceremony moments",
-    caption: "Where every detail becomes memory.",
-    timecode: "00:31:08",
+    id: "slide-3",
+    image: "/images/hero/slide-03.jpg",
+    alt: "HALO Cinematic Studio - Auspicious Ceremony Rituals",
+    title: "Ceremony Emotions",
+    category: "Vibrant Traditions",
   },
   {
-    id: "halo-04",
-    image: "/images/photos/wedding-couple-02.jpg",
-    filmImage: "/images/photos/wedding-couple-03.jpg",
-    alt: "A bride and groom looking at one another during their wedding celebration",
-    category: "Cinematic films",
-    caption: "A moving portrait of your people.",
-    timecode: "00:42:27",
+    id: "slide-4",
+    image: "/images/hero/slide-04.jpg",
+    alt: "HALO Cinematic Studio - Wedding Celebration and Joy",
+    title: "Joy & Celebration",
+    category: "Cinematic Film",
   },
   {
-    id: "halo-05",
-    image: "/images/photos/wedding-couple-03.jpg",
-    filmImage: "/images/photos/wedding-couple-01.jpg",
-    alt: "Couple surrounded by ceremony flowers and warm evening light",
-    category: "The quiet in between",
-    caption: "The moments you almost miss.",
-    timecode: "00:49:03",
+    id: "slide-5",
+    image: "/images/hero/slide-05.jpg",
+    alt: "HALO Cinematic Studio - Bride and Groom Heritage Portrait",
+    title: "Stories Worth Remembering",
+    category: "Heritage Collection",
+  },
+];
+
+/**
+ * 5 diamond accent thumbnails from pictures/ as shown in reference design:
+ * 1. Bride Portrait
+ * 2. Wedding Details
+ * 3. Engagement Photography
+ * 4. Hero Wedding Photograph
+ * 5. Behind the Scenes
+ */
+export const heroThumbnails: HeroThumbnail[] = [
+  {
+    id: "thumb-1",
+    image: "/images/hero/thumbnails/thumb-01.jpg",
+    alt: "Bride Portrait",
+    label: "Bride",
+  },
+  {
+    id: "thumb-2",
+    image: "/images/hero/thumbnails/thumb-02.jpg",
+    alt: "Wedding Details & Garland",
+    label: "Details",
+  },
+  {
+    id: "thumb-3",
+    image: "/images/hero/thumbnails/thumb-03.jpg",
+    alt: "Engagement Sunset Silhouette",
+    label: "Engagement",
+  },
+  {
+    id: "thumb-4",
+    image: "/images/hero/thumbnails/thumb-04.jpg",
+    alt: "Hero Wedding Couple",
+    label: "Couple",
+  },
+  {
+    id: "thumb-5",
+    image: "/images/hero/thumbnails/thumb-05.jpg",
+    alt: "Rings & Behind the Scenes",
+    label: "Moments",
   },
 ];

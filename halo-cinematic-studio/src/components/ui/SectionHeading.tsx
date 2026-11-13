@@ -40,7 +40,7 @@ export function SectionHeading({
         <h2
           id={id}
           style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-playfair), serif",
             fontWeight: 600,
             fontSize: "clamp(36px, 4vw, 48px)",
             color: "var(--ink)",
@@ -54,7 +54,7 @@ export function SectionHeading({
         {description ? (
           <p
             style={{
-              fontFamily: "Poppins, sans-serif",
+              fontFamily: "var(--font-manrope), sans-serif",
               fontWeight: 400,
               fontSize: 17,
               color: "var(--muted)",

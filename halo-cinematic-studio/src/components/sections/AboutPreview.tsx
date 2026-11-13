@@ -43,7 +43,7 @@ export function AboutPreview() {
 
               <p
                 style={{
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: "var(--font-manrope), sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
                   color: "#B50812",
@@ -65,7 +65,7 @@ export function AboutPreview() {
                   >
                     <span
                       style={{
-                        fontFamily: "Poppins, sans-serif",
+                        fontFamily: "var(--font-manrope), sans-serif",
                         fontWeight: 700,
                         fontSize: 12,
                         color: "#B50812",
@@ -78,7 +78,7 @@ export function AboutPreview() {
                     <div>
                       <p
                         style={{
-                          fontFamily: "Poppins, sans-serif",
+                          fontFamily: "var(--font-manrope), sans-serif",
                           fontWeight: 600,
                           fontSize: 15,
                           color: "#141414",
@@ -88,10 +88,10 @@ export function AboutPreview() {
                       </p>
                       <p
                         style={{
-                          fontFamily: "Poppins, sans-serif",
+                          fontFamily: "var(--font-manrope), sans-serif",
                           fontWeight: 400,
                           fontSize: 13,
-                          color: "#5F5A5A",
+                          color: "#625C5D",
                           marginTop: 4,
                           lineHeight: 1.6,
                         }}
@@ -110,7 +110,7 @@ export function AboutPreview() {
             <p className="chip-eyebrow mb-4">Who We Are</p>
             <h2
               style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-playfair), serif",
                 fontWeight: 600,
                 fontSize: "clamp(36px, 4vw, 48px)",
                 color: "var(--ink)",
@@ -123,7 +123,7 @@ export function AboutPreview() {
             </h2>
             <p
               style={{
-                fontFamily: "Poppins, sans-serif",
+                fontFamily: "var(--font-manrope), sans-serif",
                 fontWeight: 400,
                 fontSize: 17,
                 color: "var(--muted)",
@@ -136,7 +136,7 @@ export function AboutPreview() {
             </p>
             <p
               style={{
-                fontFamily: "Poppins, sans-serif",
+                fontFamily: "var(--font-manrope), sans-serif",
                 fontWeight: 400,
                 fontSize: 17,
                 color: "var(--muted)",
