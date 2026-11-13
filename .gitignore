@@ -16,6 +16,13 @@ yarn-debug.log*
 # Environment
 .env*
 
+# Raw high-res source photos (served from public/)
+images/
+halo-cinematic-studio/images/
+
+# Documents
+*.pdf
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
