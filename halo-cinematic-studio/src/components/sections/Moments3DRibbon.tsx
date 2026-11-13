@@ -105,18 +105,22 @@ export function EditorialPortfolio() {
 
   return (
     <section
-      className="relative py-14 sm:py-18 lg:py-24 bg-[#FFFFFF] border-y border-[#E2DAD0] overflow-hidden select-none"
+      className="relative py-14 sm:py-18 lg:py-24 bg-[#111113] border-y border-[#262428] overflow-hidden select-none"
       id="selected-moments"
       aria-labelledby="portfolio-heading"
     >
-      {/* Subtle Warm Gallery Spotlight Background */}
+      {/* Cinematic Studio Spotlight Gradient (Soft Ambient Red Center Halo) */}
       <div
-        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_50%_45%,rgba(255,255,255,1)_0%,rgba(250,247,241,0.65)_70%,rgba(244,239,230,0.4)_100%)]"
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_50%_0%,rgba(215,25,32,0.18)_0%,transparent_65%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_50%_100%,rgba(255,255,255,0.03)_0%,transparent_60%)]"
         aria-hidden="true"
       />
 
       <div className="relative z-10 w-full max-w-[98rem] 2xl:max-w-[108rem] mx-auto px-3 sm:px-6 lg:px-8">
-        {/* ── Section Header (Clean, Refined, Matching Reference Layout) ── */}
+        {/* ── Section Header (Darkroom Cinema Mode, Crisp Off-White & Red) ── */}
         <div className="flex items-end justify-between gap-6 mb-10 sm:mb-14 lg:mb-16">
           <div>
             <div className="inline-flex items-center gap-2.5 mb-2.5">
@@ -128,7 +132,7 @@ export function EditorialPortfolio() {
             <h2
               id="portfolio-heading"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-[-0.03em] leading-[1.15] text-[#171716]"
+              className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-[-0.03em] leading-[1.15] text-[#FAF7F1]"
             >
               Stories We&apos;ve{" "}
               <span className="italic text-[#D71920] font-normal">Captured.</span>
@@ -138,7 +142,7 @@ export function EditorialPortfolio() {
           <div className="self-end">
             <Link
               href="/photos"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#171716] hover:text-[#D71920] transition-colors border-b border-[#D8CFC1] hover:border-[#D71920] pb-1 group"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#FAF7F1]/90 hover:text-[#D71920] transition-colors border-b border-white/20 hover:border-[#D71920] pb-1 group"
             >
               <span>View Full Gallery</span>
               <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#D71920]" />
@@ -170,12 +174,12 @@ export function EditorialPortfolio() {
                     transformStyle: "preserve-3d",
                   }}
                   className={cn(
-                    "group relative w-[13.2%] sm:w-[12.8%] md:w-[12.5%] max-w-[195px] xl:max-w-[215px] shrink-0 rounded-xl sm:rounded-2xl lg:rounded-[20px] overflow-hidden border border-[#171716]/10 shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all duration-500 ease-out cursor-pointer bg-[#EEE9DF]",
+                    "group relative w-[13.2%] sm:w-[12.8%] md:w-[12.5%] max-w-[195px] xl:max-w-[215px] shrink-0 rounded-xl sm:rounded-2xl lg:rounded-[20px] overflow-hidden border border-white/20 shadow-[0_12px_35px_rgba(0,0,0,0.55)] transition-all duration-500 ease-out cursor-pointer bg-[#1A1A1E]",
                     moment.heightClass,
                     isHovered
-                      ? "ring-2 sm:ring-4 ring-[#D71920] border-transparent shadow-[0_22px_45px_rgba(215,25,32,0.28)]"
-                      : "hover:shadow-[0_16px_36px_rgba(0,0,0,0.18)]",
-                    isCenter && !hoveredId ? "shadow-[0_8px_20px_rgba(0,0,0,0.08)]" : "",
+                      ? "ring-2 sm:ring-4 ring-[#D71920] border-transparent shadow-[0_22px_50px_rgba(215,25,32,0.35)]"
+                      : "hover:border-white/50",
+                    isCenter && !hoveredId ? "shadow-[0_10px_25px_rgba(0,0,0,0.45)]" : "",
                   )}
                 >
                   <Image
@@ -189,7 +193,7 @@ export function EditorialPortfolio() {
                   {/* Dark Vignette Sheen on Hover */}
                   <div
                     className={cn(
-                      "absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300",
+                      "absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent transition-opacity duration-300",
                       isHovered ? "opacity-100" : "opacity-0 group-hover:opacity-100",
                     )}
                   />
