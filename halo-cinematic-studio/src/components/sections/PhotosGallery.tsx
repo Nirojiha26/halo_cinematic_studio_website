@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Maximize2, Sparkles, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, Sparkles, X } from "lucide-react";
 import {
   photoCollections,
   studioPhotos,
@@ -12,7 +12,6 @@ import {
 import { useBodyScrollLock, useFocusTrap } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 import { QueryParamSync } from "@/components/shared/QueryParamSync";
-import { whatsappUrl } from "@/config/site";
 
 export function PhotosGallery() {
   const [activeCollection, setActiveCollection] =
@@ -163,95 +162,85 @@ export function PhotosGallery() {
         ))}
       </div>
 
-      {/* ── Fullscreen High-Resolution Lightbox Modal ── */}
+      {/* ── Fullscreen Immersive High-Resolution Lightbox Modal (Full Image) ── */}
       {selectedPhoto ? (
         <div
           role="dialog"
           aria-modal="true"
           aria-label={selectedPhoto.title}
           ref={dialogRef}
-          className="fixed inset-0 z-[1200] flex items-center justify-center bg-black/85 p-3 sm:p-6 backdrop-blur-md"
+          className="fixed inset-0 z-[1200] flex items-center justify-center bg-black/95 p-2 sm:p-4 backdrop-blur-xl"
           onClick={handleClose}
         >
+          {/* Close Button Floating Top-Right */}
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={handleClose}
+            aria-label="Close dialog"
+            className="absolute top-4 right-4 z-50 grid size-11 place-items-center bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none"
+          >
+            <X className="size-6" />
+          </button>
+
+          {/* Prev / Next Navigation Buttons Floating on Sides */}
+          {filtered.length > 1 ? (
+            <>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  stepPhoto(-1);
+                }}
+                aria-label="Previous photo"
+                className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 grid size-12 place-items-center bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none"
+              >
+                <ChevronLeft className="size-7" />
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  stepPhoto(1);
+                }}
+                aria-label="Next photo"
+                className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-50 grid size-12 place-items-center bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none"
+              >
+                <ChevronRight className="size-7" />
+              </button>
+            </>
+          ) : null}
+
+          {/* Full Image Main Stage (Edge to Edge, High Resolution) */}
           <div
-            className="relative flex max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-none bg-[#FAF7F1] border border-[#D8CFC1] shadow-2xl"
+            className="relative w-full h-full max-w-[96vw] max-h-[94vh] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Top Bar */}
-            <div className="flex items-center justify-between border-b border-[#D8CFC1] px-6 py-4 bg-[#FAF7F1]">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#D71920]">
-                  {selectedPhoto.category}
-                </p>
-                <h3
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                  className="text-lg sm:text-xl font-normal text-[#171716]"
-                >
-                  {selectedPhoto.title}
-                </h3>
-              </div>
-              <button
-                ref={closeRef}
-                type="button"
-                onClick={handleClose}
-                aria-label="Close dialog"
-                className="grid size-10 place-items-center rounded-none border border-[#D8CFC1] bg-[#EEE9DF] text-[#171716] transition-colors hover:border-[#D71920] hover:text-[#D71920] cursor-pointer"
-              >
-                <X className="size-5" />
-              </button>
-            </div>
+            <Image
+              src={selectedPhoto.src}
+              alt={selectedPhoto.alt}
+              fill
+              priority
+              className="object-contain"
+              sizes="96vw"
+            />
 
-            {/* High-Resolution Image Viewer */}
-            <div className="relative min-h-[380px] max-h-[68vh] flex-1 bg-[#171716]">
-              <Image
-                src={selectedPhoto.src}
-                alt={selectedPhoto.alt}
-                fill
-                priority
-                className="object-contain p-2 sm:p-4"
-                sizes="(min-width: 1280px) 1100px, 95vw"
-              />
-
-              {/* Prev / Next buttons */}
-              {filtered.length > 1 ? (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => stepPhoto(-1)}
-                    aria-label="Previous photo"
-                    className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-none bg-white/90 text-[#171716] shadow-lg backdrop-blur-xs transition-transform hover:scale-110 hover:text-[#D71920] cursor-pointer"
-                  >
-                    <ChevronLeft className="size-6" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => stepPhoto(1)}
-                    aria-label="Next photo"
-                    className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-none bg-white/90 text-[#171716] shadow-lg backdrop-blur-xs transition-transform hover:scale-110 hover:text-[#D71920] cursor-pointer"
-                  >
-                    <ChevronRight className="size-6" />
-                  </button>
-                </>
-              ) : null}
-            </div>
-
-            {/* Bottom info & direct WhatsApp enquiry action */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#D8CFC1] bg-[#EEE9DF] px-6 py-4">
-              <p className="text-xs sm:text-sm text-[#716B64] flex items-center gap-1.5">
-                <Sparkles className="size-3.5 text-[#D71920]" />
-                <span>{selectedPhoto.subtitle}</span>
+            {/* Subtle Floating Bottom Caption (No Enquire Button, No Nelliady) */}
+            <div className="absolute bottom-2 inset-x-0 mx-auto max-w-xl text-center px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 pointer-events-none rounded-none">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-[#D71920]">
+                {selectedPhoto.category}
               </p>
-              <a
-                href={whatsappUrl(
-                  `Hello HALO CINEMATIC STUDIO! I am viewing your photo gallery and would like to enquire about a photography session inspired by "${selectedPhoto.title}" (${selectedPhoto.category}).`
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-grad inline-flex h-10 items-center gap-2 rounded-none px-5 text-xs font-semibold text-white shadow-xs"
+              <h3
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-base sm:text-lg font-normal text-[#FAF7F1] tracking-tight"
               >
-                <span>Enquire About This Frame</span>
-                <ArrowRight className="size-3.5" />
-              </a>
+                {selectedPhoto.title}
+              </h3>
+              {selectedPhoto.subtitle ? (
+                <p className="text-xs text-[#D8CFC1]/80 mt-0.5">
+                  {selectedPhoto.subtitle}
+                </p>
+              ) : null}
             </div>
           </div>
         </div>
