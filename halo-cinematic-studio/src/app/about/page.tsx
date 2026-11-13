@@ -15,7 +15,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 export const metadata = createMetadata({
   title: "About",
   description:
-    "HALO CINEMATIC STUDIO is a creative photography and film production studio focused on telling meaningful stories through powerful visuals.",
+    "HALO CINEMATIC STUDIO is a creative photography and film production studio focused on telling meaningful stories through powerful visuals in Nelliady, Sri Lanka.",
   path: "/about",
 });
 
@@ -23,17 +23,17 @@ const pillars = [
   {
     step: "01",
     title: "Our Vision",
-    body: "To preserve the feeling of every meaningful occasion in photographs and films that people return to for generations.",
+    body: "To preserve the feeling of every meaningful occasion in photographs and films that families return to for generations.",
   },
   {
     step: "02",
     title: "Our Mission",
-    body: "To understand each client's story and capture it with creativity, care and thoughtful attention to every detail.",
+    body: "To understand each client's story and capture it with creativity, care and thoughtful attention to every authentic detail.",
   },
   {
     step: "03",
     title: "Our Philosophy",
-    body: "Polished films and custom photo frames built to stand the test of time and bring your memories back to life.",
+    body: "Polished films, handcrafted fine-art frames and bespoke 3D keepsakes built to stand the test of time.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function AboutPage() {
         eyebrow="Who We Are"
         title="We make moments"
         highlight="timeless."
-        description="HALO CINEMATIC STUDIO is a creative photography and film production studio focused on telling meaningful stories through powerful visuals."
+        description="HALO CINEMATIC STUDIO is a creative photography and film production studio focused on telling meaningful stories through powerful visuals in Nelliady, Sri Lanka."
       />
 
       {/* Brand story */}
@@ -52,7 +52,15 @@ export default function AboutPage() {
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              <EditorialPhoto className="aspect-[4/5]" src="/images/editorial/engagement.jpg" alt="Couple sharing a quiet moment in warm woodland light" position="center 68%" />
+              <div className="overflow-hidden rounded-[24px] border border-[rgba(20,20,20,0.08)] shadow-[0_20px_40px_-15px_rgba(20,20,20,0.12)]">
+                <EditorialPhoto
+                  className="aspect-[4/5]"
+                  src="/images/editorial/engagement.jpg"
+                  alt="Newlywed Tamil couple captured in natural light by HALO Cinematic Studio"
+                  position="center 35%"
+                  priority
+                />
+              </div>
             </Reveal>
 
             <Reveal delay={0.08}>
@@ -64,14 +72,13 @@ export default function AboutPage() {
               >
                 Your Moments. <span className="grad-text">Our Vision.</span> Your Story.
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-[#625C5D] sm:text-lg">
-                We capture the moments that matter and turn them into timeless memories. From weddings to music videos,
-                every frame is created with passion.
+              <p className="mt-6 text-base leading-relaxed text-[#5F5A5A] sm:text-lg">
+                We capture the moments that matter and turn them into timeless memories. From weddings and puberty
+                ceremonies to birthday milestones, every frame is crafted with genuine passion.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-[#625C5D] sm:text-lg">
-                From the emotion of a wedding day to the energy of a music video, we bring creativity, care and
-                cinematic detail to every project — working closely with every client from the first idea to the final
-                delivery.
+              <p className="mt-4 text-base leading-relaxed text-[#5F5A5A] sm:text-lg">
+                Based in Nelliady, Sri Lanka, we bring cinematic detail, creative warmth, and dedicated artistry to every
+                commission — working closely with you from the first idea to the final delivery.
               </p>
               <div className="mt-8 flex flex-wrap gap-3.5">
                 <Button href="/packages" icon={<ArrowRight className="size-4" />}>
@@ -94,7 +101,7 @@ export default function AboutPage() {
             eyebrow={siteConfig.tagline}
             title="Vision &"
             highlight="Mission"
-            description="Three words guide how we shoot, edit and finish every commission."
+            description="Three guiding principles behind every frame, edit, and keepsake we produce."
           />
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -108,7 +115,7 @@ export default function AboutPage() {
                   >
                     {p.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#625C5D]">{p.body}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#5F5A5A]">{p.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -116,7 +123,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Core Craft Disciplines */}
+      {/* What We Craft — 4 Core Studio Disciplines */}
       <Section tone="white" labelledBy="craft-heading">
         <Container>
           <SectionHeading
@@ -124,7 +131,7 @@ export default function AboutPage() {
             eyebrow="Studio Disciplines"
             title="What We"
             highlight="Craft"
-            description="Every package is backed by in-house photographers, cinematographers, colourists, and album designers."
+            description="Specialized photography, cinematic films, and bespoke keepsakes for your most meaningful milestones."
             action={
               <Button href="/packages" variant="outline" size="md" icon={<ArrowRight className="size-4" />}>
                 Explore Packages
@@ -132,10 +139,10 @@ export default function AboutPage() {
             }
           />
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, i) => (
-              <Reveal key={service.slug} delay={Math.min(i * 0.04, 0.2)}>
-                <ServiceCard service={service} index={i} />
+              <Reveal key={service.slug} delay={Math.min(i * 0.05, 0.2)}>
+                <ServiceCard service={service} index={i} href="/contact" />
               </Reveal>
             ))}
           </div>

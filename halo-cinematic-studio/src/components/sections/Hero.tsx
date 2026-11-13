@@ -21,8 +21,6 @@ export function Hero() {
   const [visible, setVisible] = useState(true);
   const touchStartX = useRef<number | null>(null);
 
-  const currentSlide = heroSlides[active];
-
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updateMotion = () => setReducedMotion(mediaQuery.matches);
