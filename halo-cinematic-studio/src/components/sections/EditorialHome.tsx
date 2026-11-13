@@ -9,10 +9,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { EditorialPhoto } from "@/components/shared/EditorialPhoto";
-import { Reveal } from "@/components/motion/Reveal";
-import { homePhotos } from "@/data/homePhotos";
 export { EditorialServices } from "./ServicesShowcase";
+export { EditorialPortfolio } from "./Moments3DRibbon";
 
 export function StudioStory() {
   return (
@@ -127,18 +125,7 @@ export function StudioStory() {
 
 
 
-const moments = [
-  { ...homePhotos.portfolio1, label: "The connection", type: "Wedding portraits", href: "/photos?collection=Wedding%20Portraits" },
-  { ...homePhotos.portfolio2, label: "A moment of her own", type: "Portraits", href: "/photos?collection=Portraits" },
-  { ...homePhotos.portfolio3, label: "The quiet joy", type: "Togetherness", href: "/photos" },
-];
-export function EditorialPortfolio() {
-  return <section className="editorial-section" aria-labelledby="portfolio-heading"><Container>
-    <div className="editorial-section-head"><div><p className="editorial-label">Selected moments</p><h2 id="portfolio-heading" className="editorial-heading">Stories We&apos;ve <em>Captured.</em></h2></div><p className="section-intro">Real emotions. Beautiful connections.<br />Memories that stay forever.</p></div>
-    <div className="portfolio-editorial">{moments.map((photo, i) => <Reveal key={photo.src} as="figure" className={`portfolio-piece portfolio-piece-${i}`}><Link href={photo.href} aria-label={`View ${photo.type}`}><EditorialPhoto src={photo.src} alt={photo.alt} position={photo.position} /><figcaption><h3>{photo.label}</h3><span>{photo.type} <ArrowUpRight size={14} /></span></figcaption></Link></Reveal>)}</div>
-    <div className="portfolio-bottom"><span>Every photograph, a feeling kept.</span><Link className="editorial-button" href="/photos">View Full Gallery <ArrowUpRight size={17} /></Link></div>
-  </Container></section>;
-}
+
 
 const approachSteps = [
   {
