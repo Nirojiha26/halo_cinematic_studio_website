@@ -1,9 +1,8 @@
+import Image from "next/image";
 import { createMetadata } from "@/lib/metadata";
-import { siteConfig } from "@/config/site";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { Reveal } from "@/components/motion/Reveal";
-import { PageHeader } from "@/components/shared/PageHeader";
-import { ContactDetails, QuickContactActions } from "@/components/shared/ContactDetails";
+import { StudioChannelsCard } from "@/components/shared/ContactDetails";
 import { EnquiryForm } from "@/components/sections/EnquiryForm";
 import { Container, Section } from "@/components/ui/Container";
 
@@ -17,31 +16,64 @@ export const metadata = createMetadata({
 export default function ContactPage() {
   return (
     <PageTransition>
-      <PageHeader
-        eyebrow="Let's Create Something"
-        title="Tell Us"
-        highlight="Your Story."
-        description="A wedding, a celebration, or an idea you can't wait to bring to life. Share your plans and event date with us."
-      />
+      {/* ── 1. Hero / Header (Dark blurred studio atmosphere matching navbar seamlessly) ── */}
+      <section className="relative overflow-hidden bg-[#090A0D] pt-32 sm:pt-36 lg:pt-40 pb-14 sm:pb-18 border-b border-[#2A2926]">
+        {/* Background authentic studio image with blur and dark overlay matching navbar */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/home-selected/ring-ceremony.webp"
+            alt="HALO Cinematic Studio atmosphere"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center filter blur-xl scale-110 opacity-30"
+          />
+          {/* Dark gradient wash overlays matching navbar */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#090A0D]/90 via-[#090A0D]/80 to-[#090A0D]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(215,25,32,0.22)_0%,transparent_75%)]" />
+        </div>
 
-      <Section tone="blush" labelledBy="contact-heading">
+        <Container size="default" className="relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            {/* Red Eyebrow */}
+            <div className="inline-flex items-center justify-center gap-3 mb-4 sm:mb-5">
+              <span className="w-8 h-[2px] bg-[#D71920]" aria-hidden />
+              <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#D71920]">
+                Let&apos;s Create Something
+              </p>
+              <span className="w-8 h-[2px] bg-[#D71920]" aria-hidden />
+            </div>
+
+            {/* Main Headline */}
+            <h1
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-[-0.03em] leading-[1.1] text-[#FAF7F1]"
+            >
+              Tell Us{" "}
+              <span className="text-[#D71920] italic font-normal">
+                Your Story.
+              </span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#A39E96] max-w-2xl mx-auto">
+              A wedding, a celebration, or an idea you can&apos;t wait to bring to
+              life. Share your plans and event date with us.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── 2. Contact Channels & Interactive WhatsApp Enquiry Form ── */}
+      <Section tone="blush" labelledBy="contact-channels-heading" className="py-12 sm:py-16">
         <Container>
-          <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
-            <Reveal className="rounded-[24px] border border-[#D8CFC1] bg-[#FAF7F1] p-7 shadow-xs sm:p-9">
-              <p className="chip-eyebrow mb-4">Direct Studio Channels</p>
-              <h2
-                id="contact-heading"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                className="text-2xl font-normal text-[#171716] sm:text-3xl"
-              >
-                {siteConfig.name}
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#716B64]">{siteConfig.motto}</p>
-
-              <ContactDetails className="mt-8" />
-              <QuickContactActions className="mt-8" />
+          <div className="grid items-start gap-8 lg:grid-cols-[380px_1fr] lg:gap-10">
+            {/* Compact Aesthetic Direct Studio Channels Card */}
+            <Reveal>
+              <StudioChannelsCard />
             </Reveal>
 
+            {/* Formatted WhatsApp Package Enquiry Form */}
             <Reveal delay={0.08}>
               <EnquiryForm />
             </Reveal>
