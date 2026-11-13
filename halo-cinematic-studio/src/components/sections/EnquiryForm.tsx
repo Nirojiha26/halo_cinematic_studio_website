@@ -192,6 +192,7 @@ export function EnquiryForm() {
 
   return (
     <form
+      id="booking"
       noValidate
       onSubmit={handleSubmit}
       className="grid gap-5 rounded-2xl border border-[#D8CFC1] bg-[#FAF7F1] p-6 shadow-xs sm:p-8"

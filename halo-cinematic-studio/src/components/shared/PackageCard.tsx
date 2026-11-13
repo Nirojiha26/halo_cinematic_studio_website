@@ -1,4 +1,5 @@
-import { ArrowRight, Check } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check, MessageCircle, Sparkles } from "lucide-react";
 import type { StudioPackage } from "@/data/packages";
 import { getCategoryMeta } from "@/data/packages";
 import { cn, pad2 } from "@/lib/utils";
@@ -14,119 +15,104 @@ export function PackageCard({
   showCategoryBadge?: boolean;
 }) {
   const categoryMeta = getCategoryMeta(pkg.category);
-  // Preview membership and visual emphasis are separate concerns: only the
-  // package explicitly labelled "Most Popular" receives the red treatment.
-  const isFeatured = pkg.tierLabel === "Most Popular";
+  const isFeatured = pkg.featured || pkg.tierLabel.toLowerCase().includes("popular") || pkg.tierLabel.toLowerCase().includes("golden");
+  
   const whatsappEnquiryUrl = whatsappUrl(
-    `Hello HALO CINEMATIC STUDIO! I am interested in the ${pkg.name} package (${pkg.priceDisplay}). Could you please share booking availability?`
+    `Hello HALO CINEMATIC STUDIO! I am interested in booking the "${pkg.name}" (${categoryMeta.label}) priced at ${pkg.priceDisplay}. Could you please check availability?`
   );
 
   return (
     <article
       className={cn(
-        "relative flex h-full min-h-[32rem] flex-col overflow-hidden rounded-[20px] p-6 transition-all duration-300 sm:p-8",
+        "group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border bg-[#FAF7F1] p-6 transition-all duration-300 sm:p-7 shadow-xs hover:-translate-y-1 hover:shadow-xl",
         isFeatured
-          ? "bg-[#171716] text-[#FAF7F1] border border-[#D71920]/40 shadow-lg"
-          : "bg-[#FAF7F1] border border-[#D8CFC1] shadow-xs hover:border-[#D71920]/50 hover:shadow-md",
+          ? "border-[#D71920]/60 ring-1 ring-[#D71920]/20"
+          : "border-[#D8CFC1] hover:border-[#D71920]/60",
       )}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2 text-xs font-medium">
-          <span className={isFeatured ? "text-white/80" : "text-[#D71920]"}>
-            {pad2(index + 1)}
+      <div>
+        {/* Top Header: Index & Tier Badge */}
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-[11px] font-mono font-bold tracking-wider text-[#716B64]">
+            {showCategoryBadge
+              ? categoryMeta.shortLabel.toUpperCase()
+              : `${pad2(index + 1)} / ${categoryMeta.shortLabel.toUpperCase()}`}
           </span>
-          <span aria-hidden className={isFeatured ? "text-white/40" : "text-[#D8CFC1]"}>
-            /
-          </span>
-          <span className={isFeatured ? "text-white/90" : "text-[#716B64]"}>
-            {showCategoryBadge ? categoryMeta.shortLabel : pkg.tierLabel}
+
+          <span
+            className={cn(
+              "inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider",
+              isFeatured
+                ? "bg-[#D71920]/10 text-[#D71920] border border-[#D71920]/30"
+                : "bg-[#EEE9DF] text-[#716B64] border border-[#D8CFC1]",
+            )}
+          >
+            {isFeatured ? <Sparkles className="size-3 text-[#D71920]" /> : null}
+            <span>{pkg.tierLabel}</span>
           </span>
         </div>
 
-        <span
-          className={cn(
-            "rounded-full px-3 py-1 text-xs font-semibold",
-            isFeatured
-              ? "bg-[#D71920] text-white"
-              : "bg-[#EEE9DF] text-[#D71920] border border-[#D8CFC1]",
-          )}
-        >
-          {pkg.tierLabel}
-        </span>
-      </div>
-
-      <h3
-        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        className={cn(
-          "mt-4 text-2xl font-semibold leading-tight",
-          isFeatured ? "text-white" : "text-[#171716]",
-        )}
-      >
-        {pkg.name}
-      </h3>
-
-      {pkg.subline ? (
-        <p className={cn("mt-1.5 text-xs font-normal", isFeatured ? "text-white/80" : "text-[#716B64]")}>
-          {pkg.subline}
-        </p>
-      ) : null}
-
-      <div
-        className={cn(
-          "my-5 border-y py-4",
-          isFeatured ? "border-white/20" : "border-[#D8CFC1]",
-        )}
-      >
-        <p
+        {/* Package Title */}
+        <h3
           style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          className={cn(
-            "text-3xl font-semibold tracking-tight",
-            isFeatured ? "text-white" : "text-[#D71920]",
-          )}
+          className="mt-4 text-2xl sm:text-[26px] font-medium text-[#171716] tracking-tight leading-snug group-hover:text-[#D71920] transition-colors"
         >
-          {pkg.priceDisplay}
-        </p>
+          {pkg.name}
+        </h3>
+
+        {/* Subline / Coverage info */}
+        {pkg.subline ? (
+          <p className="mt-1 text-xs font-medium text-[#716B64] leading-relaxed">
+            {pkg.subline}
+          </p>
+        ) : null}
+
+        {/* Price Section with Red Text (No Solid Red Background) */}
+        <div className="my-5 border-y border-[#D8CFC1]/70 py-3.5">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-[#716B64]">
+            Investment
+          </p>
+          <p
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="mt-0.5 text-2xl sm:text-3xl font-bold tracking-tight text-[#D71920]"
+          >
+            {pkg.priceDisplay}
+          </p>
+        </div>
+
+        {/* Feature Highlights from Flyers */}
+        <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#171716] leading-relaxed mb-6">
+          {pkg.highlights.map((item) => (
+            <li key={item} className="flex items-start gap-2.5">
+              <Check
+                className="mt-0.5 size-4 shrink-0 text-[#D71920]"
+                aria-hidden="true"
+              />
+              <span className="text-[#2B2927]">{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <ul className="mb-5 flex-1 space-y-3 text-sm leading-relaxed">
-        {pkg.highlights.map((item) => (
-          <li
-            key={item}
-            className={cn(
-              "flex items-start gap-2.5",
-              isFeatured ? "text-white/95" : "text-[#716B64]",
-            )}
-          >
-            <Check
-              className={cn("mt-0.5 size-4 shrink-0", isFeatured ? "text-[#D71920]" : "text-[#D71920]")}
-              aria-hidden
-            />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-
-      {pkg.notes ? (
-        <p className={cn("mb-5 text-xs leading-relaxed", isFeatured ? "text-white/80" : "text-[#716B64]")}>
-          {pkg.notes}
-        </p>
-      ) : null}
-
-      <div className="mt-auto pt-2">
+      {/* Action Buttons */}
+      <div className="mt-auto border-t border-[#D8CFC1]/70 pt-4 space-y-2">
         <a
           href={whatsappEnquiryUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            "inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl text-sm font-medium transition-all",
-            isFeatured
-              ? "bg-[#D71920] text-white hover:bg-[#B31218]"
-              : "btn-grad text-white shadow-xs",
-          )}
+          className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#D71920] text-white text-xs sm:text-sm font-semibold hover:bg-[#b5141a] transition-all shadow-xs active:scale-[0.99] cursor-pointer"
         >
+          <MessageCircle className="size-4" />
           <span>Enquire on WhatsApp</span>
-          <ArrowRight className="size-4" />
         </a>
+
+        <Link
+          href={`/contact?category=${pkg.category}&package=${pkg.slug}`}
+          className="w-full inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border border-[#D8CFC1] bg-white text-[#171716] text-xs font-semibold hover:border-[#D71920] hover:text-[#D71920] transition-colors shadow-2xs active:scale-[0.99]"
+        >
+          <span>Book via Form</span>
+          <ArrowRight className="size-3.5" />
+        </Link>
       </div>
     </article>
   );

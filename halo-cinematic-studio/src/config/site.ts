@@ -59,7 +59,7 @@ export const siteConfig = {
     { label: "Contact", href: "/contact" },
   ] satisfies NavItem[],
 
-  cta: { label: "Book Now", href: "/contact" } satisfies NavItem,
+  cta: { label: "Book Now", href: "/contact#booking" } satisfies NavItem,
 } as const;
 
 export function whatsappUrl(message?: string) {

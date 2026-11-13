@@ -1,7 +1,7 @@
 export type PackageCategorySlug =
   | "weddings"
-  | "puberty"
   | "engagement"
+  | "puberty"
   | "events";
 
 export interface PackageCategoryMeta {
@@ -22,7 +22,6 @@ export interface StudioPackage {
   featured?: boolean;
   highlights: string[];
   notes?: string;
-  flyerImage?: string;
 }
 
 export const packageCategories: PackageCategoryMeta[] = [
@@ -30,443 +29,338 @@ export const packageCategories: PackageCategoryMeta[] = [
     slug: "weddings",
     label: "Wedding Packages",
     shortLabel: "Weddings",
-    eyebrow: "Bridal & Wedding Coverage",
+    eyebrow: "Wedding Photography Package",
     description:
-      "Full-day photography, 4K drone cinematography, pre-shoots, handcrafted wedding albums, and heirloom couple wall frames.",
+      "Full-day photography, dual-camera cinematography, 4K aerial drones, handcrafted fine-art albums, and wooden couple wall frames.",
+  },
+  {
+    slug: "engagement",
+    label: "Engagement (Registration)",
+    shortLabel: "Engagement",
+    eyebrow: "Engagement & Registration Packages",
+    description:
+      "Dedicated ceremony hours, edited soft copies, handcrafted albums, full event video, outdoor preshoots, and couple frames.",
   },
   {
     slug: "puberty",
     label: "Puberty Ceremony",
     shortLabel: "Puberty",
-    eyebrow: "Traditional Milestone Coverage",
+    eyebrow: "Traditional Milestone Ceremony",
     description:
-      "Dedicated coverage for main function, cake cutting, shower ceremonies, outdoor sessions, synthetic albums, and full-event video.",
-  },
-  {
-    slug: "engagement",
-    label: "Engagement & Registration",
-    shortLabel: "Engagement",
-    eyebrow: "Registration & Couple Sessions",
-    description:
-      "Focused ceremony hours, edited soft copies, fine-art albums, and optional outdoor pre-shoots with full event video.",
+      "Main coverage, outdoor sessions, 24\" × 12\" luxury presentation box albums, full event video, and stylized social media teasers.",
   },
   {
     slug: "events",
-    label: "Event & Portrait",
-    shortLabel: "Events",
-    eyebrow: "Album & Cinematography Editions",
+    label: "Birthday & Event Packages",
+    shortLabel: "Birthdays & Events",
+    eyebrow: "Birthday & Event Coverage",
     description:
-      "Flexible photo-only or complete photo & cinema collections for intimate celebrations, birthdays, portraits, and special occasions.",
+      "Intimate milestone celebrations and birthdays with 24\" × 12\" box albums, unlimited edited soft copies, and outdoor coverage options.",
   },
 ];
 
 export const studioPackages: StudioPackage[] = [
-  // ── WEDDINGS ────────────────────────────────────────────────────────────────
+  // ── 1. WEDDING PACKAGES ─────────────────────────────────────────────────────
   {
     slug: "wedding-silver-basic",
     category: "weddings",
     name: "Silver — Basic",
     tierLabel: "Basic Package",
-    priceDisplay: "LKR 197,500",
-    subline: "Wedding Day — Full Day",
+    priceDisplay: "LKR 197,500/=",
+    subline: "Essential & Elegant Wedding Coverage",
     highlights: [
-      "2 Photographers & 2 Videographers",
-      "45 Sheet Album + Custom Box (LKR 2,500 per extra sheet)",
-      "Full HD Master Wedding Video on 32GB Pendrive",
-      "Free Bonus: 1 Couple Frame (18\" × 12\" Wooden Wall Frame)",
+      "'WEDDING DAY' [FULL DAY] — Complete coverage of your traditional auspicious moments",
+      "2 - PHOTOGRAPHER — Professional candid & traditional storytellers",
+      "2 - VIDEOGRAPHER — High Definition cinematic videography coverage",
+      "45 SHEET ALBUM — Premium High Quality Printed Album & Custom Box (2,500/= for each extra sheet)",
+      "FULL WEDDING VIDEO — Full HD Master Video delivered in 32 GB Pendrive",
+      "FREE BONUS: 1 COUPLE FRAME — 18\" × 12\" Elegant Wooden Wall Frame",
     ],
-    flyerImage: "/images/flyers/wedding-silver-basic.jpg",
   },
   {
     slug: "wedding-silver-standard",
     category: "weddings",
     name: "Silver — Standard",
     tierLabel: "Standard Package",
-    priceDisplay: "LKR 255,500",
-    subline: "Wedding Day + Full Day Preshoot",
+    priceDisplay: "LKR 255,500/=",
+    subline: "Wedding with Preshoot / Outdoor Session",
     highlights: [
-      "2 Photographers & 2 Videographers on Wedding Day",
-      "Full Day Preshoot / Outdoor Shoot (1 Photographer & 1 Videographer)",
-      "55 Sheet Handcrafted Leatherette Album + Box (LKR 2,500 per extra sheet)",
-      "Full HD Cinematic Edit on High-Speed 64GB Pendrive",
-      "Free Bonus: 1 Couple Frame (18\" × 12\" Matte Finish)",
+      "'WEDDING DAY' [FULL DAY] — Complete full day wedding ritual & reception coverage",
+      "2 - PHOTOGRAPHER — Main bridal photographer & creative candid shooter",
+      "2 - VIDEOGRAPHER — Dual camera full HD cinematic wedding film",
+      "PRESHOOT / OUTDOOR SHOOT [FULL DAY] — 1 Dedicated Photographer & 1 Videographer for Outdoor shoot",
+      "55 SHEET ALBUM — High Quality Handcrafted Leatherette Album & Box (2,500/= for each extra sheet)",
+      "FULL WEDDING VIDEO — Full HD Cinematic Edit in High Speed 64 GB Pendrive",
+      "FREE BONUS: 1 WED COUPLE FRAME — 18\" × 12\" Premium Matte Finish Frame",
     ],
-    flyerImage: "/images/flyers/wedding-silver-standard.jpg",
   },
   {
     slug: "wedding-royal-golden",
     category: "weddings",
     name: "Royal Golden",
-    tierLabel: "Most Popular",
-    priceDisplay: "LKR 375,500",
-    subline: "Full Day Coverage + 4K Drone + Preshoot",
+    tierLabel: "Golden Package",
     featured: true,
+    priceDisplay: "LKR 375,500/=",
+    subline: "Wedding with Registration, Bride to be & Mehendi",
     highlights: [
-      "Covers Registration, Bride to Be, Mehendi & Main Wedding",
-      "2 Photographers, 2 Videographers + 4K Ultra HD Drone Aerial Coverage",
-      "Full Day Preshoot / Outdoor Shoot (1 Photographer & 1 Videographer)",
-      "65 Sheet Flush Mount Luxury Album + Gift Box (LKR 2,500 per extra sheet)",
-      "Full HD Video on Customized 64GB USB Pendrive",
-      "Free Bonus: 2 Grand Wooden Couple Frames (18\" × 12\")",
+      "'WEDDING DAY' [FULL DAY] — Coverage for Registration, Bride to be, Mehendi & Main Wedding",
+      "2 - PHOTOGRAPHER — Master portraitist & candid moment specialist",
+      "2 - VIDEOGRAPHER — Full HD cinematic feature film with creative teasers",
+      "DRONE AERIAL COVERAGE — 4K Ultra HD aerial drone shots of venue & outdoor",
+      "PRESHOOT / OUTDOOR SHOOT [FULL DAY] — 1 Photographer & 1 Videographer for full day preshoot",
+      "65 SHEET ALBUM — Premium Quality Flush Mount Luxury Album & Gift Box (2,500/= for each extra sheet)",
+      "FULL WEDDING VIDEO — Full HD Video in Customized 64 GB USB Pendrive",
+      "FREE BONUS: 2 COUPLE FRAMES — Two 18\" × 12\" Premium Grand Wooden Frames",
     ],
-    flyerImage: "/images/flyers/wedding-royal-golden.jpg",
   },
   {
     slug: "wedding-diamond-platinum",
     category: "weddings",
     name: "Diamond Platinum",
     tierLabel: "Platinum Package",
-    priceDisplay: "LKR 565,500",
-    subline: "Grand Multi-Day + 2-Day Out-District Preshoot",
+    priceDisplay: "LKR 565,500/=",
+    subline: "Ultimate Wedding Experience with Registration, Bride to be & Mehendi",
     highlights: [
-      "Full Coverage: Registration, Bride to Be, Mehendi & Grand Wedding",
-      "3 Photographers, 2 Videographers + 4K Cinematic Drone Aerial Coverage",
-      "2 Full Days Out-District Destination Preshoot (Photo, Video & Drone)",
-      "80 Sheet Main Album + Box + 30 Sheet Family Mini Album (LKR 2,500 extra sheet)",
-      "Full HD Master Video on High-Speed 64GB USB Pendrive",
-      "Free Bonus: 2 Ultra Premium Luxury Couple Frames (18\" × 12\")",
-    ],
-    flyerImage: "/images/flyers/wedding-diamond-platinum.jpg",
-  },
-
-  // ── PUBERTY CEREMONY ────────────────────────────────────────────────────────
-  {
-    slug: "puberty-basic-01",
-    category: "puberty",
-    name: "Puberty Basic 01",
-    tierLabel: "Essential Photo Only",
-    priceDisplay: "LKR 100,000",
-    subline: "Function & Cake Cutting (6:00 AM – 8:00 PM)",
-    highlights: [
-      "30 Sheets Synthetic Album (LKR 2,500 per extra sheet)",
-      "Unlimited Edited Softcopy",
-      "01 Portrait Frame (12\" × 18\")",
-      "One Full Day Coverage (6:00 AM – 8:00 PM)",
-      "Album & Photography Only (Without Video)",
-    ],
-  },
-  {
-    slug: "puberty-basic-02",
-    category: "puberty",
-    name: "Puberty Basic 02",
-    tierLabel: "Complete Single Day",
-    priceDisplay: "LKR 140,000",
-    subline: "Photo + Full Event Video (6:00 AM – 8:00 PM)",
-    highlights: [
-      "30 Sheets Synthetic Album (LKR 2,500 per extra sheet)",
-      "Unlimited Edited Softcopy",
-      "Full Event Video on 32GB Pendrive",
-      "01 Portrait Frame (12\" × 18\")",
-      "One Full Day Coverage for Function & Cake Cutting",
-    ],
-  },
-  {
-    slug: "puberty-basic-03",
-    category: "puberty",
-    name: "Puberty Basic 03",
-    tierLabel: "Plus Shower Ceremony",
-    priceDisplay: "LKR 160,000",
-    subline: "Main Day + Shower Session (2–3 hrs another day)",
-    highlights: [
-      "35 Sheets Synthetic Album (LKR 2,500 per extra sheet)",
-      "Unlimited Edited Softcopy",
-      "Full Event Video on 32GB Pendrive",
-      "01 Portrait Frame (12\" × 18\")",
-      "One Full Day (6:00 AM – 8:00 PM) + 2–3 hr Shower Ceremony",
-    ],
-  },
-  {
-    slug: "puberty-standard-01",
-    category: "puberty",
-    name: "Puberty Standard 01",
-    tierLabel: "Previous Day + Outdoor",
-    priceDisplay: "LKR 180,000",
-    subline: "Main Day + Previous Day Shower & 1/2 Day Outdoor",
-    highlights: [
-      "40 Sheets Synthetic Album (LKR 2,500 per extra sheet)",
-      "Unlimited Edited Softcopy",
-      "Full Event Video on 32GB Pendrive",
-      "01 Portrait Frame (12\" × 18\")",
-      "Main Function (6:00 AM – 8:00 PM) + Previous Day Shower & Half-Day Outdoor",
-    ],
-  },
-  {
-    slug: "puberty-standard-02",
-    category: "puberty",
-    name: "Puberty Standard 02",
-    tierLabel: "Full Day Outdoor Experience",
-    priceDisplay: "LKR 200,000",
-    subline: "Main Day + Shower + Full-Day Outdoor",
-    featured: true,
-    highlights: [
-      "45 Sheets Synthetic Album (LKR 2,500 per extra sheet)",
-      "Unlimited Edited Softcopy",
-      "Full Event Video on 64GB High-Capacity Pendrive",
-      "01 Portrait Frame (12\" × 18\")",
-      "Full Main Function + Shower + Full-Day Outdoor Session",
-    ],
-  },
-  {
-    slug: "puberty-standard-03",
-    category: "puberty",
-    name: "Puberty Standard 03",
-    tierLabel: "Grand Celebration + Preshoot",
-    priceDisplay: "LKR 235,000",
-    subline: "1/2 Day Preshoot + Full Outdoor & Shower + Main Day",
-    highlights: [
-      "50 Sheets Synthetic Album (LKR 2,500 per extra sheet)",
-      "Unlimited Edited Softcopy",
-      "Full Event Video on 64GB Pendrive",
-      "01 Portrait Frame (12\" × 18\") + 01 Family Frame (12\" × 18\")",
-      "Preshoot (1/2 Day) + Shower & Outdoor (Full Day) + Main Function",
-    ],
-  },
-  {
-    slug: "puberty-royal-ultimate",
-    category: "puberty",
-    name: "Standard 04 — Royal Ultimate",
-    tierLabel: "Destination Special",
-    priceDisplay: "LKR 355,000",
-    subline: "2-Day Out-District Destination + Shower + Main Day",
-    highlights: [
-      "60 Sheets Synthetic Album (LKR 2,500 per extra sheet)",
-      "Unlimited Edited Softcopy",
-      "Full Event Video on 64GB High-Speed Pendrive",
-      "01 Portrait Frame (12\" × 18\") + 01 Family Frame (12\" × 18\")",
-      "2-Day Out-District Destination Shoot + Previous Day Shower + Main Day",
+      "'WEDDING DAY' [FULL DAY COVERAGE] — All events: Registration, Bride to be, Mehendi & Grand Wedding",
+      "3 - PHOTOGRAPHER — Triple master crew for comprehensive angle coverage",
+      "2 - VIDEOGRAPHER — Ultra HD 4K Cinematic Wedding Feature Film",
+      "DRONE AERIAL COVERAGE — 4K Cinematic aerial cinematography throughout",
+      "PRESHOOT / OUTDOOR SHOOT (2 - FULL DAYS) — Destination shoot across other districts (1 Photographer, 1 Videographer & Drone)",
+      "80 SHEET ALBUM + 30 SHEET MINI ALBUM — Main Album, Box & Family Mini Album (2,500/= for each extra sheet)",
+      "FULL WEDDING VIDEO — Full HD Master Video in High Speed 64 GB USB Pendrive",
+      "FREE BONUS: 2 COUPLE FRAMES — Two 18\" × 12\" Ultra Premium Luxury Frames",
     ],
   },
 
-  // ── ENGAGEMENT / REGISTRATION ───────────────────────────────────────────────
+  // ── 2. ENGAGEMENT (REGISTRATION) PACKAGES ──────────────────────────────────
   {
     slug: "engagement-basic-01",
     category: "engagement",
-    name: "Engagement Basic 01",
-    tierLabel: "Basic 01",
-    priceDisplay: "LKR 65,000",
-    subline: "3–4 Hour Coverage",
+    name: "Basic - 01",
+    tierLabel: "Basic Package",
+    priceDisplay: "Rs. 65,000",
+    subline: "3-4 Hour Coverage",
     highlights: [
-      "20 Sheets Album / 40 Pages (LKR 2,500 per extra sheet)",
+      "20 Sheets Album (40 pages)",
+      "(2500/- for extra each sheet)",
       "Unlimited Edited Soft Copies",
-      "3–4 Hours Main Event Coverage",
+      "3-4 Hour Coverage",
     ],
-    flyerImage: "/images/flyers/engagement-basic-01.jpg",
   },
   {
     slug: "engagement-basic-02",
     category: "engagement",
-    name: "Engagement Basic 02",
-    tierLabel: "Basic 02",
-    priceDisplay: "LKR 85,000",
-    subline: "4–5 Hour Coverage",
+    name: "Basic - 02",
+    tierLabel: "Basic Package",
+    priceDisplay: "Rs. 85,000",
+    subline: "4-5 Hour Coverage",
     highlights: [
-      "30 Sheets Album / 60 Pages (LKR 2,500 per extra sheet)",
+      "30 Sheets Album (60 pages)",
+      "(2500/- for extra each sheet)",
       "Unlimited Edited Soft Copies",
-      "4–5 Hours Main Event Coverage",
+      "4-5 Hour Coverage",
     ],
-    flyerImage: "/images/flyers/engagement-basic-02.jpg",
   },
   {
     slug: "engagement-basic-03",
     category: "engagement",
-    name: "Engagement Basic 03",
-    tierLabel: "Basic 03",
-    priceDisplay: "LKR 125,000",
-    subline: "4–5 Hour Coverage + Full Event Video",
+    name: "Basic - 03",
+    tierLabel: "Basic Package with Video",
+    priceDisplay: "Rs. 125,000",
+    subline: "4-5 Hour Coverage + Full Event Video",
     highlights: [
-      "30 Sheets Album / 60 Pages (LKR 2,500 per extra sheet)",
+      "30 Sheets Album (60 pages)",
+      "(2500/- for extra each sheet)",
       "Unlimited Edited Soft Copies",
-      "4–5 Hours Main Event Coverage",
-      "Full Event Edited Video (32GB Pendrive)",
+      "4-5 Hour Coverage",
+      "Full event edited Video (32GB Pendrive)",
     ],
-    flyerImage: "/images/flyers/engagement-basic-03.jpg",
   },
   {
     slug: "engagement-standard-01",
     category: "engagement",
-    name: "Engagement Standard 01",
-    tierLabel: "Standard 01",
-    priceDisplay: "LKR 145,000",
-    subline: "5–6 Hour Extended Coverage",
+    name: "Standard - 01",
+    tierLabel: "Standard Package",
+    priceDisplay: "Rs. 145,000",
+    subline: "5-6 Hour Extended Coverage",
     highlights: [
-      "45 Sheets Album / 90 Pages (LKR 2,500 per extra sheet)",
+      "45 Sheets Album (90 pages)",
+      "(2500/- for extra each sheet)",
       "Unlimited Edited Soft Copies",
-      "5–6 Hours Main Event Coverage",
+      "5-6 Hour Coverage",
     ],
-    flyerImage: "/images/flyers/engagement-standard-01.jpg",
   },
   {
     slug: "engagement-outstanding-01",
     category: "engagement",
-    name: "Engagement Outstanding 01",
-    tierLabel: "Outstanding 01",
-    priceDisplay: "LKR 225,000",
-    subline: "Event Day + Outdoor / Preshoot + Video + Frame",
-    featured: true,
+    name: "Outstanding - 01",
+    tierLabel: "Outstanding Package",
+    priceDisplay: "Rs. 225,000",
+    subline: "Event Day + Outdoor Preshoot (2-3 Hours)",
     highlights: [
-      "55 Sheets Album / 110 Pages (LKR 2,500 per extra sheet)",
+      "55 Sheets Album (110 pages, 2500/- for extra each sheet)",
       "Unlimited Edited Soft Copies",
-      "5–6 Hours Event Coverage + 2–3 Hours Outdoor / Preshoot",
-      "Full Event Edited Video (64GB Pendrive)",
-      "12\" × 18\" Couple Frame Included",
+      "Event day 5-6 Hour Coverage",
+      "Full event edited Video (64GB Pendrive)",
+      "Outdoor / Preshoot 2-3 Hours",
+      "12\" × 18\" Couple Frame",
     ],
-    flyerImage: "/images/flyers/engagement-outstanding-01.jpg",
   },
   {
     slug: "engagement-outstanding-02",
     category: "engagement",
-    name: "Engagement Outstanding 02",
-    tierLabel: "Outstanding 02",
-    priceDisplay: "LKR 255,000",
-    subline: "Event Day + Full-Day Outdoor / Preshoot",
+    name: "Outstanding - 02",
+    tierLabel: "Outstanding Package",
+    priceDisplay: "Rs. 255,000",
+    subline: "Event Day + Full Day Outdoor Preshoot",
     highlights: [
-      "65 Sheets Album / 130 Pages (LKR 2,500 per extra sheet)",
+      "65 Sheets Album (130 pages, 2500/- for extra each sheet)",
       "Unlimited Edited Soft Copies",
-      "5–6 Hours Event Coverage + Full-Day Outdoor / Preshoot",
-      "Full Event Edited Video (64GB Pendrive)",
-      "12\" × 18\" Couple Frame Included",
+      "Event day 5-6 Hour Coverage",
+      "Full event edited Video (64GB Pendrive)",
+      "Outdoor / Preshoot Full Day",
+      "12\" × 18\" Couple Frame",
     ],
-    flyerImage: "/images/flyers/engagement-outstanding-02.jpg",
   },
   {
     slug: "engagement-outstanding-03",
     category: "engagement",
-    name: "Engagement Outstanding 03",
-    tierLabel: "Outstanding 03",
-    priceDisplay: "LKR 315,000",
-    subline: "Event Day + 2-Day Out-District Preshoot",
+    name: "Outstanding - 03",
+    tierLabel: "Outstanding Package",
+    priceDisplay: "Rs. 315,000",
+    subline: "Event Day + 2-Day Destination Preshoot",
     highlights: [
-      "75 Sheets Album / 150 Pages (LKR 2,500 per extra sheet)",
+      "75 Sheets Album (150 pages, 2500/- for extra each sheet)",
       "Unlimited Edited Soft Copies",
-      "5–6 Hours Event Coverage + 2-Day Out-District Preshoot",
-      "Full Event Edited Video (64GB Pendrive)",
-      "12\" × 18\" Couple Frame Included",
+      "Event day 5-6 Hour Coverage",
+      "Full event edited Video (64GB Pendrive)",
+      "Outdoor / Preshoot 2 Day (Out Districts)",
+      "12\" × 18\" Couple Frame",
     ],
-    flyerImage: "/images/flyers/engagement-outstanding-03.jpg",
   },
 
-  // ── EVENTS & PORTRAITS (Photo-Only + Photo & Cinema) ────────────────────────
+  // ── 3. PUBERTY CEREMONY PACKAGES ───────────────────────────────────────────
   {
-    slug: "event-basic-photo",
-    category: "events",
-    name: "Event Basic (Photo Only)",
-    tierLabel: "Photo Only",
-    priceDisplay: "LKR 50,000",
-    subline: "1–2 Hour Coverage",
+    slug: "puberty-basic",
+    category: "puberty",
+    name: "Basic Package",
+    tierLabel: "Essential Photography & Cinematography",
+    priceDisplay: "Rs. 80,000/-",
+    subline: "1 - 2 Hours Main Coverage + Preshoot",
     highlights: [
-      "20 Sheets Album / 40 Pages (LKR 2,000 per extra sheet)",
-      "24\" × 12\" Album with Custom Presentation Box",
-      "Unlimited Edited Soft Copies",
-      "1–2 Hours Main Coverage",
-    ],
-    flyerImage: "/images/flyers/event-basic.jpg",
-  },
-  {
-    slug: "event-standard-photo",
-    category: "events",
-    name: "Event Standard (Photo Only)",
-    tierLabel: "Photo Only",
-    priceDisplay: "LKR 60,000",
-    subline: "1–2 Hour Coverage",
-    highlights: [
-      "30 Sheets Album / 60 Pages (LKR 2,000 per extra sheet)",
-      "24\" × 12\" Album with Presentation Box",
-      "Unlimited Edited Soft Copies",
-      "1–2 Hours Main Coverage",
-    ],
-    flyerImage: "/images/flyers/event-standard.jpg",
-  },
-  {
-    slug: "event-outstanding-photo",
-    category: "events",
-    name: "Event Outstanding (Photo Only)",
-    tierLabel: "Photo Only",
-    priceDisplay: "LKR 90,000",
-    subline: "Main Coverage + Outdoor Session",
-    highlights: [
-      "40 Sheets Album / 80 Pages (LKR 2,000 per extra sheet)",
-      "24\" × 12\" Album with Presentation Box",
-      "Unlimited Edited Soft Copies",
-      "1–2 Hours Main Coverage + 1–2 Hours Outdoor Coverage",
-    ],
-    flyerImage: "/images/flyers/event-outstanding.jpg",
-  },
-  {
-    slug: "event-basic-cinema",
-    category: "events",
-    name: "Event Basic (Photo & Cinema)",
-    tierLabel: "Photo & Cinema",
-    priceDisplay: "LKR 80,000",
-    subline: "Main + Pre-Shoot + Social Teaser",
-    highlights: [
-      "20 Sheets Album / 40 Pages (24\" × 12\") with Custom Presentation Box",
-      "Extra Sheets LKR 2,000/- • Extra Time LKR 1,000/hr",
-      "Unlimited Edited Soft Copies",
-      "1–2 Hours Main Coverage + 1–2 Hours Pre-Shoot Coverage",
-      "Social Media Post Video (2–3 Min Teaser)",
+      "20 Sheets Album (40 Pages) — 24\" × 12\" Premium Size Album with Custom Presentation Box",
+      "Additional Sheets Support — Rs. 2,000/- for each extra sheet",
+      "Unlimited Edited Soft Copies (High-resolution professionally retouched photographs)",
+      "1 - 2 Hours Main Coverage (Dedicated event coverage capturing key moments)",
+      "Pre-Shoot Coverage (1 - 2 Hours creative pre-wedding / portrait outdoor session)",
+      "Social Media Post Video (2 - 3 Minutes stylized cinematic teaser video)",
+      "Extra Time Flexibility — Rs. 1,000/- for each additional hour",
     ],
   },
   {
-    slug: "event-standard-cinema",
-    category: "events",
-    name: "Event Standard (Photo & Cinema)",
-    tierLabel: "Photo & Cinema",
-    priceDisplay: "LKR 120,000",
-    subline: "Album + Full Event Video + 1-Min Highlight",
-    featured: true,
+    slug: "puberty-standard",
+    category: "puberty",
+    name: "Standard Package",
+    tierLabel: "Complete Event Coverage",
+    priceDisplay: "Rs. 120,000/-",
+    subline: "Complete Event Coverage + Full Video & Highlight",
     highlights: [
-      "30 Sheets Album / 60 Pages (24\" × 12\") with Luxury Box",
-      "Extra Sheets LKR 2,000/- • Extra Time LKR 1,000/hr",
-      "Unlimited Edited Soft Copies",
-      "Full Event Video & 1-Min Highlight",
-      "Digital Delivery in Custom Branded 32GB USB",
+      "30 Sheets Album (60 Pages) — 24\" × 12\" Premium Size Album with Luxury Box",
+      "Additional Sheets Support — Rs. 2,000/- for each extra sheet",
+      "Unlimited Edited Soft Copies (Full resolution, color-graded imagery)",
+      "1 - 2 Hours Coverage tailored to main rituals & highlights",
+      "Full Event Video & 1-Min Highlight (Complete video coverage + cinematic fast-paced teaser)",
+      "Digital Delivery in 32 GB USB (Full HD quality inside a custom branded USB drive)",
+      "Extra Time Flexibility — Rs. 1,000/- for each additional hour",
     ],
   },
   {
-    slug: "event-outstanding-cinema",
-    category: "events",
-    name: "Event Outstanding (Photo & Cinema)",
-    tierLabel: "Photo & Cinema",
-    priceDisplay: "LKR 150,000",
-    subline: "Event + Outdoor Video + Luxury Album",
+    slug: "puberty-outstanding",
+    category: "puberty",
+    name: "Outstanding Package",
+    tierLabel: "Ultimate Premium Cinema & Album Experience",
+    priceDisplay: "Rs. 150,000/-",
+    subline: "Event & Outdoor Coverage + Full Video & Highlight",
     highlights: [
-      "40 Sheets Album / 80 Pages (24\" × 12\") Grand Luxury Album with Box",
-      "Extra Sheets LKR 2,000/-",
+      "40 Sheets Album (80 Pages) — 24\" × 12\" Grand Size Luxury Album with Custom Presentation Box",
+      "Additional Sheets Support — Rs. 2,000/- for each extra sheet",
+      "Unlimited Edited Soft Copies (Mastered & color-retouched high-resolution images)",
+      "Event Coverage (1 - 2 Hours comprehensive story capture)",
+      "Outdoor Coverage (1 - 2 Hours dedicated cinematic location shoot)",
+      "Full Event & Outdoor Video + 1-Min Highlight (Complete film edit & high-energy teaser)",
+      "Digital Delivery in 32 GB USB (Crystal clear Full HD on a 32 GB flash drive)",
+    ],
+  },
+
+  // ── 4. BIRTHDAY & EVENT PACKAGES ───────────────────────────────────────────
+  {
+    slug: "birthday-basic",
+    category: "events",
+    name: "Basic Package",
+    tierLabel: "Essential Package",
+    priceDisplay: "Rs. 50,000",
+    subline: "1-2 Hour Coverage",
+    highlights: [
+      "20 Sheets Album (40 pages) — 24\" × 12\" Size album with Box",
+      "2,000/- for extra each sheet",
       "Unlimited Edited Soft Copies",
-      "1–2 Hours Event Coverage + 1–2 Hours Outdoor Coverage",
-      "Full Event & Outdoor Video + 1-Min Highlight on 32GB USB",
+      "1-2 Hour Coverage",
+    ],
+  },
+  {
+    slug: "birthday-standard",
+    category: "events",
+    name: "Standard Package",
+    tierLabel: "Popular Choice",
+    priceDisplay: "Rs. 60,000",
+    subline: "1-2 Hour Coverage",
+    highlights: [
+      "30 Sheets Album (60 pages) — 24\" × 12\" Size album with Box",
+      "2,000/- for extra each sheet",
+      "Unlimited Edited Soft Copies",
+      "1-2 Hour Coverage",
+    ],
+  },
+  {
+    slug: "birthday-outstanding",
+    category: "events",
+    name: "Outstanding Package",
+    tierLabel: "Premium Choice",
+    priceDisplay: "Rs. 90,000",
+    subline: "Event + Outdoor Coverage",
+    highlights: [
+      "40 Sheets Album (80 pages) — 24\" × 12\" Size album with Box",
+      "2,000/- for extra each sheet",
+      "Unlimited Edited Soft Copies",
+      "1-2 Hour Coverage",
+      "Outdoor 1-2 Hour Coverage",
     ],
   },
 ];
 
-export const featuredPackages: StudioPackage[] = [
-  studioPackages.find((p) => p.slug === "wedding-royal-golden")!,
-  studioPackages.find((p) => p.slug === "puberty-standard-02")!,
-  studioPackages.find((p) => p.slug === "engagement-outstanding-01")!,
-  studioPackages.find((p) => p.slug === "event-standard-cinema")!,
-];
-
-export function isPackageCategorySlug(
-  value: string,
-): value is PackageCategorySlug {
-  return packageCategories.some((c) => c.slug === value);
+export function getPackagesByCategory(category: PackageCategorySlug): StudioPackage[] {
+  return studioPackages.filter((p) => p.category === category);
 }
 
 export function getPackageBySlug(slug: string): StudioPackage | undefined {
   return studioPackages.find((p) => p.slug === slug);
 }
 
-export function getPackagesByCategory(
-  category: PackageCategorySlug,
-): StudioPackage[] {
-  return studioPackages.filter((p) => p.category === category);
+export function getCategoryMeta(slug: PackageCategorySlug): PackageCategoryMeta {
+  const meta = packageCategories.find((c) => c.slug === slug);
+  if (!meta) {
+    return packageCategories[0];
+  }
+  return meta;
 }
 
-export function getCategoryMeta(
-  category: PackageCategorySlug,
-): PackageCategoryMeta {
-  return (
-    packageCategories.find((c) => c.slug === category) ?? packageCategories[0]
-  );
+export function isPackageCategorySlug(val: string): val is PackageCategorySlug {
+  return packageCategories.some((c) => c.slug === val);
 }
 
+export const featuredPackages: StudioPackage[] = [
+  studioPackages[2], // Royal Golden
+  studioPackages[8], // Engagement Outstanding - 01
+  studioPackages[12], // Puberty Standard
+  studioPackages[15], // Birthday Standard
+];
