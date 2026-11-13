@@ -42,10 +42,11 @@ export const siteConfig = {
   },
 
   socials: [
-    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61593422810198" },
-    { label: "WhatsApp", href: "https://wa.me/94775321978" },
-    { label: "Instagram", href: "https://www.instagram.com/halocinematicstudio/" },
+    { label: "Facebook", href: "https://www.facebook.com/share/18G3kQ7vff/" },
+    { label: "Instagram", href: "https://www.instagram.com/halo_cinematic_studio?psln=MWZ5cnQ4eGNmcGowaQ==" },
+    { label: "WhatsApp Channel", href: "https://whatsapp.com/channel/0029Vb9T6yaAYlUMkyyujH1P" },
   ] as SocialLink[],
+  whatsappChannel: "https://whatsapp.com/channel/0029Vb9T6yaAYlUMkyyujH1P",
 
   /** Place a licensed MP3 at public/audio/background.mp3 to enable music. */
   backgroundMusic: "/audio/background.mp3",
