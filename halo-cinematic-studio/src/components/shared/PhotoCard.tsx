@@ -35,7 +35,7 @@ export function PhotoCard({
 
         <span
           aria-hidden
-          className="absolute top-3 right-3 grid size-8 place-items-center rounded-full bg-white/90 text-[#D71920] opacity-0 shadow-md backdrop-blur-xs transition-opacity duration-200 group-hover:opacity-100"
+          className="absolute top-3 right-3 grid size-8 place-items-center rounded-none bg-white/90 text-[#D71920] opacity-0 shadow-md backdrop-blur-xs transition-opacity duration-200 group-hover:opacity-100"
         >
           <Maximize2 className="size-4" />
         </span>
@@ -57,7 +57,7 @@ export function PhotoCard({
   );
 
   const cardClasses =
-    "group block w-full overflow-hidden rounded-[20px] border border-[#D8CFC1] bg-[#FAF7F1] text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#D71920]/60 hover:shadow-md";
+    "group block w-full overflow-hidden rounded-none border border-[#D8CFC1] bg-[#FAF7F1] text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#D71920]/60 hover:shadow-md";
 
   if (onSelect) {
     return (

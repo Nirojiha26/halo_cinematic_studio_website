@@ -402,18 +402,6 @@ export const studioPhotos: StudioPhoto[] = [
     height: 1600,
     isLandscape: false,
   },
-  {
-    id: "halo-photo-31",
-    src: "/images/gallery/halo-9.jpg",
-    title: "Sacred Thali & Wedding Knots",
-    category: "Ceremony & Details",
-    subtitle: "Timeless Marital Bond • Nelliady",
-    alt: "Detailed framing of auspicious gold mangalsutra and turmeric thread",
-    packageCategory: "weddings",
-    width: 1066,
-    height: 1600,
-    isLandscape: false,
-  },
 ];
 
 /** Featured wedding portraits used on homepage preview */

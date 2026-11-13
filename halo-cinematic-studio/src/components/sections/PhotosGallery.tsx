@@ -132,7 +132,7 @@ export function PhotosGallery() {
           <div
             key={photo.id}
             onClick={() => setSelectedId(photo.id)}
-            className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[#D8CFC1] bg-[#171716] shadow-xs transition-all duration-500 hover:-translate-y-1 hover:border-[#D71920]/60 hover:shadow-xl cursor-pointer"
+            className="group relative aspect-[4/3] w-full overflow-hidden rounded-none border border-[#D8CFC1] bg-[#171716] shadow-xs transition-all duration-500 hover:-translate-y-1 hover:border-[#D71920] hover:shadow-xl cursor-pointer"
           >
             {/* The Authentic Photography Frame */}
             <Image
@@ -149,12 +149,12 @@ export function PhotosGallery() {
 
             {/* Top Bar Badges */}
             <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-bold uppercase tracking-wider text-white bg-[#D71920] px-2.5 py-1 rounded-full shadow-sm">
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-bold uppercase tracking-wider text-white bg-[#D71920] px-2.5 py-1 rounded-none shadow-sm">
                 {photo.category}
               </span>
               <span
                 aria-hidden
-                className="grid size-8 place-items-center rounded-full bg-white/90 text-[#171716] opacity-0 shadow-md backdrop-blur-xs transition-all duration-300 group-hover:opacity-100 group-hover:scale-105"
+                className="grid size-8 place-items-center rounded-none bg-white/90 text-[#171716] opacity-0 shadow-md backdrop-blur-xs transition-all duration-300 group-hover:opacity-100 group-hover:scale-105"
               >
                 <Maximize2 className="size-4 text-[#D71920]" />
               </span>
@@ -188,7 +188,7 @@ export function PhotosGallery() {
           onClick={handleClose}
         >
           <div
-            className="relative flex max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-[24px] bg-[#FAF7F1] border border-[#D8CFC1] shadow-2xl"
+            className="relative flex max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-none bg-[#FAF7F1] border border-[#D8CFC1] shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top Bar */}
@@ -209,7 +209,7 @@ export function PhotosGallery() {
                 type="button"
                 onClick={handleClose}
                 aria-label="Close dialog"
-                className="grid size-10 place-items-center rounded-full border border-[#D8CFC1] bg-[#EEE9DF] text-[#171716] transition-colors hover:border-[#D71920] hover:text-[#D71920] cursor-pointer"
+                className="grid size-10 place-items-center rounded-none border border-[#D8CFC1] bg-[#EEE9DF] text-[#171716] transition-colors hover:border-[#D71920] hover:text-[#D71920] cursor-pointer"
               >
                 <X className="size-5" />
               </button>
@@ -233,7 +233,7 @@ export function PhotosGallery() {
                     type="button"
                     onClick={() => stepPhoto(-1)}
                     aria-label="Previous photo"
-                    className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#171716] shadow-lg backdrop-blur-xs transition-transform hover:scale-110 hover:text-[#D71920] cursor-pointer"
+                    className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-none bg-white/90 text-[#171716] shadow-lg backdrop-blur-xs transition-transform hover:scale-110 hover:text-[#D71920] cursor-pointer"
                   >
                     <ChevronLeft className="size-6" />
                   </button>
@@ -241,7 +241,7 @@ export function PhotosGallery() {
                     type="button"
                     onClick={() => stepPhoto(1)}
                     aria-label="Next photo"
-                    className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-full bg-white/90 text-[#171716] shadow-lg backdrop-blur-xs transition-transform hover:scale-110 hover:text-[#D71920] cursor-pointer"
+                    className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 grid size-11 place-items-center rounded-none bg-white/90 text-[#171716] shadow-lg backdrop-blur-xs transition-transform hover:scale-110 hover:text-[#D71920] cursor-pointer"
                   >
                     <ChevronRight className="size-6" />
                   </button>
@@ -261,7 +261,7 @@ export function PhotosGallery() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-grad inline-flex h-10 items-center gap-2 rounded-xl px-5 text-xs font-semibold text-white shadow-xs"
+                className="btn-grad inline-flex h-10 items-center gap-2 rounded-none px-5 text-xs font-semibold text-white shadow-xs"
               >
                 <span>Enquire About This Frame</span>
                 <ArrowRight className="size-3.5" />
