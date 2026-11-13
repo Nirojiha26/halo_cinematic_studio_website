@@ -3,8 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, Camera, Maximize2 } from "lucide-react";
-import { Container } from "@/components/ui/Container";
+import { ArrowUpRight, Maximize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface RibbonMoment {
@@ -27,8 +26,8 @@ const ribbonMoments: RibbonMoment[] = [
     category: "Engagements",
     collection: "Engagements",
     alt: "Couple in golden sunset glow during outdoor preshoot by HALO Cinematic Studio",
-    angle: 36,
-    scale: 0.86,
+    angle: 30,
+    scale: 0.88,
     zIndex: 10,
   },
   {
@@ -38,8 +37,8 @@ const ribbonMoments: RibbonMoment[] = [
     category: "Weddings",
     collection: "Weddings",
     alt: "Joyful bride and groom exchanging floral garlands in traditional ceremony",
-    angle: 24,
-    scale: 0.92,
+    angle: 20,
+    scale: 0.93,
     zIndex: 12,
   },
   {
@@ -49,7 +48,7 @@ const ribbonMoments: RibbonMoment[] = [
     category: "Portraits",
     collection: "Portraits",
     alt: "Bridal portrait showcasing gold temple ornaments and emerald bangles",
-    angle: 12,
+    angle: 10,
     scale: 0.97,
     zIndex: 14,
   },
@@ -71,7 +70,7 @@ const ribbonMoments: RibbonMoment[] = [
     category: "Cultural Ceremony",
     collection: "Portraits",
     alt: "Traditional puberty ceremony portrait with sacred jasmine garland",
-    angle: -12,
+    angle: -10,
     scale: 0.97,
     zIndex: 14,
   },
@@ -82,8 +81,8 @@ const ribbonMoments: RibbonMoment[] = [
     category: "Engagements",
     collection: "Engagements",
     alt: "Spontaneous intimate laughter between couple during outdoor preshoot",
-    angle: -24,
-    scale: 0.92,
+    angle: -20,
+    scale: 0.93,
     zIndex: 12,
   },
   {
@@ -93,8 +92,8 @@ const ribbonMoments: RibbonMoment[] = [
     category: "Ceremony & Details",
     collection: "Ceremony & Details",
     alt: "Intricate bridal mehndi and traditional gold wedding jewellery details",
-    angle: -36,
-    scale: 0.86,
+    angle: -30,
+    scale: 0.88,
     zIndex: 10,
   },
 ];
@@ -104,13 +103,13 @@ export function EditorialPortfolio() {
 
   return (
     <section
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#FAF7F1] border-b border-[#D8CFC1] overflow-hidden select-none"
+      className="relative py-14 sm:py-18 lg:py-20 bg-[#FAF7F1] border-b border-[#D8CFC1] overflow-hidden select-none"
       id="selected-moments"
       aria-labelledby="portfolio-heading"
     >
-      <Container size="wide">
-        {/* ── Section Header matching User Spec ── */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14">
+      <div className="w-full max-w-[98rem] 2xl:max-w-[106rem] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ── Section Header (Removed 'real emotions' text as requested) ── */}
+        <div className="flex items-end justify-between gap-6 mb-8 sm:mb-12">
           <div>
             <div className="inline-flex items-center gap-2.5 mb-2.5">
               <span className="w-5 h-[2px] bg-[#D71920]" aria-hidden="true" />
@@ -128,10 +127,7 @@ export function EditorialPortfolio() {
             </h2>
           </div>
 
-          <div className="flex items-center gap-4 self-start sm:self-end">
-            <p className="text-xs sm:text-sm text-[#716B64] font-medium hidden md:block max-w-xs text-right leading-relaxed">
-              Real emotions. Beautiful connections. Memories that stay forever.
-            </p>
+          <div className="self-end">
             <Link
               href="/photos"
               className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#171716] hover:text-[#D71920] transition-colors border-b border-[#D8CFC1] hover:border-[#D71920] pb-1 group"
@@ -142,16 +138,16 @@ export function EditorialPortfolio() {
           </div>
         </div>
 
-        {/* ── 3D Curved Perspective Ribbon (matching sample screenshot, zero horizontal scroll) ── */}
-        <div className="relative w-full py-4 sm:py-8 flex items-center justify-center [perspective:1200px]">
-          <div className="w-full flex items-center justify-center -space-x-3 sm:-space-x-5 lg:-space-x-6 px-2">
+        {/* ── 3D Curved Perspective Ribbon (Expanded Horizontal Width, zero horizontal scroll) ── */}
+        <div className="relative w-full py-4 sm:py-6 flex items-center justify-center [perspective:1400px]">
+          <div className="w-full flex items-center justify-center -space-x-1 sm:-space-x-2.5 lg:-space-x-3.5 px-1 sm:px-2">
             {ribbonMoments.map((moment, idx) => {
               const isHovered = hoveredId === moment.id;
               const isCenter = idx === 3;
 
               // Calculate active rotation and scale
               const rotationY = isHovered ? 0 : moment.angle;
-              const scale = isHovered ? 1.12 : moment.scale;
+              const scale = isHovered ? 1.1 : moment.scale;
               const zIndex = isHovered ? 40 : isCenter ? 25 : moment.zIndex;
 
               return (
@@ -166,7 +162,7 @@ export function EditorialPortfolio() {
                     transformStyle: "preserve-3d",
                   }}
                   className={cn(
-                    "group relative w-[17%] sm:w-[15%] lg:w-[13.8%] max-w-[220px] aspect-[3/4.4] shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-white/80 shadow-md transition-all duration-500 ease-out cursor-pointer",
+                    "group relative w-[18.5%] sm:w-[17%] lg:w-[15.5%] xl:w-[15%] max-w-[260px] aspect-[3/4.2] shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-white/80 shadow-md transition-all duration-500 ease-out cursor-pointer",
                     isHovered
                       ? "ring-2 ring-[#D71920] shadow-2xl"
                       : "hover:border-[#D71920]/80",
@@ -177,7 +173,7 @@ export function EditorialPortfolio() {
                     src={moment.src}
                     alt={moment.alt}
                     fill
-                    sizes="(min-width: 1280px) 15vw, (min-width: 768px) 20vw, 30vw"
+                    sizes="(min-width: 1280px) 16vw, (min-width: 768px) 22vw, 30vw"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
                   />
 
@@ -217,32 +213,7 @@ export function EditorialPortfolio() {
             })}
           </div>
         </div>
-
-        {/* ── Subtitle Footnote / Gallery Pill ── */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 sm:mt-10 pt-6 border-t border-[#D8CFC1]/70 text-xs text-[#716B64]">
-          <div className="flex items-center gap-2">
-            <span className="size-2 rounded-full bg-[#D71920]" />
-            <span className="font-semibold text-[#171716]">
-              Interactive 3D Perspective Gallery
-            </span>
-            <span className="text-[#D8CFC1]" aria-hidden="true">
-              |
-            </span>
-            <span className="text-[#716B64]">
-              Hover any frame to view details &amp; collection
-            </span>
-          </div>
-
-          <Link
-            href="/photos"
-            className="inline-flex items-center gap-1.5 font-semibold text-xs text-[#D71920] hover:text-[#b5141a] transition-colors"
-          >
-            <Camera className="size-3.5" />
-            <span>Explore 30+ Authentic Studio Frames</span>
-            <ArrowUpRight className="size-3" />
-          </Link>
-        </div>
-      </Container>
+      </div>
     </section>
   );
 }
