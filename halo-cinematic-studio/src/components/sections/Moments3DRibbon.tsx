@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, Maximize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -101,6 +101,14 @@ const concaveMoments: ConcaveMoment[] = [
 
 export function EditorialPortfolio() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth < 640);
+    update();
+    window.addEventListener("resize", update, { passive: true });
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   return (
     <section
@@ -149,9 +157,9 @@ export function EditorialPortfolio() {
           </div>
         </div>
 
-        {/* ── 3D Concave Cylindrical Arc (7 cards, zero overlap, visible gaps, pure sample match) ── */}
-        <div className="relative w-full py-4 sm:py-8 flex items-center justify-center [perspective:1200px]">
-          <div className="w-full flex items-center justify-center gap-1.5 sm:gap-3 md:gap-4 lg:gap-5 xl:gap-6 px-1 sm:px-2">
+        {/* ── 3D Concave Cylindrical Arc (Mobile horizontal snap scroll, Desktop 3D arc) ── */}
+        <div className="relative w-full py-4 sm:py-8 flex items-center justify-center sm:[perspective:1200px]">
+          <div className="w-full flex items-center justify-start sm:justify-center gap-3 sm:gap-3 md:gap-4 lg:gap-5 xl:gap-6 px-4 sm:px-2 overflow-x-auto sm:overflow-visible no-scrollbar snap-x sm:snap-none">
             {concaveMoments.map((moment, idx) => {
               const isHovered = hoveredId === moment.id;
               const isCenter = idx === 3;
@@ -167,13 +175,17 @@ export function EditorialPortfolio() {
                   onMouseEnter={() => setHoveredId(moment.id)}
                   onMouseLeave={() => setHoveredId(null)}
                   style={{
-                    transform: `rotateY(${rotationY}deg) ${isHovered ? "scale(1.08) translateY(-8px)" : ""}`,
+                    transform: isMobile
+                      ? isHovered
+                        ? "scale(1.04)"
+                        : undefined
+                      : `rotateY(${rotationY}deg) ${isHovered ? "scale(1.08) translateY(-8px)" : ""}`,
                     transformOrigin: isHovered ? "center center" : moment.origin,
                     zIndex,
-                    transformStyle: "preserve-3d",
+                    transformStyle: isMobile ? undefined : "preserve-3d",
                   }}
                   className={cn(
-                    "group relative w-[13.2%] sm:w-[12.8%] md:w-[12.5%] max-w-[195px] xl:max-w-[215px] shrink-0 rounded-xl sm:rounded-2xl lg:rounded-[20px] overflow-hidden border border-white/20 shadow-[0_12px_35px_rgba(0,0,0,0.55)] transition-all duration-500 ease-out cursor-pointer bg-[#1A1A1E]",
+                    "group relative w-[160px] xs:w-[175px] sm:w-[12.8%] md:w-[12.5%] max-w-[195px] xl:max-w-[215px] shrink-0 rounded-xl sm:rounded-2xl lg:rounded-[20px] overflow-hidden border border-white/20 shadow-[0_12px_35px_rgba(0,0,0,0.55)] transition-all duration-500 ease-out cursor-pointer bg-[#1A1A1E] snap-center sm:snap-align-none",
                     moment.heightClass,
                     isHovered
                       ? "ring-2 sm:ring-4 ring-[#D71920] border-transparent shadow-[0_22px_50px_rgba(215,25,32,0.35)]"
@@ -224,6 +236,12 @@ export function EditorialPortfolio() {
               );
             })}
           </div>
+        </div>
+
+        {/* Mobile Swipe Cue */}
+        <div className="mt-3 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-[#FAF7F1]/60 sm:hidden">
+          <span className="size-1.5 rounded-full bg-[#D71920] animate-pulse" />
+          <span>Swipe horizontally to explore all 7 moments</span>
         </div>
       </div>
     </section>

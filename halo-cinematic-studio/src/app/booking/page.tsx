@@ -20,7 +20,7 @@ export default function BookingPage() {
       <section className="relative overflow-hidden bg-[#090A0D] pt-32 sm:pt-36 lg:pt-40 pb-14 sm:pb-18 border-b border-[#2A2926]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/home-selected/ring-ceremony.webp"
+            src="/images/home-selected/garland-exchange.webp"
             alt="HALO Cinematic Studio atmosphere"
             fill
             priority

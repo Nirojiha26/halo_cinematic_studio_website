@@ -150,8 +150,8 @@ export function Footer() {
         </div>
       </Container>
 
-      {/* Sub-footer copyright with compact padding */}
-      <div className="border-t border-[#2A2926] py-3.5">
+      {/* Sub-footer copyright with mobile bottom bar clearance */}
+      <div className="border-t border-[#2A2926] pt-3.5 pb-24 sm:py-3.5">
         <Container className="flex flex-col items-center justify-between gap-3 text-xs text-[#A39E96] sm:flex-row">
           <p>© <CurrentYear /> {siteConfig.name}. All rights reserved.</p>
           <p className="flex items-center gap-2">

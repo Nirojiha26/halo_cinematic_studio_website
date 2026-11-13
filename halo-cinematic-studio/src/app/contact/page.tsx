@@ -21,7 +21,7 @@ export default function ContactPage() {
         {/* Background authentic studio image with blur and dark overlay matching navbar */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/home-selected/ring-ceremony.webp"
+            src="/images/home-selected/garland-exchange.webp"
             alt="HALO Cinematic Studio atmosphere"
             fill
             priority

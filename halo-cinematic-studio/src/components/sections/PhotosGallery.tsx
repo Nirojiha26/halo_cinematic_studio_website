@@ -29,6 +29,7 @@ export function PhotosGallery() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const handleCollectionParam = useCallback((value: string) => {
     const match = photoCollections.find(
@@ -182,6 +183,17 @@ export function PhotosGallery() {
               ref={dialogRef}
               className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black/95 p-2 sm:p-4 backdrop-blur-xl select-none"
               onClick={handleClose}
+              onTouchStart={(e) => {
+                touchStartX.current = e.touches[0]?.clientX ?? null;
+              }}
+              onTouchEnd={(e) => {
+                const start = touchStartX.current;
+                const end = e.changedTouches[0]?.clientX;
+                if (start !== null && end !== undefined && Math.abs(end - start) > 40) {
+                  stepPhoto(end < start ? 1 : -1);
+                }
+                touchStartX.current = null;
+              }}
             >
               {/* Top Control Bar with Back Button, Counter, and Close Button */}
               <header className="absolute top-0 inset-x-0 z-50 flex items-center justify-between p-3 sm:p-6 bg-gradient-to-b from-black/85 via-black/40 to-transparent pointer-events-auto">

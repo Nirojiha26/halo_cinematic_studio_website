@@ -15,7 +15,7 @@ export { EditorialPortfolio } from "./Moments3DRibbon";
 export function StudioStory() {
   return (
     <section
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#FAF7F1] border-b border-[#D8CFC1]"
+      className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-[#FAF7F1] border-b border-[#D8CFC1]"
       id="our-story"
       aria-labelledby="story-heading"
     >
@@ -48,7 +48,7 @@ export function StudioStory() {
             {/* Polished, engaging body copy */}
             <div className="space-y-4 text-xs sm:text-[13.5px] leading-relaxed text-[#2B2927]">
               <p>
-                Based in Nelliady, Jaffna, HALO Cinematic Studio is a premier creative photography and cinematography collective dedicated to documenting life’s most cherished celebrations. We believe every genuine glance, auspicious blessing, and spontaneous burst of joy deserves to be captured with authentic cinematic elegance.
+                Based in Nelliady, HALO Cinematic Studio is a premier creative photography and cinematography collective dedicated to documenting life’s most cherished celebrations. We believe every genuine glance, auspicious blessing, and spontaneous burst of joy deserves to be captured with authentic cinematic elegance.
               </p>
               <p>
                 From sacred garland exchanges and intimate pre-shoots to traditional puberty milestones and vibrant family festivities, our team crafts visuals that endure across generations. We don’t just capture frames — we preserve heirlooms to hold close, and timeless films to relive forever.
@@ -111,7 +111,7 @@ export function StudioStory() {
                     Authentic Cinematic Craft
                   </p>
                   <p className="text-xs text-white/90 font-medium">
-                    Nelliady, Jaffna &amp; Island-Wide Coverage
+                    Nelliady &amp; Island-Wide Coverage
                   </p>
                 </div>
               </div>
@@ -157,7 +157,7 @@ const approachSteps = [
 export function StudioApproach() {
   return (
     <section
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#FAF7F1] border-b border-[#D8CFC1]"
+      className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-[#FAF7F1] border-b border-[#D8CFC1]"
       aria-labelledby="approach-heading"
     >
       <Container size="wide">
@@ -203,7 +203,7 @@ export function StudioApproach() {
               <span className="text-[#D8CFC1]" aria-hidden="true">
                 |
               </span>
-              <span className="text-[#716B64]">Nelliady, Jaffna</span>
+              <span className="text-[#716B64]">Nelliady</span>
             </div>
           </div>
 

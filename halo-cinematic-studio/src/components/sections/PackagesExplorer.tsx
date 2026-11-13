@@ -286,31 +286,31 @@ export function PackagesExplorer() {
               onClick={() => setActiveFlyer(null)}
             >
               {/* Top Controls Bar */}
-              <header className="absolute top-0 inset-x-0 z-50 flex items-center justify-between p-4 sm:p-6 bg-gradient-to-b from-black/85 via-black/40 to-transparent pointer-events-auto">
+              <header className="absolute top-0 inset-x-0 z-50 flex items-center justify-between p-3 sm:p-6 bg-gradient-to-b from-black/85 via-black/40 to-transparent pointer-events-auto gap-2">
                 <button
                   type="button"
                   onClick={() => setActiveFlyer(null)}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-black/60 hover:bg-[#D71920] text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none text-xs sm:text-sm font-semibold tracking-wide shadow-md active:scale-95 group"
+                  className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-black/60 hover:bg-[#D71920] text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none text-xs sm:text-sm font-semibold tracking-wide shadow-md active:scale-95 group shrink-0"
                 >
                   <ArrowLeft className="size-4 sm:size-5 transition-transform duration-200 group-hover:-translate-x-1" />
-                  <span>Back to Packages</span>
+                  <span>Back<span className="hidden sm:inline"> to Packages</span></span>
                 </button>
 
                 <h3
                   style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                  className="text-sm sm:text-base font-medium text-white tracking-tight"
+                  className="text-xs sm:text-sm md:text-base font-medium text-white tracking-tight truncate max-w-[180px] sm:max-w-md text-center"
                 >
                   {activeFlyer.title}
-                  <span className="text-white/40 mx-2" aria-hidden="true">
+                  <span className="text-white/40 mx-2 hidden sm:inline" aria-hidden="true">
                     |
                   </span>
-                  <span className="text-xs text-[#D8CFC1]">Official Studio Flyer</span>
+                  <span className="text-xs text-[#D8CFC1] hidden sm:inline">Official Studio Flyer</span>
                 </h3>
 
                 <button
                   type="button"
                   onClick={() => setActiveFlyer(null)}
-                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none text-xs sm:text-sm font-semibold tracking-wide shadow-md active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none text-xs sm:text-sm font-semibold tracking-wide shadow-md active:scale-95 shrink-0"
                 >
                   <X className="size-4 sm:size-5" />
                   <span className="hidden sm:inline">Close</span>
@@ -319,7 +319,7 @@ export function PackagesExplorer() {
 
               {/* High-Resolution Flyer Stage */}
               <div
-                className="relative w-full h-[calc(100vh-120px)] max-w-4xl flex items-center justify-center my-auto pt-14 pb-10"
+                className="relative w-full h-[calc(100vh-140px)] max-w-4xl flex items-center justify-center my-auto pt-14 pb-12 px-2"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Image
@@ -333,17 +333,17 @@ export function PackagesExplorer() {
               </div>
 
               {/* Bottom Quick Action */}
-              <footer className="absolute bottom-4 inset-x-0 z-50 flex justify-center pointer-events-auto">
+              <footer className="absolute bottom-4 inset-x-0 z-50 flex justify-center px-3 pointer-events-auto">
                 <a
                   href={whatsappUrl(
                     `Hello HALO CINEMATIC STUDIO! I am looking at the "${activeFlyer.title}" package flyer. Could you please share booking steps?`,
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#D71920] text-white text-xs sm:text-sm font-semibold hover:bg-[#b5141a] transition-all shadow-lg active:scale-95"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#D71920] text-white text-xs sm:text-sm font-semibold hover:bg-[#b5141a] transition-all shadow-lg active:scale-95 max-w-[95vw] truncate"
                 >
-                  <MessageCircle className="size-4" />
-                  <span>Enquire This Package on WhatsApp</span>
+                  <MessageCircle className="size-4 shrink-0" />
+                  <span>Enquire Package on WhatsApp</span>
                 </a>
               </footer>
             </div>,
