@@ -20,7 +20,7 @@ export function StudioChannelsCard({ className }: { className?: string }) {
       {/* Eyebrow & Status */}
       <div className="flex items-center justify-between gap-2 mb-3">
         <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-[#D71920] bg-[#D71920]/10 px-2.5 py-0.5 border border-[#D71920]/20 rounded-none">
-          Direct Studio Channels
+          Get in Touch
         </span>
         <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#2E7D32]">
           <span className="size-1.5 rounded-full bg-[#2E7D32] animate-pulse" />

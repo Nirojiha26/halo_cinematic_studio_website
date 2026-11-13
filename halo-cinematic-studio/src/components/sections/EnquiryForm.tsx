@@ -16,7 +16,6 @@ import {
   getPackagesByCategory,
   isPackageCategorySlug,
   packageCategories,
-  studioPackages,
   type PackageCategorySlug,
 } from "@/data/packages";
 import { cn } from "@/lib/utils";
@@ -39,19 +38,22 @@ function validate(values: Values): Errors {
   if (values.name.trim().length < 2) errors.name = "Please enter your name.";
   const digits = values.phone.replace(/\D/g, "");
   if (digits.length < 7) errors.phone = "Please enter a valid contact number.";
-  if (!values.category && !values.packageSlug) {
-    errors.category = "Please select an event category or package.";
+  if (!values.category) {
+    errors.category = "Please select an event category.";
   }
-  if (!values.packageSlug && values.message.trim().length < 5) {
-    errors.message =
-      "Please select a package above or write a brief note about your enquiry.";
+  if (values.category && values.category !== "custom" && !values.packageSlug) {
+    errors.packageSlug = "Please select a package for this category.";
+  }
+  if (values.message.trim().length < 5) {
+    errors.message = "Please share your event requirements or message.";
   }
   return errors;
 }
 
 const inputBase =
-  "w-full rounded-xl border border-[#D8CFC1] bg-[#EEE9DF]/40 px-4 py-3 text-sm font-normal text-[#171716] placeholder:text-[#716B64]/70 " +
-  "outline-none transition-all duration-200 focus:border-[#D71920] focus:ring-2 focus:ring-[#D71920]/15 aria-[invalid=true]:border-[#D71920] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#D71920]/20";
+  "w-full rounded-xl border border-[#D8CFC1] bg-white/70 px-4 py-3 text-sm font-normal text-[#171716] placeholder:text-[#716B64]/60 " +
+  "outline-none transition-all duration-200 focus:border-[#D71920] focus:bg-white focus:ring-2 focus:ring-[#D71920]/15 " +
+  "aria-[invalid=true]:border-[#D71920] aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-[#D71920]/20";
 
 export function EnquiryForm() {
   const [values, setValues] = useState<Values>({
@@ -72,6 +74,7 @@ export function EnquiryForm() {
       setValues((v) => ({
         ...v,
         category: normalized,
+        packageSlug: "",
       }));
     }
   }, []);
@@ -87,11 +90,12 @@ export function EnquiryForm() {
     }
   }, []);
 
+  // ONLY show packages belonging to the selected category
   const availablePackages = useMemo(() => {
     if (values.category && values.category !== "custom") {
       return getPackagesByCategory(values.category);
     }
-    return studioPackages;
+    return [];
   }, [values.category]);
 
   const selectedPackage = useMemo(
@@ -117,12 +121,13 @@ export function EnquiryForm() {
     setValues((prev) => ({
       ...prev,
       category: cat,
-      packageSlug: "",
+      packageSlug: "", // Reset package when category changes
     }));
-    if (errors.category) {
+    if (errors.category || errors.packageSlug) {
       setErrors((prev) => {
         const next = { ...prev };
         delete next.category;
+        delete next.packageSlug;
         return next;
       });
     }
@@ -135,11 +140,10 @@ export function EnquiryForm() {
       packageSlug: slug,
       category: pkg ? pkg.category : prev.category,
     }));
-    if (errors.packageSlug || errors.category) {
+    if (errors.packageSlug) {
       setErrors((prev) => {
         const next = { ...prev };
         delete next.packageSlug;
-        delete next.category;
         return next;
       });
     }
@@ -162,7 +166,9 @@ export function EnquiryForm() {
 
     const packageLabel = selectedPackage
       ? `${selectedPackage.name} (${selectedPackage.priceDisplay})`
-      : "Custom / Quote Needed";
+      : values.category === "custom"
+        ? "Custom Quote Requested"
+        : "Package to be discussed";
 
     const lines = [
       "Hello HALO CINEMATIC STUDIO!",
@@ -176,10 +182,7 @@ export function EnquiryForm() {
       ...(values.location.trim()
         ? [`Location / Venue: ${values.location.trim()}`]
         : []),
-      `Message: ${
-        values.message.trim() ||
-        "Please share availability and booking steps for the selected package."
-      }`,
+      `Requirements / Message: ${values.message.trim()}`,
     ];
 
     const url = whatsappUrl(lines.join("\n"));
@@ -191,17 +194,30 @@ export function EnquiryForm() {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="grid gap-5 rounded-[24px] border border-[#D8CFC1] bg-[#FAF7F1] p-6 shadow-xs sm:p-9"
+      className="grid gap-5 rounded-2xl border border-[#D8CFC1] bg-[#FAF7F1] p-6 shadow-xs sm:p-8"
     >
-      <div className="border-b border-[#D8CFC1] pb-4">
+      {/* Header with Get in Touch Eyebrow */}
+      <div className="border-b border-[#D8CFC1]/70 pb-4">
         <QueryParamSync name="category" onValue={syncCategory} />
         <QueryParamSync name="package" onValue={syncPackage} />
-        <p className="chip-eyebrow">WhatsApp Package Enquiry</p>
-        <p className="mt-2 text-sm text-[#716B64]">
-          Choose your event category and package tier below to send a formatted WhatsApp enquiry directly to our studio team.
+        <div className="inline-flex items-center gap-2 mb-2">
+          <span className="w-5 h-[2px] bg-[#D71920]" aria-hidden />
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D71920]">
+            Get in Touch
+          </p>
+        </div>
+        <h3
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          className="text-xl sm:text-2xl font-normal text-[#171716] tracking-tight leading-snug"
+        >
+          Send WhatsApp Enquiry
+        </h3>
+        <p className="mt-1 text-xs sm:text-sm text-[#716B64] leading-relaxed">
+          Choose your event category and package tier below to send a formatted enquiry directly to our studio team.
         </p>
       </div>
 
+      {/* Name and Phone */}
       <div className="grid gap-4 sm:grid-cols-2">
         <Field id={fid("name")} label="Your Name" required error={errors.name}>
           <input
@@ -241,6 +257,7 @@ export function EnquiryForm() {
         </Field>
       </div>
 
+      {/* Category and Filtered Package */}
       <div className="grid gap-4 sm:grid-cols-2">
         <Field
           id={fid("category")}
@@ -263,11 +280,11 @@ export function EnquiryForm() {
               }
               className={cn(
                 inputBase,
-                "appearance-none pr-10",
-                values.category ? "text-[#141414]" : "text-[#625C5D]/70",
+                "appearance-none pr-10 cursor-pointer",
+                values.category ? "text-[#171716]" : "text-[#716B64]/70",
               )}
             >
-              <option value="">Select event type</option>
+              <option value="">Select event category</option>
               {packageCategories.map((cat) => (
                 <option key={cat.slug} value={cat.slug}>
                   {cat.label}
@@ -278,7 +295,7 @@ export function EnquiryForm() {
               </option>
             </select>
             <ChevronDown
-              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#625C5D]"
+              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#716B64]"
               aria-hidden
             />
           </div>
@@ -287,6 +304,7 @@ export function EnquiryForm() {
         <Field
           id={fid("packageSlug")}
           label="Select Package"
+          required={Boolean(values.category && values.category !== "custom")}
           error={errors.packageSlug}
         >
           <div className="relative">
@@ -295,52 +313,79 @@ export function EnquiryForm() {
               name="package"
               value={values.packageSlug}
               onChange={(e) => handlePackageChange(e.target.value)}
-              disabled={values.category === "custom"}
+              disabled={!values.category || values.category === "custom"}
               aria-invalid={Boolean(errors.packageSlug)}
+              aria-describedby={
+                errors.packageSlug ? `${fid("packageSlug")}-err` : undefined
+              }
               className={cn(
                 inputBase,
-                "appearance-none pr-10 disabled:cursor-not-allowed disabled:bg-[#FFF1F2] disabled:text-[#625C5D]",
-                values.packageSlug ? "text-[#141414]" : "text-[#625C5D]/70",
+                "appearance-none pr-10",
+                !values.category
+                  ? "cursor-not-allowed bg-[#EEE9DF]/40 text-[#716B64]/60"
+                  : values.category === "custom"
+                    ? "cursor-not-allowed bg-[#EEE9DF]/40 text-[#716B64]"
+                    : "cursor-pointer",
+                values.packageSlug ? "text-[#171716]" : "text-[#716B64]/70",
               )}
             >
-              <option value="">
-                {values.category === "custom"
-                  ? "Custom quote requested"
-                  : "Choose a package (or custom quote)"}
-              </option>
-              {availablePackages.map((pkg) => (
-                <option key={pkg.slug} value={pkg.slug}>
-                  {pkg.name} — {pkg.priceDisplay}
-                </option>
-              ))}
+              {!values.category ? (
+                <option value="">Select event category first</option>
+              ) : values.category === "custom" ? (
+                <option value="">Custom quote requested (specify below)</option>
+              ) : (
+                <>
+                  <option value="">Choose a package...</option>
+                  {availablePackages.map((pkg) => (
+                    <option key={pkg.slug} value={pkg.slug}>
+                      {pkg.name} — {pkg.priceDisplay}
+                    </option>
+                  ))}
+                </>
+              )}
             </select>
             <ChevronDown
-              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#625C5D]"
+              className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-[#716B64]"
               aria-hidden
             />
           </div>
         </Field>
       </div>
 
-      {/* Live selected package preview card */}
+      {/* Selected Package Details Preview Box */}
       {selectedPackage ? (
-        <div className="rounded-2xl border border-[rgba(217,11,23,0.22)] bg-[#FFF1F2] p-4 sm:p-5">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[rgba(217,11,23,0.16)] pb-3">
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#141414]">
-              <PackageCheck className="size-4 text-[#E50919]" aria-hidden />
-              <span>{selectedPackage.name}</span>
+        <div
+          role="region"
+          aria-label="Selected package details"
+          className="rounded-xl border border-[#D8CFC1] bg-[#EEE9DF]/50 p-4 transition-all duration-300"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#D8CFC1]/60 pb-2.5">
+            <div className="flex items-center gap-2">
+              <PackageCheck className="size-4 text-[#D71920]" aria-hidden />
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#D71920]">
+                {selectedPackage.tierLabel}
+              </p>
+              <span className="text-[#716B64]">•</span>
+              <p className="text-sm font-semibold text-[#171716]">
+                {selectedPackage.name}
+              </p>
             </div>
-            <span
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-              className="text-lg font-semibold text-[#E50919]"
-            >
+            <p className="text-sm font-bold text-[#D71920]">
               {selectedPackage.priceDisplay}
-            </span>
+            </p>
           </div>
-          <ul className="mt-3 grid gap-1.5 text-xs text-[#625C5D] sm:grid-cols-2">
+          {selectedPackage.subline ? (
+            <p className="mt-2 text-xs text-[#716B64]">
+              {selectedPackage.subline}
+            </p>
+          ) : null}
+          <ul className="mt-2.5 grid gap-1.5 text-xs text-[#716B64] sm:grid-cols-2">
             {selectedPackage.highlights.slice(0, 4).map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <Check className="mt-0.5 size-3.5 shrink-0 text-[#E50919]" aria-hidden />
+                <Check
+                  className="mt-0.5 size-3.5 shrink-0 text-[#D71920]"
+                  aria-hidden
+                />
                 <span>{item}</span>
               </li>
             ))}
@@ -348,6 +393,7 @@ export function EnquiryForm() {
         </div>
       ) : null}
 
+      {/* Date and Location */}
       <div className="grid gap-4 sm:grid-cols-2">
         <Field id={fid("date")} label="Event / Shoot Date">
           <input
@@ -373,59 +419,59 @@ export function EnquiryForm() {
         </Field>
       </div>
 
+      {/* Message / Requirements MUST BE REQUIRED */}
       <Field
         id={fid("message")}
-        label={
-          selectedPackage
-            ? "Additional Notes (Optional)"
-            : "Your Message / Requirements"
-        }
-        required={!selectedPackage}
+        label="Your Message / Requirements"
+        required
         error={errors.message}
       >
         <textarea
           id={fid("message")}
           name="message"
           rows={4}
-          required={!selectedPackage}
+          required
           value={values.message}
           onChange={(e) => update("message", e.target.value)}
           aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? `${fid("message")}-err` : undefined}
+          aria-describedby={
+            errors.message ? `${fid("message")}-err` : undefined
+          }
           placeholder="Tell us about your event schedule, preferred shoot days, extra frames, or custom requests..."
           className={cn(inputBase, "min-h-[110px] resize-y")}
         />
       </Field>
 
+      {/* Submit Button */}
       <button
         type="submit"
-        className="btn-grad inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl text-sm font-medium text-white shadow-sm"
+        className="w-full inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#D71920] px-6 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#b5141a] active:scale-[0.99] cursor-pointer"
       >
         <span>Send Enquiry via WhatsApp</span>
         <ArrowRight className="size-4" />
       </button>
 
+      {/* Success Status Notice */}
       {submittedUrl ? (
         <div
           role="status"
-          className="flex flex-col gap-2 rounded-xl border border-[#E50919]/30 bg-[#FFF1F2] p-4 text-sm text-[#141414]"
+          className="flex flex-col gap-2 rounded-xl border border-[#D71920]/30 bg-[#EEE9DF]/60 p-4 text-sm text-[#171716]"
         >
           <div className="flex items-start gap-2.5 font-semibold">
             <CheckCircle2
-              className="mt-0.5 size-4 shrink-0 text-[#E50919]"
+              className="mt-0.5 size-4 shrink-0 text-[#D71920]"
               aria-hidden
             />
             <span>
-              Your package enquiry is ready to send on WhatsApp. Submitting
-              opens a prefilled chat — our studio will reply to confirm date
-              availability.
+              Your package enquiry is ready to send on WhatsApp. Submitting opens
+              a prefilled chat — our studio will reply to confirm date availability.
             </span>
           </div>
           <a
             href={submittedUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 pl-6 text-xs font-semibold text-[#141414] underline underline-offset-4 hover:text-[#E50919]"
+            className="inline-flex items-center gap-1.5 pl-6 text-xs font-semibold text-[#171716] underline underline-offset-4 hover:text-[#D71920]"
           >
             Didn&apos;t open automatically? Open WhatsApp now
             <ExternalLink className="size-3.5" aria-hidden />
@@ -451,19 +497,16 @@ function Field({
 }) {
   return (
     <div className="grid gap-1.5">
-      <label
-        htmlFor={id}
-        className="text-xs font-semibold text-[#141414]"
-      >
+      <label htmlFor={id} className="text-xs font-semibold text-[#171716]">
         {label}
-        {required ? <span className="text-[#E50919]"> *</span> : null}
+        {required ? <span className="text-[#D71920]"> *</span> : null}
       </label>
       {children}
       {error ? (
         <p
           id={`${id}-err`}
           role="alert"
-          className="text-xs font-medium text-[#B50812]"
+          className="text-xs font-medium text-[#D71920]"
         >
           {error}
         </p>
