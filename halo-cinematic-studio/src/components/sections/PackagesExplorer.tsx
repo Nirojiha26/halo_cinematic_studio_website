@@ -164,9 +164,9 @@ export function PackagesExplorer() {
         </a>
       </div>
 
-      {/* ── View 1: Detailed Package Cards (Proper UX, Red Text, Readable) ── */}
+      {/* ── View 1: Detailed Package Cards (2 Per Row as Requested) ── */}
       {viewMode === "cards" ? (
-        <div className="grid gap-6 sm:gap-7 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {packages.map((pkg) => (
             <PackageCard
               key={pkg.slug}

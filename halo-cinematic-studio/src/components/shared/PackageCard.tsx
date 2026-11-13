@@ -89,39 +89,35 @@ export function PackageCard({
       </div>
 
       {/* Action Buttons */}
-      <div className="mt-auto border-t border-[#D8CFC1]/70 pt-4 space-y-2">
+      <div className="mt-auto border-t border-[#D8CFC1]/70 pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
         <a
           href={whatsappEnquiryUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#D71920] text-white text-xs sm:text-sm font-semibold hover:bg-[#b5141a] transition-all shadow-xs active:scale-[0.99] cursor-pointer"
+          className="flex-1 inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#D71920] text-white text-xs sm:text-sm font-semibold hover:bg-[#b5141a] transition-all shadow-xs active:scale-[0.99] cursor-pointer"
         >
           <MessageCircle className="size-4" />
           <span>Enquire on WhatsApp</span>
         </a>
 
-        <div className="flex items-center justify-between gap-2 pt-1 text-xs">
-          {pkg.flyerImage && onViewFlyer ? (
-            <button
-              type="button"
-              onClick={() => onViewFlyer(pkg.flyerImage!, pkg.name)}
-              className="text-[#716B64] hover:text-[#D71920] font-medium transition-colors cursor-pointer inline-flex items-center gap-1"
-            >
-              <FileImage className="size-3 text-[#D71920]" />
-              <span>Studio Flyer</span>
-            </button>
-          ) : (
-            <span />
-          )}
-
-          <Link
-            href={`/contact?category=${pkg.category}&package=${pkg.slug}#booking`}
-            className="text-[#D71920] hover:underline font-semibold inline-flex items-center gap-1"
+        {pkg.flyerImage && onViewFlyer ? (
+          <button
+            type="button"
+            onClick={() => onViewFlyer(pkg.flyerImage!, pkg.name)}
+            className="inline-flex h-11 items-center justify-center gap-1.5 px-3.5 rounded-xl border border-[#D8CFC1] bg-white text-[#716B64] hover:text-[#D71920] hover:border-[#D71920] text-xs font-semibold transition-colors cursor-pointer"
           >
-            <span>Book via Form</span>
-            <ArrowRight className="size-3" />
-          </Link>
-        </div>
+            <FileImage className="size-3.5 text-[#D71920]" />
+            <span>Flyer</span>
+          </button>
+        ) : null}
+
+        <Link
+          href={`/contact?category=${pkg.category}&package=${pkg.slug}#booking`}
+          className="inline-flex h-11 items-center justify-center gap-1.5 px-3.5 rounded-xl border border-[#D8CFC1] bg-white text-[#171716] hover:text-[#D71920] hover:border-[#D71920] text-xs font-semibold transition-colors"
+        >
+          <span>Book</span>
+          <ArrowRight className="size-3.5" />
+        </Link>
       </div>
     </article>
   );
