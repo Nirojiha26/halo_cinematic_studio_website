@@ -6,53 +6,53 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 
-// Two curated sets of 3 Polaroids each, using authentic HALO Studio photography
-const polaroidSets = [
+// Curated collections for the 3 layered Polaroids
+const polaroidCollections = [
   {
-    id: "set-1",
+    id: "collection-1",
     top: {
       image: "/images/hero/slide-02.jpg",
       title: "DILA & KAJAN",
-      subtitle: "WEDDING PORTRAITS · JAFFNA",
-      alt: "HALO Cinematic Studio - Newlywed Couple Portrait",
+      date: "JAFFNA, 2026",
+      alt: "HALO Cinematic Studio - Newlywed Couple Intimate Portrait",
     },
     middle: {
       image: "/images/hero/slide-01.jpg",
-      title: "TRADITIONAL VOWS",
-      subtitle: "SIGNATURE CEREMONY · NELLIADY",
-      alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Couple with Garland",
+      title: "TRADITIONAL CEREMONY",
+      date: "SACRED VOWS · NELLIADY",
+      alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Mandapam Couple",
     },
     bottom: {
       image: "/images/moments/moment-03.jpg",
-      title: "HALO CINEMATIC STUDIO",
-      subtitle: "SACRED BLESSINGS · 2026",
-      alt: "HALO Cinematic Studio - Macro detail of ring exchange and traditional handfasting",
+      title: "SARA & DANIEL",
+      date: "JUL, 2026",
+      alt: "HALO Cinematic Studio - Close-up of Ring Exchange and Handfasting",
     },
   },
   {
-    id: "set-2",
+    id: "collection-2",
     top: {
       image: "/images/hero/cover-10.jpg",
       title: "COASTAL INTIMACY",
-      subtitle: "SUNSET PRESHOOT · JAFFNA",
-      alt: "HALO Cinematic Studio - Sunset beach preshoot couple",
+      date: "SUNSET PRESHOOT · 2026",
+      alt: "HALO Cinematic Studio - Sunset Beach Preshoot",
     },
     middle: {
       image: "/images/hero/slide-03.jpg",
-      title: "TEMPLE SANCTUARY",
-      subtitle: "AUSPICIOUS RITUALS · NELLIADY",
-      alt: "HALO Cinematic Studio - Sacred Temple Altar Ceremony",
+      title: "TEMPLE BLESSING",
+      date: "AUSPICIOUS RITUALS · JAFFNA",
+      alt: "HALO Cinematic Studio - Auspicious Temple Rituals",
     },
     bottom: {
       image: "/images/hero/slide-04.jpg",
-      title: "CELEBRATION OF JOY",
-      subtitle: "CANDID MOMENTS · 2026",
-      alt: "HALO Cinematic Studio - Wedding Celebration and Family Joy",
+      title: "JOYOUS CELEBRATION",
+      date: "CANDID MOMENTS · 2026",
+      alt: "HALO Cinematic Studio - Wedding Celebration and Joy",
     },
   },
 ];
 
-const AUTOPLAY_MS = 6500;
+const AUTOPLAY_MS = 7000;
 
 export function Hero() {
   const [activeSet, setActiveSet] = useState(0);
@@ -79,21 +79,21 @@ export function Hero() {
   useEffect(() => {
     if (paused || reducedMotion || !visible) return;
     const timer = window.setInterval(() => {
-      setActiveSet((curr) => (curr + 1) % polaroidSets.length);
+      setActiveSet((curr) => (curr + 1) % polaroidCollections.length);
     }, AUTOPLAY_MS);
     return () => window.clearInterval(timer);
   }, [paused, reducedMotion, visible]);
 
   const move = useCallback((direction: number) => {
-    setActiveSet((curr) => (curr + direction + polaroidSets.length) % polaroidSets.length);
+    setActiveSet((curr) => (curr + direction + polaroidCollections.length) % polaroidCollections.length);
   }, []);
 
-  const current = polaroidSets[activeSet];
+  const current = polaroidCollections[activeSet];
 
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative overflow-hidden bg-[#F9F7F2] border-b border-[#E2DAD0] pt-[96px] lg:pt-[110px] min-h-[calc(100vh-1rem)] lg:min-h-[700px] lg:h-[calc(100vh-0.5rem)] flex items-center select-none"
+      className="relative overflow-hidden bg-[#F9F7F2] border-b border-[#E2DAD0] pt-[92px] lg:pt-[104px] min-h-[calc(100vh-1rem)] lg:min-h-[720px] lg:h-[calc(100vh-0.5rem)] flex items-center select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -114,18 +114,30 @@ export function Hero() {
         setPaused(false);
       }}
     >
-      {/* ── Soft Warm Silk Sheen & Ambient Light on #F9F7F2 ── */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(215,25,32,0.05)_0%,transparent_60%),radial-gradient(ellipse_at_20%_80%,rgba(216,207,193,0.35)_0%,transparent_50%)]"
-      />
+      {/* ── Right Half Background Image (Silk & Floral Backdrop from Reference) ── */}
+      <div className="absolute inset-y-0 right-0 w-full lg:w-[58%] xl:w-[55%] pointer-events-none z-0 overflow-hidden">
+        <Image
+          src="/images/hero/hero-floral-backdrop.jpg"
+          alt=""
+          fill
+          priority
+          quality={90}
+          sizes="(min-width: 1024px) 58vw, 100vw"
+          className="object-cover object-center lg:object-[center_right] opacity-90"
+        />
+        {/* Smooth horizontal gradient to blend seamlessly into left column #F9F7F2 */}
+        <div
+          className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#F9F7F2] via-[#F9F7F2]/90 via-15% md:via-25% lg:via-[#F9F7F2]/40 lg:via-45% to-transparent"
+          aria-hidden="true"
+        />
+      </div>
 
       <Container size="wide" className="w-full relative z-10 py-8 sm:py-10 lg:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-14 items-center">
           
-          {/* ── Left Column: Editorial Display Typography & Actions ── */}
+          {/* ── Left Column: Editorial Headline & Actions (matching reference screenshot) ── */}
           <div className="lg:col-span-6 xl:col-span-6 max-w-xl">
-            {/* Eyebrow Label with Signature Red Accent Bar */}
+            {/* Eyebrow Label */}
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
               <span className="w-8 h-[2px] bg-[#D71920] shrink-0" aria-hidden="true" />
               <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.24em] text-[#55504A]">
@@ -133,11 +145,11 @@ export function Hero() {
               </p>
             </div>
 
-            {/* Main Display Headline */}
+            {/* Main Display Headline (matching CAPTURE LOVE / Every Frame) */}
             <h1
               id="hero-heading"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-              className="text-4xl sm:text-5xl lg:text-[56px] xl:text-[64px] font-normal tracking-[-0.035em] leading-[1.06] text-[#171716]"
+              className="text-4xl sm:text-5xl lg:text-[56px] xl:text-[64px] font-normal tracking-[-0.035em] leading-[1.08] text-[#171716]"
             >
               Every Frame
               <br />
@@ -193,175 +205,114 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ── Right Column: Cascading Polaroid Prints & 35mm Filmstrip (Exact Reference Match!) ── */}
+          {/* ── Right Column: Cascading 3-Polaroid Composition (Exact Reference Alignment) ── */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center">
-            <div className="relative w-full max-w-[460px] sm:max-w-[520px] xl:max-w-[560px] h-[480px] sm:h-[530px] xl:h-[570px]">
+            <div className="relative w-full max-w-[460px] sm:max-w-[500px] xl:max-w-[540px] h-[490px] sm:h-[530px] xl:h-[570px]">
               
-              {/* ── Realistic 35mm Vintage Filmstrip Ribbon weaving behind Polaroids ── */}
+              {/* ── POLAROID 1: Top (Couple Intimate Embrace) ── */}
               <div
-                className="absolute top-2 left-6 sm:left-12 w-20 sm:w-24 h-[440px] pointer-events-none z-0 opacity-85 -rotate-12 transition-transform duration-700"
-                aria-hidden="true"
-              >
-                <div className="w-full h-full bg-[#111113] rounded-md shadow-lg border border-black/40 flex flex-col justify-between py-2 px-1">
-                  {/* Sprocket perforations on sides */}
-                  <div className="flex justify-between items-center px-1 mb-1">
-                    {[...Array(6)].map((_, i) => (
-                      <span key={i} className="size-1.5 sm:size-2 rounded-[2px] bg-white/70" />
-                    ))}
-                  </div>
-                  {/* Miniature film frame snapshots */}
-                  <div className="flex-1 flex flex-col justify-between gap-2.5 py-1">
-                    <div className="relative w-full h-24 rounded-sm overflow-hidden bg-[#222] border border-white/20">
-                      <Image
-                        src="/images/hero/slide-03.jpg"
-                        alt=""
-                        fill
-                        sizes="96px"
-                        className="object-cover opacity-80"
-                      />
-                    </div>
-                    <div className="relative w-full h-24 rounded-sm overflow-hidden bg-[#222] border border-white/20">
-                      <Image
-                        src="/images/hero/slide-04.jpg"
-                        alt=""
-                        fill
-                        sizes="96px"
-                        className="object-cover opacity-80"
-                      />
-                    </div>
-                    <div className="relative w-full h-24 rounded-sm overflow-hidden bg-[#222] border border-white/20">
-                      <Image
-                        src="/images/hero/slide-05.jpg"
-                        alt=""
-                        fill
-                        sizes="96px"
-                        className="object-cover opacity-80"
-                      />
-                    </div>
-                  </div>
-                  {/* Bottom sprocket perforations */}
-                  <div className="flex justify-between items-center px-1 mt-1">
-                    {[...Array(6)].map((_, i) => (
-                      <span key={i} className="size-1.5 sm:size-2 rounded-[2px] bg-white/70" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* ── Soft Baby's Breath & Romantic Florals Bokeh Accents ── */}
-              <div
-                className="absolute -top-4 right-12 size-36 rounded-full bg-[#EFE7DA] blur-2xl pointer-events-none z-0"
-                aria-hidden="true"
-              />
-              <div
-                className="absolute -bottom-6 left-16 size-44 rounded-full bg-[#D71920]/6 blur-3xl pointer-events-none z-0"
-                aria-hidden="true"
-              />
-
-              {/* ── POLAROID 1: Top Right (Romantic Forehead Touch / Intimacy Portrait) ── */}
-              <div
-                className="absolute top-2 sm:top-4 right-3 sm:right-6 w-[210px] sm:w-[250px] xl:w-[275px] rotate-[7deg] hover:rotate-0 hover:scale-105 z-10 transition-all duration-500 cursor-pointer group"
+                className="absolute top-2 sm:top-4 left-6 sm:left-10 w-[215px] sm:w-[250px] xl:w-[270px] -rotate-[4deg] hover:rotate-0 hover:scale-105 z-10 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
-                <div className="bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 rounded-sm shadow-[0_18px_40px_rgba(23,23,22,0.18)] border border-[#E8E2D7]">
-                  <div className="relative aspect-[1/1.05] w-full overflow-hidden bg-[#EAE4D9]">
+                <div className="bg-white p-2.5 sm:p-3 pb-7 sm:pb-8 rounded-sm shadow-[0_18px_38px_rgba(23,23,22,0.18)] border border-[#E8E2D7]">
+                  <div className="relative aspect-[1/1.06] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.top.image}
                       alt={current.top.alt}
                       fill
-                      sizes="280px"
+                      sizes="270px"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
                     />
                   </div>
-                  {/* Polaroid Handwritten / Serif Style Bottom Caption */}
+                  {/* Bottom Caption */}
                   <div className="pt-2 sm:pt-2.5 text-center">
                     <p
                       style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                      className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-[#171716] leading-tight"
+                      className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[#171716] leading-tight"
                     >
                       {current.top.title}
                     </p>
                     <p className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#716B64] mt-0.5">
-                      {current.top.subtitle}
+                      {current.top.date}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* ── POLAROID 2: Middle Left (Traditional Mandapam / Wedding Vows in Red Silk) ── */}
+              {/* ── POLAROID 2: Middle (Traditional Mandapam Stage / Full Body) ── */}
               <div
-                className="absolute top-20 sm:top-24 left-2 sm:left-6 w-[230px] sm:w-[275px] xl:w-[305px] -rotate-[5deg] hover:rotate-0 hover:scale-105 z-20 transition-all duration-500 cursor-pointer group"
+                className="absolute top-24 sm:top-28 right-3 sm:right-6 w-[235px] sm:w-[275px] xl:w-[295px] rotate-[5deg] hover:rotate-0 hover:scale-105 z-20 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
-                <div className="bg-white p-3 sm:p-3.5 pb-9 sm:pb-10 rounded-sm shadow-[0_24px_50px_rgba(23,23,22,0.22)] border border-[#E8E2D7]">
+                <div className="bg-white p-3 sm:p-3.5 pb-8 sm:pb-9 rounded-sm shadow-[0_24px_48px_rgba(23,23,22,0.22)] border border-[#E8E2D7]">
                   <div className="relative aspect-[1/1.08] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.middle.image}
                       alt={current.middle.alt}
                       fill
                       priority
-                      sizes="310px"
+                      sizes="295px"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
                     />
                   </div>
-                  {/* Polaroid Bottom Caption */}
-                  <div className="pt-2.5 sm:pt-3 text-center">
+                  {/* Bottom Caption */}
+                  <div className="pt-2 sm:pt-2.5 text-center">
                     <p
                       style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                      className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-[#171716] leading-tight"
+                      className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[#171716] leading-tight"
                     >
                       {current.middle.title}
                     </p>
                     <p className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#716B64] mt-0.5">
-                      {current.middle.subtitle}
+                      {current.middle.date}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* ── POLAROID 3: Bottom Right / Foreground (Sacred Rings & Handfasting Close-Up) ── */}
+              {/* ── POLAROID 3: Bottom (Close-Up Rings & Hands / Prominent Foreground) ── */}
               <div
-                className="absolute bottom-3 sm:bottom-4 right-6 sm:right-12 w-[190px] sm:w-[230px] xl:w-[255px] rotate-[8deg] hover:rotate-0 hover:scale-108 z-30 transition-all duration-500 cursor-pointer group"
+                className="absolute bottom-4 sm:bottom-6 left-12 sm:left-16 w-[205px] sm:w-[245px] xl:w-[265px] rotate-[9deg] hover:rotate-0 hover:scale-108 z-30 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
-                <div className="bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 rounded-sm shadow-[0_28px_55px_rgba(23,23,22,0.26)] border border-[#E8E2D7]">
+                <div className="bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 rounded-sm shadow-[0_30px_60px_rgba(23,23,22,0.28)] border border-[#E8E2D7]">
                   <div className="relative aspect-[1/1] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.bottom.image}
                       alt={current.bottom.alt}
                       fill
-                      sizes="260px"
+                      sizes="265px"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
                     />
                   </div>
-                  {/* Polaroid Bottom Caption (matching sample screenshot style: SARA & DANIEL / JUL, 2026) */}
+                  {/* Bottom Caption matching reference SARA & DANIEL style */}
                   <div className="pt-2 sm:pt-2.5 text-center">
                     <p
                       style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                      className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-[#171716] leading-tight"
+                      className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#171716] leading-tight"
                     >
                       {current.bottom.title}
                     </p>
-                    <p className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#716B64] mt-0.5">
-                      {current.bottom.subtitle}
+                    <p className="text-[8px] sm:text-[9px] font-medium uppercase tracking-wider text-[#716B64] mt-0.5">
+                      {current.bottom.date}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* ── Slide Navigation Toggle (Subtle dots & arrows to browse both collections) ── */}
+              {/* ── Slide Collection Arrows Controls ── */}
               <div className="absolute -bottom-8 inset-x-0 flex items-center justify-center gap-3 z-30">
                 <button
                   type="button"
                   onClick={() => move(-1)}
                   aria-label="Previous photograph collection"
-                  className="size-7 rounded-full border border-[#171716]/25 bg-white/80 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
+                  className="size-7 rounded-full border border-[#171716]/25 bg-white/90 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
                 >
                   <ChevronLeft className="size-3.5" />
                 </button>
 
                 <div className="flex items-center gap-1.5">
-                  {polaroidSets.map((set, idx) => (
+                  {polaroidCollections.map((set, idx) => (
                     <button
                       key={set.id}
                       type="button"
@@ -380,7 +331,7 @@ export function Hero() {
                   type="button"
                   onClick={() => move(1)}
                   aria-label="Next photograph collection"
-                  className="size-7 rounded-full border border-[#171716]/25 bg-white/80 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
+                  className="size-7 rounded-full border border-[#171716]/25 bg-white/90 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
                 >
                   <ChevronRight className="size-3.5" />
                 </button>
