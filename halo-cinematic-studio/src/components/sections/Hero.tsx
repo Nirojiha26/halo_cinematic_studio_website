@@ -71,7 +71,7 @@ export function Hero() {
         setPaused(false);
       }}
     >
-      {/* ── Full-Bleed Photograph Background on Right ── */}
+      {/* ── Full-Bleed Photograph Background (Spanning Entire Screen Width Seamlessly) ── */}
       {heroSlides.map((slide, index) => (
         <div
           key={slide.id}
@@ -79,15 +79,15 @@ export function Hero() {
             index === active ? "opacity-100 z-0" : "opacity-0 -z-10 pointer-events-none"
           }`}
         >
-          <div className="absolute inset-y-0 right-0 w-full lg:w-[62%] xl:w-[60%] h-full">
+          <div className="absolute inset-0 w-full h-full">
             <Image
               src={slide.image}
               alt={slide.alt}
               fill
               priority={index === 0}
               quality={92}
-              sizes="(min-width: 1024px) 62vw, 100vw"
-              className="object-cover object-center lg:object-[center_18%] transition-transform duration-7000 ease-out"
+              sizes="100vw"
+              className="object-cover object-[72%_center] lg:object-[80%_center] transition-transform duration-7000 ease-out"
               style={{
                 transform: index === active ? "scale(1)" : "scale(1.04)",
               }}
@@ -96,23 +96,23 @@ export function Hero() {
         </div>
       ))}
 
-      {/* ── Smooth Horizontal Gradient Mask (Cream #F9F7F2 on left fading into photo on right) ── */}
+      {/* ── Seamless Horizontal Gradient Mask (Soft #F9F7F2 on left fading naturally into photo) ── */}
       <div
-        className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t lg:bg-gradient-to-r from-[#F9F7F2] via-[#F9F7F2]/95 via-30% md:via-42% lg:via-[#F9F7F2]/65 lg:via-55% to-transparent"
+        className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t lg:bg-gradient-to-r from-[#F9F7F2] via-[#F9F7F2]/95 via-35% md:via-45% lg:via-[#F9F7F2]/50 lg:via-60% to-transparent"
         aria-hidden="true"
       />
 
-      {/* ── Soft Romantic Petals & Bokeh Atmosphere (matching reference screenshot) ── */}
+      {/* ── Soft Romantic Ambient Glow ── */}
       <div
-        className="absolute top-1/4 -left-8 size-28 rounded-full bg-[#D71920]/8 blur-2xl pointer-events-none z-15"
+        className="absolute top-1/4 -left-8 size-32 rounded-full bg-[#D71920]/6 blur-3xl pointer-events-none z-15"
         aria-hidden="true"
       />
       <div
-        className="absolute bottom-16 left-1/3 size-40 rounded-full bg-[#D71920]/6 blur-3xl pointer-events-none z-15"
+        className="absolute bottom-16 left-1/3 size-48 rounded-full bg-[#D71920]/4 blur-3xl pointer-events-none z-15"
         aria-hidden="true"
       />
 
-      {/* ── Center Stage Editorial Content ── */}
+      {/* ── Editorial Copy Content ── */}
       <div className="relative z-20 w-full flex-1 flex items-center py-6 sm:py-8 lg:py-10">
         <Container size="wide" className="w-full relative">
           <div className="max-w-xl lg:max-w-2xl">
@@ -170,43 +170,6 @@ export function Hero() {
               <span className="font-normal text-[#5F5A5A]">Real moments. Thoughtfully framed.</span>
               <span className="h-[1px] w-24 sm:w-36 bg-[#D8CFC1]" aria-hidden="true" />
             </div>
-          </div>
-
-          {/* ── Right-Edge Floating Thumbnail Arc Carousel (from reference screenshot) ── */}
-          <div
-            className="hidden lg:flex flex-col items-end gap-2.5 absolute right-0 top-1/2 -translate-y-1/2 z-30 pointer-events-auto"
-            role="tablist"
-            aria-label="Slide thumbnail preview"
-          >
-            {heroSlides.map((slide, idx) => {
-              const isActive = idx === active;
-              return (
-                <button
-                  key={slide.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-label={`Show ${slide.title}`}
-                  onClick={() => setActive(idx)}
-                  className={`group relative w-12 xl:w-14 aspect-[3/4] rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer shadow-md ${
-                    isActive
-                      ? "border-[#D71920] scale-110 shadow-lg shadow-[#D71920]/35 ring-2 ring-[#D71920]/30 z-10 translate-x-[-4px]"
-                      : "border-white/80 opacity-70 hover:opacity-100 hover:scale-105"
-                  }`}
-                >
-                  <Image
-                    src={slide.image}
-                    alt=""
-                    fill
-                    sizes="56px"
-                    className="object-cover object-center"
-                  />
-                  {isActive ? (
-                    <span className="absolute top-1 right-1 size-1.5 rounded-full bg-[#D71920] ring-1.5 ring-white" />
-                  ) : null}
-                </button>
-              );
-            })}
           </div>
         </Container>
       </div>
