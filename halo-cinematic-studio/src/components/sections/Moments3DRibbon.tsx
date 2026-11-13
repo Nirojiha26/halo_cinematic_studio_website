@@ -15,85 +15,84 @@ interface ConcaveMoment {
   alt: string;
   angle: number;
   origin: string;
-  // Specific height classes to form the exact concave "V" arc of the reference screenshot
   heightClass: string;
 }
 
-// 7 completely fresh, authentic HALO Cinematic Studio photos (0 occurrences elsewhere on home page)
+// 7 exact client-selected studio photos from /images/
 const concaveMoments: ConcaveMoment[] = [
   {
     id: "concave-1",
-    src: "/images/gallery/halo-08.jpg",
+    src: "/images/moments/moment-01.jpg", // 08.jpg.jpeg
     title: "Golden Hour Ocean Intimacy",
-    category: "Preshoot & Sunset",
+    category: "Sunset Preshoot",
     collection: "Engagements",
-    alt: "Couple in soft golden coastal light during an outdoor sunset preshoot",
+    alt: "HALO Cinematic Studio - Sunset beach preshoot couple",
     angle: 34,
     origin: "right center",
     heightClass: "h-[220px] sm:h-[280px] md:h-[330px] lg:h-[380px] xl:h-[400px]",
   },
   {
     id: "concave-2",
-    src: "/images/gallery/halo-06.jpg",
-    title: "Bridal Splendour & Silk",
-    category: "Fine-Art Portraits",
-    collection: "Portraits",
-    alt: "South Asian bride in ceremonial silk saree and bridal jewellery",
+    src: "/images/moments/moment-02.jpg", // 13.jpg.jpeg
+    title: "A Day Held in Colour",
+    category: "Wedding Portraits",
+    collection: "Weddings",
+    alt: "HALO Cinematic Studio - Newlywed couple portrait in ceremonial silk",
     angle: 22,
     origin: "right center",
     heightClass: "h-[195px] sm:h-[245px] md:h-[290px] lg:h-[335px] xl:h-[355px]",
   },
   {
     id: "concave-3",
-    src: "/images/gallery/halo-09.jpg",
+    src: "/images/moments/moment-03.jpg", // 09.jpg.jpeg
     title: "Sacred Ring Ceremony",
     category: "Ceremony & Details",
     collection: "Ceremony & Details",
-    alt: "Macro detail of ring exchange and traditional handfasting ceremony",
+    alt: "HALO Cinematic Studio - Macro detail of ring exchange and handfasting",
     angle: 11,
     origin: "right center",
     heightClass: "h-[175px] sm:h-[215px] md:h-[255px] lg:h-[295px] xl:h-[310px]",
   },
   {
     id: "concave-4",
-    src: "/images/gallery/halo-12.jpg",
-    title: "Bridal Crown & Adornments",
-    category: "South Asian Heritage",
-    collection: "Weddings",
-    alt: "Detailed fine-art South Asian bridal jewellery and headpiece portrait",
+    src: "/images/moments/moment-04.jpg", // 2 copy.jpg.jpeg
+    title: "Temple Sanctuary Devotion",
+    category: "Heritage Collection",
+    collection: "Portraits",
+    alt: "HALO Cinematic Studio - Intimate couple portrait framed by temple doors",
     angle: 0,
     origin: "center center",
     heightClass: "h-[155px] sm:h-[190px] md:h-[225px] lg:h-[260px] xl:h-[275px]",
   },
   {
     id: "concave-5",
-    src: "/images/gallery/halo-dila-6-1-.jpg",
-    title: "Jasmine Garland Blessing",
+    src: "/images/moments/moment-05.jpg", // Dila-3 (2).JPG.jpeg
+    title: "Joyous Sacred Blessing",
     category: "Traditional Weddings",
     collection: "Weddings",
-    alt: "Couple sharing joyous laughter during garland blessing ceremony",
+    alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil wedding garland ceremony",
     angle: -11,
     origin: "left center",
     heightClass: "h-[175px] sm:h-[215px] md:h-[255px] lg:h-[295px] xl:h-[310px]",
   },
   {
     id: "concave-6",
-    src: "/images/gallery/halo-07.jpg",
-    title: "Temple Courtyard Vows",
-    category: "Heritage Weddings",
-    collection: "Weddings",
-    alt: "Newlywed couple in traditional silk standing before sacred temple pillars",
+    src: "/images/moments/moment-06.jpg", // 8.jpg.jpeg
+    title: "Radiance in Bloom",
+    category: "Fine-Art Portraits",
+    collection: "Portraits",
+    alt: "HALO Cinematic Studio - Bride in radiant pink silk saree by natural garden blossoms",
     angle: -22,
     origin: "left center",
     heightClass: "h-[195px] sm:h-[245px] md:h-[290px] lg:h-[335px] xl:h-[355px]",
   },
   {
     id: "concave-7",
-    src: "/images/gallery/halo-10.jpg",
-    title: "Sunset Shoreline Silhouette",
-    category: "Outdoor Preshoot",
-    collection: "Engagements",
-    alt: "Couple in silhouette walking along the Jaffna coastline at dusk",
+    src: "/images/moments/moment-07.jpg", // DSC05900.jpg.jpeg
+    title: "Sacred Garland Exchange",
+    category: "Auspicious Vows",
+    collection: "Weddings",
+    alt: "HALO Cinematic Studio - Sacred temple altar ceremony rituals",
     angle: -34,
     origin: "left center",
     heightClass: "h-[220px] sm:h-[280px] md:h-[330px] lg:h-[380px] xl:h-[400px]",
