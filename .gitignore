@@ -17,8 +17,7 @@ yarn-debug.log*
 .env*
 
 # Raw high-res source photos (served from public/)
-images/
-halo-cinematic-studio/images/
+/halo-cinematic-studio/images/
 
 # Documents
 *.pdf
