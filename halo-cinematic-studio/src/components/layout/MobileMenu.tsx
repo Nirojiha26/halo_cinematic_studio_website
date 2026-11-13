@@ -144,7 +144,7 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                           <span>Call</span>
                         </a>
                         <a
-                          href="https://www.facebook.com/profile.php?id=61593422810198"
+                          href="https://www.facebook.com/share/18G3kQ7vff/"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex h-11 items-center justify-center gap-1.5 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#D90B17]"

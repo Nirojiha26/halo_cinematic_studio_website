@@ -82,7 +82,7 @@ export function Navbar() {
               {siteConfig.cta.label}
             </Link>
             <a
-              href="https://www.facebook.com/profile.php?id=61593422810198"
+              href="https://www.facebook.com/share/18G3kQ7vff/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit HALO on Facebook"

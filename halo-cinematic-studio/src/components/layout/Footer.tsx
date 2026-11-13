@@ -18,7 +18,7 @@ export function Footer() {
         className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-[radial-gradient(ellipse_at_50%_0%,rgba(215,25,32,0.12)_0%,transparent_70%)]"
       />
 
-      <Container className="relative z-10 grid gap-8 pt-10 pb-7 md:grid-cols-2 lg:grid-cols-[1.3fr_0.9fr_1fr_1.3fr] lg:gap-8">
+      <Container className="relative z-10 grid gap-8 pt-10 pb-7 md:grid-cols-2 lg:grid-cols-[1.35fr_0.8fr_1.05fr_1.3fr] lg:gap-10">
         {/* Brand identity column */}
         <div className="max-w-sm">
           <Link href="/" aria-label={`${siteConfig.name} — Home`} className="inline-block transition-opacity hover:opacity-90">
@@ -36,7 +36,7 @@ export function Footer() {
         </div>
 
         {/* Explore Links */}
-        <nav aria-label="Footer navigation">
+        <nav aria-label="Footer navigation" className="lg:pl-6 xl:pl-10">
           <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D71920] mb-3">Explore</h2>
           <ul className="space-y-2 text-sm font-medium">
             {siteConfig.nav.map((item) => (
@@ -50,7 +50,7 @@ export function Footer() {
         </nav>
 
         {/* Packages Links */}
-        <div>
+        <div className="lg:pl-2 xl:pl-6">
           <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D71920] mb-3">Packages</h2>
           <ul className="space-y-2 text-sm font-medium">
             {packageCategories.map((c) => (
@@ -67,7 +67,7 @@ export function Footer() {
         </div>
 
         {/* Contact & Social Links */}
-        <div>
+        <div className="lg:pl-4 xl:pl-8">
           <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D71920] mb-3">Contact &amp; Connect</h2>
           <ul className="space-y-2.5 text-sm font-medium">
             <li>
@@ -90,17 +90,6 @@ export function Footer() {
                 <span>WhatsApp: Direct Chat</span>
               </a>
             </li>
-            <li>
-              <a
-                href="https://whatsapp.com/channel/0029Vb9T6yaAYlUMkyyujH1P"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-[#FAF7F1] transition-colors hover:text-[#D71920]"
-              >
-                <WhatsAppIcon className="size-[18px] shrink-0 text-[#D71920]" />
-                <span>WhatsApp: Official Channel</span>
-              </a>
-            </li>
             {contact.email ? (
               <li>
                 <a
@@ -120,38 +109,41 @@ export function Footer() {
             ) : null}
           </ul>
 
-          {/* Social Media Accounts with Clear Red Icons */}
-          <div className="mt-3.5 pt-3 border-t border-[#2A2926]">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-[#716B64] mb-2">
+          {/* Social Media Accounts with Clickable Red Icons (Text Removed) */}
+          <div className="mt-4 pt-3.5 border-t border-[#2A2926]">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-[#716B64] mb-2.5">
               Follow Our Work
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex items-center gap-2.5">
               <a
                 href="https://www.facebook.com/share/18G3kQ7vff/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#22211F] px-3 py-1.5 text-xs font-medium text-[#FAF7F1] border border-[#2E2D2B] transition-colors hover:border-[#D71920] hover:bg-[#2A2926]"
+                aria-label="Facebook"
+                title="Facebook"
+                className="grid size-10 place-items-center rounded-xl bg-[#22211F] border border-[#2E2D2B] text-[#D71920] transition-all duration-200 hover:border-[#D71920] hover:bg-[#D71920]/15 hover:scale-105 active:scale-95"
               >
-                <FacebookIcon className="size-4 shrink-0 text-[#D71920]" />
-                <span>Facebook</span>
+                <FacebookIcon className="size-5 shrink-0" />
               </a>
               <a
                 href="https://www.instagram.com/halo_cinematic_studio?psln=MWZ5cnQ4eGNmcGowaQ=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#22211F] px-3 py-1.5 text-xs font-medium text-[#FAF7F1] border border-[#2E2D2B] transition-colors hover:border-[#D71920] hover:bg-[#2A2926]"
+                aria-label="Instagram"
+                title="Instagram"
+                className="grid size-10 place-items-center rounded-xl bg-[#22211F] border border-[#2E2D2B] text-[#D71920] transition-all duration-200 hover:border-[#D71920] hover:bg-[#D71920]/15 hover:scale-105 active:scale-95"
               >
-                <InstagramIcon className="size-4 shrink-0 text-[#D71920]" />
-                <span>Instagram</span>
+                <InstagramIcon className="size-5 shrink-0" />
               </a>
               <a
                 href="https://whatsapp.com/channel/0029Vb9T6yaAYlUMkyyujH1P"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#22211F] px-3 py-1.5 text-xs font-medium text-[#FAF7F1] border border-[#2E2D2B] transition-colors hover:border-[#D71920] hover:bg-[#2A2926]"
+                aria-label="WhatsApp Channel"
+                title="WhatsApp Channel"
+                className="grid size-10 place-items-center rounded-xl bg-[#22211F] border border-[#2E2D2B] text-[#D71920] transition-all duration-200 hover:border-[#D71920] hover:bg-[#D71920]/15 hover:scale-105 active:scale-95"
               >
-                <WhatsAppIcon className="size-4 shrink-0 text-[#D71920]" />
-                <span>WA Channel</span>
+                <WhatsAppIcon className="size-5 shrink-0" />
               </a>
             </div>
           </div>

@@ -29,3 +29,4 @@ export function InstagramIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
