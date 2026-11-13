@@ -189,23 +189,7 @@ export function Hero() {
               </Link>
             </div>
 
-            {/* Studio Trust Credentials */}
-            <div className="mt-8 pt-6 border-t border-[#D8CFC1]/70 flex items-center gap-6 sm:gap-8 text-[#716B64]">
-              <div>
-                <p className="text-xl sm:text-2xl font-serif text-[#171716] leading-none">10+</p>
-                <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Years Experience</p>
-              </div>
-              <div className="w-[1px] h-8 bg-[#D8CFC1]" aria-hidden="true" />
-              <div>
-                <p className="text-xl sm:text-2xl font-serif text-[#171716] leading-none">500+</p>
-                <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Weddings Captured</p>
-              </div>
-              <div className="w-[1px] h-8 bg-[#D8CFC1]" aria-hidden="true" />
-              <div>
-                <p className="text-xl sm:text-2xl font-serif text-[#D71920] leading-none">4K</p>
-                <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Cinematic Quality</p>
-              </div>
-            </div>
+
           </div>
 
           {/* ── Right Column: Cascading 3-Polaroid Composition (Steep Left-Side Diagonal Angle) ── */}
