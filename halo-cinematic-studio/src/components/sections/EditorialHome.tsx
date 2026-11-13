@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { ArrowUpRight, Camera, Flower2, Film, Users } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { EditorialPhoto } from "@/components/shared/EditorialPhoto";
 import { Reveal } from "@/components/motion/Reveal";
 import { homePhotos } from "@/data/homePhotos";
+export { EditorialServices } from "./ServicesShowcase";
 
 export function StudioStory() {
   return <section className="editorial-section" id="our-story" aria-labelledby="story-heading"><Container>
@@ -21,24 +22,7 @@ export function StudioStory() {
   </Container></section>;
 }
 
-const services = [
-  { title: "Wedding Photography", description: "The big feelings, the small gestures, and everything that makes the day yours.", href: "/packages?category=weddings", icon: Camera },
-  { title: "Engagement & Registration", description: "An intimate beginning, captured with warmth and a sense of who you are.", href: "/packages?category=engagement", icon: Users },
-  { title: "Puberty Ceremony", description: "Family, tradition and a meaningful milestone, remembered with care.", href: "/packages?category=puberty", icon: Flower2 },
-  { title: "Event Photography", description: "The people, atmosphere and spontaneous moments that bring your occasion to life.", href: "/packages?category=events", icon: Camera },
-  { title: "Portrait Photography", description: "Thoughtful portraits with room for your own personality to shine.", href: "/contact?service=Portrait%20Photography", icon: Users },
-  { title: "Cinematography", description: "Movement, sound and emotion, woven into a film to return to.", href: "/contact?service=Cinematography", icon: Film },
-];
 
-export function EditorialServices() {
-  return <section className="editorial-section services-section" aria-labelledby="services-heading"><Container>
-    <div className="editorial-section-head"><div><p className="editorial-label">What we capture</p><h2 id="services-heading" className="editorial-heading">Every Occasion Deserves<br />Its Own <em>Story.</em></h2></div><Link href="/packages" className="editorial-text-link">Discover Our Packages <ArrowUpRight size={17} /></Link></div>
-    <div className="services-editorial">
-      <Reveal className="services-feature"><EditorialPhoto {...homePhotos.services} /><span className="service-image-caption">Together, in every chapter.</span></Reveal>
-      <div className="service-list">{services.map((service, index) => <Reveal key={service.title} as="article" className="service-row" delay={index * 0.03}><span className="service-number">0{index + 1}</span><div><h3>{service.title}</h3><p>{service.description}</p><Link href={service.href}>View More <ArrowUpRight size={14} /></Link></div><service.icon size={20} strokeWidth={1} aria-hidden /></Reveal>)}</div>
-    </div>
-  </Container></section>;
-}
 
 const moments = [
   { ...homePhotos.portfolio1, label: "The connection", type: "Wedding portraits", href: "/photos?collection=Wedding%20Portraits" },
