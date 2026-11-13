@@ -310,12 +310,23 @@ export default function AboutPage() {
             }
           />
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 mt-10">
-            {services.map((service, i) => (
-              <Reveal key={service.slug} delay={Math.min(i * 0.05, 0.2)}>
-                <ServiceCard service={service} index={i} href="/contact" />
-              </Reveal>
-            ))}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-10">
+            {services.map((service, i) => {
+              const link =
+                service.slug === "3d-customised-gifts"
+                  ? "/contact?service=3D%20Customised%20Gifts"
+                  : service.slug === "puberty-photography-cinematography"
+                  ? "/packages?category=puberty"
+                  : service.slug === "registration-engagement-photography"
+                  ? "/packages?category=engagement"
+                  : "/packages?category=events";
+
+              return (
+                <Reveal key={service.slug} delay={Math.min(i * 0.05, 0.2)}>
+                  <ServiceCard service={service} href={link} />
+                </Reveal>
+              );
+            })}
           </div>
         </Container>
       </section>
