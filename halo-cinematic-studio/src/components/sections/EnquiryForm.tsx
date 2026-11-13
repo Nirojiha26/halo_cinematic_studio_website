@@ -165,24 +165,33 @@ export function EnquiryForm() {
           : "Not specified";
 
     const packageLabel = selectedPackage
-      ? `${selectedPackage.name} (${selectedPackage.priceDisplay})`
+      ? `${selectedPackage.name} • ${selectedPackage.priceDisplay}`
       : values.category === "custom"
         ? "Custom Quote Requested"
         : "Package to be discussed";
 
     const lines = [
-      "Hello HALO CINEMATIC STUDIO!",
+      "📸 *HALO CINEMATIC STUDIO*",
+      "*New Booking & Package Enquiry*",
+      "────────────────────────────",
       "",
-      "Package & Booking Enquiry",
-      `Name: ${values.name.trim()}`,
-      `Phone: ${values.phone.trim()}`,
-      `Event Category: ${categoryLabel}`,
-      `Selected Package: ${packageLabel}`,
-      `Preferred Date: ${values.date || "To be discussed"}`,
+      "👤 *Client Details*",
+      `• *Name:* ${values.name.trim()}`,
+      `• *Phone:* ${values.phone.trim()}`,
+      "",
+      "💍 *Event Details*",
+      `• *Category:* ${categoryLabel}`,
+      `• *Package:* ${packageLabel}`,
+      `• *Preferred Date:* ${values.date ? values.date : "To be discussed"}`,
       ...(values.location.trim()
-        ? [`Location / Venue: ${values.location.trim()}`]
+        ? [`• *Location / Venue:* ${values.location.trim()}`]
         : []),
-      `Requirements / Message: ${values.message.trim()}`,
+      "",
+      "📝 *Client Message / Requirements:*",
+      `"${values.message.trim()}"`,
+      "",
+      "────────────────────────────",
+      "_Sent via halocinematicstudio.com_",
     ];
 
     const url = whatsappUrl(lines.join("\n"));

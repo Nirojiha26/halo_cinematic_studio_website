@@ -17,9 +17,24 @@ export function PackageCard({
   const categoryMeta = getCategoryMeta(pkg.category);
   const isFeatured = pkg.featured;
   
-  const whatsappEnquiryUrl = whatsappUrl(
-    `Hello HALO CINEMATIC STUDIO! I would like to book the "${pkg.name}" (${categoryMeta.label}) package for ${pkg.priceDisplay}. Could you please check date availability?`
-  );
+  const whatsappEnquiryLines = [
+    "📸 *HALO CINEMATIC STUDIO*",
+    "*Package Booking Enquiry*",
+    "────────────────────────────",
+    "",
+    "📦 *Selected Package Details*",
+    `• *Package:* ${pkg.name}`,
+    `• *Category:* ${categoryMeta.label}`,
+    `• *Investment:* ${pkg.priceDisplay}`,
+    ...(pkg.subline ? [`• *Coverage:* ${pkg.subline}`] : []),
+    "",
+    "────────────────────────────",
+    "Hello HALO Team! I am interested in booking this package for our upcoming event. Could you please check availability and guide me through the booking process?",
+    "",
+    "_Sent via halocinematicstudio.com_",
+  ];
+
+  const whatsappEnquiryUrl = whatsappUrl(whatsappEnquiryLines.join("\n"));
 
   return (
     <article

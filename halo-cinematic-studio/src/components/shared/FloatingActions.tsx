@@ -2,6 +2,14 @@ import { Phone } from "lucide-react";
 import { siteConfig, whatsappUrl } from "@/config/site";
 import { WhatsAppIcon } from "@/components/shared/SocialIcons";
 
+const defaultWhatsAppMessage = [
+  "📸 *HALO CINEMATIC STUDIO*",
+  "────────────────────────────",
+  "Hello HALO Team! I am visiting your website and would like to enquire about your photography and cinematography services.",
+  "",
+  "_Sent via halocinematicstudio.com_",
+].join("\n");
+
 export function FloatingActions() {
   return (
     <>
@@ -11,7 +19,7 @@ export function FloatingActions() {
         style={{ viewTransitionName: "floating-ui" }}
       >
         <a
-          href={whatsappUrl()}
+          href={whatsappUrl(defaultWhatsAppMessage)}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with us on WhatsApp"
@@ -33,7 +41,7 @@ export function FloatingActions() {
             <span>Call Us</span>
           </a>
           <a
-            href={whatsappUrl()}
+            href={whatsappUrl(defaultWhatsAppMessage)}
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-11 items-center justify-center gap-2 rounded-full bg-[#D71920] text-white text-xs font-semibold hover:bg-[#b51219] transition-all shadow-xs active:scale-[0.98]"

@@ -204,7 +204,19 @@ export function PackagesExplorer() {
 
           <a
             href={whatsappUrl(
-              `Hello HALO CINEMATIC STUDIO! I would like to enquire about ${currentMeta.label}.`,
+              [
+                "📸 *HALO CINEMATIC STUDIO*",
+                "*Custom Quote Enquiry*",
+                "────────────────────────────",
+                "",
+                `🏷️ *Category:* ${currentMeta.label}`,
+                `• *Event Scope:* ${currentMeta.eyebrow}`,
+                "",
+                "────────────────────────────",
+                `Hello HALO Team! I would like to request a custom quote for our upcoming ${currentMeta.label} event. Could you please share available packages and options?`,
+                "",
+                "_Sent via halocinematicstudio.com_",
+              ].join("\n"),
             )}
             target="_blank"
             rel="noopener noreferrer"
@@ -336,7 +348,18 @@ export function PackagesExplorer() {
               <footer className="absolute bottom-4 inset-x-0 z-50 flex justify-center px-3 pointer-events-auto">
                 <a
                   href={whatsappUrl(
-                    `Hello HALO CINEMATIC STUDIO! I am looking at the "${activeFlyer.title}" package flyer. Could you please share booking steps?`,
+                    [
+                      "📸 *HALO CINEMATIC STUDIO*",
+                      "*Official Studio Flyer Enquiry*",
+                      "────────────────────────────",
+                      "",
+                      `📄 *Flyer:* ${activeFlyer.title}`,
+                      "",
+                      "────────────────────────────",
+                      `Hello HALO Team! I am viewing your official studio brochure for "${activeFlyer.title}". Could you please share detailed inclusions, date availability, and booking steps?`,
+                      "",
+                      "_Sent via halocinematicstudio.com_",
+                    ].join("\n"),
                   )}
                   target="_blank"
                   rel="noopener noreferrer"

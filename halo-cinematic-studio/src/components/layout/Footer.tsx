@@ -81,7 +81,9 @@ export function Footer() {
             </li>
             <li>
               <a
-                href={whatsappUrl()}
+                href={whatsappUrl(
+                  "Hello HALO CINEMATIC STUDIO! I would like to enquire about your photography and film services in Nelliady.",
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-[#FAF7F1] transition-colors hover:text-[#D71920]"
