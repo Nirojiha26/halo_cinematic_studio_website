@@ -78,19 +78,15 @@ export function PhotosGallery() {
     <div>
       <QueryParamSync name="collection" onValue={handleCollectionParam} />
 
-      {/* ── Single-Row Category Filter Bar (Strictly 1 Row, Horizontal Scrollable on Mobile) ── */}
-      <div className="mb-10 sm:mb-12 border-b border-[#D8CFC1] pb-6">
+      {/* ── Unified Single-Box Segmented Filter (No Individual Boxes, No Count Numbers) ── */}
+      <div className="mb-10 sm:mb-12 flex justify-center">
         <div
           role="tablist"
           aria-label="Filter photo archive by collection"
-          className="flex items-center justify-start sm:justify-center gap-2.5 sm:gap-3 flex-nowrap overflow-x-auto no-scrollbar py-1 px-1 -mx-1"
+          className="inline-flex items-center p-1 sm:p-1.5 bg-[#FAF7F1] border border-[#D8CFC1] rounded-full max-w-full overflow-x-auto no-scrollbar shadow-xs"
         >
           {photoCollections.map((collection) => {
             const isActive = collection === activeCollection;
-            const count =
-              collection === "All"
-                ? studioPhotos.length
-                : studioPhotos.filter((p) => p.category === collection).length;
 
             return (
               <button
@@ -103,23 +99,13 @@ export function PhotosGallery() {
                   setSelectedId(null);
                 }}
                 className={cn(
-                  "inline-flex shrink-0 whitespace-nowrap cursor-pointer items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold tracking-wide transition-all duration-200",
+                  "shrink-0 whitespace-nowrap cursor-pointer px-4 sm:px-6 py-2 text-xs sm:text-sm tracking-wide transition-all duration-200 rounded-full",
                   isActive
-                    ? "bg-[#D71920] text-white shadow-sm hover:bg-[#b5141a]"
-                    : "border border-[#D8CFC1] bg-[#FAF7F1] text-[#171716] hover:border-[#D71920] hover:text-[#D71920]",
+                    ? "bg-[#D71920] text-white font-semibold shadow-xs"
+                    : "text-[#716B64] font-medium hover:text-[#171716] hover:bg-[#EEE9DF]/70",
                 )}
               >
-                <span>{collection}</span>
-                <span
-                  className={cn(
-                    "inline-flex size-5 items-center justify-center rounded-full text-[10px] font-bold transition-colors",
-                    isActive
-                      ? "bg-white/20 text-white"
-                      : "bg-[#EEE9DF] text-[#D71920]",
-                  )}
-                >
-                  {count}
-                </span>
+                {collection}
               </button>
             );
           })}
