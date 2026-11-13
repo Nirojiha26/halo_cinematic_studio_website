@@ -6,11 +6,12 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 
-// Curated collections for the 5-photo studio collage
+// Curated collections matching the exact album collage template (reference media_1794592101754_d9962176.png)
 const collageCollections = [
   {
     id: "collection-1",
-    center: {
+    signature: "HALO Cinematic Studio · 2026",
+    topRight: {
       image: "/images/hero/slide-01.jpg",
       alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Couple in Mandapam",
     },
@@ -18,9 +19,9 @@ const collageCollections = [
       image: "/images/hero/slide-02.jpg",
       alt: "HALO Cinematic Studio - Newlywed Bride Intimate Jewelry Portrait",
     },
-    topRight: {
-      image: "/images/hero/cover-10.jpg",
-      alt: "HALO Cinematic Studio - Groom and Bride Joyous Wedding Portrait",
+    center: {
+      image: "/images/moments/moment-04.jpg",
+      alt: "HALO Cinematic Studio - Couple in Heritage Courtyard with Auspicious Florals",
     },
     bottomLeft: {
       image: "/images/moments/moment-03.jpg",
@@ -33,30 +34,32 @@ const collageCollections = [
   },
   {
     id: "collection-2",
-    center: {
-      image: "/images/moments/moment-04.jpg",
-      alt: "HALO Cinematic Studio - Auspicious Heritage Wedding Ceremony",
+    signature: "HALO · Sacred Ceremonies",
+    topRight: {
+      image: "/images/hero/cover-10.jpg",
+      alt: "HALO Cinematic Studio - Newlywed Couple Radiant Smile",
     },
     topLeft: {
       image: "/images/hero/slide-03.jpg",
-      alt: "HALO Cinematic Studio - Temple Blessings & Auspicious Rituals",
+      alt: "HALO Cinematic Studio - Temple Blessings & Auspicious Flame Rituals",
     },
-    topRight: {
-      image: "/images/moments/moment-02.jpg",
-      alt: "HALO Cinematic Studio - Candid Joy & Laughter in Silk Saree",
+    center: {
+      image: "/images/moments/moment-01.jpg",
+      alt: "HALO Cinematic Studio - Outdoor Garden Wedding Couple",
     },
     bottomLeft: {
       image: "/images/moments/moment-07.jpg",
       alt: "HALO Cinematic Studio - Bride Golden Hour Candid Smile",
     },
     bottomRight: {
-      image: "/images/moments/moment-01.jpg",
-      alt: "HALO Cinematic Studio - Outdoor Garden Wedding Couple",
+      image: "/images/moments/moment-02.jpg",
+      alt: "HALO Cinematic Studio - Candid Joy & Laughter in Silk Saree",
     },
   },
   {
     id: "collection-3",
-    center: {
+    signature: "HALO · Timeless Memories",
+    topRight: {
       image: "/images/hero/slide-04.jpg",
       alt: "HALO Cinematic Studio - Joyous Wedding Celebration and Memories",
     },
@@ -64,7 +67,7 @@ const collageCollections = [
       image: "/images/moments/moment-06.jpg",
       alt: "HALO Cinematic Studio - Bride on Garden Bench Portrait",
     },
-    topRight: {
+    center: {
       image: "/images/hero/slide-05.jpg",
       alt: "HALO Cinematic Studio - Heritage Courtyard Elegance",
     },
@@ -162,8 +165,8 @@ export function Hero() {
       <Container size="wide" className="w-full relative z-10 py-6 sm:py-8 lg:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 xl:gap-8 items-center">
           
-          {/* ── Left Column: Editorial Headline & Actions (Reduced Gap) ── */}
-          <div className="lg:col-span-5 xl:col-span-5 max-w-lg">
+          {/* ── Left Column: Editorial Headline & Actions ── */}
+          <div className="lg:col-span-6 xl:col-span-6 max-w-xl">
             {/* Eyebrow Label */}
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
               <span className="w-8 h-[2px] bg-[#D71920] shrink-0" aria-hidden="true" />
@@ -215,140 +218,158 @@ export function Hero() {
 
           </div>
 
-          {/* ── Right Column: 5-Photo Luxury Studio Collage (Balanced, Fully Visible, No Cut-Off) ── */}
-          <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center justify-center">
-            <div className="relative w-full max-w-[340px] sm:max-w-[490px] md:max-w-[560px] lg:max-w-[580px] xl:max-w-[650px] h-[380px] sm:h-[430px] lg:h-[460px] xl:h-[490px]">
+          {/* ── Right Column: Magazine Editorial Album Layout (Exact Reference media_1794592101754_d9962176.png) ── */}
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center">
+            <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[440px] xl:max-w-[480px]">
               
-              {/* ── PHOTO 1: Center Hero Couple (Focal Anchor) ── */}
-              <div
-                className="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 w-[140px] sm:w-[190px] lg:w-[215px] xl:w-[235px] -rotate-[1deg] hover:rotate-0 hover:scale-105 z-20 transition-all duration-500 cursor-pointer group"
-                onClick={() => move(1)}
-              >
-                <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_20px_45px_rgba(23,23,22,0.22)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_28px_56px_rgba(23,23,22,0.28)]">
-                  <div className="relative aspect-[4/5.2] w-full overflow-hidden bg-[#EAE4D9]">
-                    <Image
-                      src={current.center.image}
-                      alt={current.center.alt}
-                      fill
-                      priority
-                      sizes="(min-width: 1280px) 235px, (min-width: 1024px) 215px, 190px"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
-                    />
+              {/* Stepped 2-Column Album Frame */}
+              <div className="flex gap-2 sm:gap-2.5 items-end">
+                
+                {/* ── Left Column: Stepped 3-Photo Wing ── */}
+                <div className="flex-1 flex flex-col gap-2 sm:gap-2.5 justify-end">
+                  
+                  {/* Photo 2 (Top-Center: Inset Portrait, Indented from Left) */}
+                  <div className="flex justify-end">
+                    <div
+                      className="relative w-[68%] aspect-[3/3.8] overflow-hidden rounded-[2px] bg-white p-1 shadow-md border border-[#E8E2D7] cursor-pointer group transition-all duration-300 hover:shadow-lg"
+                      onClick={() => move(1)}
+                    >
+                      <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                        <Image
+                          src={current.topLeft.image}
+                          alt={current.topLeft.alt}
+                          fill
+                          sizes="(min-width: 1280px) 160px, 120px"
+                          className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
+                        />
+                      </div>
+                    </div>
                   </div>
+
+                  {/* Photo 3 (Middle-Left: Full-Width Landscape Rectangle, Extends to Far Left) */}
+                  <div
+                    className="relative w-full aspect-[16/10.5] overflow-hidden rounded-[2px] bg-white p-1 shadow-md border border-[#E8E2D7] cursor-pointer group transition-all duration-300 hover:shadow-lg"
+                    onClick={() => move(1)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                      <Image
+                        src={current.center.image}
+                        alt={current.center.alt}
+                        fill
+                        sizes="(min-width: 1280px) 240px, 180px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Photo 4 (Bottom-Center: Inset Portrait, Indented from Left) */}
+                  <div className="flex justify-end">
+                    <div
+                      className="relative w-[68%] aspect-[3/3.8] overflow-hidden rounded-[2px] bg-white p-1 shadow-md border border-[#E8E2D7] cursor-pointer group transition-all duration-300 hover:shadow-lg"
+                      onClick={() => move(1)}
+                    >
+                      <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                        <Image
+                          src={current.bottomLeft.image}
+                          alt={current.bottomLeft.alt}
+                          fill
+                          sizes="(min-width: 1280px) 160px, 120px"
+                          className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
+
+                {/* ── Right Column: 2-Photo Pillar + Signature ── */}
+                <div className="w-[49%] sm:w-[50%] flex flex-col gap-2 sm:gap-2.5">
+                  
+                  {/* Photo 1 (Top-Right: Tall Portrait) */}
+                  <div
+                    className="relative w-full aspect-[3/3.9] overflow-hidden rounded-[2px] bg-white p-1 shadow-md border border-[#E8E2D7] cursor-pointer group transition-all duration-300 hover:shadow-lg"
+                    onClick={() => move(1)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                      <Image
+                        src={current.topRight.image}
+                        alt={current.topRight.alt}
+                        fill
+                        priority
+                        sizes="(min-width: 1280px) 240px, 180px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Photo 5 (Bottom-Right: Tall Portrait) */}
+                  <div
+                    className="relative w-full aspect-[3/3.9] overflow-hidden rounded-[2px] bg-white p-1 shadow-md border border-[#E8E2D7] cursor-pointer group transition-all duration-300 hover:shadow-lg"
+                    onClick={() => move(1)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                      <Image
+                        src={current.bottomRight.image}
+                        alt={current.bottomRight.alt}
+                        fill
+                        sizes="(min-width: 1280px) 240px, 180px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Signature under Photo 5 (matching "The Larsons 2015" from reference) */}
+                  <div className="pt-0.5 text-right">
+                    <p
+                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                      className="text-[11px] sm:text-xs italic text-[#716B64] tracking-wider"
+                    >
+                      {current.signature}
+                    </p>
+                  </div>
+
+                </div>
+
               </div>
 
-              {/* ── PHOTO 2: Top-Left (Bride Intimate Portrait) ── */}
-              <div
-                className="absolute top-0 sm:top-1 left-0 sm:left-1 xl:left-2 w-[115px] sm:w-[155px] lg:w-[175px] xl:w-[190px] -rotate-[6deg] hover:rotate-0 hover:scale-105 z-10 transition-all duration-500 cursor-pointer group"
-                onClick={() => move(1)}
-              >
-                <div className="bg-white p-1.5 sm:p-2 pb-3.5 sm:pb-4 rounded-[2px] shadow-[0_14px_32px_rgba(23,23,22,0.16)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_22px_44px_rgba(23,23,22,0.24)]">
-                  <div className="relative aspect-[4/4.8] w-full overflow-hidden bg-[#EAE4D9]">
-                    <Image
-                      src={current.topLeft.image}
-                      alt={current.topLeft.alt}
-                      fill
-                      sizes="(min-width: 1280px) 190px, 160px"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
-                    />
-                  </div>
-                </div>
-              </div>
+              {/* ── Slide Collection Arrows Controls (Cleanly Below Collage, 100% Visible) ── */}
+              <div className="mt-5 sm:mt-6 flex items-center justify-center gap-3 z-30">
+                <button
+                  type="button"
+                  onClick={() => move(-1)}
+                  aria-label="Previous photograph collection"
+                  className="size-7 sm:size-8 rounded-full border border-[#171716]/25 bg-white/95 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
+                >
+                  <ChevronLeft className="size-3.5 sm:size-4" />
+                </button>
 
-              {/* ── PHOTO 3: Top-Right (Groom & Bride Joyous Smile) ── */}
-              <div
-                className="absolute top-0 sm:top-1 right-0 sm:right-1 xl:right-2 w-[118px] sm:w-[160px] lg:w-[180px] xl:w-[195px] rotate-[5deg] hover:rotate-0 hover:scale-105 z-10 transition-all duration-500 cursor-pointer group"
-                onClick={() => move(1)}
-              >
-                <div className="bg-white p-1.5 sm:p-2 pb-3.5 sm:pb-4 rounded-[2px] shadow-[0_14px_32px_rgba(23,23,22,0.16)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_22px_44px_rgba(23,23,22,0.24)]">
-                  <div className="relative aspect-[4/4.8] w-full overflow-hidden bg-[#EAE4D9]">
-                    <Image
-                      src={current.topRight.image}
-                      alt={current.topRight.alt}
-                      fill
-                      sizes="(min-width: 1280px) 195px, 160px"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
+                <div className="flex items-center gap-1.5">
+                  {collageCollections.map((set, idx) => (
+                    <button
+                      key={set.id}
+                      type="button"
+                      onClick={() => setActiveSet(idx)}
+                      aria-label={`Switch to gallery collection ${idx + 1}`}
+                      className={`transition-all duration-300 rounded-full cursor-pointer ${
+                        idx === activeSet
+                          ? "h-1.5 w-5 bg-[#D71920]"
+                          : "size-1.5 bg-[#171716]/25 hover:bg-[#171716]/60"
+                      }`}
                     />
-                  </div>
+                  ))}
                 </div>
-              </div>
 
-              {/* ── PHOTO 4: Bottom-Left (Sacred Ritual / Hands & Rings) ── */}
-              <div
-                className="absolute bottom-1 sm:bottom-2 left-2 sm:left-4 xl:left-6 w-[115px] sm:w-[155px] lg:w-[175px] xl:w-[190px] rotate-[4deg] hover:rotate-0 hover:scale-106 z-30 transition-all duration-500 cursor-pointer group"
-                onClick={() => move(1)}
-              >
-                <div className="bg-white p-1.5 sm:p-2 pb-3.5 sm:pb-4 rounded-[2px] shadow-[0_22px_44px_rgba(23,23,22,0.22)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_30px_56px_rgba(23,23,22,0.30)]">
-                  <div className="relative aspect-[4/4.6] w-full overflow-hidden bg-[#EAE4D9]">
-                    <Image
-                      src={current.bottomLeft.image}
-                      alt={current.bottomLeft.alt}
-                      fill
-                      sizes="(min-width: 1280px) 190px, 160px"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* ── PHOTO 5: Bottom-Right (Radiant Bride in Golden Silk Saree) ── */}
-              <div
-                className="absolute bottom-1 sm:bottom-2 right-2 sm:right-4 xl:right-6 w-[120px] sm:w-[160px] lg:w-[180px] xl:w-[195px] -rotate-[5deg] hover:rotate-0 hover:scale-106 z-30 transition-all duration-500 cursor-pointer group"
-                onClick={() => move(1)}
-              >
-                <div className="bg-white p-1.5 sm:p-2 pb-3.5 sm:pb-4 rounded-[2px] shadow-[0_24px_48px_rgba(23,23,22,0.24)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_32px_60px_rgba(23,23,22,0.32)]">
-                  <div className="relative aspect-[4/4.8] w-full overflow-hidden bg-[#EAE4D9]">
-                    <Image
-                      src={current.bottomRight.image}
-                      alt={current.bottomRight.alt}
-                      fill
-                      sizes="(min-width: 1280px) 195px, 160px"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
-                    />
-                  </div>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => move(1)}
+                  aria-label="Next photograph collection"
+                  className="size-7 sm:size-8 rounded-full border border-[#171716]/25 bg-white/95 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
+                >
+                  <ChevronRight className="size-3.5 sm:size-4" />
+                </button>
               </div>
 
             </div>
-
-            {/* ── Slide Collection Arrows Controls (Cleanly Below Collage, 100% Visible) ── */}
-            <div className="mt-5 sm:mt-6 flex items-center justify-center gap-3 z-30">
-              <button
-                type="button"
-                onClick={() => move(-1)}
-                aria-label="Previous photograph collection"
-                className="size-7 sm:size-8 rounded-full border border-[#171716]/25 bg-white/95 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
-              >
-                <ChevronLeft className="size-3.5 sm:size-4" />
-              </button>
-
-              <div className="flex items-center gap-1.5">
-                {collageCollections.map((set, idx) => (
-                  <button
-                    key={set.id}
-                    type="button"
-                    onClick={() => setActiveSet(idx)}
-                    aria-label={`Switch to gallery collection ${idx + 1}`}
-                    className={`transition-all duration-300 rounded-full cursor-pointer ${
-                      idx === activeSet
-                        ? "h-1.5 w-5 bg-[#D71920]"
-                        : "size-1.5 bg-[#171716]/25 hover:bg-[#171716]/60"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={() => move(1)}
-                aria-label="Next photograph collection"
-                className="size-7 sm:size-8 rounded-full border border-[#171716]/25 bg-white/95 hover:bg-[#D71920] hover:text-white hover:border-transparent text-[#171716] grid place-items-center transition-colors cursor-pointer shadow-sm"
-              >
-                <ChevronRight className="size-3.5 sm:size-4" />
-              </button>
-            </div>
-
           </div>
 
         </div>
