@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Maximize2, Sparkles, X } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
+import { ArrowLeft, ChevronLeft, ChevronRight, Maximize2, Sparkles, X } from "lucide-react";
 import {
   photoCollections,
   studioPhotos,
@@ -13,7 +14,16 @@ import { useBodyScrollLock, useFocusTrap } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 import { QueryParamSync } from "@/components/shared/QueryParamSync";
 
+const noopSubscribe = () => () => {};
+const useIsClient = () =>
+  useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
+
 export function PhotosGallery() {
+  const isClient = useIsClient();
   const [activeCollection, setActiveCollection] =
     useState<PhotoCollection>("All");
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -162,89 +172,112 @@ export function PhotosGallery() {
         ))}
       </div>
 
-      {/* ── Fullscreen Immersive High-Resolution Lightbox Modal (Full Image) ── */}
-      {selectedPhoto ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={selectedPhoto.title}
-          ref={dialogRef}
-          className="fixed inset-0 z-[1200] flex items-center justify-center bg-black/95 p-2 sm:p-4 backdrop-blur-xl"
-          onClick={handleClose}
-        >
-          {/* Close Button Floating Top-Right */}
-          <button
-            ref={closeRef}
-            type="button"
-            onClick={handleClose}
-            aria-label="Close dialog"
-            className="absolute top-4 right-4 z-50 grid size-11 place-items-center bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none"
-          >
-            <X className="size-6" />
-          </button>
+      {/* ── Fullscreen Immersive High-Resolution Lightbox Modal with Back Button ── */}
+      {isClient && selectedPhoto
+        ? createPortal(
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label={selectedPhoto.title}
+              ref={dialogRef}
+              className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black/95 p-2 sm:p-4 backdrop-blur-xl select-none"
+              onClick={handleClose}
+            >
+              {/* Top Control Bar with Back Button, Counter, and Close Button */}
+              <header className="absolute top-0 inset-x-0 z-50 flex items-center justify-between p-3 sm:p-6 bg-gradient-to-b from-black/85 via-black/40 to-transparent pointer-events-auto">
+                {/* Back Button (Requested by User) */}
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  aria-label="Back to photo gallery"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 bg-black/60 hover:bg-[#D71920] text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none text-xs sm:text-sm font-semibold tracking-wide shadow-md active:scale-95 group"
+                >
+                  <ArrowLeft className="size-4 sm:size-5 transition-transform duration-200 group-hover:-translate-x-1" />
+                  <span>Back</span>
+                </button>
 
-          {/* Prev / Next Navigation Buttons Floating on Sides */}
-          {filtered.length > 1 ? (
-            <>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  stepPhoto(-1);
-                }}
-                aria-label="Previous photo"
-                className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 grid size-12 place-items-center bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none"
-              >
-                <ChevronLeft className="size-7" />
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  stepPhoto(1);
-                }}
-                aria-label="Next photo"
-                className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-50 grid size-12 place-items-center bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none"
-              >
-                <ChevronRight className="size-7" />
-              </button>
-            </>
-          ) : null}
+                {/* Photo Counter */}
+                <div className="px-3 py-1.5 bg-black/60 border border-white/10 backdrop-blur-md text-[11px] sm:text-xs text-[#D8CFC1] tracking-widest uppercase font-mono">
+                  {selectedIndex + 1} / {filtered.length}
+                </div>
 
-          {/* Full Image Main Stage (Edge to Edge, High Resolution) */}
-          <div
-            className="relative w-full h-full max-w-[96vw] max-h-[94vh] flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={selectedPhoto.src}
-              alt={selectedPhoto.alt}
-              fill
-              priority
-              className="object-contain"
-              sizes="96vw"
-            />
+                {/* Close Button */}
+                <button
+                  ref={closeRef}
+                  type="button"
+                  onClick={handleClose}
+                  aria-label="Close dialog"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2.5 bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none text-xs sm:text-sm font-semibold tracking-wide shadow-md active:scale-95"
+                >
+                  <X className="size-4 sm:size-5" />
+                  <span className="hidden sm:inline">Close</span>
+                </button>
+              </header>
 
-            {/* Subtle Floating Bottom Caption (No Enquire Button, No Nelliady) */}
-            <div className="absolute bottom-2 inset-x-0 mx-auto max-w-xl text-center px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 pointer-events-none rounded-none">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-[#D71920]">
-                {selectedPhoto.category}
-              </p>
-              <h3
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                className="text-base sm:text-lg font-normal text-[#FAF7F1] tracking-tight"
-              >
-                {selectedPhoto.title}
-              </h3>
-              {selectedPhoto.subtitle ? (
-                <p className="text-xs text-[#D8CFC1]/80 mt-0.5">
-                  {selectedPhoto.subtitle}
-                </p>
+              {/* Prev / Next Navigation Buttons Floating on Sides */}
+              {filtered.length > 1 ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      stepPhoto(-1);
+                    }}
+                    aria-label="Previous photo"
+                    className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-50 grid size-11 sm:size-12 place-items-center bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none shadow-lg active:scale-95"
+                  >
+                    <ChevronLeft className="size-6 sm:size-7" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      stepPhoto(1);
+                    }}
+                    aria-label="Next photo"
+                    className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-50 grid size-11 sm:size-12 place-items-center bg-black/60 text-white/90 hover:bg-[#D71920] hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer rounded-none shadow-lg active:scale-95"
+                  >
+                    <ChevronRight className="size-6 sm:size-7" />
+                  </button>
+                </>
               ) : null}
-            </div>
-          </div>
-        </div>
-      ) : null}
+
+              {/* Full Image Main Stage (Edge to Edge, High Resolution) */}
+              <div
+                className="relative w-full h-[calc(100vh-130px)] sm:h-[calc(100vh-140px)] max-w-[96vw] flex items-center justify-center my-auto pt-14 pb-14"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src={selectedPhoto.src}
+                  alt={selectedPhoto.alt}
+                  fill
+                  priority
+                  className="object-contain"
+                  sizes="96vw"
+                />
+              </div>
+
+              {/* Floating Bottom Caption (No Enquire Button, No Nelliady) */}
+              <footer className="absolute bottom-3 inset-x-0 z-50 mx-auto max-w-xl text-center px-4 py-2 sm:py-2.5 bg-black/70 backdrop-blur-md border border-white/10 pointer-events-none rounded-none shadow-lg">
+                <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-[#D71920]">
+                  {selectedPhoto.category}
+                </p>
+                <h3
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  className="text-sm sm:text-base md:text-lg font-normal text-[#FAF7F1] tracking-tight leading-snug"
+                >
+                  {selectedPhoto.title}
+                </h3>
+                {selectedPhoto.subtitle ? (
+                  <p className="text-[11px] sm:text-xs text-[#D8CFC1]/80 mt-0.5">
+                    {selectedPhoto.subtitle}
+                  </p>
+                ) : null}
+              </footer>
+            </div>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }
