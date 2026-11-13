@@ -50,7 +50,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative overflow-hidden bg-[#EEE9DF] border-b border-[#D8CFC1] pt-[92px] lg:pt-[104px] min-h-[calc(100vh-1rem)] lg:h-[calc(100vh-0.5rem)] flex flex-col justify-center select-none"
+      className="relative overflow-hidden bg-[#F9F7F2] border-b border-[#E2DAD0] pt-[100px] lg:pt-[116px] min-h-[calc(100vh-1rem)] lg:min-h-[700px] lg:h-[calc(100vh-0.5rem)] flex flex-col justify-center select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -71,18 +71,18 @@ export function Hero() {
         setPaused(false);
       }}
     >
-      {/* Subtle Warm Studio Ambient Light on #EEE9DF */}
+      {/* Subtle Warm Studio Ambient Sheen on #F9F7F2 */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(215,25,32,0.06)_0%,transparent_60%),radial-gradient(ellipse_at_15%_85%,rgba(23,23,22,0.04)_0%,transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_20%,rgba(215,25,32,0.04)_0%,transparent_60%),radial-gradient(ellipse_at_15%_85%,rgba(23,23,22,0.03)_0%,transparent_50%)]"
       />
 
-      {/* ── Main Hero Content (Single Viewport Fit, Zero Scroll Needed) ── */}
-      <div className="relative z-10 w-full py-6 sm:py-8 lg:py-10">
+      {/* ── Main Hero Content ── */}
+      <div className="relative z-10 w-full py-8 sm:py-10 lg:py-12">
         <Container size="wide">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 xl:gap-16 items-center">
             
-            {/* ── Left Column: Editorial Text & 2 Clean CTAs (WhatsApp removed) ── */}
+            {/* ── Left Column: Editorial Typography & Actions ── */}
             <div className="lg:col-span-6 xl:col-span-6 max-w-xl">
               {/* Eyebrow Studio Tag */}
               <div className="inline-flex items-center gap-2.5 mb-3.5 sm:mb-4">
@@ -103,17 +103,17 @@ export function Hero() {
                 <span className="italic font-serif text-[#D71920]">Carefully Made.</span>
               </h1>
 
-              {/* Subtitle / Description */}
-              <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-[#55504A] max-w-lg font-normal">
+              {/* Description */}
+              <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-[#5F5A5A] max-w-lg font-normal">
                 Selected highlights from traditional wedding celebrations and intimate ceremonies in Nelliady.
               </p>
 
-              {/* ── 2 Action Buttons (WhatsApp button removed as requested) ── */}
-              <div className="mt-7 sm:mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
+              {/* ── 2 Action Buttons ── */}
+              <div className="mt-7 sm:mt-9 flex flex-wrap items-center gap-3.5 sm:gap-4">
                 {/* 1. Explore Our Work */}
                 <Link
                   href="/photos"
-                  className="inline-flex h-11 sm:h-12 items-center justify-center gap-2 rounded-full bg-[#D71920] px-7 sm:px-8 text-xs sm:text-[13px] font-semibold tracking-wider text-white shadow-lg shadow-[#D71920]/25 transition-all duration-300 hover:bg-[#b81219] hover:shadow-xl hover:-translate-y-0.5"
+                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full bg-[#D71920] px-7 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider text-white shadow-lg shadow-[#D71920]/25 transition-all duration-300 hover:bg-[#b81219] hover:shadow-xl hover:-translate-y-0.5"
                 >
                   <span>Explore Our Work</span>
                   <ArrowRight className="size-4" aria-hidden="true" />
@@ -122,50 +122,45 @@ export function Hero() {
                 {/* 2. Book Your Date */}
                 <Link
                   href="/contact"
-                  className="inline-flex h-11 sm:h-12 items-center justify-center gap-2 rounded-full border border-[#171716]/30 bg-transparent hover:bg-[#171716] hover:text-white px-7 sm:px-8 text-xs sm:text-[13px] font-semibold tracking-wider text-[#171716] transition-all duration-300 hover:border-[#171716] hover:-translate-y-0.5"
+                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-[#171716]/30 bg-transparent hover:bg-[#171716] hover:text-white px-7 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider text-[#171716] transition-all duration-300 hover:border-[#171716] hover:-translate-y-0.5"
                 >
                   <span>Book Your Date</span>
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               </div>
+
+              {/* ── Studio Trust Indicators (Editorial Credibility Strip) ── */}
+              <div className="mt-9 pt-7 border-t border-[#D8CFC1]/70 flex items-center gap-6 sm:gap-8 text-[#716B64]">
+                <div>
+                  <p className="text-xl sm:text-2xl font-serif text-[#171716] leading-none">10+</p>
+                  <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Years Experience</p>
+                </div>
+                <div className="w-[1px] h-8 bg-[#D8CFC1]" aria-hidden="true" />
+                <div>
+                  <p className="text-xl sm:text-2xl font-serif text-[#171716] leading-none">500+</p>
+                  <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Weddings Captured</p>
+                </div>
+                <div className="w-[1px] h-8 bg-[#D8CFC1]" aria-hidden="true" />
+                <div>
+                  <p className="text-xl sm:text-2xl font-serif text-[#D71920] leading-none">4K</p>
+                  <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Cinematic Quality</p>
+                </div>
+              </div>
             </div>
 
-            {/* ── Right Column: Masterpiece Photo Stage (Tabs removed, clean presentation) ── */}
+            {/* ── Right Column: Layered Editorial Masterpiece Showcase ── */}
             <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end">
-              <div className="relative w-full max-w-[420px] sm:max-w-[460px] xl:max-w-[500px]">
+              <div className="relative w-full max-w-[420px] sm:max-w-[460px] xl:max-w-[490px]">
                 
-                {/* Main Viewfinder Masterpiece Frame */}
-                <div className="relative aspect-[3.6/4.7] max-h-[520px] xl:max-h-[560px] w-full overflow-hidden rounded-[26px] xl:rounded-[30px] border border-[#171716]/12 shadow-[0_24px_50px_-12px_rgba(23,23,22,0.22)] bg-[#D8D1C4]">
+                {/* Architectural Offset Background Plate (Luxury Album Backdrop) */}
+                <div
+                  className="absolute -inset-2.5 sm:-inset-3.5 rounded-[28px] xl:rounded-[34px] bg-[#EFE9DF] border border-[#D8CFC1] -rotate-1.5 pointer-events-none transition-transform duration-700"
+                  aria-hidden="true"
+                />
+
+                {/* Primary Masterpiece Photo Card */}
+                <div className="relative aspect-[3.5/4.5] max-h-[520px] xl:max-h-[560px] w-full overflow-hidden rounded-[24px] xl:rounded-[30px] border border-[#171716]/10 shadow-[0_20px_50px_-10px_rgba(23,23,22,0.18)] bg-[#E8E2D7]">
                   
-                  {/* Camera Viewfinder Corner Accents */}
-                  <div className="absolute top-4 left-4 size-3.5 border-t-2 border-l-2 border-white/80 pointer-events-none z-20" aria-hidden="true" />
-                  <div className="absolute top-4 right-4 size-3.5 border-t-2 border-r-2 border-white/80 pointer-events-none z-20" aria-hidden="true" />
-                  <div className="absolute bottom-4 left-4 size-3.5 border-b-2 border-l-2 border-white/80 pointer-events-none z-20" aria-hidden="true" />
-                  <div className="absolute bottom-4 right-4 size-3.5 border-b-2 border-r-2 border-white/80 pointer-events-none z-20" aria-hidden="true" />
-
-                  {/* Top-Right Frame Index Pill */}
-                  <div className="absolute top-4 right-10 z-20 rounded-full border border-white/35 bg-black/45 px-3 py-1 backdrop-blur-md text-[10px] font-mono tracking-widest text-white/95">
-                    {active === 0 ? "COVER" : `0${active} / 05`}
-                  </div>
-
-                  {/* Sleek Floating Arrow Controls on hover/touch */}
-                  <button
-                    type="button"
-                    onClick={() => move(-1)}
-                    aria-label="Previous photograph"
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 z-25 size-9 rounded-full bg-black/40 hover:bg-[#D71920] border border-white/25 hover:border-transparent text-white grid place-items-center transition-all duration-200 backdrop-blur-md cursor-pointer shadow-md"
-                  >
-                    <ChevronLeft className="size-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => move(1)}
-                    aria-label="Next photograph"
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 z-25 size-9 rounded-full bg-black/40 hover:bg-[#D71920] border border-white/25 hover:border-transparent text-white grid place-items-center transition-all duration-200 backdrop-blur-md cursor-pointer shadow-md"
-                  >
-                    <ChevronRight className="size-4" />
-                  </button>
-
                   {/* The 6 Masterpiece Slides (Cover + 5 Client Photos) */}
                   {heroSlides.map((slide, index) => (
                     <div
@@ -186,10 +181,11 @@ export function Hero() {
                           transform: index === active ? "scale(1)" : "scale(1.04)",
                         }}
                       />
-                      {/* Gradient overlay for bottom caption */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
+                      
+                      {/* Filmic Bottom Gradient for Editorial Text */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
-                      {/* Editorial Caption at bottom of frame */}
+                      {/* Editorial Caption on Image */}
                       <div className="absolute bottom-5 left-6 right-6 text-white pointer-events-none z-20">
                         <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#D71920]">
                           {slide.category}
@@ -204,7 +200,30 @@ export function Hero() {
                     </div>
                   ))}
 
-                  {/* Discreet Slide Progress Dots inside bottom of frame */}
+                  {/* Top-Right Index Pill */}
+                  <div className="absolute top-4 right-4 z-20 rounded-full border border-white/40 bg-black/40 px-3 py-1 backdrop-blur-md text-[10px] font-mono tracking-widest text-white/95">
+                    {active === 0 ? "COVER" : `0${active} / 05`}
+                  </div>
+
+                  {/* Subtle Navigation Arrows */}
+                  <button
+                    type="button"
+                    onClick={() => move(-1)}
+                    aria-label="Previous photograph"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 z-25 size-9 rounded-full bg-black/35 hover:bg-[#D71920] border border-white/30 hover:border-transparent text-white grid place-items-center transition-all duration-200 backdrop-blur-md cursor-pointer shadow-md"
+                  >
+                    <ChevronLeft className="size-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => move(1)}
+                    aria-label="Next photograph"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 z-25 size-9 rounded-full bg-black/35 hover:bg-[#D71920] border border-white/30 hover:border-transparent text-white grid place-items-center transition-all duration-200 backdrop-blur-md cursor-pointer shadow-md"
+                  >
+                    <ChevronRight className="size-4" />
+                  </button>
+
+                  {/* Slide Progress Indicator Dots */}
                   <div className="absolute bottom-2.5 inset-x-0 z-20 flex items-center justify-center gap-1.5 pointer-events-auto">
                     {heroSlides.map((slide, idx) => (
                       <button
@@ -220,7 +239,13 @@ export function Hero() {
                       />
                     ))}
                   </div>
+
                 </div>
+
+                {/* Subtle Artistic Footnote */}
+                <p className="mt-3.5 text-center text-xs text-[#716B64] italic">
+                  A little closer. A little more you.
+                </p>
 
               </div>
             </div>
