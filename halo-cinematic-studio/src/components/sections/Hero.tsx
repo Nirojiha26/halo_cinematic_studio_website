@@ -7,26 +7,26 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 
 // Curated collections matching the exact album collage template (reference media_1794592101754_d9962176.png)
-// Every photo in each collection is distinct, authentic, and high quality.
+// Every photo in each collection is 100% distinct, authentic, and high quality with zero duplicates.
 const collageCollections = [
   {
     id: "collection-1",
     signature: "HALO Cinematic Studio · 2026",
     topRight: {
-      image: "/images/moments/moment-05.jpg",
-      alt: "HALO Cinematic Studio - Radiant Bride in Traditional Silk Saree",
+      image: "/images/gallery/halo-1-51.jpg",
+      alt: "HALO Cinematic Studio - Royal Garland Exchange Newlywed Couple",
     },
     topLeft: {
-      image: "/images/moments/moment-07.jpg",
-      alt: "HALO Cinematic Studio - Bride Golden Hour Candid Smile",
+      image: "/images/home-selected/pink-saree-portrait.webp",
+      alt: "HALO Cinematic Studio - Radiant Milestone Portrait in Traditional Pink Silk Saree",
     },
     center: {
       image: "/images/home-selected/couple-at-temple.webp",
-      alt: "HALO Cinematic Studio - Newlyweds Walking in Temple Courtyard",
+      alt: "HALO Cinematic Studio - Newlyweds Smiling Seated in Front of Carved Temple Doors",
     },
     bottomLeft: {
       image: "/images/moments/moment-03.jpg",
-      alt: "HALO Cinematic Studio - Intimate Bridal Jewelry & Earring Portrait",
+      alt: "HALO Cinematic Studio - Intimate Bridal Gold Jewelry & Earring Portrait",
     },
     bottomRight: {
       image: "/images/hero/slide-01.jpg",
@@ -37,48 +37,48 @@ const collageCollections = [
     id: "collection-2",
     signature: "HALO · Sacred Ceremonies",
     topRight: {
-      image: "/images/moments/moment-01.jpg",
-      alt: "HALO Cinematic Studio - Outdoor Garden Wedding Couple",
+      image: "/images/home-selected/garden-couple.webp",
+      alt: "HALO Cinematic Studio - Newlywed Couple in Natural Outdoor Garden Light",
     },
     topLeft: {
       image: "/images/hero/slide-02.jpg",
-      alt: "HALO Cinematic Studio - Newlywed Bride Intimate Jewelry Portrait",
+      alt: "HALO Cinematic Studio - Newlywed Bride Candid Joy & Intimate Jewelry Portrait",
     },
     center: {
       image: "/images/home-selected/garland-exchange.webp",
       alt: "HALO Cinematic Studio - Auspicious Garland Exchange Ceremony at Mandapam",
     },
     bottomLeft: {
-      image: "/images/moments/moment-02.jpg",
-      alt: "HALO Cinematic Studio - Candid Joy & Laughter in Silk Saree",
+      image: "/images/moments/moment-07.jpg",
+      alt: "HALO Cinematic Studio - Bride Golden Hour Candid Smile",
     },
     bottomRight: {
       image: "/images/hero/cover-10.jpg",
-      alt: "HALO Cinematic Studio - Newlywed Couple Radiant Smile",
+      alt: "HALO Cinematic Studio - Newlywed Couple Radiant Smile & Shoulder Lean",
     },
   },
   {
     id: "collection-3",
     signature: "HALO · Timeless Memories",
     topRight: {
-      image: "/images/hero/slide-05.jpg",
-      alt: "HALO Cinematic Studio - Heritage Courtyard Bride",
+      image: "/images/home-selected/traditional-wedding.webp",
+      alt: "HALO Cinematic Studio - Traditional Wedding Couple in Silk Saree Before Temple Doors",
     },
     topLeft: {
       image: "/images/moments/moment-06.jpg",
-      alt: "HALO Cinematic Studio - Bride on Garden Bench Portrait",
+      alt: "HALO Cinematic Studio - Bride on Vintage Garden Bench Portrait",
     },
     center: {
       image: "/images/home-selected/temple-connection.webp",
-      alt: "HALO Cinematic Studio - Sacred Temple Rituals and Blessings",
+      alt: "HALO Cinematic Studio - Newlyweds Walking in Temple Courtyard Holding Hands",
     },
     bottomLeft: {
-      image: "/images/hero/slide-03.jpg",
-      alt: "HALO Cinematic Studio - Temple Blessings & Auspicious Flame Rituals",
+      image: "/images/hero/slide-05.jpg",
+      alt: "HALO Cinematic Studio - Heritage Courtyard Bride in Traditional Jewelry",
     },
     bottomRight: {
-      image: "/images/moments/moment-04.jpg",
-      alt: "HALO Cinematic Studio - Couple in Heritage Courtyard with Auspicious Florals",
+      image: "/images/home-selected/wedding-embrace.webp",
+      alt: "HALO Cinematic Studio - Intimate Wedding Couple Close Embrace",
     },
   },
 ];
