@@ -4,23 +4,35 @@ export type HeroSlide = {
   alt: string;
   title: string;
   category: string;
+  tabLabel: string;
 };
 
 /**
- * 5 primary hero photos requested by client in exact order:
- * 1. Dila-3 (2).JPG -> Home page 1st photo
- * 2. 13.jpg -> Home page 2nd photo
- * 3. DSC05900.jpg -> Home page 3rd photo
- * 4. 17.jpg -> Home page 4th photo
- * 5. 11.jpg -> Home page 5th photo
+ * Hero slides:
+ * 1. Cover photo: /images/hero/cover-10.jpg (from 10.jpg (1).jpeg requested by client)
+ * 2-6. The 5 primary wedding/studio photos requested by client in exact order:
+ *    - Dila-3 (2).JPG -> slide-01.jpg
+ *    - 13.jpg -> slide-02.jpg
+ *    - DSC05900.jpg -> slide-03.jpg
+ *    - 17.jpg -> slide-04.jpg
+ *    - 11.jpg -> slide-05.jpg
  */
 export const heroSlides: HeroSlide[] = [
+  {
+    id: "slide-cover",
+    image: "/images/hero/cover-10.jpg",
+    alt: "HALO Cinematic Studio - Signature Ocean Sunset Preshoot Cover",
+    title: "Real Moments, Carefully Made.",
+    category: "Signature Cover",
+    tabLabel: "Cover",
+  },
   {
     id: "slide-1",
     image: "/images/hero/slide-01.jpg",
     alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Couple",
     title: "The feeling in every frame.",
-    category: "Signature Ceremony",
+    category: "Traditional Ceremony",
+    tabLabel: "Ceremony",
   },
   {
     id: "slide-2",
@@ -28,6 +40,7 @@ export const heroSlides: HeroSlide[] = [
     alt: "HALO Cinematic Studio - Newlywed Couple Portrait",
     title: "A day held in colour.",
     category: "Wedding Portraits",
+    tabLabel: "Portraits",
   },
   {
     id: "slide-3",
@@ -35,19 +48,22 @@ export const heroSlides: HeroSlide[] = [
     alt: "HALO Cinematic Studio - Auspicious Ceremony Rituals",
     title: "Where every detail becomes memory.",
     category: "Sacred Rituals",
+    tabLabel: "Rituals",
   },
   {
     id: "slide-4",
     image: "/images/hero/slide-04.jpg",
     alt: "HALO Cinematic Studio - Wedding Celebration and Joy",
     title: "A moving portrait of your people.",
-    category: "Cinematic Celebrations",
+    category: "Celebrations",
+    tabLabel: "Celebration",
   },
   {
     id: "slide-5",
     image: "/images/hero/slide-05.jpg",
     alt: "HALO Cinematic Studio - Bride and Groom Heritage Portrait",
     title: "Stories to hold forever.",
-    category: "Heritage Collection",
+    category: "Heritage Vows",
+    tabLabel: "Heritage",
   },
 ];
