@@ -118,19 +118,19 @@ export function Hero() {
       }}
     >
       {/* ── Right Half Background Image (Silk & Floral Backdrop from Reference) ── */}
-      <div className="absolute inset-y-0 right-0 w-full lg:w-[58%] xl:w-[55%] pointer-events-none z-0 overflow-hidden">
+      <div className="absolute inset-y-0 right-0 w-full lg:w-[60%] xl:w-[58%] pointer-events-none z-0 overflow-hidden">
         <Image
-          src="/images/hero/hero-floral-backdrop.jpg"
+          src="/images/hero/hero-floral-backdrop-v3.jpg"
           alt=""
           fill
           priority
-          quality={90}
-          sizes="(min-width: 1024px) 58vw, 100vw"
+          quality={92}
+          sizes="(min-width: 1024px) 60vw, 100vw"
           className="object-cover object-center lg:object-[center_right] opacity-90"
         />
         {/* Smooth horizontal gradient to blend seamlessly into left column #F9F7F2 */}
         <div
-          className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#F9F7F2] via-[#F9F7F2]/90 via-15% md:via-25% lg:via-[#F9F7F2]/40 lg:via-45% to-transparent"
+          className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#F9F7F2] via-[#F9F7F2]/85 via-15% md:via-25% lg:via-[#F9F7F2]/30 lg:via-45% to-transparent"
           aria-hidden="true"
         />
       </div>
@@ -208,59 +208,59 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ── Right Column: Cascading 3-Polaroid Composition (Vertical Angled Diagonal Line) ── */}
+          {/* ── Right Column: Cascading 3-Polaroid Composition (Steep Left-Side Diagonal Angle) ── */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center">
-            <div className="relative w-full max-w-[390px] sm:max-w-[440px] xl:max-w-[470px] h-[580px] sm:h-[640px] xl:h-[670px]">
+            <div className="relative w-full max-w-[460px] sm:max-w-[500px] xl:max-w-[540px] h-[590px] sm:h-[650px] xl:h-[680px]">
               
-              {/* ── POLAROID 1: Top (Couple Intimate Portrait) ── */}
+              {/* ── POLAROID 1: Top-Right (Bride Intimate Portrait) ── */}
               <div
-                className="absolute top-0 sm:top-2 right-2 sm:right-4 xl:right-6 w-[185px] sm:w-[215px] xl:w-[235px] rotate-[6deg] hover:rotate-0 hover:scale-105 z-10 transition-all duration-500 cursor-pointer group"
+                className="absolute top-1 sm:top-2 right-2 sm:right-4 xl:right-6 w-[205px] sm:w-[240px] xl:w-[265px] rotate-[9deg] hover:rotate-0 hover:scale-105 z-10 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
-                <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_16px_36px_rgba(23,23,22,0.18)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_24px_48px_rgba(23,23,22,0.25)]">
-                  <div className="relative aspect-[4/4.7] w-full overflow-hidden bg-[#EAE4D9]">
+                <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_18px_40px_rgba(23,23,22,0.18)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_26px_52px_rgba(23,23,22,0.25)]">
+                  <div className="relative aspect-[1/1.08] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.top.image}
                       alt={current.top.alt}
                       fill
-                      sizes="(min-width: 1280px) 240px, (min-width: 640px) 220px, 190px"
+                      sizes="(min-width: 1280px) 265px, (min-width: 640px) 240px, 205px"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* ── POLAROID 2: Middle (Traditional Mandapam Ceremony) ── */}
+              {/* ── POLAROID 2: Middle-Left (Traditional Mandapam Ceremony - Shifted Far Left) ── */}
               <div
-                className="absolute top-[190px] sm:top-[215px] xl:top-[225px] right-[65px] sm:right-[85px] xl:right-[100px] w-[190px] sm:w-[220px] xl:w-[240px] -rotate-[3deg] hover:rotate-0 hover:scale-105 z-20 transition-all duration-500 cursor-pointer group"
+                className="absolute top-[175px] sm:top-[200px] xl:top-[215px] left-1 sm:left-3 xl:left-4 w-[215px] sm:w-[250px] xl:w-[275px] -rotate-[6deg] hover:rotate-0 hover:scale-105 z-20 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
-                <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_22px_44px_rgba(23,23,22,0.22)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_30px_54px_rgba(23,23,22,0.28)]">
-                  <div className="relative aspect-[4/4.7] w-full overflow-hidden bg-[#EAE4D9]">
+                <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_24px_48px_rgba(23,23,22,0.22)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_32px_60px_rgba(23,23,22,0.28)]">
+                  <div className="relative aspect-[1/1.08] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.middle.image}
                       alt={current.middle.alt}
                       fill
                       priority
-                      sizes="(min-width: 1280px) 240px, (min-width: 640px) 220px, 190px"
+                      sizes="(min-width: 1280px) 275px, (min-width: 640px) 250px, 215px"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* ── POLAROID 3: Bottom (Sacred Ritual / Hands & Saree) ── */}
+              {/* ── POLAROID 3: Bottom-Left (Sacred Ritual & Hands - Flowing Down Along Left Angle) ── */}
               <div
-                className="absolute top-[385px] sm:top-[430px] xl:top-[450px] right-[130px] sm:right-[165px] xl:right-[190px] w-[195px] sm:w-[225px] xl:w-[245px] rotate-[5deg] hover:rotate-0 hover:scale-106 z-30 transition-all duration-500 cursor-pointer group"
+                className="absolute top-[375px] sm:top-[420px] xl:top-[445px] left-[30px] sm:left-[50px] xl:left-[60px] w-[210px] sm:w-[245px] xl:w-[270px] rotate-[7deg] hover:rotate-0 hover:scale-106 z-30 transition-all duration-500 cursor-pointer group"
                 onClick={() => move(1)}
               >
                 <div className="bg-white p-2 sm:p-2.5 pb-4 sm:pb-5 rounded-[2px] shadow-[0_28px_56px_rgba(23,23,22,0.26)] border border-[#E8E2D7] transition-all duration-500 group-hover:shadow-[0_36px_68px_rgba(23,23,22,0.32)]">
-                  <div className="relative aspect-[4/4.7] w-full overflow-hidden bg-[#EAE4D9]">
+                  <div className="relative aspect-[1/1.08] w-full overflow-hidden bg-[#EAE4D9]">
                     <Image
                       src={current.bottom.image}
                       alt={current.bottom.alt}
                       fill
-                      sizes="(min-width: 1280px) 250px, (min-width: 640px) 230px, 200px"
+                      sizes="(min-width: 1280px) 270px, (min-width: 640px) 245px, 210px"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-106"
                     />
                   </div>
