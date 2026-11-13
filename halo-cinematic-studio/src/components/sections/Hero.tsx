@@ -50,7 +50,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative overflow-hidden bg-[#F9F7F2] border-b border-[#E2DAD0] pt-[100px] lg:pt-[116px] min-h-[calc(100vh-1rem)] lg:min-h-[700px] lg:h-[calc(100vh-0.5rem)] flex flex-col justify-center select-none"
+      className="relative overflow-hidden bg-[#F9F7F2] border-b border-[#E2DAD0] pt-[92px] lg:pt-[104px] min-h-[calc(100vh-1rem)] lg:h-[calc(100vh-0.5rem)] flex flex-col justify-between select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -71,185 +71,202 @@ export function Hero() {
         setPaused(false);
       }}
     >
-      {/* Subtle Warm Studio Ambient Sheen on #F9F7F2 */}
+      {/* ── Full-Bleed Photograph Background on Right ── */}
+      {heroSlides.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === active ? "opacity-100 z-0" : "opacity-0 -z-10 pointer-events-none"
+          }`}
+        >
+          <div className="absolute inset-y-0 right-0 w-full lg:w-[62%] xl:w-[60%] h-full">
+            <Image
+              src={slide.image}
+              alt={slide.alt}
+              fill
+              priority={index === 0}
+              quality={92}
+              sizes="(min-width: 1024px) 62vw, 100vw"
+              className="object-cover object-center lg:object-[center_18%] transition-transform duration-7000 ease-out"
+              style={{
+                transform: index === active ? "scale(1)" : "scale(1.04)",
+              }}
+            />
+          </div>
+        </div>
+      ))}
+
+      {/* ── Smooth Horizontal Gradient Mask (Cream #F9F7F2 on left fading into photo on right) ── */}
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_20%,rgba(215,25,32,0.04)_0%,transparent_60%),radial-gradient(ellipse_at_15%_85%,rgba(23,23,22,0.03)_0%,transparent_50%)]"
+        className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t lg:bg-gradient-to-r from-[#F9F7F2] via-[#F9F7F2]/95 via-30% md:via-42% lg:via-[#F9F7F2]/65 lg:via-55% to-transparent"
+        aria-hidden="true"
       />
 
-      {/* ── Main Hero Content ── */}
-      <div className="relative z-10 w-full py-8 sm:py-10 lg:py-12">
-        <Container size="wide">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 xl:gap-16 items-center">
-            
-            {/* ── Left Column: Editorial Typography & Actions ── */}
-            <div className="lg:col-span-6 xl:col-span-6 max-w-xl">
-              {/* Eyebrow Studio Tag */}
-              <div className="inline-flex items-center gap-2.5 mb-3.5 sm:mb-4">
-                <span className="w-6 h-[2px] bg-[#D71920]" aria-hidden="true" />
-                <p className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#D71920]">
-                  Studio Gallery
-                </p>
-              </div>
+      {/* ── Soft Romantic Petals & Bokeh Atmosphere (matching reference screenshot) ── */}
+      <div
+        className="absolute top-1/4 -left-8 size-28 rounded-full bg-[#D71920]/8 blur-2xl pointer-events-none z-15"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-16 left-1/3 size-40 rounded-full bg-[#D71920]/6 blur-3xl pointer-events-none z-15"
+        aria-hidden="true"
+      />
 
-              {/* Main Headline */}
-              <h1
-                id="hero-heading"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                className="text-4xl sm:text-5xl lg:text-[56px] xl:text-[62px] font-normal tracking-[-0.035em] leading-[1.08] text-[#171716]"
-              >
-                Real Moments,
-                <br />
-                <span className="italic font-serif text-[#D71920]">Carefully Made.</span>
-              </h1>
-
-              {/* Description */}
-              <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-[#5F5A5A] max-w-lg font-normal">
-                Selected highlights from traditional wedding celebrations and intimate ceremonies in Nelliady.
+      {/* ── Center Stage Editorial Content ── */}
+      <div className="relative z-20 w-full flex-1 flex items-center py-6 sm:py-8 lg:py-10">
+        <Container size="wide" className="w-full relative">
+          <div className="max-w-xl lg:max-w-2xl">
+            {/* Eyebrow Label with Red Accent Bar */}
+            <div className="flex items-center gap-3 mb-4 sm:mb-5">
+              <span className="w-8 h-[2px] bg-[#D71920] shrink-0" aria-hidden="true" />
+              <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.24em] text-[#3D3838]">
+                Photography · Cinematography · Creative Studio
               </p>
-
-              {/* ── 2 Action Buttons ── */}
-              <div className="mt-7 sm:mt-9 flex flex-wrap items-center gap-3.5 sm:gap-4">
-                {/* 1. Explore Our Work */}
-                <Link
-                  href="/photos"
-                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full bg-[#D71920] px-7 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider text-white shadow-lg shadow-[#D71920]/25 transition-all duration-300 hover:bg-[#b81219] hover:shadow-xl hover:-translate-y-0.5"
-                >
-                  <span>Explore Our Work</span>
-                  <ArrowRight className="size-4" aria-hidden="true" />
-                </Link>
-
-                {/* 2. Book Your Date */}
-                <Link
-                  href="/contact"
-                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-[#171716]/30 bg-transparent hover:bg-[#171716] hover:text-white px-7 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider text-[#171716] transition-all duration-300 hover:border-[#171716] hover:-translate-y-0.5"
-                >
-                  <span>Book Your Date</span>
-                  <ArrowRight className="size-4" aria-hidden="true" />
-                </Link>
-              </div>
-
-              {/* ── Studio Trust Indicators (Editorial Credibility Strip) ── */}
-              <div className="mt-9 pt-7 border-t border-[#D8CFC1]/70 flex items-center gap-6 sm:gap-8 text-[#716B64]">
-                <div>
-                  <p className="text-xl sm:text-2xl font-serif text-[#171716] leading-none">10+</p>
-                  <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Years Experience</p>
-                </div>
-                <div className="w-[1px] h-8 bg-[#D8CFC1]" aria-hidden="true" />
-                <div>
-                  <p className="text-xl sm:text-2xl font-serif text-[#171716] leading-none">500+</p>
-                  <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Weddings Captured</p>
-                </div>
-                <div className="w-[1px] h-8 bg-[#D8CFC1]" aria-hidden="true" />
-                <div>
-                  <p className="text-xl sm:text-2xl font-serif text-[#D71920] leading-none">4K</p>
-                  <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#716B64] mt-1">Cinematic Quality</p>
-                </div>
-              </div>
             </div>
 
-            {/* ── Right Column: Layered Editorial Masterpiece Showcase ── */}
-            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end">
-              <div className="relative w-full max-w-[420px] sm:max-w-[460px] xl:max-w-[490px]">
-                
-                {/* Architectural Offset Background Plate (Luxury Album Backdrop) */}
-                <div
-                  className="absolute -inset-2.5 sm:-inset-3.5 rounded-[28px] xl:rounded-[34px] bg-[#EFE9DF] border border-[#D8CFC1] -rotate-1.5 pointer-events-none transition-transform duration-700"
-                  aria-hidden="true"
-                />
+            {/* Main Headline */}
+            <h1
+              id="hero-heading"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="text-[clamp(2.75rem,5.5vw,5.5rem)] font-normal tracking-[-0.035em] leading-[1.04] text-[#171716]"
+            >
+              Every Frame
+              <br />
+              Tells a <span className="italic font-serif text-[#D71920]">Feeling.</span>
+            </h1>
 
-                {/* Primary Masterpiece Photo Card */}
-                <div className="relative aspect-[3.5/4.5] max-h-[520px] xl:max-h-[560px] w-full overflow-hidden rounded-[24px] xl:rounded-[30px] border border-[#171716]/10 shadow-[0_20px_50px_-10px_rgba(23,23,22,0.18)] bg-[#E8E2D7]">
-                  
-                  {/* The 6 Masterpiece Slides (Cover + 5 Client Photos) */}
-                  {heroSlides.map((slide, index) => (
-                    <div
-                      key={slide.id}
-                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                        index === active ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                      }`}
-                    >
-                      <Image
-                        src={slide.image}
-                        alt={slide.alt}
-                        fill
-                        priority={index === 0}
-                        quality={88}
-                        sizes="(min-width: 1280px) 500px, (min-width: 1024px) 460px, 90vw"
-                        className="object-cover object-center transition-transform duration-7000 ease-out"
-                        style={{
-                          transform: index === active ? "scale(1)" : "scale(1.04)",
-                        }}
-                      />
-                      
-                      {/* Filmic Bottom Gradient for Editorial Text */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+            {/* Subtitle */}
+            <p className="mt-4 sm:mt-5 text-lg sm:text-xl font-medium tracking-tight text-[#221F1F]">
+              Stories Worth Remembering.
+            </p>
 
-                      {/* Editorial Caption on Image */}
-                      <div className="absolute bottom-5 left-6 right-6 text-white pointer-events-none z-20">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#D71920]">
-                          {slide.category}
-                        </p>
-                        <h2
-                          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                          className="text-xl sm:text-2xl font-normal leading-tight text-white drop-shadow-md mt-0.5 line-clamp-1"
-                        >
-                          {slide.title}
-                        </h2>
-                      </div>
-                    </div>
-                  ))}
+            {/* Description Paragraph */}
+            <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-[#5F5A5A] max-w-lg font-normal">
+              We capture the moments that matter and turn them into timeless memories. From weddings to
+              music videos, every frame is created with passion.
+            </p>
 
-                  {/* Top-Right Index Pill */}
-                  <div className="absolute top-4 right-4 z-20 rounded-full border border-white/40 bg-black/40 px-3 py-1 backdrop-blur-md text-[10px] font-mono tracking-widest text-white/95">
-                    {active === 0 ? "COVER" : `0${active} / 05`}
-                  </div>
+            {/* 2 Primary Action Buttons */}
+            <div className="mt-7 sm:mt-9 flex flex-wrap items-center gap-3.5 sm:gap-4">
+              <Link
+                href="/photos"
+                className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full bg-[#D71920] px-7 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider text-white shadow-lg shadow-[#D71920]/25 transition-all duration-300 hover:bg-[#b81219] hover:shadow-xl hover:-translate-y-0.5"
+              >
+                <span>Explore Our Work</span>
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
 
-                  {/* Subtle Navigation Arrows */}
-                  <button
-                    type="button"
-                    onClick={() => move(-1)}
-                    aria-label="Previous photograph"
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 z-25 size-9 rounded-full bg-black/35 hover:bg-[#D71920] border border-white/30 hover:border-transparent text-white grid place-items-center transition-all duration-200 backdrop-blur-md cursor-pointer shadow-md"
-                  >
-                    <ChevronLeft className="size-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => move(1)}
-                    aria-label="Next photograph"
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 z-25 size-9 rounded-full bg-black/35 hover:bg-[#D71920] border border-white/30 hover:border-transparent text-white grid place-items-center transition-all duration-200 backdrop-blur-md cursor-pointer shadow-md"
-                  >
-                    <ChevronRight className="size-4" />
-                  </button>
-
-                  {/* Slide Progress Indicator Dots */}
-                  <div className="absolute bottom-2.5 inset-x-0 z-20 flex items-center justify-center gap-1.5 pointer-events-auto">
-                    {heroSlides.map((slide, idx) => (
-                      <button
-                        key={slide.id}
-                        type="button"
-                        onClick={() => setActive(idx)}
-                        aria-label={`Jump to slide ${idx + 1}`}
-                        className={`transition-all duration-300 rounded-full cursor-pointer ${
-                          idx === active
-                            ? "h-1.5 w-5 bg-[#D71920] shadow-sm"
-                            : "size-1.5 bg-white/50 hover:bg-white"
-                        }`}
-                      />
-                    ))}
-                  </div>
-
-                </div>
-
-                {/* Subtle Artistic Footnote */}
-                <p className="mt-3.5 text-center text-xs text-[#716B64] italic">
-                  A little closer. A little more you.
-                </p>
-
-              </div>
+              <Link
+                href="/contact"
+                className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-[#171716]/30 bg-transparent hover:bg-[#171716] hover:text-white px-7 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider text-[#171716] transition-all duration-300 hover:border-[#171716] hover:-translate-y-0.5"
+              >
+                <span>Book Your Date</span>
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
             </div>
 
+            {/* Thoughtfully Framed Footer Tagline (from reference screenshot) */}
+            <div className="mt-8 sm:mt-10 flex items-center gap-4 text-xs text-[#716B64]">
+              <span className="font-normal text-[#5F5A5A]">Real moments. Thoughtfully framed.</span>
+              <span className="h-[1px] w-24 sm:w-36 bg-[#D8CFC1]" aria-hidden="true" />
+            </div>
+          </div>
+
+          {/* ── Right-Edge Floating Thumbnail Arc Carousel (from reference screenshot) ── */}
+          <div
+            className="hidden lg:flex flex-col items-end gap-2.5 absolute right-0 top-1/2 -translate-y-1/2 z-30 pointer-events-auto"
+            role="tablist"
+            aria-label="Slide thumbnail preview"
+          >
+            {heroSlides.map((slide, idx) => {
+              const isActive = idx === active;
+              return (
+                <button
+                  key={slide.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-label={`Show ${slide.title}`}
+                  onClick={() => setActive(idx)}
+                  className={`group relative w-12 xl:w-14 aspect-[3/4] rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer shadow-md ${
+                    isActive
+                      ? "border-[#D71920] scale-110 shadow-lg shadow-[#D71920]/35 ring-2 ring-[#D71920]/30 z-10 translate-x-[-4px]"
+                      : "border-white/80 opacity-70 hover:opacity-100 hover:scale-105"
+                  }`}
+                >
+                  <Image
+                    src={slide.image}
+                    alt=""
+                    fill
+                    sizes="56px"
+                    className="object-cover object-center"
+                  />
+                  {isActive ? (
+                    <span className="absolute top-1 right-1 size-1.5 rounded-full bg-[#D71920] ring-1.5 ring-white" />
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
+        </Container>
+      </div>
+
+      {/* ── Bottom Controls Bar (Exact Match to Reference Screenshot) ── */}
+      <div className="relative z-20 border-t border-[#D8CFC1]/60 bg-[#F9F7F2]/90 backdrop-blur-md">
+        <Container size="wide">
+          <div className="flex min-h-[56px] sm:min-h-[62px] items-center justify-between gap-4 py-2.5">
+            {/* Left: CAPTURE | CREATE | INSPIRE */}
+            <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-semibold tracking-[0.24em] text-[#5C5656] uppercase">
+              <span>Capture</span>
+              <span className="text-[#D71920]">|</span>
+              <span>Create</span>
+              <span className="text-[#D71920]">|</span>
+              <span>Inspire</span>
+            </div>
+
+            {/* Center: Slide Progress & Arrows (from reference screenshot) */}
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => move(-1)}
+                aria-label="Previous photo"
+                className="grid size-7 sm:size-8 place-items-center rounded-full border border-[#171716]/25 text-[#171716] transition-colors hover:border-[#D71920] hover:bg-[#D71920] hover:text-white cursor-pointer"
+              >
+                <ChevronLeft className="size-4" />
+              </button>
+
+              {/* 6 Dots Indicator (Active is elongated red pill) */}
+              <div className="flex items-center gap-1.5 sm:gap-2" aria-label="Slide indicators">
+                {heroSlides.map((slide, idx) => (
+                  <button
+                    key={slide.id}
+                    type="button"
+                    onClick={() => setActive(idx)}
+                    aria-label={`Jump to slide ${idx + 1}`}
+                    aria-current={idx === active ? "true" : undefined}
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${
+                      idx === active
+                        ? "h-2 w-6 sm:w-7 bg-[#D71920]"
+                        : "size-2 bg-[#171716]/25 hover:bg-[#171716]/60"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => move(1)}
+                aria-label="Next photo"
+                className="grid size-7 sm:size-8 place-items-center rounded-full border border-[#171716]/25 text-[#171716] transition-colors hover:border-[#D71920] hover:bg-[#D71920] hover:text-white cursor-pointer"
+              >
+                <ChevronRight className="size-4" />
+              </button>
+            </div>
+
+            {/* Right: Slide Counter */}
+            <div className="text-[11px] font-mono tracking-widest text-[#716B64]">
+              <span className="font-bold text-[#171716]">0{active + 1}</span> / 0{heroSlides.length}
+            </div>
           </div>
         </Container>
       </div>
