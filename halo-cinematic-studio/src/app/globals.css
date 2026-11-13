@@ -14,16 +14,16 @@
   --color-white: #FFFFFF;
   --color-blush: #FFF1F2;
   --color-canvas: #FFFFFF;
-  --color-paper: #FAF8F5;
+  --color-paper: #ECE6DC;
   --color-line: rgba(9,10,13,.12);
   --color-line-strong: rgba(9,10,13,.25);
   --color-brand-tint: #FFF1F2;
   --color-ink-soft: #243B5A;
 }
 :root {
-  --red: #E50919; --red-deep: #b60714; --red-soft: #E50919;
+  --red: #D90B17; --red-deep: #B50812; --red-soft: #F51420;
   --ink: #090A0D; --muted: #625C5D; --white: #fff; --blush: #FFF1F2;
-  --ivory: #FAF8F5; --navy: #243B5A; --blue: #EDF3F8;
+  --ivory: #ECE6DC; --navy: #243B5A; --blue: #EDF3F8;
   --line: rgba(9,10,13,.12); --grad-btn: #E50919; --grad-text: #E50919;
   --shadow-red: none; --radius-card: 3px; --radius-btn: 3px;
   --page-max: 84rem; --page-gutter: clamp(1.25rem,4.4vw,4.5rem);
@@ -80,12 +80,12 @@ a:hover .editorial-photo img { transform: scale(1.025); }
   --red: #D90B17;
   --red-deep: #B50812;
   --red-soft: #F51420;
-  --ivory: #FAF8F5;
+  --ivory: #ECE6DC;
   --muted: #5F5A5A;
   --navy: #141414;
   --blue: #FFF1F2;
   --line: rgba(20, 20, 20, 0.08);
-  background: #FAF8F5;
+  background: #ECE6DC;
   color: #141414;
 }
 .opening {

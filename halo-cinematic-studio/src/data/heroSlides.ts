@@ -60,42 +60,42 @@ export const heroSlides: HeroSlide[] = [
 ];
 
 /**
- * 5 diamond accent thumbnails from pictures/ as shown in reference design:
- * 1. Bride Portrait
- * 2. Wedding Details
- * 3. Engagement Photography
- * 4. Hero Wedding Photograph
- * 5. Behind the Scenes
+ * 5 authentic studio photos cropped from actual HALO wedding captures:
+ * 1. Bride Portrait in Traditional Saree & Gold Jewelry
+ * 2. Sacred Florals & Garland Ritual
+ * 3. Couple Tender Smile
+ * 4. Mandapam Blessing Moment
+ * 5. Royal Wedding Couple Frame
  */
 export const heroThumbnails: HeroThumbnail[] = [
   {
     id: "thumb-1",
     image: "/images/hero/thumbnails/thumb-01.jpg",
-    alt: "Bride Portrait",
-    label: "Bride",
+    alt: "Traditional Tamil Bride Portrait with Gold Jewelry and Jasmine",
+    label: "Bridal Portrait",
   },
   {
     id: "thumb-2",
     image: "/images/hero/thumbnails/thumb-02.jpg",
-    alt: "Wedding Details & Garland",
-    label: "Details",
+    alt: "Wedding Ceremony Rose Garlands and Details",
+    label: "Ceremony Garlands",
   },
   {
     id: "thumb-3",
     image: "/images/hero/thumbnails/thumb-03.jpg",
-    alt: "Engagement Sunset Silhouette",
-    label: "Engagement",
+    alt: "Newlywed Couple Candid Smile",
+    label: "Couple Candid",
   },
   {
     id: "thumb-4",
     image: "/images/hero/thumbnails/thumb-04.jpg",
-    alt: "Hero Wedding Couple",
-    label: "Couple",
+    alt: "Mandapam Auspicious Ceremony Moment",
+    label: "Mandapam Moment",
   },
   {
     id: "thumb-5",
     image: "/images/hero/thumbnails/thumb-05.jpg",
-    alt: "Rings & Behind the Scenes",
-    label: "Moments",
+    alt: "Traditional Couple Wedding Portrait",
+    label: "Heritage Frame",
   },
 ];
