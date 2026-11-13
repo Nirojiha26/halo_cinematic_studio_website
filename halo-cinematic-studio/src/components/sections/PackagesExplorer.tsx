@@ -7,9 +7,13 @@ import {
   ArrowLeft,
   ArrowRight,
   FileImage,
+  Flower2,
+  Gem,
   LayoutGrid,
   Maximize2,
   MessageCircle,
+  PartyPopper,
+  Sparkles,
   X,
 } from "lucide-react";
 import {
@@ -24,6 +28,16 @@ import { QueryParamSync } from "@/components/shared/QueryParamSync";
 import { PackageCard } from "@/components/shared/PackageCard";
 import { whatsappUrl } from "@/config/site";
 import { useBodyScrollLock } from "@/lib/hooks";
+
+const categoryIcons: Record<
+  PackageCategorySlug,
+  React.ComponentType<{ className?: string }>
+> = {
+  weddings: Sparkles,
+  engagement: Gem,
+  puberty: Flower2,
+  events: PartyPopper,
+};
 
 export function PackagesExplorer() {
   const [activeCategory, setActiveCategory] =
@@ -57,72 +71,48 @@ export function PackagesExplorer() {
     <div className="w-full space-y-6 sm:space-y-8">
       <QueryParamSync name="category" onValue={handleCategoryParam} />
 
-      {/* ── Refined Studio Category Header & Filter (Clean Gaps, '|' Separators, No Count Numbers) ── */}
+      {/* ── Refined Studio Category Header & Filter (Obvious Selectable Tabs, No Counts, Tight Gaps) ── */}
       <div className="rounded-2xl border border-[#D8CFC1] bg-[#FAF7F1] p-4 sm:p-5 shadow-xs">
-        {/* Row 1: Category Filter Tabs Separated by '|' + View Switcher */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 border-b border-[#D8CFC1]/70 pb-3.5">
-          {/* Category Tabs using '|' to differentiate (No numbers) */}
-          <nav
-            role="tablist"
-            aria-label="Event Categories"
-            className="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-sm font-semibold"
-          >
-            {packageCategories.map((cat, idx) => {
-              const isActive = cat.slug === activeCategory;
-              return (
-                <React.Fragment key={cat.slug}>
-                  {idx > 0 && (
-                    <span
-                      className="mx-2 sm:mx-3 text-[#D8CFC1] select-none font-light"
-                      aria-hidden="true"
-                    >
-                      |
-                    </span>
-                  )}
-                  <button
-                    role="tab"
-                    type="button"
-                    aria-selected={isActive}
-                    onClick={() => setActiveCategory(cat.slug)}
-                    className={cn(
-                      "transition-colors duration-200 cursor-pointer py-1 px-1",
-                      isActive
-                        ? "text-[#D71920] font-bold"
-                        : "text-[#716B64] hover:text-[#171716]",
-                    )}
-                  >
-                    {cat.label}
-                  </button>
-                </React.Fragment>
-              );
-            })}
-          </nav>
+        {/* Row 1: Helper Eyebrow / Label + View Switcher */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#D8CFC1]/70 pb-3">
+          <div className="flex items-center gap-2">
+            <span className="size-2 rounded-full bg-[#D71920]" />
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#171716]">
+              Select Event Category
+            </span>
+            <span className="text-[#D8CFC1] hidden sm:inline" aria-hidden="true">
+              |
+            </span>
+            <span className="text-xs text-[#716B64] font-medium hidden sm:inline">
+              Choose an event type to view packages &amp; investment
+            </span>
+          </div>
 
           {/* View Mode Toggle: Cards | Flyers using '|' */}
-          <div className="inline-flex items-center text-xs font-semibold shrink-0">
+          <div className="inline-flex items-center gap-1.5 p-1 bg-[#EEE9DF]/70 border border-[#D8CFC1] rounded-xl text-xs font-semibold self-start sm:self-auto">
             <button
               type="button"
               onClick={() => setViewMode("cards")}
               className={cn(
-                "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer",
+                "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer",
                 viewMode === "cards"
-                  ? "bg-[#171716] text-white"
+                  ? "bg-white text-[#171716] font-bold shadow-xs border border-[#D8CFC1]/60"
                   : "text-[#716B64] hover:text-[#171716]",
               )}
             >
               <LayoutGrid className="size-3.5" />
               <span>Cards</span>
             </button>
-            <span className="mx-2 text-[#D8CFC1] select-none" aria-hidden="true">
+            <span className="text-[#D8CFC1]" aria-hidden="true">
               |
             </span>
             <button
               type="button"
               onClick={() => setViewMode("flyers")}
               className={cn(
-                "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer",
+                "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer",
                 viewMode === "flyers"
-                  ? "bg-[#171716] text-white"
+                  ? "bg-white text-[#D71920] font-bold shadow-xs border border-[#D8CFC1]/60"
                   : "text-[#716B64] hover:text-[#171716]",
               )}
             >
@@ -132,8 +122,74 @@ export function PackagesExplorer() {
           </div>
         </div>
 
-        {/* Row 2: Category Context Strip (Tight Gaps, Differentiated with '|') */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 text-xs sm:text-sm">
+        {/* Row 2: Clearly Selectable Category Buttons (Tactile Cards, Icons, Red Accents, No Numbers) */}
+        <div
+          role="tablist"
+          aria-label="Event Categories"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 my-3.5"
+        >
+          {packageCategories.map((cat) => {
+            const isActive = cat.slug === activeCategory;
+            const Icon = categoryIcons[cat.slug] || Sparkles;
+
+            return (
+              <button
+                key={cat.slug}
+                role="tab"
+                type="button"
+                aria-selected={isActive}
+                onClick={() => setActiveCategory(cat.slug)}
+                className={cn(
+                  "group relative flex items-center justify-between gap-2.5 p-3 sm:p-3.5 rounded-xl border text-left transition-all duration-200 cursor-pointer",
+                  isActive
+                    ? "bg-white border-[#D71920] shadow-sm ring-1 ring-[#D71920]/30 -translate-y-0.5"
+                    : "bg-white/60 hover:bg-white border-[#D8CFC1] hover:border-[#D71920]/60 hover:shadow-xs hover:-translate-y-0.5",
+                )}
+              >
+                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                  <span
+                    className={cn(
+                      "grid size-8 sm:size-9 shrink-0 place-items-center rounded-lg transition-colors",
+                      isActive
+                        ? "bg-[#D71920]/10 text-[#D71920]"
+                        : "bg-[#EEE9DF] text-[#716B64] group-hover:bg-[#D71920]/10 group-hover:text-[#D71920]",
+                    )}
+                  >
+                    <Icon className="size-4" />
+                  </span>
+                  <div className="min-w-0">
+                    <p
+                      className={cn(
+                        "text-xs sm:text-sm font-bold leading-tight truncate",
+                        isActive
+                          ? "text-[#D71920]"
+                          : "text-[#171716] group-hover:text-[#D71920]",
+                      )}
+                    >
+                      {cat.label}
+                    </p>
+                    <p className="text-[10px] text-[#716B64] font-medium leading-none mt-1">
+                      {isActive ? "Active View" : "Tap to view"}
+                    </p>
+                  </div>
+                </div>
+
+                <span
+                  className={cn(
+                    "size-2 shrink-0 rounded-full transition-all",
+                    isActive
+                      ? "bg-[#D71920] scale-125"
+                      : "bg-transparent group-hover:bg-[#D8CFC1]",
+                  )}
+                  aria-hidden="true"
+                />
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Row 3: Category Context Strip (Tight Gaps, Differentiated with '|') */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-[#D8CFC1]/70 text-xs sm:text-sm">
           <div className="flex items-center flex-wrap gap-x-2.5 gap-y-1">
             <span className="font-bold text-[#D71920] uppercase tracking-wider text-[11px] sm:text-xs">
               {currentMeta.eyebrow}
