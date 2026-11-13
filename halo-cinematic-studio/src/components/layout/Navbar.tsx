@@ -8,8 +8,7 @@ import { cn, isActivePath } from "@/lib/utils";
 import { Logo } from "@/components/shared/Logo";
 import { MobileMenu } from "./MobileMenu";
 import { Container } from "@/components/ui/Container";
-import { MessageCircle } from "lucide-react";
-import { whatsappUrl } from "@/config/site";
+import { FacebookIcon, InstagramIcon } from "@/components/shared/SocialIcons";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -86,20 +85,18 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit HALO on Facebook"
-              className="grid size-10 place-items-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-[#D90B17] hover:text-white"
+              className="grid size-10 place-items-center rounded-full border border-[#E50919] text-[#E50919] transition-all hover:bg-[#E50919] hover:text-white hover:scale-105"
             >
-              <svg className="size-4 fill-current" viewBox="0 0 24 24" aria-hidden>
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
+              <FacebookIcon className="size-4 shrink-0" />
             </a>
             <a
-              href={whatsappUrl()}
+              href="https://www.instagram.com/halo_cinematic_studio?psln=MWZ5cnQ4eGNmcGowaQ=="
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Chat with HALO on WhatsApp"
-              className="grid size-10 place-items-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-[#D90B17] hover:text-white"
+              aria-label="Visit HALO on Instagram"
+              className="grid size-10 place-items-center rounded-full border border-[#E50919] text-[#E50919] transition-all hover:bg-[#E50919] hover:text-white hover:scale-105"
             >
-              <MessageCircle className="size-4" aria-hidden />
+              <InstagramIcon className="size-4 shrink-0" />
             </a>
           </div>
 
