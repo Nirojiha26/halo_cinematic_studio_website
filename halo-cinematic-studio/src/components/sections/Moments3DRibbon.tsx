@@ -6,7 +6,7 @@ import { useState } from "react";
 import { ArrowUpRight, Maximize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface RibbonMoment {
+interface ConcaveMoment {
   id: string;
   src: string;
   title: string;
@@ -14,86 +14,65 @@ interface RibbonMoment {
   collection: string;
   alt: string;
   angle: number; // Y-axis rotation in degrees
-  scale: number;
+  scale: number; // Scale to produce the concave amphitheater curve from sample screenshot
   zIndex: number;
 }
 
-const ribbonMoments: RibbonMoment[] = [
+// 5 completely fresh, unused authentic studio photos (checked: 0 occurrences elsewhere on the site)
+const concaveMoments: ConcaveMoment[] = [
   {
-    id: "ribbon-1",
-    src: "/images/gallery/halo-07.jpg",
-    title: "Garden Sunset Promenade",
+    id: "concave-1",
+    src: "/images/gallery/halo-08.jpg",
+    title: "Warm Horizon Intimacy",
     category: "Engagements",
     collection: "Engagements",
     alt: "Couple in golden sunset glow during outdoor preshoot by HALO Cinematic Studio",
-    angle: 30,
-    scale: 0.88,
+    angle: 40,
+    scale: 1.18,
     zIndex: 10,
   },
   {
-    id: "ribbon-2",
-    src: "/images/gallery/halo-1-51.jpg",
-    title: "Royal Garland Exchange",
-    category: "Weddings",
-    collection: "Weddings",
-    alt: "Joyful bride and groom exchanging floral garlands in traditional ceremony",
-    angle: 20,
-    scale: 0.93,
-    zIndex: 12,
-  },
-  {
-    id: "ribbon-3",
-    src: "/images/gallery/halo-13.jpg",
-    title: "Reflective Bridal Radiance",
+    id: "concave-2",
+    src: "/images/gallery/halo-11.jpg",
+    title: "Bridal Silk Saree Elegance",
     category: "Portraits",
     collection: "Portraits",
-    alt: "Bridal portrait showcasing gold temple ornaments and emerald bangles",
-    angle: 10,
-    scale: 0.97,
+    alt: "Bridal fine-art portrait showcasing traditional Kanchipuram silk saree",
+    angle: 20,
+    scale: 1.05,
     zIndex: 14,
   },
   {
-    id: "ribbon-4",
-    src: "/images/gallery/halo-dsc05907.jpg",
-    title: "Eternal Sacred Vows",
+    id: "concave-3",
+    src: "/images/gallery/halo-16.jpg",
+    title: "Carved Temple Doorways",
     category: "Weddings",
     collection: "Weddings",
-    alt: "Newlyweds standing proudly before grand temple architecture in Nelliady",
+    alt: "Newlywed couple standing peacefully before carved Hindu temple doors",
     angle: 0,
-    scale: 1.05,
+    scale: 0.94,
     zIndex: 20,
   },
   {
-    id: "ribbon-5",
-    src: "/images/gallery/halo-dila-3-2-.jpg",
-    title: "Puberty Milestone Grace",
+    id: "concave-4",
+    src: "/images/gallery/halo-dila-6-1-.jpg",
+    title: "Ritual Garland Blessing",
     category: "Cultural Ceremony",
     collection: "Portraits",
-    alt: "Traditional puberty ceremony portrait with sacred jasmine garland",
-    angle: -10,
-    scale: 0.97,
+    alt: "Traditional milestone ceremony with ceremonial floral garland and temple blessings",
+    angle: -20,
+    scale: 1.05,
     zIndex: 14,
   },
   {
-    id: "ribbon-6",
-    src: "/images/gallery/halo-10.jpg",
-    title: "Candid Laughter Together",
-    category: "Engagements",
-    collection: "Engagements",
-    alt: "Spontaneous intimate laughter between couple during outdoor preshoot",
-    angle: -20,
-    scale: 0.93,
-    zIndex: 12,
-  },
-  {
-    id: "ribbon-7",
-    src: "/images/gallery/halo-2-copy.jpg",
-    title: "Henna & Gold Bangles",
-    category: "Ceremony & Details",
-    collection: "Ceremony & Details",
-    alt: "Intricate bridal mehndi and traditional gold wedding jewellery details",
-    angle: -30,
-    scale: 0.88,
+    id: "concave-5",
+    src: "/images/gallery/halo-17.jpg",
+    title: "Candid Celebration Joy",
+    category: "Weddings",
+    collection: "Weddings",
+    alt: "Spontaneous laughter and joyous family celebration during traditional wedding",
+    angle: -40,
+    scale: 1.18,
     zIndex: 10,
   },
 ];
@@ -103,13 +82,13 @@ export function EditorialPortfolio() {
 
   return (
     <section
-      className="relative py-14 sm:py-18 lg:py-20 bg-[#FAF7F1] border-b border-[#D8CFC1] overflow-hidden select-none"
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#FAF7F1] border-b border-[#D8CFC1] overflow-hidden select-none"
       id="selected-moments"
       aria-labelledby="portfolio-heading"
     >
-      <div className="w-full max-w-[98rem] 2xl:max-w-[106rem] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ── Section Header (Removed 'real emotions' text as requested) ── */}
-        <div className="flex items-end justify-between gap-6 mb-8 sm:mb-12">
+      <div className="w-full max-w-[98rem] 2xl:max-w-[108rem] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ── Section Header (Concise & Focused, No Subtitle as requested) ── */}
+        <div className="flex items-end justify-between gap-6 mb-10 sm:mb-14">
           <div>
             <div className="inline-flex items-center gap-2.5 mb-2.5">
               <span className="w-5 h-[2px] bg-[#D71920]" aria-hidden="true" />
@@ -138,17 +117,17 @@ export function EditorialPortfolio() {
           </div>
         </div>
 
-        {/* ── 3D Curved Perspective Ribbon (Expanded Horizontal Width, zero horizontal scroll) ── */}
-        <div className="relative w-full py-4 sm:py-6 flex items-center justify-center [perspective:1400px]">
-          <div className="w-full flex items-center justify-center -space-x-1 sm:-space-x-2.5 lg:-space-x-3.5 px-1 sm:px-2">
-            {ribbonMoments.map((moment, idx) => {
+        {/* ── Concave 3D Panoramic Amphitheater (exact match to sample screenshot) ── */}
+        <div className="relative w-full py-6 sm:py-10 flex items-center justify-center [perspective:1000px]">
+          <div className="w-full flex items-center justify-center -space-x-2 sm:-space-x-3 lg:-space-x-5 px-1 sm:px-2">
+            {concaveMoments.map((moment, idx) => {
               const isHovered = hoveredId === moment.id;
-              const isCenter = idx === 3;
+              const isCenter = idx === 2;
 
-              // Calculate active rotation and scale
+              // When hovered, flatten towards camera and elevate
               const rotationY = isHovered ? 0 : moment.angle;
-              const scale = isHovered ? 1.1 : moment.scale;
-              const zIndex = isHovered ? 40 : isCenter ? 25 : moment.zIndex;
+              const scale = isHovered ? 1.25 : moment.scale;
+              const zIndex = isHovered ? 50 : isCenter ? 25 : moment.zIndex;
 
               return (
                 <Link
@@ -162,22 +141,22 @@ export function EditorialPortfolio() {
                     transformStyle: "preserve-3d",
                   }}
                   className={cn(
-                    "group relative w-[18.5%] sm:w-[17%] lg:w-[15.5%] xl:w-[15%] max-w-[260px] aspect-[3/4.2] shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-white/80 shadow-md transition-all duration-500 ease-out cursor-pointer",
+                    "group relative w-[22%] sm:w-[19%] lg:w-[17.5%] max-w-[280px] aspect-[3/4.2] shrink-0 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-white shadow-xl transition-all duration-500 ease-out cursor-pointer",
                     isHovered
-                      ? "ring-2 ring-[#D71920] shadow-2xl"
-                      : "hover:border-[#D71920]/80",
-                    isCenter && !hoveredId ? "shadow-xl ring-1 ring-black/10" : "",
+                      ? "ring-4 ring-[#D71920]/40 shadow-2xl z-50"
+                      : "hover:border-[#D71920]",
+                    isCenter && !hoveredId ? "shadow-2xl ring-1 ring-black/10" : "",
                   )}
                 >
                   <Image
                     src={moment.src}
                     alt={moment.alt}
                     fill
-                    sizes="(min-width: 1280px) 16vw, (min-width: 768px) 22vw, 30vw"
+                    sizes="(min-width: 1280px) 20vw, (min-width: 768px) 25vw, 35vw"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
                   />
 
-                  {/* Glass highlight / sheen */}
+                  {/* Gradient Glass Sheen */}
                   <div
                     className={cn(
                       "absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent transition-opacity duration-300",
@@ -188,23 +167,23 @@ export function EditorialPortfolio() {
                   {/* Hover Caption Overlay */}
                   <div
                     className={cn(
-                      "absolute inset-x-0 bottom-0 p-3 sm:p-4 text-white transition-all duration-300 flex flex-col justify-end",
+                      "absolute inset-x-0 bottom-0 p-3 sm:p-5 text-white transition-all duration-300 flex flex-col justify-end",
                       isHovered
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-2 pointer-events-none",
                     )}
                   >
-                    <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#D71920]">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#D71920]">
                       {moment.category}
                     </p>
                     <h4
                       style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                      className="text-xs sm:text-sm font-medium leading-tight text-white mt-0.5 line-clamp-1"
+                      className="text-xs sm:text-sm lg:text-base font-medium leading-tight text-white mt-0.5 line-clamp-1"
                     >
                       {moment.title}
                     </h4>
-                    <p className="mt-1 text-[10px] text-white/80 inline-flex items-center gap-1 font-semibold">
-                      <Maximize2 className="size-2.5 text-[#D71920]" />
+                    <p className="mt-1 text-[11px] text-white/85 inline-flex items-center gap-1 font-semibold">
+                      <Maximize2 className="size-3 text-[#D71920]" />
                       <span>View in Gallery</span>
                     </p>
                   </div>
