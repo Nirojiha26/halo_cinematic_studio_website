@@ -6,80 +6,151 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 
-// Curated collections matching the exact album collage template (reference media_1794592101754_d9962176.png)
+// Curated collections with 8 authentic photographs per collection in an elegant luxury album spread.
 // Every photo in each collection is 100% distinct, authentic, and high quality with zero duplicates.
-const collageCollections = [
+interface CollagePhoto {
+  image: string;
+  alt: string;
+}
+
+interface CollageCollection {
+  id: string;
+  signature: string;
+  photos: [
+    CollagePhoto, // 0: Left Top
+    CollagePhoto, // 1: Left Mid Landscape
+    CollagePhoto, // 2: Left Bottom
+    CollagePhoto, // 3: Center Top Signature Portrait
+    CollagePhoto, // 4: Center Bottom Signature Portrait
+    CollagePhoto, // 5: Right Top
+    CollagePhoto, // 6: Right Mid Landscape
+    CollagePhoto, // 7: Right Bottom
+  ];
+}
+
+const collageCollections: CollageCollection[] = [
   {
     id: "collection-1",
     signature: "HALO Cinematic Studio · 2026",
-    topRight: {
-      image: "/images/gallery/halo-1-51.jpg",
-      alt: "HALO Cinematic Studio - Royal Garland Exchange Newlywed Couple",
-    },
-    topLeft: {
-      image: "/images/baby/miththu-05.jpg",
-      alt: "HALO Cinematic Studio - Radiant Baby Miththu Milestone Portrait",
-    },
-    center: {
-      image: "/images/home-selected/couple-at-temple.webp",
-      alt: "HALO Cinematic Studio - Newlyweds Smiling Seated in Front of Carved Temple Doors",
-    },
-    bottomLeft: {
-      image: "/images/moments/moment-03.jpg",
-      alt: "HALO Cinematic Studio - Intimate Bridal Gold Jewelry & Earring Portrait",
-    },
-    bottomRight: {
-      image: "/images/hero/slide-01.jpg",
-      alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Couple in Mandapam",
-    },
+    photos: [
+      // Left Wing (3 photos)
+      {
+        image: "/images/baby/miththu-05.jpg",
+        alt: "HALO Cinematic Studio - Radiant Baby Miththu Milestone Portrait",
+      },
+      {
+        image: "/images/home-selected/garden-couple.webp",
+        alt: "HALO Cinematic Studio - Newlywed Couple in Natural Outdoor Garden Light",
+      },
+      {
+        image: "/images/moments/moment-03.jpg",
+        alt: "HALO Cinematic Studio - Intimate Bridal Gold Jewelry & Earring Portrait",
+      },
+      // Center Pillar (2 prominent portraits)
+      {
+        image: "/images/gallery/halo-1-51.jpg",
+        alt: "HALO Cinematic Studio - Royal Garland Exchange Newlywed Couple",
+      },
+      {
+        image: "/images/hero/slide-01.jpg",
+        alt: "HALO Cinematic Studio - Traditional Sri Lankan Tamil Wedding Couple in Mandapam",
+      },
+      // Right Wing (3 photos)
+      {
+        image: "/images/hero/slide-02.jpg",
+        alt: "HALO Cinematic Studio - Newlywed Bride Candid Joy & Jewelry Portrait",
+      },
+      {
+        image: "/images/home-selected/couple-at-temple.webp",
+        alt: "HALO Cinematic Studio - Newlyweds Smiling Seated in Front of Carved Temple Doors",
+      },
+      {
+        image: "/images/home-selected/pink-saree-portrait.webp",
+        alt: "HALO Cinematic Studio - Traditional Silk Saree Milestone Celebration",
+      },
+    ],
   },
   {
     id: "collection-2",
     signature: "HALO · Sacred Ceremonies",
-    topRight: {
-      image: "/images/home-selected/garden-couple.webp",
-      alt: "HALO Cinematic Studio - Newlywed Couple in Natural Outdoor Garden Light",
-    },
-    topLeft: {
-      image: "/images/hero/slide-02.jpg",
-      alt: "HALO Cinematic Studio - Newlywed Bride Candid Joy & Intimate Jewelry Portrait",
-    },
-    center: {
-      image: "/images/home-selected/garland-exchange.webp",
-      alt: "HALO Cinematic Studio - Auspicious Garland Exchange Ceremony at Mandapam",
-    },
-    bottomLeft: {
-      image: "/images/moments/moment-07.jpg",
-      alt: "HALO Cinematic Studio - Bride Golden Hour Candid Smile",
-    },
-    bottomRight: {
-      image: "/images/hero/cover-10.jpg",
-      alt: "HALO Cinematic Studio - Newlywed Couple Radiant Smile & Shoulder Lean",
-    },
+    photos: [
+      // Left Wing (3 photos)
+      {
+        image: "/images/baby/miththu-01.jpg",
+        alt: "HALO Cinematic Studio - Baby Miththu Joyful First Milestone Smile",
+      },
+      {
+        image: "/images/home-selected/garland-exchange.webp",
+        alt: "HALO Cinematic Studio - Auspicious Garland Exchange Ceremony at Mandapam",
+      },
+      {
+        image: "/images/moments/moment-07.jpg",
+        alt: "HALO Cinematic Studio - Bride Golden Hour Candid Smile",
+      },
+      // Center Pillar (2 prominent portraits)
+      {
+        image: "/images/home-selected/traditional-wedding.webp",
+        alt: "HALO Cinematic Studio - Traditional Wedding Couple in Silk Saree Before Temple Doors",
+      },
+      {
+        image: "/images/hero/cover-10.jpg",
+        alt: "HALO Cinematic Studio - Newlywed Couple Radiant Smile & Shoulder Lean",
+      },
+      // Right Wing (3 photos)
+      {
+        image: "/images/gallery/halo-13.jpg",
+        alt: "HALO Cinematic Studio - Serene Morning Bridal Preparation Portrait",
+      },
+      {
+        image: "/images/home-selected/temple-connection.webp",
+        alt: "HALO Cinematic Studio - Newlyweds Walking in Temple Courtyard Holding Hands",
+      },
+      {
+        image: "/images/moments/moment-01.jpg",
+        alt: "HALO Cinematic Studio - Golden Hour Beach Preshoot Couple Session",
+      },
+    ],
   },
   {
     id: "collection-3",
     signature: "HALO · Timeless Memories",
-    topRight: {
-      image: "/images/home-selected/traditional-wedding.webp",
-      alt: "HALO Cinematic Studio - Traditional Wedding Couple in Silk Saree Before Temple Doors",
-    },
-    topLeft: {
-      image: "/images/moments/moment-06.jpg",
-      alt: "HALO Cinematic Studio - Bride on Vintage Garden Bench Portrait",
-    },
-    center: {
-      image: "/images/home-selected/temple-connection.webp",
-      alt: "HALO Cinematic Studio - Newlyweds Walking in Temple Courtyard Holding Hands",
-    },
-    bottomLeft: {
-      image: "/images/hero/slide-05.jpg",
-      alt: "HALO Cinematic Studio - Heritage Courtyard Bride in Traditional Jewelry",
-    },
-    bottomRight: {
-      image: "/images/home-selected/wedding-embrace.webp",
-      alt: "HALO Cinematic Studio - Intimate Wedding Couple Close Embrace",
-    },
+    photos: [
+      // Left Wing (3 photos)
+      {
+        image: "/images/baby/miththu-03.jpg",
+        alt: "HALO Cinematic Studio - Sweet Baby Milestone Fine-Art Studio Framing",
+      },
+      {
+        image: "/images/moments/moment-05.jpg",
+        alt: "HALO Cinematic Studio - Joyous Sacred Mandapam Blessing Ceremony",
+      },
+      {
+        image: "/images/hero/slide-05.jpg",
+        alt: "HALO Cinematic Studio - Heritage Courtyard Bride in Traditional Jewelry",
+      },
+      // Center Pillar (2 prominent portraits)
+      {
+        image: "/images/gallery/halo-11.jpg",
+        alt: "HALO Cinematic Studio - Classical Bridal Red Silk Saree Elegance",
+      },
+      {
+        image: "/images/home-selected/wedding-embrace.webp",
+        alt: "HALO Cinematic Studio - Intimate Wedding Couple Close Embrace",
+      },
+      // Right Wing (3 photos)
+      {
+        image: "/images/moments/moment-06.jpg",
+        alt: "HALO Cinematic Studio - Bride on Vintage Garden Bench Portrait",
+      },
+      {
+        image: "/images/gallery/halo-dila-8-3-.jpg",
+        alt: "HALO Cinematic Studio - Cherished Family Milestone Ceremony Celebration",
+      },
+      {
+        image: "/images/gallery/halo-1-12.jpg",
+        alt: "HALO Cinematic Studio - Bride & Groom Temple Vows in Auspicious Attire",
+      },
+    ],
   },
 ];
 
@@ -219,122 +290,175 @@ export function Hero() {
 
           </div>
 
-          {/* ── Right Column: Magazine Editorial Album Layout (Brought Down to Clear Navbar, Well-Organized Space) ── */}
-          <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center justify-center pt-1.5 sm:pt-2 lg:pt-3">
-            <div className="relative w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[450px] lg:max-w-[470px] xl:max-w-[500px]">
+          {/* ── Right Column: Curated 8-Photo Luxury Album Spread ── */}
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center justify-center pt-1 sm:pt-1.5 lg:pt-2">
+            <div className="relative w-full max-w-[370px] xs:max-w-[430px] sm:max-w-[510px] md:max-w-[550px] lg:max-w-[580px] xl:max-w-[620px]">
               
-              {/* Stepped 2-Column Album Frame */}
-              <div className="flex gap-2.5 sm:gap-3 items-end">
+              {/* 3-Column Luxury Photobook Album Spread (8 Photos) */}
+              <div className="flex gap-1.5 xs:gap-2 sm:gap-2.5 lg:gap-3 items-center justify-center">
                 
-                {/* ── Left Column: Stepped 3-Photo Wing ── */}
-                <div className="flex-1 flex flex-col gap-2.5 sm:gap-3 justify-end">
+                {/* ── Left Wing: 3 Photos (Top Inset, Mid Landscape, Bottom Inset) ── */}
+                <div className="w-[31%] sm:w-[32%] flex flex-col gap-1.5 xs:gap-2 sm:gap-2.5 lg:gap-3 justify-center">
                   
-                  {/* Photo 2 (Top-Center: Inset Vertical Slender Portrait) */}
-                  <div className="flex justify-end">
-                    <div
-                      className="relative w-[70%] aspect-[3/3.35] overflow-hidden rounded-[2px] bg-white p-1.5 sm:p-2 shadow-[0_6px_22px_rgba(23,23,22,0.09)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)]"
-                      onClick={() => move(1)}
-                    >
-                      <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
-                        <Image
-                          src={current.topLeft.image}
-                          alt={current.topLeft.alt}
-                          fill
-                          sizes="(min-width: 1280px) 200px, (min-width: 640px) 180px, 140px"
-                          className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Photo 3 (Middle-Left: Full-Width Horizontal Landscape Rectangle) */}
+                  {/* Photo 1: Top-Left (Baby Milestone / Portrait) */}
                   <div
-                    className="relative w-full aspect-[16/9.6] overflow-hidden rounded-[2px] bg-white p-1.5 sm:p-2 shadow-[0_6px_22px_rgba(23,23,22,0.09)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)]"
+                    className="relative w-full aspect-[3/3.1] overflow-hidden rounded-[2px] bg-white p-1 sm:p-1.5 lg:p-2 shadow-[0_4px_18px_rgba(23,23,22,0.08)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)] hover:scale-[1.02]"
                     onClick={() => move(1)}
                   >
                     <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
                       <Image
-                        src={current.center.image}
-                        alt={current.center.alt}
+                        src={current.photos[0].image}
+                        alt={current.photos[0].alt}
                         fill
-                        sizes="(min-width: 1280px) 260px, (min-width: 640px) 230px, 190px"
+                        sizes="(min-width: 1280px) 190px, (min-width: 640px) 150px, 110px"
                         className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                   </div>
 
-                  {/* Photo 4 (Bottom-Center: Inset Vertical Slender Portrait) */}
-                  <div className="flex justify-end">
-                    <div
-                      className="relative w-[70%] aspect-[3/3.35] overflow-hidden rounded-[2px] bg-white p-1.5 sm:p-2 shadow-[0_6px_22px_rgba(23,23,22,0.09)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)]"
-                      onClick={() => move(1)}
-                    >
-                      <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
-                        <Image
-                          src={current.bottomLeft.image}
-                          alt={current.bottomLeft.alt}
-                          fill
-                          sizes="(min-width: 1280px) 200px, (min-width: 640px) 180px, 140px"
-                          className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
+                  {/* Photo 2: Mid-Left (Full Landscape Feature) */}
+                  <div
+                    className="relative w-full aspect-[16/10.5] overflow-hidden rounded-[2px] bg-white p-1 sm:p-1.5 lg:p-2 shadow-[0_4px_18px_rgba(23,23,22,0.08)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)] hover:scale-[1.02]"
+                    onClick={() => move(1)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                      <Image
+                        src={current.photos[1].image}
+                        alt={current.photos[1].alt}
+                        fill
+                        sizes="(min-width: 1280px) 190px, (min-width: 640px) 150px, 110px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Photo 3: Bottom-Left (Artistic Details / Portrait) */}
+                  <div
+                    className="relative w-full aspect-[3/3.1] overflow-hidden rounded-[2px] bg-white p-1 sm:p-1.5 lg:p-2 shadow-[0_4px_18px_rgba(23,23,22,0.08)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)] hover:scale-[1.02]"
+                    onClick={() => move(1)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                      <Image
+                        src={current.photos[2].image}
+                        alt={current.photos[2].alt}
+                        fill
+                        sizes="(min-width: 1280px) 190px, (min-width: 640px) 150px, 110px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                      />
                     </div>
                   </div>
 
                 </div>
 
-                {/* ── Right Column: 2-Photo Pillar + Signature ── */}
-                <div className="w-[49%] sm:w-[50%] flex flex-col gap-2.5 sm:gap-3">
+                {/* ── Center Pillar: 2 Signature Prominent Portraits ── */}
+                <div className="w-[36%] sm:w-[35%] flex flex-col gap-1.5 xs:gap-2 sm:gap-2.5 lg:gap-3 justify-center">
                   
-                  {/* Photo 1 (Top-Right: Tall Vertical Portrait) */}
+                  {/* Photo 4: Center-Top (Signature Royal Wedding Portrait) */}
                   <div
-                    className="relative w-full aspect-[3/3.35] overflow-hidden rounded-[2px] bg-white p-1.5 sm:p-2 shadow-[0_6px_22px_rgba(23,23,22,0.09)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)]"
+                    className="relative w-full aspect-[3/3.45] overflow-hidden rounded-[2px] bg-white p-1 sm:p-1.5 lg:p-2 shadow-[0_6px_22px_rgba(23,23,22,0.11)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_12px_30px_rgba(23,23,22,0.18)] hover:scale-[1.02]"
                     onClick={() => move(1)}
                   >
                     <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
                       <Image
-                        src={current.topRight.image}
-                        alt={current.topRight.alt}
+                        src={current.photos[3].image}
+                        alt={current.photos[3].alt}
                         fill
                         priority
-                        sizes="(min-width: 1280px) 260px, (min-width: 640px) 230px, 190px"
+                        sizes="(min-width: 1280px) 220px, (min-width: 640px) 175px, 125px"
                         className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                   </div>
 
-                  {/* Photo 5 (Bottom-Right: Tall Vertical Portrait) */}
+                  {/* Photo 5: Center-Bottom (Signature Mandapam Newlywed Portrait) */}
                   <div
-                    className="relative w-full aspect-[3/3.35] overflow-hidden rounded-[2px] bg-white p-1.5 sm:p-2 shadow-[0_6px_22px_rgba(23,23,22,0.09)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)]"
+                    className="relative w-full aspect-[3/3.45] overflow-hidden rounded-[2px] bg-white p-1 sm:p-1.5 lg:p-2 shadow-[0_6px_22px_rgba(23,23,22,0.11)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_12px_30px_rgba(23,23,22,0.18)] hover:scale-[1.02]"
                     onClick={() => move(1)}
                   >
                     <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
                       <Image
-                        src={current.bottomRight.image}
-                        alt={current.bottomRight.alt}
+                        src={current.photos[4].image}
+                        alt={current.photos[4].alt}
                         fill
-                        sizes="(min-width: 1280px) 260px, (min-width: 640px) 230px, 190px"
+                        sizes="(min-width: 1280px) 220px, (min-width: 640px) 175px, 125px"
                         className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                   </div>
 
-                  {/* Signature under Photo 5 (matching "The Larsons 2015" from reference) */}
-                  <div className="pt-1 sm:pt-1.5 text-right">
-                    <p
-                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                      className="text-[11px] sm:text-xs italic text-[#6B655E] tracking-wider"
-                    >
-                      {current.signature}
-                    </p>
+                </div>
+
+                {/* ── Right Wing: 3 Photos (Top Inset, Mid Landscape, Bottom Inset) ── */}
+                <div className="w-[31%] sm:w-[32%] flex flex-col gap-1.5 xs:gap-2 sm:gap-2.5 lg:gap-3 justify-center">
+                  
+                  {/* Photo 6: Top-Right (Bride Candid Joy / Radiant Glance) */}
+                  <div
+                    className="relative w-full aspect-[3/3.1] overflow-hidden rounded-[2px] bg-white p-1 sm:p-1.5 lg:p-2 shadow-[0_4px_18px_rgba(23,23,22,0.08)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)] hover:scale-[1.02]"
+                    onClick={() => move(1)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                      <Image
+                        src={current.photos[5].image}
+                        alt={current.photos[5].alt}
+                        fill
+                        sizes="(min-width: 1280px) 190px, (min-width: 640px) 150px, 110px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Photo 7: Mid-Right (Full Landscape Feature) */}
+                  <div
+                    className="relative w-full aspect-[16/10.5] overflow-hidden rounded-[2px] bg-white p-1 sm:p-1.5 lg:p-2 shadow-[0_4px_18px_rgba(23,23,22,0.08)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)] hover:scale-[1.02]"
+                    onClick={() => move(1)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                      <Image
+                        src={current.photos[6].image}
+                        alt={current.photos[6].alt}
+                        fill
+                        sizes="(min-width: 1280px) 190px, (min-width: 640px) 150px, 110px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Photo 8: Bottom-Right (Cultural Milestone / Tradition) */}
+                  <div
+                    className="relative w-full aspect-[3/3.1] overflow-hidden rounded-[2px] bg-white p-1 sm:p-1.5 lg:p-2 shadow-[0_4px_18px_rgba(23,23,22,0.08)] border border-[#E5DFD5] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(23,23,22,0.15)] hover:scale-[1.02]"
+                    onClick={() => move(1)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden bg-[#EAE4D9]">
+                      <Image
+                        src={current.photos[7].image}
+                        alt={current.photos[7].alt}
+                        fill
+                        sizes="(min-width: 1280px) 190px, (min-width: 640px) 150px, 110px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
                   </div>
 
                 </div>
 
               </div>
 
+              {/* Signature below Album */}
+              <div className="pt-2 sm:pt-2.5 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] tracking-wider uppercase font-semibold text-[#8C827A]">
+                  <span className="size-1.5 rounded-full bg-[#D71920]" />
+                  <span>Curated Album</span>
+                </div>
+                <p
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  className="text-[11px] sm:text-xs italic text-[#6B655E] tracking-wider"
+                >
+                  {current.signature}
+                </p>
+              </div>
+
               {/* ── Slide Collection Arrows Controls (Cleanly Below Collage, 100% In View) ── */}
-              <div className="mt-3.5 sm:mt-4 flex items-center justify-center gap-3 z-30">
+              <div className="mt-3 sm:mt-3.5 flex items-center justify-center gap-3 z-30">
                 <button
                   type="button"
                   onClick={() => move(-1)}
