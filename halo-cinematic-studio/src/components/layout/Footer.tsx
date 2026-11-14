@@ -163,14 +163,29 @@ export function Footer() {
       </Container>
 
       {/* Sub-footer copyright with mobile bottom bar clearance */}
-      <div className="border-t border-[#2A2926] pt-3.5 pb-24 sm:py-3.5">
-        <Container className="flex flex-col items-center justify-between gap-3 text-xs text-[#A39E96] sm:flex-row">
+      <div className="border-t border-[#2A2926] pt-4 pb-24 sm:py-4">
+        <Container className="flex flex-col items-center justify-between gap-3 text-xs sm:text-[13px] text-[#A39E96] md:flex-row">
           <p>© <CurrentYear /> {siteConfig.name}. All rights reserved.</p>
-          <p className="flex items-center gap-2">
+
+          {/* Solution by Nexora Labs */}
+          <div className="flex items-center gap-1.5 text-sm sm:text-[14px]">
+            <span className="font-medium text-[#FAF7F1]">Solution by</span>
+            <a
+              href="https://nexoralabs.lk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Nexora Labs"
+              className="font-bold text-[#F29947] hover:text-[#FFA857] transition-colors underline-offset-4 hover:underline"
+            >
+              Nexora Labs
+            </a>
+          </div>
+
+          <p className="flex items-center gap-2 text-xs sm:text-[13px] text-[#716B64]">
             <span>Capture</span>
-            <span className="text-[#D8CFC1]/40">•</span>
+            <span className="text-[#D8CFC1]/30">•</span>
             <span className="font-semibold text-[#D71920]">Create</span>
-            <span className="text-[#D8CFC1]/40">•</span>
+            <span className="text-[#D8CFC1]/30">•</span>
             <span>Inspire</span>
           </p>
         </Container>

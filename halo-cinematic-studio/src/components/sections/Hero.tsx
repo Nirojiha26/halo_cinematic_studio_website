@@ -17,8 +17,8 @@ const collageCollections = [
       alt: "HALO Cinematic Studio - Royal Garland Exchange Newlywed Couple",
     },
     topLeft: {
-      image: "/images/home-selected/pink-saree-portrait.webp",
-      alt: "HALO Cinematic Studio - Radiant Milestone Portrait in Traditional Pink Silk Saree",
+      image: "/images/baby/miththu-05.jpg",
+      alt: "HALO Cinematic Studio - Radiant Baby Miththu Milestone Portrait",
     },
     center: {
       image: "/images/home-selected/couple-at-temple.webp",

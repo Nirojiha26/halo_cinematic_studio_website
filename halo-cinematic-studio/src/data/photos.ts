@@ -5,6 +5,7 @@ export type PhotoCollection =
   | "Weddings"
   | "Engagements"
   | "Portraits"
+  | "Baby & Milestones"
   | "Ceremony & Details";
 
 export const photoCollections: PhotoCollection[] = [
@@ -12,6 +13,7 @@ export const photoCollections: PhotoCollection[] = [
   "Weddings",
   "Engagements",
   "Portraits",
+  "Baby & Milestones",
   "Ceremony & Details",
 ];
 
@@ -336,6 +338,80 @@ export const studioPhotos: StudioPhoto[] = [
     subtitle: "Memorable Family Heirloom",
     alt: "Family gathered around milestone ceremony celebration",
     packageCategory: "puberty",
+    width: 1600,
+    height: 1066,
+    isLandscape: true,
+  },
+
+  // ── Baby & Milestones (6 photos) ──
+  {
+    id: "halo-photo-baby-01",
+    src: "/images/gallery/halo-baby-01.jpg",
+    title: "Little Miththu Wonder & Joy",
+    category: "Baby & Milestones",
+    subtitle: "Baby Milestone Photoshoot",
+    alt: "Baby Miththu smiling in studio milestone photoshoot by HALO Cinematic Studio",
+    packageCategory: "events",
+    width: 1600,
+    height: 1066,
+    isLandscape: true,
+  },
+  {
+    id: "halo-photo-baby-02",
+    src: "/images/gallery/halo-baby-02.jpg",
+    title: "Playful Expressions",
+    category: "Baby & Milestones",
+    subtitle: "Candid Baby Moments",
+    alt: "Adorable expressions and baby portraits by HALO Cinematic Studio",
+    packageCategory: "events",
+    width: 1600,
+    height: 1066,
+    isLandscape: true,
+  },
+  {
+    id: "halo-photo-baby-03",
+    src: "/images/gallery/halo-baby-03.jpg",
+    title: "Pure Innocence & Smiles",
+    category: "Baby & Milestones",
+    subtitle: "Milestone Studio Framing",
+    alt: "Baby Miththu sitting gracefully in fine-art milestone studio portrait by HALO Cinematic Studio",
+    packageCategory: "events",
+    width: 1066,
+    height: 1600,
+    isLandscape: false,
+  },
+  {
+    id: "halo-photo-baby-04",
+    src: "/images/gallery/halo-baby-04.jpg",
+    title: "Curious Bright Eyes",
+    category: "Baby & Milestones",
+    subtitle: "Natural Light Milestone",
+    alt: "Fine-art baby portrait capturing curious bright eyes by HALO Cinematic Studio",
+    packageCategory: "events",
+    width: 1066,
+    height: 1600,
+    isLandscape: false,
+  },
+  {
+    id: "halo-photo-baby-05",
+    src: "/images/gallery/halo-baby-05.jpg",
+    title: "Tender Cherished Milestones",
+    category: "Baby & Milestones",
+    subtitle: "Cherished Baby Story",
+    alt: "Baby Miththu joyful natural expression during studio session by HALO Cinematic Studio",
+    packageCategory: "events",
+    width: 1600,
+    height: 1066,
+    isLandscape: true,
+  },
+  {
+    id: "halo-photo-baby-06",
+    src: "/images/gallery/halo-baby-06.jpg",
+    title: "Golden First Memories",
+    category: "Baby & Milestones",
+    subtitle: "Heirloom Family Keepsake",
+    alt: "Sweet baby photoshoot memories preserved with artistic warmth by HALO Cinematic Studio",
+    packageCategory: "events",
     width: 1600,
     height: 1066,
     isLandscape: true,

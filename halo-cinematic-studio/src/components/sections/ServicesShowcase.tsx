@@ -41,7 +41,7 @@ const captureServices: CaptureService[] = [
     title: "Event Photography",
     category: "Celebrations & Birthdays",
     description: "Spontaneous laughter, atmosphere, and energy that bring events to life.",
-    image: "/images/home-selected/wedding-embrace.webp",
+    image: "/images/baby/miththu-01.jpg",
     href: "/packages?category=events",
   },
   {

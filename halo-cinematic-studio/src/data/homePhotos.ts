@@ -38,10 +38,10 @@ export const homePhotos = {
     "source": "11 copy.jpg.jpeg"
   },
   "portfolio2": {
-    "src": "/images/home-selected/pink-saree-portrait.webp",
-    "alt": "Woman in a bright pink sari standing beside flowering greenery",
+    "src": "/images/baby/miththu-05.jpg",
+    "alt": "Baby Miththu smiling in studio milestone photoshoot",
     "position": "center 35%",
-    "source": "06.jpg.jpeg"
+    "source": "Miththu (5).jpg.jpeg"
   },
   "portfolio3": {
     "src": "/images/home-selected/temple-portrait.webp",

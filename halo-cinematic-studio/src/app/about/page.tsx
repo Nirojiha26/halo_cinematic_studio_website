@@ -221,11 +221,11 @@ export default function AboutPage() {
 
             {/* Row 2: Staggered Bento Grid */}
             <div className="grid grid-cols-12 gap-3 sm:gap-5 items-start mt-3 sm:mt-5">
-              {/* Card 5: Square */}
+              {/* Card 5: Square Baby Milestone Portrait */}
               <div className="col-span-6 sm:col-span-3 md:col-span-2 relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-xs border border-[#D8CFC1] bg-[#FAF7F1] group">
                 <Image
-                  src="/images/home-selected/wedding-embrace.webp"
-                  alt="Bride and groom leaning close together in wedding attire"
+                  src="/images/baby/miththu-03.jpg"
+                  alt="Little Miththu sweet baby milestone portrait by HALO Cinematic Studio"
                   fill
                   sizes="(min-width: 1024px) 16vw, 33vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
