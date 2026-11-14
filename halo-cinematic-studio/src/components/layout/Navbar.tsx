@@ -8,7 +8,7 @@ import { cn, isActivePath } from "@/lib/utils";
 import { Logo } from "@/components/shared/Logo";
 import { MobileMenu } from "./MobileMenu";
 import { Container } from "@/components/ui/Container";
-import { FacebookIcon, InstagramIcon } from "@/components/shared/SocialIcons";
+import { FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/shared/SocialIcons";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -97,6 +97,15 @@ export function Navbar() {
               className="grid size-10 place-items-center rounded-full border border-[#E50919] text-[#E50919] transition-all hover:bg-[#E50919] hover:text-white hover:scale-105"
             >
               <InstagramIcon className="size-4 shrink-0" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@tharsan_offcl?_r=1&_t=ZS-9BOC640Df3U"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit HALO on TikTok"
+              className="grid size-10 place-items-center rounded-full border border-[#E50919] text-[#E50919] transition-all hover:bg-[#E50919] hover:text-white hover:scale-105"
+            >
+              <TikTokIcon className="size-4 shrink-0" />
             </a>
           </div>
 

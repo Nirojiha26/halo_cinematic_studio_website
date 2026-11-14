@@ -5,7 +5,7 @@ import { packageCategories } from "@/data/packages";
 import { Logo } from "@/components/shared/Logo";
 import { CurrentYear } from "@/components/shared/CurrentYear";
 import { Container } from "@/components/ui/Container";
-import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/shared/SocialIcons";
+import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon } from "@/components/shared/SocialIcons";
 
 export function Footer() {
   const { contact } = siteConfig;
@@ -136,6 +136,16 @@ export function Footer() {
                 className="grid size-10 place-items-center rounded-xl bg-[#22211F] border border-[#2E2D2B] text-[#D71920] transition-all duration-200 hover:border-[#D71920] hover:bg-[#D71920]/15 hover:scale-105 active:scale-95"
               >
                 <InstagramIcon className="size-5 shrink-0" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@tharsan_offcl?_r=1&_t=ZS-9BOC640Df3U"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                title="TikTok"
+                className="grid size-10 place-items-center rounded-xl bg-[#22211F] border border-[#2E2D2B] text-[#D71920] transition-all duration-200 hover:border-[#D71920] hover:bg-[#D71920]/15 hover:scale-105 active:scale-95"
+              >
+                <TikTokIcon className="size-5 shrink-0" />
               </a>
               <a
                 href="https://whatsapp.com/channel/0029Vb9T6yaAYlUMkyyujH1P"

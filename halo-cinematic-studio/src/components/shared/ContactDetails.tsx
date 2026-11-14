@@ -1,7 +1,7 @@
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { siteConfig, whatsappUrl } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/shared/SocialIcons";
+import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon } from "@/components/shared/SocialIcons";
 
 /**
  * Compact, aesthetic Direct Studio Channels card with dedicated icons
@@ -153,6 +153,16 @@ export function StudioChannelsCard({ className }: { className?: string }) {
             className="grid size-8.5 place-items-center rounded-lg bg-[#EEE9DF] border border-[#D8CFC1] text-[#171716] hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F] transition-all duration-200 active:scale-95"
           >
             <InstagramIcon className="size-4 shrink-0" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@tharsan_offcl?_r=1&_t=ZS-9BOC640Df3U"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+            title="TikTok"
+            className="grid size-8.5 place-items-center rounded-lg bg-[#EEE9DF] border border-[#D8CFC1] text-[#171716] hover:bg-black hover:text-white hover:border-black transition-all duration-200 active:scale-95"
+          >
+            <TikTokIcon className="size-4 shrink-0" />
           </a>
           <a
             href="https://whatsapp.com/channel/0029Vb9T6yaAYlUMkyyujH1P"

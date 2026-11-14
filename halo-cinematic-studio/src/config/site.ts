@@ -44,8 +44,10 @@ export const siteConfig = {
   socials: [
     { label: "Facebook", href: "https://www.facebook.com/share/18G3kQ7vff/" },
     { label: "Instagram", href: "https://www.instagram.com/halo_cinematic_studio?psln=MWZ5cnQ4eGNmcGowaQ==" },
+    { label: "TikTok", href: "https://www.tiktok.com/@tharsan_offcl?_r=1&_t=ZS-9BOC640Df3U" },
     { label: "WhatsApp Channel", href: "https://whatsapp.com/channel/0029Vb9T6yaAYlUMkyyujH1P" },
   ] as SocialLink[],
+  tiktok: "https://www.tiktok.com/@tharsan_offcl?_r=1&_t=ZS-9BOC640Df3U",
   whatsappChannel: "https://whatsapp.com/channel/0029Vb9T6yaAYlUMkyyujH1P",
 
   /** Place a licensed MP3 at public/audio/background.mp3 to enable music. */

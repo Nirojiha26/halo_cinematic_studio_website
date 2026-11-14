@@ -4,7 +4,7 @@ import Link from "next/link";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, Phone, X } from "lucide-react";
-import { FacebookIcon, InstagramIcon } from "@/components/shared/SocialIcons";
+import { FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/shared/SocialIcons";
 import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { siteConfig } from "@/config/site";
 import { cn, isActivePath } from "@/lib/utils";
@@ -127,28 +127,30 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                     </nav>
 
                     {/* CTAs */}
-                    <div className="mt-auto space-y-3 border-t border-white/10 pt-6">
-                      <Link
-                        href={siteConfig.cta.href}
-                        onClick={close}
-                        className="hero-nav-cta flex h-12 w-full items-center justify-center rounded-full text-sm font-semibold uppercase tracking-[0.14em] text-white"
-                      >
-                        {siteConfig.cta.label}
-                      </Link>
-
-                      <div className="grid grid-cols-3 gap-2 pt-2">
+                    <div className="mt-auto space-y-2.5 border-t border-white/10 pt-5">
+                      <div className="grid grid-cols-2 gap-2">
+                        <Link
+                          href={siteConfig.cta.href}
+                          onClick={close}
+                          className="hero-nav-cta flex h-11 w-full items-center justify-center rounded-full text-xs font-semibold uppercase tracking-[0.14em] text-white"
+                        >
+                          {siteConfig.cta.label}
+                        </Link>
                         <a
                           href={`tel:${siteConfig.contact.phoneIntl}`}
                           className="flex h-11 items-center justify-center gap-1.5 rounded-full border border-white/20 text-xs font-medium text-white transition-colors hover:border-[#D90B17]"
                         >
                           <Phone className="size-3.5" />
-                          <span>Call</span>
+                          <span>Call Studio</span>
                         </a>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-2 pt-1">
                         <a
                           href="https://www.facebook.com/share/18G3kQ7vff/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex h-11 items-center justify-center gap-1.5 rounded-full border border-[#E50919] text-xs font-medium text-[#E50919] transition-colors hover:bg-[#E50919] hover:text-white"
+                          className="flex h-10 items-center justify-center gap-1.5 rounded-full border border-[#E50919] text-xs font-medium text-[#E50919] transition-colors hover:bg-[#E50919] hover:text-white"
                         >
                           <FacebookIcon className="size-3.5 shrink-0" />
                           <span>Facebook</span>
@@ -157,10 +159,19 @@ export function MobileMenu({ pathname }: { pathname: string }) {
                           href="https://www.instagram.com/halo_cinematic_studio?psln=MWZ5cnQ4eGNmcGowaQ=="
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex h-11 items-center justify-center gap-1.5 rounded-full border border-[#E50919] text-xs font-medium text-[#E50919] transition-colors hover:bg-[#E50919] hover:text-white"
+                          className="flex h-10 items-center justify-center gap-1.5 rounded-full border border-[#E50919] text-xs font-medium text-[#E50919] transition-colors hover:bg-[#E50919] hover:text-white"
                         >
                           <InstagramIcon className="size-3.5 shrink-0" />
                           <span>Instagram</span>
+                        </a>
+                        <a
+                          href="https://www.tiktok.com/@tharsan_offcl?_r=1&_t=ZS-9BOC640Df3U"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 items-center justify-center gap-1.5 rounded-full border border-[#E50919] text-xs font-medium text-[#E50919] transition-colors hover:bg-[#E50919] hover:text-white"
+                        >
+                          <TikTokIcon className="size-3.5 shrink-0" />
+                          <span>TikTok</span>
                         </a>
                       </div>
                     </div>

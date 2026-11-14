@@ -30,3 +30,11 @@ export function InstagramIcon({ className }: { className?: string }) {
   );
 }
 
+export function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.89 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.3 0 .58.05.85.12V9.43a6.37 6.37 0 00-.85-.06A6.33 6.33 0 003 15.7a6.33 6.33 0 006.34 6.34 6.33 6.33 0 006.34-6.34V8.75a8.16 8.16 0 004.91 1.63V6.93a4.85 4.85 0 01-1-.24z" />
+    </svg>
+  );
+}
+
